@@ -172,7 +172,7 @@ export default function OnboardingPage() {
                 <label className="block text-sm font-medium text-text-700 mb-2">Ad Soyad</label>
                 <input
                   {...step1Form.register('name', { valueAsNumber: false })}
-                  className="w-full px-4 py-3 border border-background-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-background-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-text-900"
                   placeholder="Ahmet Yılmaz"
                 />
                 {step1Form.formState.errors.name && (
@@ -185,7 +185,7 @@ export default function OnboardingPage() {
                 <input
                   type="number"
                   {...step1Form.register('age', { valueAsNumber: true })}
-                  className="w-full px-4 py-3 border border-background-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-background-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-text-900"
                   placeholder="25"
                 />
                 {step1Form.formState.errors.age && (
@@ -197,7 +197,7 @@ export default function OnboardingPage() {
                 <label className="block text-sm font-medium text-text-700 mb-2">Cinsiyet</label>
                 <select
                   {...step1Form.register('gender')}
-                  className="w-full px-4 py-3 border border-background-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-background-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-text-900"
                 >
                   <option value="male">Erkek</option>
                   <option value="female">Kadın</option>

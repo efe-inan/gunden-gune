@@ -1,7 +1,8 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react';
 import { api } from '@/lib/api';
+import { programContent } from '@/data/programContent';
 
 interface Task {
   id: string;
@@ -36,21 +37,31 @@ export function ProgramProvider({ children }: { children: ReactNode }) {
   const [currentProgram, setCurrentProgram] = useState<DailyProgram | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const getCurrentDayProgram = async () => {
+  const getCurrentDayProgram = useCallback(async () => {
     setLoading(true);
     try {
-      // Mock data
-      // const program = await api.get('/program/current');
+      // In a real app, we would fetch the user's current day from the backend
+      // For now, let's assume day 1 or get from local storage/context
+      const currentDay = 1;
+
+      const dayContent = programContent.find(p => p.day === currentDay);
+
+      if (!dayContent) {
+        throw new Error('Program content not found');
+      }
+
       const program: DailyProgram = {
-        day: 1,
-        tasks: [
-          { id: '1', title: 'Sabah Meditasyonu', description: '10 dakika nefes egzersizi', duration: 10, completed: false, day: 1 },
-          { id: '2', title: 'Günlük Planlama', description: 'Bugünün hedeflerini yaz', duration: 5, completed: true, day: 1 },
-        ],
-        totalDuration: 15,
-        completedDuration: 5,
-        motivationMessage: 'Harika bir başlangıç yap!'
+        day: dayContent.day,
+        tasks: dayContent.tasks.map(t => ({
+          ...t,
+          completed: false, // In real app, fetch completion status
+          day: dayContent.day
+        })),
+        totalDuration: dayContent.tasks.reduce((acc, t) => acc + t.duration, 0),
+        completedDuration: 0,
+        motivationMessage: dayContent.motivationMessage
       };
+
       setCurrentProgram(program);
       return program;
     } catch (error) {
@@ -60,12 +71,31 @@ export function ProgramProvider({ children }: { children: ReactNode }) {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const getDayProgram = async (day: number) => {
+  const getDayProgram = useCallback(async (day: number) => {
     setLoading(true);
     try {
-      const program = await api.get(`/program/day/${day}`);
+      const dayContent = programContent.find(p => p.day === day);
+
+      if (!dayContent) {
+        // Fallback if day not found
+        return null as any;
+      }
+
+      // Transform to DailyProgram format
+      const program: DailyProgram = {
+        day: dayContent.day,
+        tasks: dayContent.tasks.map(t => ({
+          ...t,
+          completed: false,
+          day: dayContent.day
+        })),
+        totalDuration: dayContent.tasks.reduce((acc, t) => acc + t.duration, 0),
+        completedDuration: 0,
+        motivationMessage: dayContent.motivationMessage
+      };
+
       if (day === currentProgram?.day) {
         setCurrentProgram(program);
       }
@@ -76,9 +106,9 @@ export function ProgramProvider({ children }: { children: ReactNode }) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentProgram?.day]);
 
-  const completeTask = async (taskId: string) => {
+  const completeTask = useCallback(async (taskId: string) => {
     try {
       // await api.post('/program/complete-task', { taskId });
       if (currentProgram) {
@@ -95,9 +125,9 @@ export function ProgramProvider({ children }: { children: ReactNode }) {
       console.error('Error completing task:', error);
       throw error;
     }
-  };
+  }, [currentProgram]);
 
-  const uncompleteTask = async (taskId: string) => {
+  const uncompleteTask = useCallback(async (taskId: string) => {
     try {
       // await api.post('/program/uncomplete-task', { taskId });
       if (currentProgram) {
@@ -114,9 +144,9 @@ export function ProgramProvider({ children }: { children: ReactNode }) {
       console.error('Error uncompleting task:', error);
       throw error;
     }
-  };
+  }, [currentProgram]);
 
-  const submitReflection = async (reflection: string) => {
+  const submitReflection = useCallback(async (reflection: string) => {
     try {
       // await api.post('/program/reflection', { reflection });
       console.log('Reflection submitted:', reflection);
@@ -124,7 +154,7 @@ export function ProgramProvider({ children }: { children: ReactNode }) {
       console.error('Error submitting reflection:', error);
       throw error;
     }
-  };
+  }, []);
 
   return (
     <ProgramContext.Provider

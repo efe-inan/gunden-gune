@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react';
 import { api } from '@/lib/api';
 
 interface ProgressData {
@@ -29,7 +29,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   const [progress, setProgress] = useState<ProgressData | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const fetchProgress = async () => {
+  const fetchProgress = useCallback(async () => {
     setLoading(true);
     try {
       // Mock data for now until Firestore is implemented
@@ -63,11 +63,11 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const updateProgress = async () => {
+  const updateProgress = useCallback(async () => {
     await fetchProgress();
-  };
+  }, [fetchProgress]);
 
   return (
     <ProgressContext.Provider value={{ progress, loading, fetchProgress, updateProgress }}>

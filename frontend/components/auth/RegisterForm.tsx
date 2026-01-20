@@ -9,6 +9,8 @@ import { Button } from '@/design-system/components/Button';
 import { toast } from '@/components/shared/Toast';
 import { colors } from '@/design-system/colors';
 
+import { useRouter } from 'next/navigation';
+
 const registerSchema = z.object({
   name: z.string().min(2, 'İsim en az 2 karakter olmalıdır'),
   email: z.string().email('Geçersiz e-posta adresi'),
@@ -22,6 +24,7 @@ const registerSchema = z.object({
 type RegisterFormData = z.infer<typeof registerSchema>;
 
 export function RegisterForm() {
+  const router = useRouter();
   const { register: registerUser } = useAuth();
   const [loading, setLoading] = useState(false);
 
@@ -38,6 +41,7 @@ export function RegisterForm() {
     try {
       await registerUser(data.name, data.email, data.password);
       toast.success('Hesap başarıyla oluşturuldu!');
+      router.push('/onboarding');
     } catch (error) {
       toast.error('Hesap oluşturulamadı');
     } finally {
@@ -55,7 +59,7 @@ export function RegisterForm() {
           id="name"
           type="text"
           {...register('name')}
-          className="w-full px-4 py-3 border border-background-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          className="w-full px-4 py-3 border border-background-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-text-900"
           placeholder="Ahmet Yılmaz"
         />
         {errors.name && (
@@ -71,7 +75,7 @@ export function RegisterForm() {
           id="email"
           type="email"
           {...register('email')}
-          className="w-full px-4 py-3 border border-background-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          className="w-full px-4 py-3 border border-background-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-text-900"
           placeholder="ahmet@ornek.com"
         />
         {errors.email && (
@@ -87,7 +91,7 @@ export function RegisterForm() {
           id="password"
           type="password"
           {...register('password')}
-          className="w-full px-4 py-3 border border-background-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          className="w-full px-4 py-3 border border-background-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-text-900"
           placeholder="••••••••"
         />
         {errors.password && (
@@ -103,7 +107,7 @@ export function RegisterForm() {
           id="confirmPassword"
           type="password"
           {...register('confirmPassword')}
-          className="w-full px-4 py-3 border border-background-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          className="w-full px-4 py-3 border border-background-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-text-900"
           placeholder="••••••••"
         />
         {errors.confirmPassword && (

@@ -22,6 +22,8 @@ export function StatCard({ label, value, change, changeType = 'neutral', icon }:
   return (
     <motion.div
       variants={fadeInUp as any}
+      initial="hidden"
+      animate="visible"
       whileHover={hoverScale.hover as any}
       className="bg-white rounded-xl p-6 shadow-sm border border-background-200"
     >

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, User, LogOut, Settings } from 'lucide-react';
@@ -32,11 +33,16 @@ export function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-background-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">GG</span>
+          <Link href="/" className="flex items-center gap-1">
+            <div className="relative w-14 h-14">
+              <Image
+                src="/logo.png"
+                alt="Günden Güne Logo"
+                fill
+                className="object-contain"
+              />
             </div>
-            <span className="text-xl font-semibold text-text-900">Günden Güne</span>
+            <span className="text-2xl font-semibold text-text-900">Günden Güne</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
