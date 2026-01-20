@@ -95,7 +95,7 @@ export default function AdminPage() {
   ];
 
   return (
-    <ProtectedRoute>
+    <ProtectedRoute requireAdmin={true}>
       <div className="p-6 lg:p-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-text-900 mb-2">Yönetici Paneli</h1>

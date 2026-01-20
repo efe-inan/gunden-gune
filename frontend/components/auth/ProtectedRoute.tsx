@@ -7,17 +7,22 @@ import { PageLoader } from '@/components/shared/Loader';
 
 interface ProtectedRouteProps {
   children: ReactNode;
+  requireAdmin?: boolean;
 }
 
-export function ProtectedRoute({ children }: ProtectedRouteProps) {
+export function ProtectedRoute({ children, requireAdmin = false }: ProtectedRouteProps) {
   const { user, loading } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    if (!loading && !user) {
-      router.push('/auth/login');
+    if (!loading) {
+      if (!user) {
+        router.push('/auth/login');
+      } else if (requireAdmin && !user.isAdmin) {
+        router.push('/dashboard'); // or /unauthorized
+      }
     }
-  }, [user, loading, router]);
+  }, [user, loading, router, requireAdmin]);
 
   if (loading) {
     return <PageLoader />;

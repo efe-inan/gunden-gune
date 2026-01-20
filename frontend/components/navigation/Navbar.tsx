@@ -34,9 +34,9 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2">
             <div className="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">21</span>
+              <span className="text-white font-bold text-xl">GG</span>
             </div>
-            <span className="text-xl font-semibold text-text-900">Transform</span>
+            <span className="text-xl font-semibold text-text-900">Günden Güne</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
@@ -54,8 +54,11 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-4">
             {user ? (
               <>
-                <Link href="/program">
-                  <Button size="sm">Programa Devam Et</Button>
+                <Link
+                  href="/program"
+                  className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 px-3 py-1.5 text-sm bg-primary-500 text-white hover:bg-primary-600 shadow-[0_2px_4px_rgba(0,0,0,0.1)] hover:shadow-[0_4px_8px_rgba(0,0,0,0.15)]"
+                >
+                  Programa Devam Et
                 </Link>
                 <div className="relative group">
                   <button className="flex items-center gap-2 p-2 rounded-lg hover:bg-background-100 transition-colors">
@@ -86,11 +89,17 @@ export function Navbar() {
               </>
             ) : (
               <>
-                <Link href="/auth/login">
-                  <Button variant="ghost" size="sm">Giriş Yap</Button>
+                <Link
+                  href="/auth/login"
+                  className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 px-3 py-1.5 text-sm bg-transparent text-text-400 hover:bg-background-200 focus:ring-text-400"
+                >
+                  Giriş Yap
                 </Link>
-                <Link href="/auth/register">
-                  <Button size="sm">Başla</Button>
+                <Link
+                  href="/auth/register"
+                  className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 px-3 py-1.5 text-sm bg-primary-500 text-white hover:bg-primary-600 shadow-[0_2px_4px_rgba(0,0,0,0.1)] hover:shadow-[0_4px_8px_rgba(0,0,0,0.15)]"
+                >
+                  Başla
                 </Link>
               </>
             )}
@@ -157,10 +166,12 @@ export function Navbar() {
                   >
                     Giriş Yap
                   </Link>
-                  <Link href="/auth/register">
-                    <Button fullWidth onClick={() => setIsOpen(false)}>
-                      Başla
-                    </Button>
+                  <Link
+                    href="/auth/register"
+                    className="w-full inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 px-4 py-2 text-base bg-primary-500 text-white hover:bg-primary-600 shadow-[0_2px_4px_rgba(0,0,0,0.1)] hover:shadow-[0_4px_8px_rgba(0,0,0,0.15)]"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Başla
                   </Link>
                 </>
               )}

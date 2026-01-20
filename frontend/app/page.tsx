@@ -129,14 +129,14 @@ export default function LandingPage() {
         >
           <motion.div variants={fadeInUp}>
             <span className="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full text-sm font-medium mb-6">
-              Hayatınızı 21 Günde Dönüştürün
+              Hayatınızı Günden Güne Dönüştürün
             </span>
           </motion.div>
           <motion.h1
             variants={fadeInUp}
             className="text-5xl md:text-6xl font-bold text-text-900 mb-6"
           >
-            Daha İyi Alışkanlıklar Edinin,
+            Günden Güne İle Daha İyi Alışkanlıklar Edinin,
             <br />
             <span className="text-primary-600">Hedeflerinize Ulaşın</span>
           </motion.h1>
@@ -147,15 +147,17 @@ export default function LandingPage() {
             Bilimsel temelli 21 günlük kişisel gelişim programımızla hayatlarını dönüştüren binlerce kişiye katılın.
           </motion.p>
           <motion.div variants={fadeInUp} className="flex gap-4 justify-center">
-            <Link href="/auth/register">
-              <Button size="lg" rightIcon={<ArrowRight className="w-5 h-5" />}>
-                Yolculuğuna Başla
-              </Button>
+            <Link
+              href="/auth/register"
+              className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 px-6 py-3 text-lg bg-primary-500 text-white hover:bg-primary-600 shadow-[0_2px_4px_rgba(0,0,0,0.1)] hover:shadow-[0_4px_8px_rgba(0,0,0,0.15)]"
+            >
+              Yolculuğuna Başla <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
-            <Link href="/auth/login">
-              <Button variant="outline" size="lg">
-                Giriş Yap
-              </Button>
+            <Link
+              href="/auth/login"
+              className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 px-6 py-3 text-lg bg-transparent border-2 border-primary-500 text-primary-500 hover:bg-primary-50"
+            >
+              Giriş Yap
             </Link>
           </motion.div>
         </motion.div>
@@ -298,16 +300,21 @@ export default function LandingPage() {
                     </li>
                   ))}
                 </ul>
-                <Link href="/auth/register">
-                  <Button fullWidth variant={plan.popular ? 'primary' : 'outline'}>
-                    Hemen Başla
-                  </Button>
+
+                <Link
+                  href="/auth/register"
+                  className={`w-full inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 px-4 py-2 text-base ${plan.popular
+                      ? 'bg-primary-500 text-white hover:bg-primary-600 shadow-[0_2px_4px_rgba(0,0,0,0.1)] hover:shadow-[0_4px_8px_rgba(0,0,0,0.15)]'
+                      : 'bg-transparent border-2 border-primary-500 text-primary-500 hover:bg-primary-50'
+                    }`}
+                >
+                  Hemen Başla
                 </Link>
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-4">
@@ -341,7 +348,7 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h3 className="text-2xl font-bold mb-4">21 Gün Dönüşüm</h3>
+              <h3 className="text-2xl font-bold mb-4">Günden Güne</h3>
               <p className="text-text-400">
                 Bilimsel temelli kişisel gelişim ile hayatınızı dönüştürün.
               </p>
@@ -370,12 +377,10 @@ export default function LandingPage() {
                 <a href="#" className="hover:text-primary-400">Instagram</a>
               </div>
             </div>
-          </div>
-          <div className="border-t border-text-800 pt-8 text-center text-text-400">
-            <p>&copy; 2024 21 Gün Dönüşüm. Tüm hakları saklıdır.</p>
+            <p>&copy; {new Date().getFullYear()} Günden Güne. Tüm hakları saklıdır.</p>
           </div>
         </div>
       </footer>
-    </div>
+    </div >
   );
 }

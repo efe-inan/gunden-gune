@@ -21,6 +21,7 @@ interface User {
   isOnboarded?: boolean;
   currentDay?: number;
   streak?: number;
+  isAdmin?: boolean;
 }
 
 interface AuthContextType {
@@ -41,11 +42,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((firebaseUser: FirebaseUser | null) => {
       if (firebaseUser) {
+        // Simple Admin Check (Email Allowlist)
+        const ADMIN_EMAILS = ['efe_nbhd@icloud.com'];
+        const isAdmin = ADMIN_EMAILS.includes(firebaseUser.email || '');
+
         // In a real app, we would fetch additional user data from Firestore here
         setUser({
           id: firebaseUser.uid,
           email: firebaseUser.email || '',
           name: firebaseUser.displayName || 'Kullanıcı',
+          isAdmin,
         });
       } else {
         setUser(null);
