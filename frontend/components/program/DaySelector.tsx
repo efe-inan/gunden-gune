@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, Lock } from 'lucide-react';
+import { Check, Lock as LockIcon } from 'lucide-react';
 import { colors } from '@/design-system/colors';
 
 interface Day {
@@ -42,7 +42,7 @@ export function DaySelector({ days, currentDay, onDaySelect }: DaySelectorProps)
               <div className="absolute inset-0 bg-white/10 animate-pulse" />
             )}
             <span className="text-lg font-bold">{day.day}</span>
-            {day.locked && <Lock className="w-3 h-3" />}
+            {day.locked && <LockIcon className="w-3 h-3" />}
             {day.completed && <Check className="w-4 h-4" />}
           </motion.button>
         ))}

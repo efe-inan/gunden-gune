@@ -32,30 +32,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   const fetchProgress = useCallback(async () => {
     setLoading(true);
     try {
-      // Mock data for now until Firestore is implemented
-      // const data = await api.get('/progress');
-      const data: ProgressData = {
-        currentDay: 1,
-        totalDays: 21,
-        completedTasks: 5,
-        totalTasks: 63,
-        streak: 3,
-        longestStreak: 5,
-        completionRate: 8,
-        weeklyProgress: [
-          { day: 'Pzt', completed: 2, total: 3 },
-          { day: 'Sal', completed: 3, total: 3 },
-          { day: 'Çar', completed: 0, total: 3 },
-          { day: 'Per', completed: 0, total: 3 },
-          { day: 'Cum', completed: 0, total: 3 },
-          { day: 'Cmt', completed: 0, total: 3 },
-          { day: 'Paz', completed: 0, total: 3 },
-        ],
-        monthlyProgress: [],
-        achievements: [
-          { id: '1', title: 'İlk Adımlar', description: 'İlk gününü tamamla', earnedAt: new Date().toISOString() }
-        ]
-      };
+      const data = await api.get('/progress');
       setProgress(data);
     } catch (error) {
       console.error('Error fetching progress:', error);
