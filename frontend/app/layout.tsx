@@ -1,15 +1,12 @@
-'use client';
-
 import './globals.css';
-
-import { AuthProvider } from '@/hooks/useAuth';
-import { ProgramProvider } from '@/hooks/useProgram';
-import { ProgressProvider } from '@/hooks/useProgress';
-import { AdminProvider } from '@/hooks/useAdmin';
-import { ToastProvider } from '@/components/shared/Toast';
+import { Providers } from '@/components/Providers';
 import { Navbar } from '@/components/navigation/Navbar';
 import { Sidebar } from '@/components/navigation/Sidebar';
-import { ErrorBoundary } from '@/components/shared/ErrorBoundary';
+
+export const metadata = {
+  title: 'Günden Güne',
+  description: 'Kişisel Gelişim Platformu',
+};
 
 export default function RootLayout({
   children,
@@ -19,25 +16,15 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <body>
-        <ErrorBoundary>
-          <AuthProvider>
-            <ProgramProvider>
-              <ProgressProvider>
-                <AdminProvider>
-                  <ToastProvider>
-                    <Navbar />
-                    <div className="pt-16 flex">
-                      <Sidebar />
-                      <main className="flex-1 lg:ml-64 min-h-screen bg-gradient-to-br from-background-50 via-white to-primary-50/30">
-                        {children}
-                      </main>
-                    </div>
-                  </ToastProvider>
-                </AdminProvider>
-              </ProgressProvider>
-            </ProgramProvider>
-          </AuthProvider>
-        </ErrorBoundary>
+        <Providers>
+          <Navbar />
+          <div className="pt-16 flex">
+            <Sidebar />
+            <main className="flex-1 lg:ml-64 min-h-screen bg-gradient-to-br from-background-50 via-white to-primary-50/30">
+              {children}
+            </main>
+          </div>
+        </Providers>
       </body>
     </html>
   );
