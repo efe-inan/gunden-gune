@@ -1,17 +1,34 @@
+import winston from 'winston';
+import { format } from 'util';
+
+const winstonLogger = winston.createLogger({
+  level: process.env.NODE_ENV === 'development' ? 'debug' : 'info',
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.printf(({ level, message, timestamp }) => {
+      return `[${level.toUpperCase()}] ${timestamp} - ${message}`;
+    })
+  ),
+  transports: [
+    new winston.transports.Console({
+      stderrLevels: ['error'],
+    }),
+  ],
+});
+
 const logger = {
   info: (message: string, ...args: any[]) => {
-    console.log(`[INFO] ${new Date().toISOString()} - ${message}`, ...args);
+    setImmediate(() => winstonLogger.info(format(message, ...args)));
   },
   error: (message: string, error?: any) => {
-    console.error(`[ERROR] ${new Date().toISOString()} - ${message}`, error);
+    // Keep error logging synchronous to ensure visibility in case of crash
+    winstonLogger.error(format(message, error || ''));
   },
   warn: (message: string, ...args: any[]) => {
-    console.warn(`[WARN] ${new Date().toISOString()} - ${message}`, ...args);
+    setImmediate(() => winstonLogger.warn(format(message, ...args)));
   },
   debug: (message: string, ...args: any[]) => {
-    if (process.env.NODE_ENV === 'development') {
-      console.debug(`[DEBUG] ${new Date().toISOString()} - ${message}`, ...args);
-    }
+    setImmediate(() => winstonLogger.debug(format(message, ...args)));
   },
 };
 
