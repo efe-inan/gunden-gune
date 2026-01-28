@@ -69,7 +69,7 @@ const programSchema = new Schema<IProgram>(
   }
 );
 
-programSchema.index({ userId: 1 });
+programSchema.index({ userId: 1, status: 1 });
 programSchema.index({ status: 1 });
 programSchema.index({ developmentAreaId: 1 });
 
