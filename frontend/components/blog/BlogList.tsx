@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { BlogCard } from './BlogCard';
 import { Search, Filter } from 'lucide-react';
 import { colors } from '@/design-system/colors';
@@ -27,13 +27,16 @@ export function BlogList({ posts, categories }: BlogListProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const filteredPosts = posts.filter((post) => {
-    const matchesSearch =
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  });
+  const filteredPosts = useMemo(() => {
+    const lowerSearchQuery = searchQuery.toLowerCase();
+    return posts.filter((post) => {
+      const matchesSearch =
+        post.title.toLowerCase().includes(lowerSearchQuery) ||
+        post.excerpt.toLowerCase().includes(lowerSearchQuery);
+      const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory;
+      return matchesSearch && matchesCategory;
+    });
+  }, [posts, searchQuery, selectedCategory]);
 
   return (
     <div className="space-y-8">
