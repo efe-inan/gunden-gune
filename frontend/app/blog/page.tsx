@@ -4,9 +4,9 @@ import { useState, useEffect } from 'react';
 import { BlogList } from '@/components/blog/BlogList';
 import { blogPosts } from '@/data/blogPosts';
 
-export default function BlogPage() {
-  const categories = ['Tümü', ...Array.from(new Set(blogPosts.map(post => post.category)))];
+const categories = ['Tümü', ...Array.from(new Set(blogPosts.map(post => post.category)))];
 
+export default function BlogPage() {
   return (
     <div className="p-6 lg:p-8">
       <div className="max-w-7xl mx-auto">
