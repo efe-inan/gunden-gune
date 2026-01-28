@@ -3,14 +3,14 @@ import { config } from '../config/config';
 
 export const generateToken = (userId: string, email: string): string => {
   const options: SignOptions = {
-    expiresIn: config.jwtExpiresIn,
+    expiresIn: config.jwtExpiresIn as SignOptions['expiresIn'],
   };
   return jwt.sign({ userId, email }, config.jwtSecret, options);
 };
 
 export const generateRefreshToken = (userId: string): string => {
   const options: SignOptions = {
-    expiresIn: config.jwtRefreshExpiresIn,
+    expiresIn: config.jwtRefreshExpiresIn as SignOptions['expiresIn'],
   };
   return jwt.sign({ userId }, config.jwtRefreshSecret, options);
 };
