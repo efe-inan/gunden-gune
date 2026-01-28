@@ -104,18 +104,26 @@ export const deleteUser = async (req: AuthRequest, res: Response): Promise<void>
 };
 
 export const getAdminStats = async (req: AuthRequest, res: Response): Promise<void> => {
-  try {
-    const totalUsers = await User.countDocuments();
-    const activeUsers = await User.countDocuments({
+  const [
+    totalUsers,
+    activeUsers,
+    totalPrograms,
+    activePrograms,
+    completedPrograms,
+    totalBlogPosts,
+    publishedBlogPosts,
+    topDevelopmentAreas,
+  ] = await Promise.all([
+    User.countDocuments(),
+    User.countDocuments({
       createdAt: { $gte: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000) },
-    });
-    const totalPrograms = await Program.countDocuments();
-    const activePrograms = await Program.countDocuments({ status: 'active' });
-    const completedPrograms = await Program.countDocuments({ status: 'completed' });
-    const totalBlogPosts = await BlogPost.countDocuments();
-    const publishedBlogPosts = await BlogPost.countDocuments({ published: true });
-
-    const topDevelopmentAreas = await Program.aggregate([
+    }),
+    Program.countDocuments(),
+    Program.countDocuments({ status: 'active' }),
+    Program.countDocuments({ status: 'completed' }),
+    BlogPost.countDocuments(),
+    BlogPost.countDocuments({ published: true }),
+    Program.aggregate([
       { $group: { _id: '$developmentAreaId', count: { $sum: 1 } } },
       { $sort: { count: -1 } },
       { $limit: 5 },
@@ -127,29 +135,27 @@ export const getAdminStats = async (req: AuthRequest, res: Response): Promise<vo
           as: 'area',
         },
       },
-    ]);
+    ]),
+  ]);
 
-    res.json({
-      stats: {
-        users: {
-          total: totalUsers,
-          active: activeUsers,
-        },
-        programs: {
-          total: totalPrograms,
-          active: activePrograms,
-          completed: completedPrograms,
-        },
-        blog: {
-          total: totalBlogPosts,
-          published: publishedBlogPosts,
-        },
-        topDevelopmentAreas,
+  res.json({
+    stats: {
+      users: {
+        total: totalUsers,
+        active: activeUsers,
       },
-    });
-  } catch (error) {
-    throw error;
-  }
+      programs: {
+        total: totalPrograms,
+        active: activePrograms,
+        completed: completedPrograms,
+      },
+      blog: {
+        total: totalBlogPosts,
+        published: publishedBlogPosts,
+      },
+      topDevelopmentAreas,
+    },
+  });
 };
 
 export const getAllPrograms = async (req: AuthRequest, res: Response): Promise<void> => {
