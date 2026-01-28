@@ -59,39 +59,38 @@ export const deleteAccount = async (req: AuthRequest, res: Response): Promise<vo
 };
 
 export const getStats = async (req: AuthRequest, res: Response): Promise<void> => {
-  try {
-    const userId = req.user?.userId;
+  const userId = req.user?.userId;
 
-    const user = await User.findById(userId);
-    if (!user) {
-      throw new AppError('User not found', 404);
-    }
+  const [user, totalPrograms, completedPrograms, activeProgram] = await Promise.all([
+    User.findById(userId),
+    Program.countDocuments({ userId }),
+    Program.countDocuments({ userId, status: 'completed' }),
+    Program.findOne({ userId, status: 'active' }),
+  ]);
 
-    const totalPrograms = await Program.countDocuments({ userId });
-    const completedPrograms = await Program.countDocuments({ userId, status: 'completed' });
-    const activeProgram = await Program.findOne({ userId, status: 'active' });
+  if (!user) {
+    throw new AppError('User not found', 404);
+  }
 
-    const totalTasks = await DailyTask.countDocuments({
+  const [totalTasks, completedTasks] = await Promise.all([
+    DailyTask.countDocuments({
       programId: activeProgram?._id,
-    });
-
-    const completedTasks = await DailyTask.countDocuments({
+    }),
+    DailyTask.countDocuments({
       programId: activeProgram?._id,
       completedAt: { $exists: true },
-    });
+    }),
+  ]);
 
-    res.json({
-      stats: {
-        streak: user.streak,
-        totalDays: user.totalDays,
-        totalPrograms,
-        completedPrograms,
-        totalTasks,
-        completedTasks,
-        currentProgress: activeProgram?.totalProgress || 0,
-      },
-    });
-  } catch (error) {
-    throw error;
-  }
+  res.json({
+    stats: {
+      streak: user.streak,
+      totalDays: user.totalDays,
+      totalPrograms,
+      completedPrograms,
+      totalTasks,
+      completedTasks,
+      currentProgress: activeProgram?.totalProgress || 0,
+    },
+  });
 };
