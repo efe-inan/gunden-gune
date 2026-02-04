@@ -133,6 +133,8 @@ export const updateProgress = async (req: AuthRequest, res: Response): Promise<v
 
     const allTasksCompleted = dailyTask.tasks.every((task) => task.completed);
 
+    const updatePromises = [];
+
     if (allTasksCompleted && !dailyTask.completedAt) {
       dailyTask.completedAt = new Date();
 
@@ -145,23 +147,25 @@ export const updateProgress = async (req: AuthRequest, res: Response): Promise<v
 
       if (program.completedDays.length === 21) {
         program.status = 'completed';
-        await User.findByIdAndUpdate(userId, {
+        updatePromises.push(User.findByIdAndUpdate(userId, {
           $push: { completedPrograms: program._id },
           $set: { currentProgramId: null },
-        });
+        }));
       }
 
-      await program.save();
+      updatePromises.push(program.save());
 
-      await User.findByIdAndUpdate(userId, {
+      updatePromises.push(User.findByIdAndUpdate(userId, {
         $inc: {
           totalDays: 1,
           streak: 1,
         },
-      });
+      }));
     }
 
-    await dailyTask.save();
+    updatePromises.push(dailyTask.save());
+
+    await Promise.all(updatePromises);
 
     res.json({
       message: 'Progress updated successfully',
