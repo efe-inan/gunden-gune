@@ -49,11 +49,18 @@ export const getUserById = async (req: AuthRequest, res: Response): Promise<void
       throw new AppError('User not found', 404);
     }
 
+    const [totalPrograms, completedPrograms, activeProgram, testResults] = await Promise.all([
+      Program.countDocuments({ userId: id }),
+      Program.countDocuments({ userId: id, status: 'completed' }),
+      Program.findOne({ userId: id, status: 'active' }),
+      TestResult.countDocuments({ userId: id }),
+    ]);
+
     const userStats = {
-      totalPrograms: await Program.countDocuments({ userId: id }),
-      completedPrograms: await Program.countDocuments({ userId: id, status: 'completed' }),
-      activeProgram: await Program.findOne({ userId: id, status: 'active' }),
-      testResults: await TestResult.countDocuments({ userId: id }),
+      totalPrograms,
+      completedPrograms,
+      activeProgram,
+      testResults,
     };
 
     res.json({ user, stats: userStats });
