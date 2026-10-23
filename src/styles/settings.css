@@ -1,0 +1,354 @@
+/* ==========================================================================
+   Ayarlar ve Yolculuk Bitişi Stilleri (PROJE.md 4.5 & 4.6)
+   ========================================================================== */
+
+.settings-page {
+  padding: 3rem 0 5rem;
+}
+
+.settings-header {
+  text-align: center;
+  margin-bottom: 2.75rem;
+}
+
+.settings-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4.5vw, 2.75rem);
+  color: var(--yesil-700);
+  margin-bottom: 0.5rem;
+}
+
+.settings-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.settings-sections-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.settings-card {
+  background-color: var(--bej-200);
+  border: 1px solid var(--bej-300);
+  border-radius: var(--radius-xl);
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+  box-shadow: var(--shadow-subtle);
+}
+
+.settings-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--bej-300);
+}
+
+.settings-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--yesil-700);
+}
+
+.form-row {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--yesil-900);
+  margin-bottom: 0.5rem;
+}
+
+.form-desc {
+  font-size: var(--text-xs);
+  color: var(--text-subtle);
+  margin-top: 0.35rem;
+}
+
+.time-options-grid,
+.theme-options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.time-option-label,
+.theme-option-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  background-color: var(--bej-100);
+  border: 1.5px solid var(--bej-300);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  color: var(--yesil-900);
+  font-weight: 500;
+  transition: all var(--transition-normal);
+  text-align: center;
+}
+
+.time-option-label:hover,
+.theme-option-btn:hover {
+  border-color: var(--yesil-400);
+  background-color: var(--bg-surface-elevated);
+}
+
+.time-option-label.is-selected,
+.theme-option-btn.is-selected {
+  background-color: var(--accent-light);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+  color: var(--yesil-900);
+  font-weight: 600;
+}
+
+/* Pasif Hesap Oluştur Kartı */
+.auth-placeholder-card {
+  background-color: var(--bg-surface-elevated);
+  border: 1px dashed var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  color: var(--text-muted);
+}
+
+.auth-placeholder-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background-color: var(--bej-300);
+  color: var(--text-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Destek Kaynakları Notu */
+.support-note-box {
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.75rem;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.support-note-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--yesil-700);
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+/* Tehlikeli Alan / Veri Yönetimi */
+.danger-actions-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.btn-danger-soft {
+  background-color: var(--uyari-zemin);
+  color: var(--uyari-yumusak);
+  border: 1px solid var(--uyari-border);
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-size: 0.95rem;
+  transition: all var(--transition-normal);
+}
+
+.btn-danger-soft:hover {
+  background-color: var(--uyari-zemin);
+  border-color: var(--uyari-yumusak);
+  color: var(--uyari-text);
+}
+
+/* Modal Penceresi */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--backdrop-bg);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1.5rem;
+  animation: gentleFadeIn 0.25s ease;
+}
+
+.modal-dialog {
+  background-color: var(--bej-100);
+  border: 1px solid var(--bej-300);
+  border-radius: var(--radius-xl);
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+  max-width: 480px;
+  width: 100%;
+  box-shadow: var(--shadow-elevated);
+  text-align: center;
+}
+
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--yesil-700);
+  margin-bottom: 0.75rem;
+}
+
+.modal-desc {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  line-height: 1.55;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   30. Gün Sonrası Yolculuk Bitişi (PROJE.md 4.6)
+   -------------------------------------------------------------------------- */
+.completion-page {
+  padding: 4rem 0 6rem;
+  text-align: center;
+}
+
+.completion-card {
+  background-color: var(--bej-200);
+  border: 1px solid var(--bej-300);
+  border-radius: var(--radius-xl);
+  padding: clamp(2.5rem, 6vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+  box-shadow: var(--shadow-elevated);
+}
+
+.completion-leaf-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  border-radius: var(--radius-full);
+  background-color: var(--yesil-100);
+  color: var(--yesil-700);
+  margin-bottom: 1.75rem;
+  animation: gentlePulse 2.5s ease-in-out infinite;
+}
+
+.completion-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--yesil-700);
+  margin-bottom: 1rem;
+}
+
+.completion-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  max-width: 580px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+}
+
+.completion-options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+  text-align: left;
+}
+
+.completion-option-card {
+  background-color: var(--bej-100);
+  border: 1.5px solid var(--bej-300);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.completion-option-card:hover {
+  border-color: var(--yesil-500);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.completion-option-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--yesil-700);
+  margin-bottom: 0.5rem;
+}
+
+.completion-option-desc {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 640px) {
+  .settings-page {
+    padding: 1.75rem 0 3.5rem;
+  }
+  .settings-card {
+    padding: 1.5rem 1.25rem;
+  }
+  .time-options-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .danger-actions-row {
+    flex-direction: column;
+  }
+  .danger-actions-row .btn,
+  .danger-actions-row .btn-danger-soft {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .settings-card {
+    padding: 1.25rem 1rem;
+  }
+  .modal-dialog {
+    padding: 1.5rem 1rem;
+  }
+  .modal-actions {
+    flex-direction: column;
+  }
+  .modal-actions .btn {
+    width: 100%;
+  }
+  .completion-options-grid {
+    grid-template-columns: 1fr;
+  }
+  .completion-card {
+    padding: 2rem 1rem;
+  }
+}

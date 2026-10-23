@@ -1,0 +1,4102 @@
+{
+  "versiyon": "1.0",
+  "gorevler": [
+    {
+      "id": "finans-g01",
+      "alan": "finans",
+      "gun": 1,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "Bugünün ilk harcamasını fark et",
+      "neden": "Değişim, neyin nereye gittiğini görmekle başlar.",
+      "adimlar": [
+        "Bugün yaptığın ilk harcamayı aklına getir.",
+        "Telefonuna ya da bir kağıda tutarını ve ne olduğunu yaz.",
+        "Yargılama, pişmanlık duyma; sadece kaydet."
+      ],
+      "alternatif": "Bugün henüz harcama yapmadıysan, dünkü en son harcamanı yaz.",
+      "etiketler": ["farkindalik", "baslangic"]
+    },
+    {
+      "id": "finans-g02",
+      "alan": "finans",
+      "gun": 2,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Cüzdanını ve kartlarını düzenle",
+      "neden": "Maddi dünyaya verdiğin fiziksel özen, zihinsel berraklık yaratır.",
+      "adimlar": [
+        "Cüzdanını aç, gereksiz eski fişleri veya çöpleri ayıkla.",
+        "Kullandığın ana kartı ve varsa nakit parayı düzgünce yerleştir.",
+        "Sadece 2 dakika ayır, temiz bir cüzdan hissini yaşa."
+      ],
+      "alternatif": "Fiziksel cüzdan kullanmıyorsan, telefonundaki mobil bankacılık uygulamasının giriş ekranını temizle.",
+      "etiketler": ["duzen", "farkindalik"]
+    },
+    {
+      "id": "finans-g03",
+      "alan": "finans",
+      "gun": 3,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Günün tüm harcamalarını tek listeye yaz",
+      "neden": "Gün sonunda geriye bakmak, harcama ritmini görünür kılar.",
+      "adimlar": [
+        "Bugün harcadığın tüm kalemleri hatırla (kahve, market, fatura vb.).",
+        "Bir not defterine alt alta yaz ve kabataslak topla.",
+        "Miktara takılma; önemli olan hatırlama refleksini kazanmak."
+      ],
+      "alternatif": "Günün tümünü hatırlamak zorsa, sadece en yüksek tutarlı 2 harcamayı not al.",
+      "etiketler": ["farkindalik", "takip"]
+    },
+    {
+      "id": "finans-g04",
+      "alan": "finans",
+      "gun": 4,
+      "asama": "tohum",
+      "zorluk": 2,
+      "sure_dk": 3,
+      "baslik": "Bir 'küçük lüks' harcamanı şefkatle incele",
+      "neden": "Keyif için yapılan harcamalar düşman değildir; bilinçli seçilmelidir.",
+      "adimlar": [
+        "Bu hafta sırf kendini iyi hissetmek için aldığın bir şeyi düşün.",
+        "Sana o an nasıl hissettirdiğini ve şu an ne hissettirdiğini tart.",
+        "Kendini suçlamadan, bu harcamanın değerini not al."
+      ],
+      "alternatif": "Aklına gelen son dışarıda yeme-içme harcamasına aynı gözle bak.",
+      "etiketler": ["oz-sefkat", "farkindalik"]
+    },
+    {
+      "id": "finans-g05",
+      "alan": "finans",
+      "gun": 5,
+      "asama": "tohum",
+      "zorluk": 2,
+      "sure_dk": 4,
+      "baslik": "Aylık sabit giderleri tespit et",
+      "neden": "Her ay zorunlu çıkan parayı bilmek, kalan paranın özgürlüğünü getirir.",
+      "adimlar": [
+        "Kira, aidat, internet, faturalar gibi değişmeyen ana giderlerini listele.",
+        "Bunların toplam tutarını tek bir yere not et.",
+        "Bu rakam senin temel yaşam sınırındır."
+      ],
+      "alternatif": "Tam listeyi çıkarmak zor gelirse, sadece en büyük 3 sabit giderini yaz.",
+      "etiketler": ["butce", "sabit-gider"]
+    },
+    {
+      "id": "finans-g06",
+      "alan": "finans",
+      "gun": 6,
+      "asama": "tohum",
+      "zorluk": 2,
+      "sure_dk": 3,
+      "baslik": "Satın almadan önce 10 saniye duraklama kuralı",
+      "neden": "Dürtü ile eylem arasına konan ufacık bir boşluk, pişmanlığı önler.",
+      "adimlar": [
+        "Bugün markette ya da internette bir şey satın almadan hemen önce dur.",
+        "İçinden 10'a kadar say ve sor: 'Buna gerçekten şu an ihtiyacım var mı?'",
+        "Cevabın evet bile olsa, o 10 saniyelik duraklamayı başarmış olmanın tadını çıkar."
+      ],
+      "alternatif": "Bugün alışveriş yapmayacaksan, internetteki sepetine eklediğin bir ürünü 24 saat beklet.",
+      "etiketler": ["durtu-yonetimi", "aliskanlik"]
+    },
+    {
+      "id": "finans-g07",
+      "alan": "finans",
+      "gun": 7,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Hafif Gün: İlk haftanın nefesi ve yansıması",
+      "neden": "Dinlenmek ve yaptıklarını takdir etmek, sürdürülebilirliğin anahtarıdır.",
+      "adimlar": [
+        "Gözlerini kapat ve ilk 7 günde harcamalarına dair ne fark ettiğini düşün.",
+        "Bu hafta finans konusunda attığın en güzel küçük adımı kendine fısılda.",
+        "Bugün başka hiçbir hesap yapma, kendine mola ver."
+      ],
+      "alternatif": "Sadece tek bir kelimeyle bu haftanın hissini not al.",
+      "etiketler": ["hafif-gun", "yansima"]
+    },
+
+    {
+      "id": "finans-g08",
+      "alan": "finans",
+      "gun": 8,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 5,
+      "baslik": "Otomatik abonelikleri gözden geçir",
+      "neden": "Kullanılmayan dijital üyelikler cüzdanda sessiz sızıntılardır.",
+      "adimlar": [
+        "Banka veya kredi kartı ekstreni aç ve düzenli çekilen aboneliklere bak.",
+        "Son 1 aydır hiç açmadığın veya kullanmadığın bir üyelik var mı fark et.",
+        "Varsa iptal etmeyi not al; yoksa abonelik kontrolünü tamamlamış ol."
+      ],
+      "alternatif": "Ekstreye bakmak yerine telefonunun abonelikler menüsünü (App Store / Play Store) kontrol et.",
+      "etiketler": ["abonelik", "tasarruf"]
+    },
+    {
+      "id": "finans-g09",
+      "alan": "finans",
+      "gun": 9,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 5,
+      "baslik": "Bugün tek bir gereksiz harcamaya 'hayır' de",
+      "neden": "İrade bir kas gibidir; küçük 'hayır'larla güçlenir.",
+      "adimlar": [
+        "Bugün karşına çıkacak ufak, aslında istemediğin bir harcamayı fark et (atıştırmalık, fazladan kahve vb.).",
+        "Bugünlük onu almamayı tercih et.",
+        "Cebinde kalan paranın tutarını not et ve o hissi kutla."
+      ],
+      "alternatif": "Dışarı çıkmadıysan, online sipariş sepetinden tek bir ürünü çıkar.",
+      "etiketler": ["irade", "harcama-kontrolu"]
+    },
+    {
+      "id": "finans-g10",
+      "alan": "finans",
+      "gun": 10,
+      "asama": "filiz",
+      "zorluk": 3,
+      "sure_dk": 6,
+      "baslik": "Bozuk para veya sembolik birikim kumbarası",
+      "neden": "Miktar önemli değildir; birikim yapma kimliği önemlidir.",
+      "adimlar": [
+        "Evdeki bir kavanozu veya banka hesabında ayrı bir alt hesabı 'Tohum Fonu' yap.",
+        "İçine sembolik olarak sadece 10 TL, 20 TL ya da 1 bozuk para at.",
+        "'Ben birikim yapabilen biriyim' cümlesini aklından geçir."
+      ],
+      "alternatif": "Mobil bankacılığında 'kumbara' veya 'yuvarlama' özelliğini aç.",
+      "etiketler": ["birikim", "kimlik"]
+    },
+    {
+      "id": "finans-g11",
+      "alan": "finans",
+      "gun": 11,
+      "asama": "filiz",
+      "zorluk": 3,
+      "sure_dk": 6,
+      "baslik": "Market alışverişine liste ile çık",
+      "neden": "Plansız alışveriş, reyonların seni yönetmesine izin verir.",
+      "adimlar": [
+        "Bugün ya da ilk alışverişinde alacaklarını kağıda 3-4 madde olarak yaz.",
+        "Markete gittiğinde sadece o listedekileri sepete koy.",
+        "Sepete fazladan bir şey atmadan kasadan geçmeyi dene."
+      ],
+      "alternatif": "Evdeysen, buzdolabında eksik olan 3 temel maddeyi listele.",
+      "etiketler": ["planlama", "market"]
+    },
+    {
+      "id": "finans-g12",
+      "alan": "finans",
+      "gun": 12,
+      "asama": "filiz",
+      "zorluk": 3,
+      "sure_dk": 6,
+      "baslik": "Finansal tetikleyicilerini keşfet",
+      "neden": "Hangi duygular seni harcamaya itiyor? Stres, can sıkıntısı, yorgunluk?",
+      "adimlar": [
+        "Genelde en çok ne zaman düşünmeden para harcadığını hatırla.",
+        "Yorucu bir iş günü sonrası mı, moralin bozukken mi, yoksa sosyal medyada gezinirken mi?",
+        "Bu tetikleyiciyi defterine tek cümleyle kaydet."
+      ],
+      "alternatif": "Son yaptığın plansız harcamanın hemen öncesindeki ruh halini yaz.",
+      "etiketler": ["duygu-yonetimi", "farkindalik"]
+    },
+    {
+      "id": "finans-g13",
+      "alan": "finans",
+      "gun": 13,
+      "asama": "filiz",
+      "zorluk": 3,
+      "sure_dk": 7,
+      "baslik": "Haftalık değişken harcama tavanı belirle",
+      "neden": "Kısıtlamak değil, sınırlarını önceden çizip rahatlamak için.",
+      "adimlar": [
+        "Yeme-içme ve günlük keyif harcamaların için bu haftaya bir sınır koy.",
+        "Rakamın gerçekçi ve esnek olmasına dikkat et, kendini boğma.",
+        "Bu sayıyı bir yere not al."
+      ],
+      "alternatif": "Haftalık yerine sadece bugünün harcama tavanını belirle.",
+      "etiketler": ["butce", "sinirlar"]
+    },
+    {
+      "id": "finans-g14",
+      "alan": "finans",
+      "gun": 14,
+      "asama": "filiz",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Hafif Gün: İki haftayı geride bırakmanın huzuru",
+      "neden": "Yolun neredeyse yarısına geldin; baskı yok, sadece farkındalık var.",
+      "adimlar": [
+        "Derin bir nefes al.",
+        "14 gündür finansal durumuna yüzünü dönmüş olmanın cesaretini takdir et.",
+        "Bugün harcama hesabı yapma; zihnini dinlendir."
+      ],
+      "alternatif": "Kendine 'Adım adım ilerliyorum' de ve rahatla.",
+      "etiketler": ["hafif-gun", "yansima"]
+    },
+
+    {
+      "id": "finans-g15",
+      "alan": "finans",
+      "gun": 15,
+      "asama": "filiz",
+      "zorluk": 3,
+      "sure_dk": 7,
+      "baslik": "Acil durum fonu nedir? İlk planı yap",
+      "neden": "Beklenmedik bir masraf çıktığında borca girmemek için bir güvenlik yastığı.",
+      "adimlar": [
+        "Kendine hedef bir acil durum fonu tutarı belirle (örneğin 1 aylık temel giderin).",
+        "Bu fona her ay ne kadar aktarabileceğini kabaca düşün.",
+        "Hedef tutarı 'Benim Güvenlik Ağım' başlığıyla not al."
+      ],
+      "alternatif": "Sadece 500 TL veya 1000 TL gibi mini bir acil durum hedefi yaz.",
+      "etiketler": ["guvenlik-agi", "hedef"]
+    },
+    {
+      "id": "finans-g16",
+      "alan": "finans",
+      "gun": 16,
+      "asama": "govde",
+      "zorluk": 3,
+      "sure_dk": 8,
+      "baslik": "Evdeki kullanılmayan bir eşyayı elden çıkarmaya karar ver",
+      "neden": "Kullanmadığın eşyalar hem yer kaplar hem de atıl duran paradır.",
+      "adimlar": [
+        "Dolabında ya da çekmecende en az 6 aydır dokunmadığın bir eşyayı seç.",
+        "Bunu bir ikinci el uygulamasında satmayı ya da birine hediye etmeyi kararlaştır.",
+        "Eşyanın fotoğrafını çekip hazırla."
+      ],
+      "alternatif": "Satmak zor gelirse, sana yük olan bir eşyayı ihtiyacı olan birine vermeyi planla.",
+      "etiketler": ["sadelik", "nakit-akisi"]
+    },
+    {
+      "id": "finans-g17",
+      "alan": "finans",
+      "gun": 17,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 9,
+      "baslik": "Fatura ve tarife optimizasyonu",
+      "neden": "Aynı hizmete her ay fazladan para ödemek zorunda değilsin.",
+      "adimlar": [
+        "Telefon veya ev interneti faturanın paket detaylarına bak.",
+        "Kullanmadığın dakikalar veya internet için yüksek ödüyor olabilir misin?",
+        "Operatörün daha uygun bir tarifesi olup olmadığını kontrol etmeyi not al."
+      ],
+      "alternatif": "Banka kartı aidatı veya hesap işletim ücreti kesilip kesilmediğine bak.",
+      "etiketler": ["tasarruf", "optimizasyon"]
+    },
+    {
+      "id": "finans-g18",
+      "alan": "finans",
+      "gun": 18,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 10,
+      "baslik": "Bir 'Sıfır Harcama Günü' yaşa",
+      "neden": "Para harcamadan da güzel, huzurlu bir gün geçirilebileceğini kanıtla.",
+      "adimlar": [
+        "Zorunlu faturalar hariç, bugün cebinden tek kuruş çıkarmamayı hedefle.",
+        "Evdeki malzemelerle kahve yap, yürüyüşe çık, kütüphaneden kitap oku.",
+        "Günün sonunda harcama yapmamanın getirdiği özgürlüğü hisset."
+      ],
+      "alternatif": "Tüm gün zor gelirse, akşam saatlerinde sıfır harcama kuralı uygula.",
+      "etiketler": ["sifir-harcama", "deneyim"]
+    },
+    {
+      "id": "finans-g19",
+      "alan": "finans",
+      "gun": 19,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 10,
+      "baslik": "Gıda israfını önleme denetimi",
+      "neden": "Çöpe giden her yiyecek, doğrudan çöpe atılan emektir.",
+      "adimlar": [
+        "Buzdolabını ve kilerini aç, son kullanma tarihi yaklaşanları öne çek.",
+        "Bu akşamki yemeği dışarıdan söylemek yerine bu malzemelerle yapmayı seç.",
+        "Hem cebini hem de emeğini koru."
+      ],
+      "alternatif": "Sadece bayatlamak üzere olan ekmek veya meyveleri nasıl değerlendireceğini planla.",
+      "etiketler": ["tasarruf", "mutfak"]
+    },
+    {
+      "id": "finans-g20",
+      "alan": "finans",
+      "gun": 20,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 11,
+      "baslik": "Borç ve alacak haritasını dürüstçe çıkar",
+      "neden": "Korkulan şey yüzleşilince küçülür; belirsizlik kaygı üretir.",
+      "adimlar": [
+        "Varsa kredi kartı borçlarını, kredi taksitlerini ya da kişisel borçlarını bir kağıda yaz.",
+        "Yanlarına faiz oranlarını ya da son ödeme tarihlerini ekle.",
+        "Şimdi dur ve derin nefes al: Artık düşmanınla yüz yüzesin, yönetebilirsin."
+      ],
+      "alternatif": "Borcun yoksa, gelecekteki büyük planlı harcamalarını (tatil, sigorta vb.) listele.",
+      "etiketler": ["borc-yonetimi", "durustluk"]
+    },
+    {
+      "id": "finans-g21",
+      "alan": "finans",
+      "gun": 21,
+      "asama": "govde",
+      "zorluk": 1,
+      "sure_dk": 4,
+      "baslik": "Hafif Gün: 3. haftanın yansıması ve öz-şefkat",
+      "neden": "Gövde aşamasının zorluklarını aştın. Kendine teşekkür et.",
+      "adimlar": [
+        "Sıcak bir çay ya da kahve al.",
+        "Para konusundaki eski kaygınla şimdiki farkındalığın arasındaki farkı hisset.",
+        "Bugün hiçbir finansal karar alma, sadece dinlen."
+      ],
+      "alternatif": "Yansıma notuna tek bir olumlu cümle yaz.",
+      "etiketler": ["hafif-gun", "yansima"]
+    },
+    {
+      "id": "finans-g22",
+      "alan": "finans",
+      "gun": 22,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 11,
+      "baslik": "Kategorik bütçe denemesi: 50/30/20 kuralına bak",
+      "neden": "Gelirini basit oranlarla bölmek zihinsel yükü hafifletir.",
+      "adimlar": [
+        "Gelirinin %50'si zorunlu ihtiyaçlar, %30'u keyif, %20'si birikim mantığını incele.",
+        "Kendi mevcut durumunun bu oranlara ne kadar yakın olduğunu kabaca tahmin et.",
+        "Hangi kalemin çok taştığını tespit et."
+      ],
+      "alternatif": "Oranlarla uğraşmak yerine sadece 'Keyif harcamalarım gelirimin ne kadarı?' sorusuna cevap ara.",
+      "etiketler": ["butce", "sistem"]
+    },
+    {
+      "id": "finans-g23",
+      "alan": "finans",
+      "gun": 23,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 12,
+      "baslik": "Tüketim yerine üretimi koyma pratiği",
+      "neden": "İyi hissetmek için bir şey satın almak zorunda değilsin.",
+      "adimlar": [
+        "Bugün canın bir şey satın almak istediğinde onun yerine yaratıcı bir eylem koy.",
+        "Yazı yaz, bir şeyler çiz, yürüyüşe çık ya da eski bir dostunu ara.",
+        "Satın almanın yerini manevi bir doyumla doldurmayı deneyimle."
+      ],
+      "alternatif": "10 dakikalık bir meditasyon ya da nefes çalışması yap.",
+      "etiketler": ["farkindalik", "doyum"]
+    },
+
+    {
+      "id": "finans-g24",
+      "alan": "finans",
+      "gun": 24,
+      "asama": "yaprak",
+      "zorluk": 4,
+      "sure_dk": 12,
+      "baslik": "Otomatik birikim talimatı ver",
+      "neden": "En iyi tasarruf, harcamadan önce otomatik olarak kenara ayrılan paradır.",
+      "adimlar": [
+        "Maaş ya da gelir gününün ertesi gününe küçük bir otomatik birikim emri kur.",
+        "Tutar seni hiç zorlamayacak bir miktar olsun (ör. 100 TL veya 250 TL).",
+        "'Önce kendine ödeme yap' ilkesini hayata geçir."
+      ],
+      "alternatif": "Otomatik talimat yerine her ayın 1'inde manuel aktarmak üzere takvimine hatırlatıcı ekle.",
+      "etiketler": ["otomasyon", "birikim"]
+    },
+    {
+      "id": "finans-g25",
+      "alan": "finans",
+      "gun": 25,
+      "asama": "yaprak",
+      "zorluk": 4,
+      "sure_dk": 13,
+      "baslik": "Finansal okuryazarlık: Temel bir kavram öğren",
+      "neden": "Bilgi korkuyu yok eder.",
+      "adimlar": [
+        "Bileşik getiri, enflasyon koruması veya fon nedir gibi tek bir kavram seç.",
+        "Bununla ilgili güvenilir 5 dakikalık bir yazı oku ya da video izle.",
+        "Öğrendiğin ana fikri tek cümleyle not defterine yaz."
+      ],
+      "alternatif": "Merak ettiğin tek bir finansal terimi sözlükten oku.",
+      "etiketler": ["ogrenme", "bilgi"]
+    },
+    {
+      "id": "finans-g26",
+      "alan": "finans",
+      "gun": 26,
+      "asama": "yaprak",
+      "zorluk": 5,
+      "sure_dk": 14,
+      "baslik": "Gelecek 6 ayın büyük harcama takvimini çıkar",
+      "neden": "Sürpriz harcamalar yoktur; plansız harcamalar vardır.",
+      "adimlar": [
+        "Önümüzdeki 6 ayda gerçekleşecek özel günleri, tatilleri veya vergi/sigorta ödemelerini listele.",
+        "Bunlar için şimdiden kenara küçük paylar ayırmanın zihinsel rahatlığını kurgula.",
+        "Takvimine bu tarihleri işaretle."
+      ],
+      "alternatif": "Sadece önümüzdeki ayki tek bir büyük masrafı planla.",
+      "etiketler": ["uzun-vade", "planlama"]
+    },
+    {
+      "id": "finans-g27",
+      "alan": "finans",
+      "gun": 27,
+      "asama": "yaprak",
+      "zorluk": 5,
+      "sure_dk": 14,
+      "baslik": "Gereksiz alışveriş bildirimlerini ve e-postalarını kapat",
+      "neden": "Sana sürekli indirim bağıran uyaranları hayatından çıkar.",
+      "adimlar": [
+        "Alışveriş uygulamalarının anlık bildirim izinlerini kapat.",
+        "Sana kampanya bülteni yollayan en az 2 mağazanın e-posta listesinden çık (Unsubscribe).",
+        "Dijital alanındaki dinginliğin tadını çıkar."
+      ],
+      "alternatif": "En çok vakit harcadığın tek bir e-ticaret uygulamasını telefonundan sil veya gizle.",
+      "etiketler": ["dijital-detoks", "cevre-tasarimi"]
+    },
+    {
+      "id": "finans-g28",
+      "alan": "finans",
+      "gun": 28,
+      "asama": "yaprak",
+      "zorluk": 5,
+      "sure_dk": 15,
+      "baslik": "Kişisel para anayasası: 3 temel kuralını yaz",
+      "neden": "Kendi değerlerini belirlediğinde kararlar kendiliğinden netleşir.",
+      "adimlar": [
+        "Geçtiğimiz 28 günden süzülen 3 ana prensibini belirle.",
+        "Örnek: '1. Sepete eklediğimi 24 saat bekletirim. 2. Gelirimin %10'unu önce kendime ayırırım. 3. Borçla lüks almam.'",
+        "Bu kuralları telefonunun notlarına kaydet."
+      ],
+      "alternatif": "Sadece tek bir altın kural belirle.",
+      "etiketler": ["ilkeler", "anlayis"]
+    },
+    {
+      "id": "finans-g29",
+      "alan": "finans",
+      "gun": 29,
+      "asama": "yaprak",
+      "zorluk": 3,
+      "sure_dk": 10,
+      "baslik": "Aylık 15 dakikalık finans buluşması randevusu kur",
+      "neden": "Alışkanlığı sürdürmek için takvime konmuş düzenli bir randevu gerekir.",
+      "adimlar": [
+        "Her ayın son pazar günü veya maaş günü için takvimine 'Kişisel Finans Kahvesi' randevusu koy.",
+        "Bu 15 dakikada sadece o ayın özetine bakıp bir sonraki ayı planlayacaksın.",
+        "Randevuyu takviminde bildirimli olarak ayarla."
+      ],
+      "alternatif": "Randevuyu bir kağıda yazıp çalışma masana as.",
+      "etiketler": ["surdurulebilirlik", "rutin"]
+    },
+    {
+      "id": "finans-g30",
+      "alan": "finans",
+      "gun": 30,
+      "asama": "yaprak",
+      "zorluk": 2,
+      "sure_dk": 8,
+      "baslik": "Yolculuğun Sonu ve Yeni Başlangıç: Tohumdan Yaprağa",
+      "neden": "30 gün boyunca her gün attığın küçük adımlar artık senin yeni normalin.",
+      "adimlar": [
+        "1. Günde harcamalarını yazmaktan çekinen halinle bugünkü farkındalığını karşılaştır.",
+        "Ne kadar yol katettiğini ve bunun büyük sıçramalarla değil, küçük adımlarla olduğunu gör.",
+        "Kendine içten bir teşekkür et. Bu adımlar artık seninle."
+      ],
+      "alternatif": "Bugünlük sadece kendine sıcak bir tebessümle 'Başardım' de.",
+      "etiketler": ["kutlama", "yolculuk-sonu"]
+    },
+
+    {
+      "id": "odak-g01",
+      "alan": "odak",
+      "gun": 1,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "Günün ilk dikkat dağıtıcısını fark et",
+      "neden": "Dikkatini neyin çaldığını bilmeden onu geri kazanamazsın.",
+      "adimlar": [
+        "Bugün çalışırken ya da bir işle meşgulken aklını bölen ilk şeyi hatırla.",
+        "Bir bildirim miydi, bir düşünce mi, yoksa çevreden gelen bir ses mi?",
+        "Yargılamadan bir kağıda tek kelimeyle yaz."
+      ],
+      "alternatif": "Şu an etrafında dikkatini dağıtan en belirgin tek bir nesneyi fark et.",
+      "etiketler": ["farkindalik", "baslangic"]
+    },
+    {
+      "id": "odak-g02",
+      "alan": "odak",
+      "gun": 2,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Masandan dikkat çeken 2 gereksiz eşyayı kaldır",
+      "neden": "Gözünün önündeki her fazlalık, beynin arka planında enerji tüketir.",
+      "adimlar": [
+        "Çalışma masana ya da şu an oturduğun yere bak.",
+        "Şu an yaptığın işle ilgisi olmayan 2 nesneyi (boş bardak, eski kağıt vb.) kaldır.",
+        "Ferahlayan alana bak ve derin bir nefes al."
+      ],
+      "alternatif": "Masada değilsen, telefonunun ekranındaki fazla bildirimleri temizle.",
+      "etiketler": ["ortam-duzeni", "sadelik"]
+    },
+    {
+      "id": "odak-g03",
+      "alan": "odak",
+      "gun": 3,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "En çok bölen tek bir uygulamanın bildirimini kapat",
+      "neden": "Her bildirim zihnini kendi gündeminden koparıp başkasının gündemine çeker.",
+      "adimlar": [
+        "Sana sürekli acil olmayan mesaj ya da haber yollayan 1 uygulama seç.",
+        "Telefonunun ayarlarından bu uygulamanın anlık bildirim izinlerini kapat.",
+        "Kendi dikkat alanına bir sınır çizmiş olmanın rahatlığını yaşa."
+      ],
+      "alternatif": "Bildirimi tamamen kapatmak istemiyorsan, sadece sesini ve titreşimini kapat.",
+      "etiketler": ["bildirim-yonetimi", "sinirlar"]
+    },
+    {
+      "id": "odak-g04",
+      "alan": "odak",
+      "gun": 4,
+      "asama": "tohum",
+      "zorluk": 2,
+      "sure_dk": 3,
+      "baslik": "3 dakika boyunca sadece tek bir eyleme odaklan",
+      "neden": "Tek iş (monotasking) unutulmuş bir süper güçtür; küçük egzersizlerle uyanır.",
+      "adimlar": [
+        "Bir bardak çay/su içmek, bir elmayı yemek ya da bir sayfayı okumak gibi basit bir eylem seç.",
+        "3 dakika boyunca başka hiçbir şeye bakmadan sadece o eylemle kal.",
+        "Aklın başka yere kayarsa sakince geri dön."
+      ],
+      "alternatif": "1 dakika boyunca sadece nefes alışverişine odaklan.",
+      "etiketler": ["tek-is", "farkindalik"]
+    },
+    {
+      "id": "odak-g05",
+      "alan": "odak",
+      "gun": 5,
+      "asama": "tohum",
+      "zorluk": 2,
+      "sure_dk": 3,
+      "baslik": "Açık tarayıcı sekmelerini tek pencereye ve 3 sekmeye indir",
+      "neden": "20 açık sekme, beynine sürekli 'bitmemiş işler var' sinyali verir.",
+      "adimlar": [
+        "İnternet tarayıcındaki sekmelere bak.",
+        "Şu an kullanmadığın sekmeleri kapat (gerekirse yer işaretlerine kaydet).",
+        "Ekranda sadece üzerinde çalıştığın 2-3 sekmenin kalmasını sağla."
+      ],
+      "alternatif": "Sadece 3 gereksiz sekmeyi kapatmakla başla.",
+      "etiketler": ["dijital-duzen", "sadelik"]
+    },
+    {
+      "id": "odak-g06",
+      "alan": "odak",
+      "gun": 6,
+      "asama": "tohum",
+      "zorluk": 2,
+      "sure_dk": 2,
+      "baslik": "Ekran kilidini açmadan önce 5 saniye durakla",
+      "neden": "Dürtüsel telefon kontrolü çoğunlukla otomatik bir reflekstir.",
+      "adimlar": [
+        "Bugün telefonuna elin her gittiğinde ekranı açmadan önce 5 saniye dur.",
+        "İçinden sor: 'Şu an telefona gerçekten bir ihtiyaç için mi bakıyorum, yoksa sıkıldığım için mi?'",
+        "Bu soruyu sormak bile beyninin direksiyonunu eline almanı sağlar."
+      ],
+      "alternatif": "Günde sadece tek bir kez bu duraklamayı yakalamayı dene.",
+      "etiketler": ["durtu-kontrolu", "farkindalik"]
+    },
+    {
+      "id": "odak-g07",
+      "alan": "odak",
+      "gun": 7,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Hafif Gün: İlk haftanın sessizliği ve nefesi",
+      "neden": "Sürekli odaklanmaya çalışmak zihni sıkar; dinlenmek odağın yakıtıdır.",
+      "adimlar": [
+        "Pencereye ya da uzak bir noktaya bak.",
+        "Bugün hiçbir hedef koyma, hiçbir şeyi ölçme.",
+        "İlk 7 günde dikkatine dair fark ettiğin küçük bir şeyi gülümseyerek hatırla."
+      ],
+      "alternatif": "Gözlerini 1 dakika kapatıp sadece sessizliği dinle.",
+      "etiketler": ["hafif-gun", "yansima"]
+    },
+
+    {
+      "id": "odak-g08",
+      "alan": "odak",
+      "gun": 8,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 5,
+      "baslik": "5 dakikalık mini odak bloğu uygula",
+      "neden": "Büyük işler küçük ve kesintisiz bloklarla erir.",
+      "adimlar": [
+        "Yapman gereken tek bir küçük iş belirle (bir e-posta yazmak, bir yazı okumak vb.).",
+        "Zamanlayıcını 5 dakikaya kur.",
+        "Süre bitene kadar başka hiçbir şeye bakmadan o işle ilgilen."
+      ],
+      "alternatif": "3 dakikalık bir odak bloğu ile başla.",
+      "etiketler": ["odak-bloku", "pomodoro"]
+    },
+    {
+      "id": "odak-g09",
+      "alan": "odak",
+      "gun": 9,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 5,
+      "baslik": "Telefonun ana ekranındaki dikkat çekici 3 ikonu gizle",
+      "neden": "Görmediğin şeyin arzusu zihninde uyanmaz.",
+      "adimlar": [
+        "Telefonunu açtığında elinin otomatik gittiği 3 sosyal medya veya oyun uygulamasını seç.",
+        "Bunları ana ekrandan kaldırıp bir klasörün içine ya da ikinci sayfaya taşı.",
+        "Ulaşmak için fazladan bir çaba gerekmesini sağla."
+      ],
+      "alternatif": "Sadece tek bir bağımlılık yaratan uygulamanın yerini değiştir.",
+      "etiketler": ["cevre-tasarimi", "dijital-hijyen"]
+    },
+    {
+      "id": "odak-g10",
+      "alan": "odak",
+      "gun": 10,
+      "asama": "filiz",
+      "zorluk": 3,
+      "sure_dk": 6,
+      "baslik": "'Dağınıklık Parkı' kağıdı oluştur",
+      "neden": "Çalışırken aklına gelen acil olmayan fikirler odağını bölmesin.",
+      "adimlar": [
+        "Masanın kenarına boş bir kağıt koy ve üstüne 'Sonra Bakılacaklar' yaz.",
+        "Çalışırken aklına gelen alakasız şeyleri (örn. 'ayakkabı bak', 'arkadaşına yaz') o kağıda not al.",
+        "Notunu alır almaz hemen orijinal işine geri dön."
+      ],
+      "alternatif": "Aklına gelenleri telefonunun notlar uygulamasında tek bir listeye yaz.",
+      "etiketler": ["zihin-bosaltma", "sistem"]
+    },
+    {
+      "id": "odak-g11",
+      "alan": "odak",
+      "gun": 11,
+      "asama": "filiz",
+      "zorluk": 3,
+      "sure_dk": 6,
+      "baslik": "Çalışırken telefonu ters çevir ve görüş açısından çıkar",
+      "neden": "Telefon sadece masada yüzüstü dursa bile varlığıyla bilişsel kapasiteyi düşürür.",
+      "adimlar": [
+        "Önemli bir işle meşgulken telefonunu ekranı alta gelecek şekilde koy.",
+        "Mümkünse kol mesafenden biraz daha uzağa yerleştir.",
+        "Gözünün önünde bildirim ışığı yanmadığında zihninin nasıl sakinleştiğini gözlemle."
+      ],
+      "alternatif": "Telefonu bir çekmeceye ya da çantana koy.",
+      "etiketler": ["ortam-tasarimi", "derinlesme"]
+    },
+    {
+      "id": "odak-g12",
+      "alan": "odak",
+      "gun": 12,
+      "asama": "filiz",
+      "zorluk": 3,
+      "sure_dk": 7,
+      "baslik": "7 dakikalık kesintisiz okuma seansı",
+      "neden": "Uzun metin okumak, derin odak kasını en doğrudan güçlendiren antrenmandır.",
+      "adimlar": [
+        "Bir kitap, makale ya da uzun bir bülten aç.",
+        "7 dakika boyunca telefonu ve sekmeleri unutarak oku.",
+        "Cümlelerin ritmine kendini bırak."
+      ],
+      "alternatif": "5 dakikalık bir okuma bloğu yap.",
+      "etiketler": ["okuma", "odak-kasi"]
+    },
+    {
+      "id": "odak-g13",
+      "alan": "odak",
+      "gun": 13,
+      "asama": "filiz",
+      "zorluk": 3,
+      "sure_dk": 7,
+      "baslik": "Masaüstündeki dağınık dosyaları tek bir klasöre topla",
+      "neden": "Masaüstündeki dosya kaosu, bilgisayarı her açtığında mikro stres yaratır.",
+      "adimlar": [
+        "Bilgisayarının masaüstünde 'Geçici Arşiv' adında tek bir klasör aç.",
+        "Masaüstüne saçılmış tüm simgeleri ve dosyaları o klasörün içine at.",
+        "Masaüstünün tamamen tertemiz ve ferah görünüşünün keyfini çıkar."
+      ],
+      "alternatif": "Sadece 5 eski dosyayı çöp kutusuna taşı.",
+      "etiketler": ["dijital-duzen", "ferahlik"]
+    },
+    {
+      "id": "odak-g14",
+      "alan": "odak",
+      "gun": 14,
+      "asama": "filiz",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Hafif Gün: İki haftanın sessiz molası",
+      "neden": "Yolun yarısına geldin. Dinlenmek de odaklanmanın bir parçasıdır.",
+      "adimlar": [
+        "Derin bir nefes ver ve omuzlarını gevşet.",
+        "14 gündür dikkatini savunmak için attığın adımları hatırla.",
+        "Bugün hiçbir odak bloğu kurma, zihnini serbest bırak."
+      ],
+      "alternatif": "Kendine şefkatle 'Yavaşça güçleniyorum' de.",
+      "etiketler": ["hafif-gun", "yansima"]
+    },
+
+    {
+      "id": "odak-g15",
+      "alan": "odak",
+      "gun": 15,
+      "asama": "filiz",
+      "zorluk": 3,
+      "sure_dk": 7,
+      "baslik": "Odaklanmadan önce 3 derin nefes geçiş ritüeli",
+      "neden": "Beyin bir işten diğerine anında geçemez; geçiş tamponuna ihtiyaç duyar.",
+      "adimlar": [
+        "Yeni bir göreve başlamadan önce ekranı kapat veya gözlerini dinlendir.",
+        "Burnundan 4 saniyede nefes al, 4 saniyede ver; bunu 3 kez tekrarla.",
+        "Zihnine 'Şimdi tek bir işe başlıyoruz' mesajı ver."
+      ],
+      "alternatif": "Sadece tek bir bilinçli ve yavaş nefes alıp başla.",
+      "etiketler": ["rituel", "gecis-tamponu"]
+    },
+    {
+      "id": "odak-g16",
+      "alan": "odak",
+      "gun": 16,
+      "asama": "govde",
+      "zorluk": 3,
+      "sure_dk": 10,
+      "baslik": "10 dakikalık 'Rahatsız Etmeyin' bloğu",
+      "neden": "Gerçek odak, dış dünyayı geçici olarak dışarıda bırakabilme cesaretidir.",
+      "adimlar": [
+        "Telefonunu ve bilgisayarını 'Rahatsız Etmeyin' moduna al.",
+        "10 dakikalık bir sayaç başlat.",
+        "Tek bir görevi tamamlamaya çalış, gelen hiçbir bildirime bakma."
+      ],
+      "alternatif": "Süreyi 7 dakika olarak belirle.",
+      "etiketler": ["rahatsiz-etmeyin", "derinlesme"]
+    },
+    {
+      "id": "odak-g17",
+      "alan": "odak",
+      "gun": 17,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 8,
+      "baslik": "Çoklu iş (Multitasking) refleksini yakala ve durdur",
+      "neden": "Beyin aynı anda iki iş yapmaz; aralarında hızlıca sıçrar ve yorulur.",
+      "adimlar": [
+        "Bugün hem bir şey izlerken hem mesaj yazma ya da yemek yerken çalışma anını yakala.",
+        "Fark ettiğin an dur ve birini kenara bırak.",
+        "Sadece tek bir işi yapmaya geri dön."
+      ],
+      "alternatif": "Bugün yemek yerken ekran izlememeyi dene.",
+      "etiketler": ["farkindalik", "tek-is"]
+    },
+    {
+      "id": "odak-g18",
+      "alan": "odak",
+      "gun": 18,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 12,
+      "baslik": "Telefonu başka bir odaya bırakarak 15 dakika geçir",
+      "neden": "Fiziksel mesafe, zihinsel bağımlılığı en hızlı çözen yöntemdir.",
+      "adimlar": [
+        "Telefonunu başka bir odaya ya da göremeyeceğin bir dolaba koy.",
+        "15 dakika boyunca bir kitap oku, yemek yap ya da masanda çalış.",
+        "Cebinde telefon olmadan yaşamanın hafifliğini fark et."
+      ],
+      "alternatif": "10 dakika boyunca telefonu montunun cebinde bırak.",
+      "etiketler": ["fiziksel-mesafe", "dijital-detoks"]
+    },
+    {
+      "id": "odak-g19",
+      "alan": "odak",
+      "gun": 19,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 10,
+      "baslik": "Sosyal medya ve haber sitelerine 1 saatlik eşik koy",
+      "neden": "Sürekli güncellenen sonsuz akışlar zihni hiper-uyarılmış halde tutar.",
+      "adimlar": [
+        "Önümüzdeki 1 saat boyunca hiçbir sosyal medya ya da haber sitesini açmamaya karar ver.",
+        "Canın açmak istediğinde Dağınıklık Parkı kağıdına o anki hissini yaz.",
+        "Dürtünün bir dalga gibi yükselip söndüğünü izle."
+      ],
+      "alternatif": "Yarım saatlik bir süre ile sınırla.",
+      "etiketler": ["durtu-dalgalanmasi", "irade"]
+    },
+    {
+      "id": "odak-g20",
+      "alan": "odak",
+      "gun": 20,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 12,
+      "baslik": "15 dakikalık tam pomodoro seansı",
+      "neden": "15 dakikalık saf odak, 1 saatlik dağınık çalışmadan daha verimlidir.",
+      "adimlar": [
+        "Masandaki tek bir projeyi önüne al.",
+        "15 dakikayı kur ve bölünmeden, mola vermeden ilerle.",
+        "Süre bittiğinde derin bir nefes al ve masadan kalkıp gerin."
+      ],
+      "alternatif": "Süreyi 12 dakika olarak ayarla.",
+      "etiketler": ["pomodoro", "derin-is"]
+    },
+    {
+      "id": "odak-g21",
+      "alan": "odak",
+      "gun": 21,
+      "asama": "govde",
+      "zorluk": 1,
+      "sure_dk": 4,
+      "baslik": "Hafif Gün: 3. haftanın yansıması ve zihinsel ferahlık",
+      "neden": "Gövde aşamasının dirençli adımlarını tamamladın.",
+      "adimlar": [
+        "Sessiz bir ortamda arkana yaslan.",
+        "Zihninin ilk güne göre bölünmelere karşı ne kadar daha dirençli olduğunu hisset.",
+        "Bugün hiçbir sayaç kurma, kendine teşekkür et."
+      ],
+      "alternatif": "Yansıma notuna tek bir farkındalık cümlesi ekle.",
+      "etiketler": ["hafif-gun", "yansima"]
+    },
+    {
+      "id": "odak-g22",
+      "alan": "odak",
+      "gun": 22,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 11,
+      "baslik": "Sıkılma eşiğiyle kalma pratiği: 30 saniye direnç molası",
+      "neden": "Bir iş zorlaştığında hemen başka sekmeye kaçmak beynin kolay çıkış kapısıdır.",
+      "adimlar": [
+        "Çalışırken iş sıkıcılaştığı ya da tıkandığı an hemen başka yere kaçma.",
+        "Ekrandan gözünü ayırıp sadece 30 saniye o hisle otur.",
+        "O direnç eşiğini aştıktan sonra işe geri dön."
+      ],
+      "alternatif": "15 saniyelik bir duraklama yap.",
+      "etiketler": ["direnc", "sabir"]
+    },
+    {
+      "id": "odak-g23",
+      "alan": "odak",
+      "gun": 23,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 12,
+      "baslik": "Gün ortasında 10 dakikalık 'ekransız sessizlik' molası",
+      "neden": "Mola verirken telefona bakmak mola değil, yeni bir uyaran bombardımanıdır.",
+      "adimlar": [
+        "Öğleden sonra 10 dakikalık bir dinlenme zamanı belirle.",
+        "Telefon, bilgisayar ve kulaklık olmadan sadece otur, yürü ya da su iç.",
+        "Beyninin varsayılan dinlenme moduna (Default Mode Network) geçmesine izin ver."
+      ],
+      "alternatif": "5 dakikalık sessiz bir mola ver.",
+      "etiketler": ["gercek-mola", "zihinsel-dinginlik"]
+    },
+
+    {
+      "id": "odak-g24",
+      "alan": "odak",
+      "gun": 24,
+      "asama": "yaprak",
+      "zorluk": 4,
+      "sure_dk": 12,
+      "baslik": "Sabahın ilk 20 dakikasını ekransız geçir",
+      "neden": "Güne bildirimlerle başlamak, gün boyu zihnini reaktif kılar.",
+      "adimlar": [
+        "Uyandıktan sonraki ilk 20 dakika telefonunun ekranını açma.",
+        "Güne su içerek, gerinerek veya sakince hazırlanarak başla.",
+        "Günün kontrolünü dış dünyaya değil, kendi ellerine al."
+      ],
+      "alternatif": "İlk 10 dakika boyunca telefona bakmamayı dene.",
+      "etiketler": ["sabah-rutini", "proaktif-zihin"]
+    },
+    {
+      "id": "odak-g25",
+      "alan": "odak",
+      "gun": 25,
+      "asama": "yaprak",
+      "zorluk": 5,
+      "sure_dk": 15,
+      "baslik": "20 dakikalık derin odak (Deep Work) seansı",
+      "neden": "Yaprak aşaması; artık odaklanma bir mücadele değil, doğal bir akıştır.",
+      "adimlar": [
+        "Günün en zorlu veya en yaratıcı işini seç.",
+        "Tüm uyaranları kapat ve 20 dakikalık derin bir akışa gir.",
+        "İşin nasıl aktığını ve zamanın nasıl eridiğini izle."
+      ],
+      "alternatif": "15 dakikalık derin odak bloğu yap.",
+      "etiketler": ["deep-work", "akis"]
+    },
+    {
+      "id": "odak-g26",
+      "alan": "odak",
+      "gun": 26,
+      "asama": "yaprak",
+      "zorluk": 4,
+      "sure_dk": 10,
+      "baslik": "Akşam yatmadan 45 dakika önce ekranları kapat",
+      "neden": "Mavi ışık ve zihinsel uyarılma uyku kalitesini bozar; yarının odağı bu geceden başlar.",
+      "adimlar": [
+        "Yatmadan önceki son 45 dakikada ekranları kapat.",
+        "Yerine hafif bir kitap, müzik ya da günlük tutma eylemi koy.",
+        "Zihninin uykuya sakince hazırlanışını hisset."
+      ],
+      "alternatif": "Yatmadan 20 dakika önce ekranları bırak.",
+      "etiketler": ["aksam-rutini", "uyku-kalitesi"]
+    },
+    {
+      "id": "odak-g27",
+      "alan": "odak",
+      "gun": 27,
+      "asama": "yaprak",
+      "zorluk": 4,
+      "sure_dk": 12,
+      "baslik": "Günün görevlerini 1-3 kuralıyla önceliklendir",
+      "neden": "Her şeyin öncelikli olduğu yerde hiçbir şey öncelikli değildir.",
+      "adimlar": [
+        "Bugün bitirilmesi gereken en önemli 1 ana görevi ve 3 ikincil görevi yaz.",
+        "Günün odağını sadece o 1 ana göreve vererek başla.",
+        "O bitmeden ikincillere geçmeme kuralını uygula."
+      ],
+      "alternatif": "Günün sadece tek bir 'vazgeçilmez' görevini belirle.",
+      "etiketler": ["onceliklendirme", "netlik"]
+    },
+    {
+      "id": "odak-g28",
+      "alan": "odak",
+      "gun": 28,
+      "asama": "yaprak",
+      "zorluk": 5,
+      "sure_dk": 14,
+      "baslik": "Kişisel Odak Anayasası: 3 altın kuralını yaz",
+      "neden": "İlkelerini netleştiren insan, anlık dürtülere yenilmez.",
+      "adimlar": [
+        "Geçtiğimiz 28 günden öğrendiğin en etkili 3 kuralı belirle.",
+        "Örnek: '1. Masamda sadece çalıştığım iş durur. 2. Bildirimler gün boyu sessizdedir. 3. Günde en az 1 derin odak bloğu yaparım.'",
+        "Bu 3 kuralı bir karta yazıp çalışma masanın köşesine koy."
+      ],
+      "alternatif": "Sadece tek bir odak ilkesi belirle.",
+      "etiketler": ["anayasa", "surdurulebilirlik"]
+    },
+    {
+      "id": "odak-g29",
+      "alan": "odak",
+      "gun": 29,
+      "asama": "yaprak",
+      "zorluk": 3,
+      "sure_dk": 10,
+      "baslik": "Haftalık odak kalelerini takvime işle",
+      "neden": "Önceden planlanmayan odak blokları başkalarının acil işleriyle dolar.",
+      "adimlar": [
+        "Gelecek hafta için takvimine günde 1 adet 30 dakikalık 'Bölünmez Odak' saati işaretle.",
+        "O saati sanki önemli bir doktor randevusuymuş gibi koruma kararı al.",
+        "Takvimindeki bu korunaklı alanın huzurunu hisset."
+      ],
+      "alternatif": "Haftada sadece 2 gün için odak saati belirle.",
+      "etiketler": ["takvim-tasarimi", "sinirlar"]
+    },
+    {
+      "id": "odak-g30",
+      "alan": "odak",
+      "gun": 30,
+      "asama": "yaprak",
+      "zorluk": 2,
+      "sure_dk": 8,
+      "baslik": "Yolculuğun Sonu ve Yeni Başlangıç: Dağınıklıktan Berraklığa",
+      "neden": "30 gün önce her uyaranla bölünen halinle bugünkü sakin dikkatin arasındaki fark senin emeğindir.",
+      "adimlar": [
+        "1. Günde dikkatini dağıtan şeylerle bugünkü farkındalığını karşılaştır.",
+        "Artık dikkatini savunabilecek araçlara ve kas hafızasına sahipsin.",
+        "Kendine teşekkür et. Bu berraklık artık senin yeni yaşam biçimin."
+      ],
+      "alternatif": "Bugünlük sadece kendine sıcak bir tebessümle 'Zihnime sahip çıktım' de.",
+      "etiketler": ["kutlama", "yolculuk-sonu"]
+    },
+
+    {
+      "id": "wellness-g01",
+      "alan": "wellness",
+      "gun": 1,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "3 bilinçli nefes al ve ver",
+      "neden": "Nefes her an seninle olan en sakinleştirici çıpadır.",
+      "adimlar": [
+        "Oturduğun yerde dur, acele etme.",
+        "Burnundan yavaşça ve derin bir nefes al, ciğerlerinin doluşunu hisset.",
+        "Ağzından sakince bırak. Bunu 3 kez farkındalıkla tekrarla."
+      ],
+      "alternatif": "Sadece tek bir nefesi alıp verirken göğsünün iniş kalkışını izle.",
+      "etiketler": ["nefes", "baslangic"]
+    },
+    {
+      "id": "wellness-g02",
+      "alan": "wellness",
+      "gun": 2,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "Omuzlarını kulaklarına çek ve sakince bırak",
+      "neden": "Gün içindeki farkında olunmayan gerginlikler ilk önce omuzlarda toplanır.",
+      "adimlar": [
+        "Nefes alırken omuzlarını yukarı, kulaklarına doğru kaldır ve 3 saniye hafifçe sık.",
+        "Nefes verirken omuzlarını tamamen serbest bırak ve aşağı düşmelerine izin ver.",
+        "Bunu 3 kez tekrar et ve boynundaki hafiflemeyi fark et."
+      ],
+      "alternatif": "Sadece omuzlarını geriye doğru yavaşça 3 kez yuvarla.",
+      "etiketler": ["beden-farkindaligi", "gevseme"]
+    },
+    {
+      "id": "wellness-g03",
+      "alan": "wellness",
+      "gun": 3,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Günün içinde sıradan tek bir güzelliği fark et",
+      "neden": "Zihin olumsuzluklara yapışmaya meyillidir; güzellikleri fark etmek kasıtlı bir dikkat ister.",
+      "adimlar": [
+        "Bugün karşına çıkan ufak bir detayı seç (gökyüzünün mavisi, sıcak bir kahve kokusu, bir yaprak).",
+        "Ona 15 saniye boyunca sadece hayranlıkla ve teşekkürle bak.",
+        "Bu küçük anın yarattığı yumuşaklığı hisset."
+      ],
+      "alternatif": "Aklına gelen ilk güzel anıyı tebessümle hatırla.",
+      "etiketler": ["minnettarlik", "farkindalik"]
+    },
+    {
+      "id": "wellness-g04",
+      "alan": "wellness",
+      "gun": 4,
+      "asama": "tohum",
+      "zorluk": 2,
+      "sure_dk": 3,
+      "baslik": "Bir bardak suyu duyusal farkındalıkla iç",
+      "neden": "Yavaşlamak, en sıradan eylemi bile dinginleştirici bir ritüele dönüştürür.",
+      "adimlar": [
+        "Bir bardak su al. Bardağın elindeki serinliğini ya da ağırlığını hisset.",
+        "Acele etmeden, ilk yudumu al ve suyun boğazından akışına odaklan.",
+        "Bardağı bitirene kadar başka hiçbir şeyle meşgul olma."
+      ],
+      "alternatif": "Çay ya da kahvenin ilk yudumunu gözlerini kapatarak al.",
+      "etiketler": ["duyusal-farkindalik", "yavaslama"]
+    },
+    {
+      "id": "wellness-g05",
+      "alan": "wellness",
+      "gun": 5,
+      "asama": "tohum",
+      "zorluk": 2,
+      "sure_dk": 2,
+      "baslik": "Çene ve kaş arası gerginliğini fark et ve gevşet",
+      "neden": "Yüz kaslarımız çoğu zaman düşüncelerimizin yüküyle istemsizce kasılır.",
+      "adimlar": [
+        "Şu an kaşlarını çatıp çatmadığına ve dişlerini sıkıp sıkmadığına bak.",
+        "Dilini damağından ayır, alt çeneni hafifçe gevşek bırak.",
+        "Alnının pürüzsüzleştiğini ve yüzünün dinginleştiğini hisset."
+      ],
+      "alternatif": "Gözlerini kapatıp yüzüne hafifçe sıcak ellerinle dokun.",
+      "etiketler": ["beden-taramasi", "yuz-gevsemesi"]
+    },
+    {
+      "id": "wellness-g06",
+      "alan": "wellness",
+      "gun": 6,
+      "asama": "tohum",
+      "zorluk": 2,
+      "sure_dk": 3,
+      "baslik": "Ekranı kapatıp 1 dakika dışarıdaki sesleri dinle",
+      "neden": "Sürekli içeriye odaklı zihni dış dünyayla yumuşakça buluşturmak rahatlatır.",
+      "adimlar": [
+        "Telefonunu ya da bilgisayar ekranını kapat.",
+        "Gözlerini hafifçe arala ya da kapat. Çevrenden gelen en uzaktaki sesi yakalamaya çalış.",
+        "Sesleri 'iyi' ya da 'kötü' diye yargılamadan, sadece birer ses dalgası olarak duy."
+      ],
+      "alternatif": "Sadece odadaki en sessiz sesi duymaya odaklan.",
+      "etiketler": ["dinleme", "sessizlik"]
+    },
+    {
+      "id": "wellness-g07",
+      "alan": "wellness",
+      "gun": 7,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Hafif Gün: İlk haftanın nefesi ve beden molası",
+      "neden": "Zihinsel dinginlik zorlayarak elde edilmez; gevşemeye izin vererek kendiliğinden doğar.",
+      "adimlar": [
+        "Rahat bir yere otur ya da uzan.",
+        "Bugün hiçbir egzersiz yapma, hiçbir şeyi düzeltmeye çalışma.",
+        "İlk 7 günde kendine ayırdığın o küçük dakikaları sıcak bir tebessümle hatırla."
+      ],
+      "alternatif": "Yansıma notuna tek bir sakinleştirici kelime yaz.",
+      "etiketler": ["hafif-gun", "yansima"]
+    },
+
+    {
+      "id": "wellness-g08",
+      "alan": "wellness",
+      "gun": 8,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 5,
+      "baslik": "4-4 Denge Nefesi pratiği",
+      "neden": "Eşit süreli nefes alış ve verişler otonom sinir sistemine dinginlik sinyali verir.",
+      "adimlar": [
+        "Dik ama rahat bir duruşa geç.",
+        "İçinden 4'e kadar sayarak burnundan nefes al.",
+        "Yine içinden 4'e kadar sayarak burnundan ya da ağzından yavaşça ver.",
+        "Bunu 5 dakika boyunca sakin bir ritimle sürdür."
+      ],
+      "alternatif": "3 dakika boyunca 3 al, 3 ver ritmiyle nefeslen.",
+      "etiketler": ["nefes-calismasi", "denge"]
+    },
+    {
+      "id": "wellness-g09",
+      "alan": "wellness",
+      "gun": 9,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 5,
+      "baslik": "Oturduğun yerde 5 dakikalık mini beden taraması",
+      "neden": "Zihin geçmişte veya gelecekte gezinirken, beden her zaman 'şimdi'dedir.",
+      "adimlar": [
+        "Gözlerini kapat. Dikkatin önce ayak tabanlarının yere temasında olsun.",
+        "Ardından bacaklarına, kalçanın sandalyeye yaptığı baskıya odaklan.",
+        "Sırtını, göğsünü ve boynunu tek tek hisset; bir gerginlik varsa nefes vererek yumuşat."
+      ],
+      "alternatif": "Sadece ayak tabanlarının zeminle temasını 3 dakika boyunca hisset.",
+      "etiketler": ["beden-taramasi", "simdiki-an"]
+    },
+    {
+      "id": "wellness-g10",
+      "alan": "wellness",
+      "gun": 10,
+      "asama": "filiz",
+      "zorluk": 3,
+      "sure_dk": 5,
+      "baslik": "Günün 3 küçük şükran anını not defterine yaz",
+      "neden": "Minnettarlık yazıldığında somutlaşır ve günün ağırlığını dengeler.",
+      "adimlar": [
+        "Bir kağıt ya da defter al.",
+        "Bugün varlığı için minnet duyduğun 3 küçük şeyi yaz (sıcak bir yatak, dostça bir mesaj, lezzetli bir öğün).",
+        "Her birini yazarken içinde uyandırdığı sıcak hissi 10 saniye boyunca duyumsayın."
+      ],
+      "alternatif": "Yazmak yerine gözlerini kapatıp 3 şeye içinden teşekkür et.",
+      "etiketler": ["minnettarlik", "sukran"]
+    },
+    {
+      "id": "wellness-g11",
+      "alan": "wellness",
+      "gun": 11,
+      "asama": "filiz",
+      "zorluk": 3,
+      "sure_dk": 6,
+      "baslik": "Sessiz ve ekransız çay/kahve seremonisi",
+      "neden": "Ekran olmadan bir şey içmek, zihne sakin bir boşluk hediye eder.",
+      "adimlar": [
+        "Kendine sevdiğin sıcak bir içecek hazırla.",
+        "Telefonunu başka bir masaya bırak.",
+        "5-6 dakika boyunca sadece içeceğin sıcaklığı, buharı ve tadıyla baş başa kal."
+      ],
+      "alternatif": "Günde 3 dakikalık bir su içme molasını telefonsuz yap.",
+      "etiketler": ["dijital-detoks", "rituel"]
+    },
+    {
+      "id": "wellness-g12",
+      "alan": "wellness",
+      "gun": 12,
+      "asama": "filiz",
+      "zorluk": 3,
+      "sure_dk": 5,
+      "baslik": "Avuç içlerini göğsüne koyup kalp ritmini hisset",
+      "neden": "Fiziksel temas ve elin sıcaklığı bedene güven ve şefkat hissi pompalar.",
+      "adimlar": [
+        "Sağ elini kalbinin üzerine, sol elini de karnına koy.",
+        "Göğsünün her nefeste nasıl yükselip indiğini ellerinin altında hisset.",
+        "Kendine içten bir ses tonuyla: 'Şu an buradayım, güvendeyim' de."
+      ],
+      "alternatif": "Sadece iki elini birbirine kenetleyip sıcaklıklarını hisset.",
+      "etiketler": ["oz-sefkat", "guven"]
+    },
+    {
+      "id": "wellness-g13",
+      "alan": "wellness",
+      "gun": 13,
+      "asama": "filiz",
+      "zorluk": 3,
+      "sure_dk": 7,
+      "baslik": "7 dakikalık yavaş ve farkındalıklı yürüyüş",
+      "neden": "Yürüyüş sadece bir yere varmak için değil, varlığınla yeryüzüne dokunmak içindir.",
+      "adimlar": [
+        "Odanın içinde, koridorda ya da bahçede yavaşça yürümeye başla.",
+        "Topuğunun yere deyişini, ağırlığın parmak uçlarına aktarılışını dikkatle izle.",
+        "Telefonsuz, acele etmeden, her adımda sadece adımını hisset."
+      ],
+      "alternatif": "3 dakikalık kısa bir farkındalıklı yürüyüş yap.",
+      "etiketler": ["yuruyus-meditasyonu", "beden"]
+    },
+    {
+      "id": "wellness-g14",
+      "alan": "wellness",
+      "gun": 14,
+      "asama": "filiz",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Hafif Gün: İki haftanın huzuru ve boş alan bırakma",
+      "neden": "Yolun yarısına geldin. Her şeyi yapmaya çalışma, sadece durmanın tadını çıkar.",
+      "adimlar": [
+        "Pencere kenarına geç, uzaklara bak.",
+        "Bugün hiçbir hedef ve teknik uygulama.",
+        "Sadece nefesinin kendiliğinden akışına izin ver."
+      ],
+      "alternatif": "Yansıma notuna tek bir şükran cümlesi bırak.",
+      "etiketler": ["hafif-gun", "yansima"]
+    },
+
+    {
+      "id": "wellness-g15",
+      "alan": "wellness",
+      "gun": 15,
+      "asama": "filiz",
+      "zorluk": 3,
+      "sure_dk": 6,
+      "baslik": "Uzatılmış veriş nefesi: 4 al, 6 ver",
+      "neden": "Nefes veriş süresi alıştansüre olarak daha uzun olduğunda nabız ve zihin doğal olarak yavaşlar.",
+      "adimlar": [
+        "Rahat bir oturuş bul.",
+        "Burnundan 4 saniyede nefes al.",
+        "Ağzından bir mumu söndürmeden titretir gibi 6 saniyede yavaşça ver.",
+        "Bunu 10 nefes döngüsü boyunca tekrarla."
+      ],
+      "alternatif": "3 saniye alıp 5 saniyede vererek 5 döngü yap.",
+      "etiketler": ["nefes-calismasi", "sakinlesme"]
+    },
+    {
+      "id": "wellness-g16",
+      "alan": "wellness",
+      "gun": 16,
+      "asama": "govde",
+      "zorluk": 3,
+      "sure_dk": 10,
+      "baslik": "Düşünceleri gökyüzündeki bulutlar gibi izleme pratiği",
+      "neden": "Düşünceler sen değilsin; onlar zihninden gelip geçen hava olaylarıdır.",
+      "adimlar": [
+        "10 dakika boyunca gözlerini kapatıp sessizce otur.",
+        "Aklına gelen her düşünceyi (iş, plan, kaygı) gökyüzünde beliren bir bulut gibi hayal et.",
+        "Onları kovmaya çalışma, sadece gelip geçmelerine izin ver; dikkatin nefesinde kalsın."
+      ],
+      "alternatif": "Süreyi 6 dakika olarak belirle.",
+      "etiketler": ["meditasyon", "farkindalik"]
+    },
+    {
+      "id": "wellness-g17",
+      "alan": "wellness",
+      "gun": 17,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 10,
+      "baslik": "Ayak tabanlarından tepeye tam beden taraması",
+      "neden": "Bedenin her bir bölgesine dikkati gezdirmek zihinsel gevezeliği susturur.",
+      "adimlar": [
+        "Sırtüstü uzan ya da rahatça otur.",
+        "Dikkati sırayla ayak parmakları, dizler, karın, göğüs, kollar ve başın tepesine kadar taşı.",
+        "Her bölgede 30 saniye kalarak oradaki hisleri (sıcaklık, uyuşma, rahatlık) yargısızca fark et."
+      ],
+      "alternatif": "Sadece bel ve sırt bölgesine odaklanan 5 dakikalık bir tarama yap.",
+      "etiketler": ["beden-taramasi", "derin-gevseme"]
+    },
+    {
+      "id": "wellness-g18",
+      "alan": "wellness",
+      "gun": 18,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 12,
+      "baslik": "12 dakikalık ekransız doğa ya da sokak yürüyüşü",
+      "neden": "Kulaklıksız ve telefonsuz dışarıda olmak zihinsel aşırı yükü toprağa bırakır.",
+      "adimlar": [
+        "Telefonunu cebine bile almadan (ya da uçak modunda) dışarı çık.",
+        "12 dakika boyunca çevrendeki ağaçlara, binalara ve gökyüzüne bakarak yürü.",
+        "Duyduğun rüzgarı ya da havanın serinliğini yüzünde hisset."
+      ],
+      "alternatif": "8 dakikalık kısa bir parkurda yürü.",
+      "etiketler": ["yuruyus", "dijital-detoks"]
+    },
+    {
+      "id": "wellness-g19",
+      "alan": "wellness",
+      "gun": 19,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 8,
+      "baslik": "Zihinsel etiketleme pratiği: 'Geçmiş', 'Gelecek', 'Plan'",
+      "neden": "Düşünceyi adlandırmak, onun seni içine çekip sürüklemesini engeller.",
+      "adimlar": [
+        "Sessizce otur ve gözlerini kapat.",
+        "Aklına bir düşünce geldiğinde fısılda: 'Bu bir plan' ya da 'Bu geçmiş' ya da 'Bu bir endişe'.",
+        "Etiketi yapıştır ve zihninin nehir gibi akmasına izin vererek nefesine dön."
+      ],
+      "alternatif": "5 dakika boyunca sadece 'Düşünce' diyerek nefese dönmeyi dene.",
+      "etiketler": ["zihinsel-etiketleme", "berraklik"]
+    },
+    {
+      "id": "wellness-g20",
+      "alan": "wellness",
+      "gun": 20,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 10,
+      "baslik": "Akşam dijital alacakaranlığı: 10 dakika loş ışıkta oturma",
+      "neden": "Geceleri loş ışık ve sessizlik, bedenin doğal biyolojik ritmini onarır.",
+      "adimlar": [
+        "Akşam saatlerinde telefonunu, televizyonu ve parlak tavan ışıklarını kapat.",
+        "Sadece küçük bir abajur veya mum ışığında 10 dakika otur.",
+        "Zihninin ve gözlerinin dinlenişini gözlemle."
+      ],
+      "alternatif": "Süreyi 5 dakika olarak uygula.",
+      "etiketler": ["aksam-ritueli", "dinlenme"]
+    },
+    {
+      "id": "wellness-g21",
+      "alan": "wellness",
+      "gun": 21,
+      "asama": "govde",
+      "zorluk": 1,
+      "sure_dk": 4,
+      "baslik": "Hafif Gün: 3. haftanın yansıması ve kendine nazik bir dil",
+      "neden": "Dinginlik bir başarı projesi değildir; kendine şefkatle yaklaşabilme sanatıdır.",
+      "adimlar": [
+        "Sıcak bir içecekle sessizce otur.",
+        "Geçtiğimiz günlerde kendine nasıl davrandığını düşün.",
+        "Kendine içtenlikle: 'Olduğum halimle yeterliyim' de ve günün tadını çıkar."
+      ],
+      "alternatif": "Yansıma notuna tek bir şefkatli cümle yaz.",
+      "etiketler": ["hafif-gun", "oz-sefkat"]
+    },
+    {
+      "id": "wellness-g22",
+      "alan": "wellness",
+      "gun": 22,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 9,
+      "baslik": "Zorlayıcı bir hisle kaçmadan 3 dakika oturabilme pratiği",
+      "neden": "Sıkıntı ya da huzursuzluk hissettiğimizde hemen telefona kaçmak hissi büyütür.",
+      "adimlar": [
+        "Günün içinde hafif bir can sıkıntısı, sabırsızlık ya da yorgunluk hissettiğin anı yakala.",
+        "Hemen bir şeyle oyalanma; gözlerini kapat ve o hissin bedeninde nerede durduğuna bak.",
+        "O hisse nefes alıp vererek yer aç; bastırmaya çalışma."
+      ],
+      "alternatif": "1 dakika boyunca o hisle kalarak nefes ver.",
+      "etiketler": ["duygu-farkindaligi", "kabul"]
+    },
+    {
+      "id": "wellness-g23",
+      "alan": "wellness",
+      "gun": 23,
+      "asama": "govde",
+      "zorluk": 3,
+      "sure_dk": 8,
+      "baslik": "Şefkat meditasyonu (Metta): İyi dilekler gönderme",
+      "neden": "Başkalarına ve kendine iyi niyet beslemek içsel katılığı yumuşatır.",
+      "adimlar": [
+        "Gözlerini kapat. Önce kendini, sonra sevdiğin birini aklına getir.",
+        "İçinden şunları söyle: 'Huzurlu ol, güvende ol, sağlıklı ol, hafif ol.'",
+        "Bu dileklerin göğsünde bıraktığı ferahlatıcı hissi fark et."
+      ],
+      "alternatif": "Sadece tek bir sevdiğin insan için içinden güzel bir niyet tut.",
+      "etiketler": ["sefkat-meditasyonu", "iyi-niyet"]
+    },
+
+    {
+      "id": "wellness-g24",
+      "alan": "wellness",
+      "gun": 24,
+      "asama": "yaprak",
+      "zorluk": 4,
+      "sure_dk": 12,
+      "baslik": "Sabah 12 dakikalık sessiz oturma pratiği",
+      "neden": "Güne dış dünyanın gürültüsünden önce kendi iç sessizliğinle uyanmak günün tonunu belirler.",
+      "adimlar": [
+        "Sabah kalktıktan sonra rahat bir mindere ya da sandalyeye otur.",
+        "12 dakikalık bir sayaç kur. Sadece nefesinin giriş çıkışını izle.",
+        "Güne dingin ve merkezinde bir zihinle adım at."
+      ],
+      "alternatif": "Süreyi 8 dakika olarak belirle.",
+      "etiketler": ["sabah-meditasyonu", "dinginlik"]
+    },
+    {
+      "id": "wellness-g25",
+      "alan": "wellness",
+      "gun": 25,
+      "asama": "yaprak",
+      "zorluk": 5,
+      "sure_dk": 15,
+      "baslik": "15 dakikalık farkındalıklı yürüyüş meditasyonu",
+      "neden": "Hareket halindeyken dingin kalabilmek en kalıcı farkındalık halidir.",
+      "adimlar": [
+        "Dışarıda veya evde 15 dakikalık kesintisiz bir yürüyüş alanı oluştur.",
+        "Adımlarının ritmine nefesini uydur: 3 adımda nefes al, 3 adımda ver.",
+        "Çevrendeki sesleri ve dokuları fark ederek adımlarını at."
+      ],
+      "alternatif": "10 dakikalık bir yürüyüş ile tamamla.",
+      "etiketler": ["yuruyus-meditasyonu", "entegrasyon"]
+    },
+    {
+      "id": "wellness-g26",
+      "alan": "wellness",
+      "gun": 26,
+      "asama": "yaprak",
+      "zorluk": 4,
+      "sure_dk": 10,
+      "baslik": "Akşam zihin dökümü ve günün teşekkür listesi",
+      "neden": "Kafandaki düşünceleri kağıda dökmek, geceyi berrak bir zihinle karşılamanı sağlar.",
+      "adimlar": [
+        "Yatmadan önce kağıdı önüne al.",
+        "Aklını meşgul eden düşünceleri 5 dakika boyunca filtresizce dök.",
+        "Altına bugünün seni gülümseten 2 anını teşekkürle not et ve kağıdı kapat."
+      ],
+      "alternatif": "Sadece tek bir şükran cümlesi yazıp uyu.",
+      "etiketler": ["zihin-dokumu", "aksam-rutini"]
+    },
+    {
+      "id": "wellness-g27",
+      "alan": "wellness",
+      "gun": 27,
+      "asama": "yaprak",
+      "zorluk": 5,
+      "sure_dk": 15,
+      "baslik": "15 dakikalık tam sessizlik ve nefes akışı",
+      "neden": "Artık rehbere ihtiyaç duymadan kendi dinginliğini inşa edebiliyorsun.",
+      "adimlar": [
+        "Sessiz bir köşede otur. Gözlerini sakince kapat.",
+        "15 dakika boyunca sadece gelen hisleri, sesleri ve nefesi yargılamadan izle.",
+        "Zihninin durgun bir göl gibi durulmasına alan aç."
+      ],
+      "alternatif": "10 dakikalık bir sessiz oturma yap.",
+      "etiketler": ["sessizlik", "derinlesme"]
+    },
+    {
+      "id": "wellness-g28",
+      "alan": "wellness",
+      "gun": 28,
+      "asama": "yaprak",
+      "zorluk": 4,
+      "sure_dk": 12,
+      "baslik": "Kişisel Dinginlik Manifestosu: 3 temel prensibini yaz",
+      "neden": "Kendi iç huzurunu koruyan ilkeleri yazıya dökmek onları kalıcı kılar.",
+      "adimlar": [
+        "Geçtiğimiz 28 günde zihnini en çok rahatlatan 3 yöntemi belirle.",
+        "Örnek: '1. Günde en az 3 kez bilinçli nefes alırım. 2. Yemek yerken ekrana bakmam. 3. Gergin hissettiğimde omuzlarımı bırakırım.'",
+        "Bu manifestoyu görünür bir yere ya da telefonunun notlarına kaydet."
+      ],
+      "alternatif": "Sadece tek bir altın dinginlik kuralı yaz.",
+      "etiketler": ["manifesto", "surdurulebilirlik"]
+    },
+    {
+      "id": "wellness-g29",
+      "alan": "wellness",
+      "gun": 29,
+      "asama": "yaprak",
+      "zorluk": 3,
+      "sure_dk": 10,
+      "baslik": "Günün içine yayılmış 3 mini farkındalık molası",
+      "neden": "Dinginlik sadece minderde otururken değil, günün her anında yaşanabilir.",
+      "adimlar": [
+        "Sabah, öğle ve akşam için kendine küçük bir hatırlatıcı koy.",
+        "Her hatırlatıcıda ne yapıyorsan 30 saniye dur, omuzlarını gevşet ve 3 derin nefes al.",
+        "Günün yoğunluğuna küçük dinginlik adacıkları serpiştir."
+      ],
+      "alternatif": "Günde tek bir kez bu 30 saniyelik duruşu yap.",
+      "etiketler": ["gunluk-entegrasyon", "farkindalik"]
+    },
+    {
+      "id": "wellness-g30",
+      "alan": "wellness",
+      "gun": 30,
+      "asama": "yaprak",
+      "zorluk": 2,
+      "sure_dk": 8,
+      "baslik": "Yolculuğun Sonu ve Yeni Başlangıç: Zihindeki Sakin Liman",
+      "neden": "30 gün boyunca her gün attığın küçük adımlar, zihninde her an sığınabileceğin dingin bir liman kurdu.",
+      "adimlar": [
+        "1. Günde 3 nefes alırken hissettiğin yabancılıkla bugünkü dinginliğini karşılaştır.",
+        "Ne kadar yumuşadığını, bedenini ne kadar daha iyi duyduğunu fark et.",
+        "Kendine içten bir şefkatle sarıl. Bu dinginlik artık senin öz parçan."
+      ],
+      "alternatif": "Bugünlük sadece kendine sıcak bir gülümsemeyle 'Huzur içimde' de.",
+      "etiketler": ["kutlama", "yolculuk-sonu"]
+    },
+
+    {
+      "id": "iliskiler-g01",
+      "alan": "iliskiler",
+      "gun": 1,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "Günün ilk sohbetinde kendi dinleme tavrını fark et",
+      "neden": "İlişkiler, karşımızdakinden önce kendi dinleme duruşumuzla başlar.",
+      "adimlar": [
+        "Bugün biriyle konuştuğun ilk anda zihnini gözlemle.",
+        "Sözünü bitirmesini mi bekliyorsun, yoksa zihninde hemen cevabını mı kuruyorsun?",
+        "Değiştirmeye çalışma; sadece kendi dinleme refleksini tarafsızca fark et."
+      ],
+      "alternatif": "Mesajlaşırken gelen bir mesajı okur okumaz değil, sakince nefes alıp oku.",
+      "etiketler": ["farkindalik", "dinleme"]
+    },
+    {
+      "id": "iliskiler-g02",
+      "alan": "iliskiler",
+      "gun": 2,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "Cevap vermeden önce 3 saniye durakla",
+      "neden": "Tepki ile yanıt arasındaki o ufacık boşluk, ilişkinin kalitesini belirler.",
+      "adimlar": [
+        "Biri sana bir soru sorduğunda ya da bir şey söylediğinde hemen konuşma.",
+        "İçinden 3'e kadar say, söylenen sözün ağırlığını hisset.",
+        "Sonra sakince kendi cümleni kur."
+      ],
+      "alternatif": "Günde sadece tek bir konuşmada bu 3 saniyelik duraklamayı uygula.",
+      "etiketler": ["duraklama", "iletisim"]
+    },
+    {
+      "id": "iliskiler-g03",
+      "alan": "iliskiler",
+      "gun": 3,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Bir yakınının ya da çalışma arkadaşının güzel bir yönünü zihninde takdir et",
+      "neden": "Takdir dile dökülmeden önce zihinde samimi bir his olarak doğmalıdır.",
+      "adimlar": [
+        "Gün içinde iletişimde olduğun bir insanı seç (arkadaş, aile veya iş arkadaşı).",
+        "Onun takdir ettiğin tek bir özelliğini düşün (çabası, güler yüzü, dakikliği).",
+        "İçinden ona sessizce teşekkür et."
+      ],
+      "alternatif": "Geçmişte sana iyiliği dokunmuş bir insanı sevgiyle hatırla.",
+      "etiketler": ["takdir", "ic-farkindalik"]
+    },
+    {
+      "id": "iliskiler-g04",
+      "alan": "iliskiler",
+      "gun": 4,
+      "asama": "tohum",
+      "zorluk": 2,
+      "sure_dk": 3,
+      "baslik": "İyi niyet varsayımı pratiği",
+      "neden": "İnsanların davranışlarını kişisel bir saldırı değil, kendi durumlarının bir yansıması olarak görmek hafifletir.",
+      "adimlar": [
+        "Bugün birinin sana soğuk, meşgul ya da geç cevap verdiğini fark ettiğinde dur.",
+        "'Bunu bana kasten yapmadı, belki kendi zor bir gün geçiriyordur' diye düşün.",
+        "Kendi içindeki alınganlık yükünü serbest bırak."
+      ],
+      "alternatif": "Aklına takılan ufak bir pürüzde 'Hemen sonuca varma' uyarısını hatırla.",
+      "etiketler": ["varsayimlar", "anlayis"]
+    },
+    {
+      "id": "iliskiler-g05",
+      "alan": "iliskiler",
+      "gun": 5,
+      "asama": "tohum",
+      "zorluk": 2,
+      "sure_dk": 3,
+      "baslik": "Kendi duygusal sınırını fark et: 'Şu an neye ihtiyacım var?'",
+      "neden": "Başkalarına sınır koyabilmenin ilk adımı kendi sınırını ve ihtiyacını bilmektir.",
+      "adimlar": [
+        "Günün ortasında durup kendine sor: 'Şu an sosyal enerjim ne durumda?'",
+        "Yalnız kalmaya mı, dinlenmeye mi, yoksa biriyle dertleşmeye mi ihtiyacın var?",
+        "Bu ihtiyacını yargılamadan sadece onurlandır."
+      ],
+      "alternatif": "Bir kağıda 'Şu an kendime biraz sessizlik borçluyum' yaz.",
+      "etiketler": ["sinirlar", "oz-farkindalik"]
+    },
+    {
+      "id": "iliskiler-g06",
+      "alan": "iliskiler",
+      "gun": 6,
+      "asama": "tohum",
+      "zorluk": 2,
+      "sure_dk": 2,
+      "baslik": "Biri konuşurken telefonu elinden tamamen bırak",
+      "neden": "Yarı dikkatle dinlemek, karşındakine 'Sen telefonum kadar önemli değilsin' mesajı verir.",
+      "adimlar": [
+        "Biri seninle bir şey paylaşırken telefonunu masaya ekranı kapalı şekilde koy.",
+        "Göz temasını kur ve tüm varlığınla onun orada olduğunu hissettir.",
+        "Bu küçük jestin aranızdaki güven hissini nasıl artırdığını izle."
+      ],
+      "alternatif": "Biriyle konuşurken telefonuna gelen bildirime bakmamayı tercih et.",
+      "etiketler": ["tam-varlik", "saygi"]
+    },
+    {
+      "id": "iliskiler-g07",
+      "alan": "iliskiler",
+      "gun": 7,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Hafif Gün: Beklentisiz bir mola ve ilk haftanın yansıması",
+      "neden": "İlişkileri en çok yoran şey dile getirilmemiş karşılıklı beklentilerdir.",
+      "adimlar": [
+        "Arkana yaslan ve derin bir nefes al.",
+        "Bugün kimseden hiçbir şey bekleme, kimseyi değiştirmeye çalışma.",
+        "İlk 7 günde kendi iletişim tavrına dair fark ettiğin küçük bir adımı takdir et."
+      ],
+      "alternatif": "Yansıma notuna tek bir sakin cümle yaz.",
+      "etiketler": ["hafif-gun", "yansima"]
+    },
+
+    {
+      "id": "iliskiler-g08",
+      "alan": "iliskiler",
+      "gun": 8,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 5,
+      "baslik": "Birine somut ve içten bir teşekkür mesajı gönder",
+      "neden": "Spesifik takdirler ilişkilerin bağışıklık sistemini güçlendirir.",
+      "adimlar": [
+        "Hayatındaki bir insanı seç (arkadaş, aile ya da bir meslektaşın).",
+        "Genel bir 'sağ ol' yerine, yaptığı belirli bir davranış için teşekkür et (örn. 'Dünkü toplantıdaki desteğin için teşekkür ederim').",
+        "Beklentiye girmeden mesajını gönder ve o hisle kal."
+      ],
+      "alternatif": "Yüz yüze karşılaştığın birine küçük bir yardımından ötürü gözlerinin içine bakarak teşekkür et.",
+      "etiketler": ["takdir", "somut-tesekkur"]
+    },
+    {
+      "id": "iliskiler-g09",
+      "alan": "iliskiler",
+      "gun": 9,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 5,
+      "baslik": "5 dakika boyunca söz kesmeden ve tavsiye vermeden dinle",
+      "neden": "İnsanlar çoğunlukla tavsiye değil, sadece duyulmak isterler.",
+      "adimlar": [
+        "Biri sana gününü ya da bir sorununu anlatırken hemen çözüm üretme.",
+        "Sözünü hiç kesme, sadece başını sallayarak ve 'Anlıyorum' diyerek dinle.",
+        "Sözü bittiğinde: 'Bu durum seni yormuş olmalı' gibi bir empati cümlesi kur."
+      ],
+      "alternatif": "3 dakika boyunca bir iş arkadaşını ya da arkadaşını bölmeden dinle.",
+      "etiketler": ["aktif-dinleme", "empati"]
+    },
+    {
+      "id": "iliskiler-g10",
+      "alan": "iliskiler",
+      "gun": 10,
+      "asama": "filiz",
+      "zorluk": 3,
+      "sure_dk": 5,
+      "baslik": "'Sen dili' yerine 'Ben dili' provası yap",
+      "neden": "'Sen böylesin' suçlama yaratır; 'Ben böyle hissettim' ise kapıyı açık tutar.",
+      "adimlar": [
+        "Seni rahatsız eden bir durumu kağıda 'Sen dili' ile yaz (örn. 'Beni hiç dinlemiyorsun').",
+        "Hemen altına bunu 'Ben dili'ne çevir (örn. 'Konuşurken bölünmek beni önemsiz hissettiriyor').",
+        "İki cümle arasındaki duygusal ton farkını hisset."
+      ],
+      "alternatif": "Zihninde geçmiş bir tartışmayı 'Ben dili' ile yeniden canlandır.",
+      "etiketler": ["ben-dili", "net-iletisim"]
+    },
+    {
+      "id": "iliskiler-g11",
+      "alan": "iliskiler",
+      "gun": 11,
+      "asama": "filiz",
+      "zorluk": 3,
+      "sure_dk": 6,
+      "baslik": "Küçük bir sınır provası: Hemen 'Evet' demek yerine zaman iste",
+      "neden": "Anında 'evet' deme baskısı sınırları aşındırır; zaman istemek nefes aldırır.",
+      "adimlar": [
+        "Bugün senden bir talep, buluşma ya da rica istendiğinde otomatik 'tamam' deme.",
+        "Şunu söyle: 'Takvimime/durumuma bakıp sana birazdan haber vereyim.'",
+        "Kararı kendi isteğin doğrultusunda verebilmenin konforunu yaşa."
+      ],
+      "alternatif": "Mesaj yoluyla gelen bir ricaya hemen değil, 15 dakika düşünüp yanıt ver.",
+      "etiketler": ["sinirlar", "zaman-isteme"]
+    },
+    {
+      "id": "iliskiler-g12",
+      "alan": "iliskiler",
+      "gun": 12,
+      "asama": "filiz",
+      "zorluk": 3,
+      "sure_dk": 6,
+      "baslik": "Söylenmemiş bir kırgınlığı kağıda dök (göndermek için değil)",
+      "neden": "İfade edilmemiş kırgınlıklar içten içe pas tutar ve ilişkiyi zehirler.",
+      "adimlar": [
+        "Birine karşı içinde tuttuğun kırgınlığı filtresizce bir kağıda yaz.",
+        "Neye kırıldığını ve aslında neye ihtiyacın olduğunu netleştir.",
+        "Yazdıktan sonra o kağıdı yırtıp at; amaç içindeki düğümü çözmektir."
+      ],
+      "alternatif": "Telefonunun notlarında tek bir kırgınlığını 3 maddede özetle.",
+      "etiketler": ["kirginlik", "duygu-tahliyesi"]
+    },
+    {
+      "id": "iliskiler-g13",
+      "alan": "iliskiler",
+      "gun": 13,
+      "asama": "filiz",
+      "zorluk": 3,
+      "sure_dk": 7,
+      "baslik": "İçten bir 'Bugün günün nasıl geçiyor?' sorusu sor",
+      "neden": "Alışılmış nezaket kalıplarını aşıp merakla sormak derinlik katar.",
+      "adimlar": [
+        "Bir dostuna, ailene ya da iş arkadaşına içtenlikle gününü sor.",
+        "Gelen cevabı geçiştirmeden, anlattığı bir detaya dair devam sorusu sor.",
+        "Merak edildiğini hissetmenin insana verdiği sıcaklığı gözlemle."
+      ],
+      "alternatif": "Kısa bir sesli mesajla içten bir hal hatır sor.",
+      "etiketler": ["merak", "bag-kurma"]
+    },
+    {
+      "id": "iliskiler-g14",
+      "alan": "iliskiler",
+      "gun": 14,
+      "asama": "filiz",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Hafif Gün: İki haftanın yansıması ve ilişkilerde alan tanıma",
+      "neden": "İlişkiler ancak iki tarafın da kendine ait bir nefes alanı olduğunda yeşerir.",
+      "adimlar": [
+        "Sessizce otur ve son 14 günde ilişkilerinde ne fark ettiğini düşün.",
+        "Karşındakinin de bir insan olduğunu, sınırları ve yorgunlukları olabileceğini hatırla.",
+        "Bugün kimseyle zor bir konu konuşma, kendine mola ver."
+      ],
+      "alternatif": "Yansıma notuna tek bir şefkatli farkındalık yaz.",
+      "etiketler": ["hafif-gun", "yansima"]
+    },
+
+    {
+      "id": "iliskiler-g15",
+      "alan": "iliskiler",
+      "gun": 15,
+      "asama": "filiz",
+      "zorluk": 3,
+      "sure_dk": 5,
+      "baslik": "Zihin okumak yerine açık soru sorma pratiği",
+      "neden": "En büyük iletişim kazaları 'Ne demek istediğini biliyorum' zannından çıkar.",
+      "adimlar": [
+        "Birinin bir tavrını anlamadığında kendi kafanda senaryo üretme.",
+        "Şunu sor: 'Böyle söylediğinde şunu mu kastettin, yoksa ben mi yanlış anladım?'",
+        "Varsayımı gerçeğe dönüştürmenin hafifliğini hisset."
+      ],
+      "alternatif": "Bir mesajlaşmada anlamadığın şeyi tahmin etmek yerine netleştirici bir soru sor.",
+      "etiketler": ["netlik", "varsayimsizlik"]
+    },
+    {
+      "id": "iliskiler-g16",
+      "alan": "iliskiler",
+      "gun": 16,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 8,
+      "baslik": "Suçluluk hissetmeden sakin bir 'Hayır' de",
+      "neden": "Kendine 'evet' diyebilmek için bazen başkalarına nazikçe 'hayır' demek gerekir.",
+      "adimlar": [
+        "Bugün enerjinin ya da zamanının yetmediği bir ricaya ya da davete hayır de.",
+        "Bahane uydurmadan: 'Şu an buna vakit ayıramıyorum, anlayışın için teşekkür ederim' kalıbını kullan.",
+        "Sonrasında gelen gereksiz suçluluk hissini nefes vererek serbest bırak."
+      ],
+      "alternatif": "Küçük bir talebi nazikçe ertele ya da sınır çiz.",
+      "etiketler": ["sinir-koyma", "hayir-diyebilmek"]
+    },
+    {
+      "id": "iliskiler-g17",
+      "alan": "iliskiler",
+      "gun": 17,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 10,
+      "baslik": "Bir kırgınlığı suçlamadan, 'ben' diliyle sakin bir dille ifade et",
+      "neden": "Kırgınlığı saklamak mesafeyi açar; açıkça konuşmak güveni pekiştirir.",
+      "adimlar": [
+        "Bir süredir içinde taşıdığın ufak bir pürüzü uygun bir anda dile getir.",
+        "Örnek: 'Şu konuda böyle olduğunda ben kendimi dışlanmış hissettim, seninle paylaşmak istedim.'",
+        "Suçlama tonundan uzak, sadece hissini paylaşmaya odaklan."
+      ],
+      "alternatif": "Yüz yüze konuşmak çok zorsa, hissini sakin bir mesajla paylaş.",
+      "etiketler": ["acik-iletisim", "onarma"]
+    },
+    {
+      "id": "iliskiler-g18",
+      "alan": "iliskiler",
+      "gun": 18,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 9,
+      "baslik": "Karşındaki gergin veya öfkeliyken savunmaya geçmeden dinle",
+      "neden": "Ateşe ateşle gitmemek, gerilimi söndürmenin tek yoludur.",
+      "adimlar": [
+        "Biri sana gergin bir dille geldiğinde hemen kendini savunma refleksini durdur.",
+        "Önce onun duygusunu kabul et: 'Şu an çok öfkeli/endişeli olduğunu görebiliyorum.'",
+        "Sakin tonunun ortamdaki harareti nasıl düşürdüğünü izle."
+      ],
+      "alternatif": "Tartışma anında 'Şu an ikimiz de gerginken konuşmayalım, 15 dakika sonra devam edelim' de.",
+      "etiketler": ["catisma-yonetimi", "sakinlik"]
+    },
+    {
+      "id": "iliskiler-g19",
+      "alan": "iliskiler",
+      "gun": 19,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 10,
+      "baslik": "İlişkideki gizli bir beklentiyi açık bir ricaya dönüştür",
+      "neden": "Kimse zihin okuyamaz; söylenmeyen beklentiler hayal kırıklığı üretir.",
+      "adimlar": [
+        "Karşındakinin kendiliğinden yapmasını beklediğin bir şeyi fark et.",
+        "Küstahlık ya da sitem etmeden netçe rica et: 'Bana şu konuda destek olursan çok sevinirim.'",
+        "Açık iletişimin getirdiği rahatlığı yaşa."
+      ],
+      "alternatif": "Evde ya da işte tek bir basit işbölümü ricasında bulun.",
+      "etiketler": ["acik-rica", "netlik"]
+    },
+    {
+      "id": "iliskiler-g20",
+      "alan": "iliskiler",
+      "gun": 20,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 8,
+      "baslik": "Gecikmiş bir özrü ya da hakkı teslim et",
+      "neden": "Özür dilemek zayıflık değil, ilişkiye egodan daha çok değer vermektir.",
+      "adimlar": [
+        "Haksız ya da fevri davrandığın geçmiş bir anı hatırla.",
+        "Savunmaya geçmeden: 'O gün sana karşı sert konuştum, haksızdım, kusura bakma' de.",
+        "İçindeki o eski düğümün çözülüşünü hisset."
+      ],
+      "alternatif": "Kısa bir mesajla özrünü veya teşekkürünü ilet.",
+      "etiketler": ["ozur-dilemek", "olgunluk"]
+    },
+    {
+      "id": "iliskiler-g21",
+      "alan": "iliskiler",
+      "gun": 21,
+      "asama": "govde",
+      "zorluk": 1,
+      "sure_dk": 4,
+      "baslik": "Hafif Gün: 3. haftanın yansıması ve kendine şefkat",
+      "neden": "Gövde aşamasının yüzleşmelerini aştın. Kendi sınırlarına sarıl.",
+      "adimlar": [
+        "Sıcak bir çay al ve sessizce otur.",
+        "İlişkilerinde 'hayır' diyebilmenin ve hislerini saklamamanın cesaretini kutla.",
+        "Bugün kimseyle zorlu bir diyalog kurma; sadece kendine şefkat göster."
+      ],
+      "alternatif": "Yansıma notuna tek bir olumlu cümle yaz.",
+      "etiketler": ["hafif-gun", "yansima"]
+    },
+    {
+      "id": "iliskiler-g22",
+      "alan": "iliskiler",
+      "gun": 22,
+      "asama": "govde",
+      "zorluk": 4,
+      "sure_dk": 10,
+      "baslik": "Biri sınırına bastığında hemen geri adım atmadan duruşunu koru",
+      "neden": "Sınırlar ilk konulduğunda test edilir; tutarlılık saygı getirir.",
+      "adimlar": [
+        "Koyduğun bir kurala ya da sınıra ısrarla karşı çıkıldığında geri çekilme.",
+        "Öfkelenmeden: 'Kararımın senin için zor olduğunu anlıyorum ama bu konuda fikrim net' de.",
+        "Kendi sınırını savunabilmenin getirdiği öz-saygıyı duyumsayın."
+      ],
+      "alternatif": "Israra karşı konuyu uzatmadan nazikçe kapat.",
+      "etiketler": ["sinir-koruma", "tutarlilik"]
+    },
+    {
+      "id": "iliskiler-g23",
+      "alan": "iliskiler",
+      "gun": 23,
+      "asama": "govde",
+      "zorluk": 3,
+      "sure_dk": 12,
+      "baslik": "Bölünmesiz ve telefonsuz kaliteli 12 dakika",
+      "neden": "İlişkileri besleyen şey saatler değil, dikkatle adanmış saf dakikalardır.",
+      "adimlar": [
+        "Önem verdiğin biriyle (arkadaş, eş, ebeveyn veya çocuk) 12 dakika geçir.",
+        "İki tarafın da telefonları görünmez bir yerde olsun.",
+        "Sadece birbirinize ve konuşulan konuya odaklanın."
+      ],
+      "alternatif": "Telefonsuz 8 dakikalık bir yürüyüş yapın.",
+      "etiketler": ["kaliteli-zaman", "bag-kurma"]
+    },
+
+    {
+      "id": "iliskiler-g24",
+      "alan": "iliskiler",
+      "gun": 24,
+      "asama": "yaprak",
+      "zorluk": 4,
+      "sure_dk": 12,
+      "baslik": "Karşındakinin dünyasını anlamak için derin bir soru sor",
+      "neden": "Yüzeysel sohbetleri aşıp ruha dokunmak ilişkileri güçlendirir.",
+      "adimlar": [
+        "Biriyle sohbet ederken şunu sor: 'Şu sıralar seni en çok ne heyecanlandırıyor ya da yoruyor?'",
+        "Cevabını sabırla ve ilgiyle dinle.",
+        "Onun iç dünyasında bir misafir olduğunu hisset."
+      ],
+      "alternatif": "Eski bir dostuna 'Aklıma geldin, nasılsın?' diye sorup derinlemesine dinle.",
+      "etiketler": ["derin-soru", "samimiyet"]
+    },
+    {
+      "id": "iliskiler-g25",
+      "alan": "iliskiler",
+      "gun": 25,
+      "asama": "yaprak",
+      "zorluk": 5,
+      "sure_dk": 15,
+      "baslik": "15 dakikalık tam dinleme ve şeffaf paylaşım seansı",
+      "neden": "Yaprak aşaması; artık ilişkiler korkuyla değil, şeffaf güvenle yönetilir.",
+      "adimlar": [
+        "Yakın hissettiğin biriyle 15 dakikalık sakin bir kahve sohbetine otur.",
+        "Hem onu yargısızca dinle hem de kendi iç dünyandan dürüst bir parça paylaş.",
+        "Karşılıklı maskeleri indirmenin verdiği huzuru deneyimle."
+      ],
+      "alternatif": "10 dakikalık bir paylaşım alanı oluştur.",
+      "etiketler": ["seffaflik", "guven"]
+    },
+    {
+      "id": "iliskiler-g26",
+      "alan": "iliskiler",
+      "gun": 26,
+      "asama": "yaprak",
+      "zorluk": 4,
+      "sure_dk": 10,
+      "baslik": "İlişkilerde affetme ve geçmiş yükü serbest bırakma pratiği",
+      "neden": "Affetmek karşıdakini haklı çıkarmak değil, kendi zihnini o yükten kurtarmaktır.",
+      "adimlar": [
+        "Geçmişte seni üzen birini düşün.",
+        "Kendi iyiliğin için içinden fısılda: 'Sana olan öfkemi ve bu yükü artık bırakıyorum.'",
+        "Göğsündeki o eski ağırlığın hafiflemesine izin ver."
+      ],
+      "alternatif": "Kağıda 'Bu kırgınlığı geçmişte bırakıyorum' yazıp yırt.",
+      "etiketler": ["affetme", "ozgurluk"]
+    },
+    {
+      "id": "iliskiler-g27",
+      "alan": "iliskiler",
+      "gun": 27,
+      "asama": "yaprak",
+      "zorluk": 4,
+      "sure_dk": 12,
+      "baslik": "Hayatındaki 3 insanın birer değerini yüzlerine söyleyerek onurlandır",
+      "neden": "Duyulan takdirler insanların içindeki en güzel tarafları besler.",
+      "adimlar": [
+        "Hayatına dokunan 3 kişiyi seç (iş, aile, arkadaş).",
+        "Onlara ayrı ayrı: 'Hayatımda olmanı seviyorum çünkü sende şu özellik var' de.",
+        "Bu cümlelerin aranızdaki bağa kattığı sıcaklığı hisset."
+      ],
+      "alternatif": "Tek bir insana içten bir sesli mesaj at.",
+      "etiketler": ["onurlandirma", "takdir"]
+    },
+    {
+      "id": "iliskiler-g28",
+      "alan": "iliskiler",
+      "gun": 28,
+      "asama": "yaprak",
+      "zorluk": 5,
+      "sure_dk": 14,
+      "baslik": "Kişisel İlişki Anayasası: Kendi 3 temel prensibini yaz",
+      "neden": "Kendi ilişki ilkelerini belirleyen insan manipülasyona ve tükenmişliğe kapılmaz.",
+      "adimlar": [
+        "28 günden öğrendiğin en değerli 3 ilişki ilkeni yaz.",
+        "Örnek: '1. Kırgınlığımı içime atmam, 'ben' diliyle söylerim. 2. İstemediğim şeye suçluluk duymadan hayır derim. 3. Dinlerken telefonumu bırakırım.'",
+        "Bu ilkeleri telefonunun notlarına kaydet."
+      ],
+      "alternatif": "Sadece tek bir altın iletişim kuralı belirle.",
+      "etiketler": ["anayasa", "prensipler"]
+    },
+    {
+      "id": "iliskiler-g29",
+      "alan": "iliskiler",
+      "gun": 29,
+      "asama": "yaprak",
+      "zorluk": 3,
+      "sure_dk": 10,
+      "baslik": "Haftalık 'İlişki Bakımı' zamanını takvime işle",
+      "neden": "Bahçeler gibi ilişkiler de düzenli ilgi ve sulanma ister.",
+      "adimlar": [
+        "Takvimine haftada bir gün için 20 dakikalık 'Sevdiklerimi Arama & Hatır Sorma' zamanı ekle.",
+        "Bu sürede sadece hal hatır soracağın bir dostunu ara.",
+        "Sürdürülebilir dostlukların düzenli küçük adımlarla korunduğunu gör."
+      ],
+      "alternatif": "Ayda bir kez görüşülecek bir dost buluşması planla.",
+      "etiketler": ["iliski-bakimi", "surdurulebilirlik"]
+    },
+    {
+      "id": "iliskiler-g30",
+      "alan": "iliskiler",
+      "gun": 30,
+      "asama": "yaprak",
+      "zorluk": 2,
+      "sure_dk": 8,
+      "baslik": "Yolculuğun Sonu ve Yeni Başlangıç: Sağlıklı ve Samimi Bağlar",
+      "neden": "30 gün boyunca attığın adımlar sayesinde artık hem kendi sınırlarına hem de başkalarının duygularına daha açıksın.",
+      "adimlar": [
+        "1. Günde içine attığın ya da sınır koyamadığın halinle bugünkü netliğini karşılaştır.",
+        "İlişkilerinde hem kendine hem karşındakine alan açabilme olgunluğunu kutla.",
+        "Kendine teşekkür et. Bu güvenli bağlar artık senin yaşam biçimin."
+      ],
+      "alternatif": "Bugünlük kendine içtenlikle 'Artık daha iyi dinliyorum ve sınırlarımı seviyorum' de.",
+      "etiketler": ["kutlama", "yolculuk-sonu"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g01",
+      "alan": "mukemmeliyetcilik",
+      "gun": 1,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "İç eleştirmenin sesini ilk kez yakala",
+      "neden": "Mükemmeliyetçilik, farkında olmadığın otomatik bir iç sesle yönetilir. İlk adım onu duymaktır.",
+      "adimlar": [
+        "Bugün bir iş yaparken veya aynaya bakarken aklından geçen ilk olumsuz/yargılayıcı cümleyi fark et.",
+        "O cümlenin sana ait mutlak bir gerçek değil, sadece aşırı temkinli koruyucu parçanın sözü olduğunu hatırla.",
+        "İçinden sakince: 'Seni duydum, şu an güvendeyiz' de."
+      ],
+      "alternatif": "Aklına gelen tek bir eleştirel cümleyi kağıda yaz ve yanına 'Bu sadece bir düşünce' notu düş.",
+      "etiketler": ["farkindalik", "ic-ses", "tohum"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g02",
+      "alan": "mukemmeliyetcilik",
+      "gun": 2,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "Kasıtlı kusur: Masada bir nesneyi bilerek yamuk bırak",
+      "neden": "Kusursuzluk takıntısı fiziksel çevreyle başlar. Küçük bir asimetriye tahammül etmek zihni esnetir.",
+      "adimlar": [
+        "Çalışma masanda, sehpada veya odanda duran bir nesneyi (ör. defter, bardak altlığı, kalem) bilerek hafif yamuk koy.",
+        "Düzeltme dürtüsünün gelmesine izin ver ama 1 dakika boyunca bilerek dokunma.",
+        "Dünyanın yıkılmadığını ve odanın hâlâ işlevini sürdürdüğünü fark et."
+      ],
+      "alternatif": "Yatağının örtüsündeki küçük bir kırışıklığı bilerek düzeltmeden bırak.",
+      "etiketler": ["kasitli-kusur", "fiziksel-esneklik"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g03",
+      "alan": "mukemmeliyetcilik",
+      "gun": 3,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Küçük bir mesajı tekrar tekrar okumadan gönder",
+      "neden": "Önemsiz bir mesajı bile defalarca kontrol etmek, hata yapma kaygısının enerjini çalmasıdır.",
+      "adimlar": [
+        "Bir arkadaşına, ailene ya da kuryeye göndereceğin sıradan, düşük riskli bir mesaj yaz.",
+        "Mesajı bitirince tekrar baştan okumadan doğrudan 'Gönder' tuşuna bas.",
+        "Gönderdikten sonra hemen telefonu bırak; hata varsa bile bunun telafi edilebilir olduğunu hatırla."
+      ],
+      "alternatif": "Mesajı 3-4 kez kontrol etmek yerine sadece 1 kez okuyup gönder.",
+      "etiketler": ["kasitli-kusur", "iletisim", "hiz"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g04",
+      "alan": "mukemmeliyetcilik",
+      "gun": 4,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "'Yeterince İyi' fısıltısı",
+      "neden": "Mükemmel ile berbat arasında 'yeterince iyi' adında koca bir huzurlu alan vardır.",
+      "adimlar": [
+        "Bugün tamamladığın sıradan bir işin (bulaşık toplamak, çöpü çıkarmak, bir e-postayı yanıtlamak) ardından dur.",
+        "Eksik kalan veya daha iyi olabilecek detayları aramak yerine derin bir nefes al.",
+        "Fısıltıyla kendine: 'Bu kadarı şu an için yeterince iyi' de."
+      ],
+      "alternatif": "Bir iş bittiğinde aynaya bakıp 'Yeterli' diyerek gülümse.",
+      "etiketler": ["yeterince-iyi", "oz-sefqat"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g05",
+      "alan": "mukemmeliyetcilik",
+      "gun": 5,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Yazarken hata yap: Silgi veya silme tuşunu kullanma",
+      "neden": "Sürekli geri al tuşuna basmak akışı öldürür. Kusurlu bir karalamayı var etmeye izin ver.",
+      "adimlar": [
+        "Bir kağıt ve kalem al. Aklına gelen rastgele bir düşünceyi veya yapılacaklar maddesini yaz.",
+        "Yazarken bir kelimeyi yanlış yazarsan ya da harf atlarsan silme, karalama; öylece bırakıp devam et.",
+        "Sayfaya bak: O küçük kusur sayfanın değerini ya da anlamını yok etmedi."
+      ],
+      "alternatif": "Telefonda hızlıca bir not yazarken yaptığın yazım hatasını silmeden notu kaydet.",
+      "etiketler": ["kasitli-kusur", "akis", "kabul"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g06",
+      "alan": "mukemmeliyetcilik",
+      "gun": 6,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Görünüşünde %5 kusura izin ver",
+      "neden": "Dışarı çıkarken veya aynaya bakarken kusursuz olma baskısı bedeni gergin tutar.",
+      "adimlar": [
+        "Bugün dışarı çıkarken ya da güne başlarken görünümünde ufak bir kusuru bilerek öyle bırak.",
+        "Örneğin saçında tek bir teli milimetrik düzeltme veya çoraplarının hafif farklı durmasına izin ver.",
+        "Kimsenin bu ayrıntıyı fark etmediğini, insanların senin bütünsel enerjini gördüğünü hisset."
+      ],
+      "alternatif": "Ev kıyafetlerinde tam uyumlu olmayan iki rahat parçayı bilerek giy.",
+      "etiketler": ["beden-rahatligi", "oz-sefqat", "esneklik"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g07",
+      "alan": "mukemmeliyetcilik",
+      "gun": 7,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "Hafif Gün: Hiçbir şeyi düzeltmeme izni",
+      "neden": "Tohum aşamasının ilk haftasını geride bıraktın. Bugün çabalamak yok, sadece var olmak var.",
+      "adimlar": [
+        "Bugün hiçbir şeyi mükemmelleştirmeye veya düzeltmeye çalışma.",
+        "Gözüne çarpan eksikleri düzeltmek yerine 'Bugün benim dinlenme günüm' de.",
+        "İlk 6 gündeki küçük adımlarını kutla ve derin bir rahatlama nefesi al."
+      ],
+      "alternatif": "Sadece 1 dakika boyunca sırtını yasla ve hiçbir şeyi kontrol etme.",
+      "etiketler": ["hafif-gun", "dinlenme", "nefes"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g08",
+      "alan": "mukemmeliyetcilik",
+      "gun": 8,
+      "asama": "filiz",
+      "zorluk": 1,
+      "sure_dk": 5,
+      "baslik": "İç eleştirmene komik bir isim ver",
+      "neden": "İçindeki yargılayıcı sesi ciddiye aldıkça gücü artar. Onu karikatürize etmek mesafeyi açar.",
+      "adimlar": [
+        "Kusur bulunca seni azarlayan o iç eleştirmene eğlenceli ya da komik bir isim koy (ör. 'Müfettiş Şerafettin', 'Bay Kusursuz', 'Panik Müdürü').",
+        "Bir dahaki sefere bir şey için yetersiz hissettiğinde 'Yine konuştu bizim Müfettiş' diyerek durumu fark et.",
+        "Onun seni korumaya çalışan ama abartan bir parça olduğunu anla."
+      ],
+      "alternatif": "İç eleştirmenin ses tonunu çizgi film karakteri gibi hayal et.",
+      "etiketler": ["ic-ses", "mizah", "mesafe"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g09",
+      "alan": "mukemmeliyetcilik",
+      "gun": 9,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 6,
+      "baslik": "Zamanlayıcıyla bitir: 5 dakikalık sınır",
+      "neden": "Süre sınırı olmadığında mükemmeliyetçilik işi sonsuza dek yayar (Parkinson Yasası).",
+      "adimlar": [
+        "Ertelediğin ya da bitmek bilmeyen küçük bir iş seç (çekmece toplamak, bir e-posta yazmak, bir notu düzenlemek).",
+        "Geri sayım sayacını tam 5 dakikaya kur.",
+        "Zil çaldığı anda elindekini bırak. Nerede kaldıysan o haliyle 'bitti' say."
+      ],
+      "alternatif": "Süreyi 3 dakika olarak ayarla ve sadece tek bir alanı toparla.",
+      "etiketler": ["zaman-kutusu", "bitirme", "hiz"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g10",
+      "alan": "mukemmeliyetcilik",
+      "gun": 10,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 5,
+      "baslik": "%80 kuralı: 'İyi' ile 'Mükemmel' arasındaki tuzağı fark et",
+      "neden": "Bir işin %80'i enerjinin %20'siyle yapılır; kalan %20 mükemmellik çabası enerjinin %80'ini tüketir.",
+      "adimlar": [
+        "Bugün üzerinde çalıştığın bir görevi incelerken kendine sor: 'Bu iş şu an %80 oranında tamamlandı mı?'",
+        "Eğer cevabın evetse, üzerinde daha fazla cila yapmayı bilerek durdur.",
+        "Kalan enerjini dinlenmeye ya da diğer işlerine sakla."
+      ],
+      "alternatif": "Yapılacaklar listendeki bir maddenin yanına '%80 yetti' yazıp üstünü çiz.",
+      "etiketler": ["80-20-kurali", "verimlilik", "sinirlar"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g11",
+      "alan": "mukemmeliyetcilik",
+      "gun": 11,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 6,
+      "baslik": "Kasıtlı kusurlu taslak çıkar",
+      "neden": "Başlamayı engelleyen şey, ilk adımın kusursuz olması gerektiği yanılgısıdır.",
+      "adimlar": [
+        "Yazmak, planlamak veya tasarlamak istediğin bir konu seç.",
+        "Kendine berbat, baştan savma ve anlamsız cümleler kurma izni vererek 5 dakika boyunca durmadan yaz.",
+        "Güzelleştirmeye çalışma; amacın sadece taslağın var olmasını sağlamak."
+      ],
+      "alternatif": "Sadece 3 cümlelik çok basit ve özensiz bir karalama yap.",
+      "etiketler": ["taslak", "baslangic", "cesaret"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g12",
+      "alan": "mukemmeliyetcilik",
+      "gun": 12,
+      "asama": "filiz",
+      "zorluk": 1,
+      "sure_dk": 5,
+      "baslik": "En kötü senaryo testi: 'En fazla ne olabilir?'",
+      "neden": "Mükemmeliyetçilik felaket senaryoları üretir. Gerçekçi olmak korkuyu söndürür.",
+      "adimlar": [
+        "Hata yapmaktan en çok çekindiğin güncel bir durumu düşün.",
+        "Kendine dürüstçe sor: 'Bu işte hata yaparsam ya da mükemmel olmazsa gerçekte EN KÖTÜ ne olabilir?'",
+        "Cevabı yaz. Birkaç hafta sonra bunun hatırlanmayacak bile bir detay olduğunu gör."
+      ],
+      "alternatif": "Gözlerini kapatıp en kötü senaryoyu düşün ve 'Bununla başa çıkabilirim' de.",
+      "etiketler": ["korkuyla-yuzlesme", "gerceklik-kontrolu"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g13",
+      "alan": "mukemmeliyetcilik",
+      "gun": 13,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 7,
+      "baslik": "Bir dostuna göstereceğin şefkati kendine göster",
+      "neden": "En yakın arkadaşına asla söylemeyeceğin acımasız sözleri kendine söylüyorsun.",
+      "adimlar": [
+        "Bugün eksik bıraktığın ya da tam istediğin gibi gitmeyen bir durumu hatırla.",
+        "Eğer çok sevdiğin bir dostun aynı hatayı yapsaydı ona ne söylerdin? O şefkatli cümleyi bir yere yaz.",
+        "Şimdi o cümleyi doğrudan kendine oku: 'Sen elinden geleni yaptın, bu çok normal.'"
+      ],
+      "alternatif": "Elini kalbinin üzerine koy ve 3 kez 'Hata yapabilirim, yine de değerliyim' de.",
+      "etiketler": ["oz-sefqat", "nezaket", "ic-huzur"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g14",
+      "alan": "mukemmeliyetcilik",
+      "gun": 14,
+      "asama": "filiz",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Hafif Gün: 'Bugün hiçbir şeyi kanıtlamak zorunda değilim'",
+      "neden": "Filiz aşamasını tamamladın. Kendini sürekli kanıtlama maratonuna bugün küçük bir mola ver.",
+      "adimlar": [
+        "Bugün fazladan hiçbir sorumluluk üstlenme.",
+        "Bir çay veya kahve al, pencereden dışarı bak ve içinden tekrar et: 'Ben başarım ve çabamdan ibaret değilim.'",
+        "Geriye kalan 2 haftalık yolculuk öncesi zihnine ve bedenine teşekkür et."
+      ],
+      "alternatif": "1 dakika boyunca sadece sessizliği dinle.",
+      "etiketler": ["hafif-gun", "dinlenme", "oz-deger"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g15",
+      "alan": "mukemmeliyetcilik",
+      "gun": 15,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 6,
+      "baslik": "Yapılacaklar listesinden 1 maddeyi bilerek sil",
+      "neden": "Her şeyi bitirme hırsı tükenmişliğe yol açar. Bazı şeyleri yapmamak bilinçli bir zaferdir.",
+      "adimlar": [
+        "Bugünkü görev listene veya kafandaki yapılacaklara bak.",
+        "Aslında hayati olmayan, sırf 'yapılmış olsun' diye tuttuğun 1 maddeyi seç.",
+        "Üzerini bilerek çiz ve yanına 'Bunu yapmamayı seçiyorum' yaz."
+      ],
+      "alternatif": "Eteğindeki taşlardan birini yarına bile ertelemeden doğrudan iptal et.",
+      "etiketler": ["vazgecme", "sinirlar", "rahatlama"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g16",
+      "alan": "mukemmeliyetcilik",
+      "gun": 16,
+      "asama": "govde",
+      "zorluk": 2,
+      "sure_dk": 8,
+      "baslik": "Bitti > Mükemmel: Bir işi son rötuşları yapmadan teslim et",
+      "neden": "O son 10 dakikalık 'biraz daha cilalayayım' dürtüsü, teslim etme korkusudur.",
+      "adimlar": [
+        "Göndereceğin bir e-posta, ödev, mesaj veya küçük bir iş belirle.",
+        "İş temel olarak bittiğinde son kontrolü yapma isteğine diren.",
+        "O haliyle gönder veya kenara kaldır. 'Bitti, mükemmelden iyidir' de."
+      ],
+      "alternatif": "Bir çalışmayı teslim etmeden önce yapmayı planladığın son okumayı atla.",
+      "etiketler": ["bitirme", "teslimat", "cesaret"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g17",
+      "alan": "mukemmeliyetcilik",
+      "gun": 17,
+      "asama": "govde",
+      "zorluk": 3,
+      "sure_dk": 10,
+      "baslik": "Zararsız bir kusur yarat ve düzeltme",
+      "neden": "Kontrol yanılsamasını kırmanın en etkili yolu, güvenli alanda bilinçli kusur bırakmaktır.",
+      "adimlar": [
+        "Zararsız, kimseye zarar vermeyecek küçük bir hata yap (ör. bir arkadaşına yazdığın mesajda bilerek bir harf hatasını düzeltmeden bırak, ya da bir dosyayı alfabetik sıraya dizme).",
+        "İçindeki 'düzeltmeliyim' kaygısını izle, bedeninde nerede hissettiğine bak.",
+        "Bu hissin birkaç dakika sonra kendiliğinden söndüğünü deneyimle."
+      ],
+      "alternatif": "Sosyal medyada ya da bir notta küçük bir noktalama hatasını bilerek öylece paylaş/bırak.",
+      "etiketler": ["kasitli-kusur", "cesaret", "esneklik"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g18",
+      "alan": "mukemmeliyetcilik",
+      "gun": 18,
+      "asama": "govde",
+      "zorluk": 2,
+      "sure_dk": 8,
+      "baslik": "Kontrolü devret: Küçük bir şeyi başkasına bırak",
+      "neden": "Mükemmeliyetçilik 'Ben yapmazsam kimse doğru yapamaz' inancıyla beslenir.",
+      "adimlar": [
+        "Bugün genellikle senin yaptığın küçük bir işi (akşam yemeği seçimi, bir ev işi veya ofiste basit bir görev) başka birine bırak.",
+        "Nasıl yapıldığına müdahale etme ve düzeltmeye çalışma.",
+        "Farklı yöntemlerin de geçerli birer sonuç üretebileceğini gözlemle."
+      ],
+      "alternatif": "Bir arkadaşına 'Bugün nereye gideceğimize sen karar ver' de ve seçimine uy.",
+      "etiketler": ["kontrolu-birakma", "guven", "esneklik"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g19",
+      "alan": "mukemmeliyetcilik",
+      "gun": 19,
+      "asama": "govde",
+      "zorluk": 3,
+      "sure_dk": 10,
+      "baslik": "'Ya Hep Ya Hiç' düşüncesini yakala ve çürüt",
+      "neden": "Kusursuz olmuyorsa hiç yapmamak, mükemmeliyetçiliğin en sinsi erteleme tuzağıdır.",
+      "adimlar": [
+        "Bugün aklına gelen 'Ya tam yaparım ya hiç yapmam' dediğin bir konuyu yakala (ör. 1 saat spor yapamıyorsam hiç yapmam).",
+        "Onu gri alana çek: '10 dakika yürümek de hiç yapmamaktan kat kat iyidir.'",
+        "O işin mikro versiyonunu hemen şimdi 5 dakika uygula."
+      ],
+      "alternatif": "Sadece tek bir 'ya hep ya hiç' inancını deftere yazıp yanına esnek bir alternatif yaz.",
+      "etiketler": ["bilissel-esneklik", "gri-alan", "eylem"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g20",
+      "alan": "mukemmeliyetcilik",
+      "gun": 20,
+      "asama": "govde",
+      "zorluk": 2,
+      "sure_dk": 8,
+      "baslik": "Hata defteri: Geçmişteki bir hatana teşekkür et",
+      "neden": "Hatalar yetersizlik kanıtı değil, öğrenmenin ve büyümenin tek kanıtıdır.",
+      "adimlar": [
+        "Geçmişte yaptığın ve uzun süre kendini suçladığın küçük/orta bir hatayı hatırla.",
+        "O hatanın sana öğrettiği en az bir somut dersi veya kazandırdığı olgunluğu yaz.",
+        "'İyi ki o hatayı yapmışım, çünkü sayesinde...' cümlesini tamamla."
+      ],
+      "alternatif": "Aklına gelen bir hataya 'Bana çok şey öğrettin, artık serbestsin' de.",
+      "etiketler": ["ogrenme", "affedicilik", "olgunluk"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g21",
+      "alan": "mukemmeliyetcilik",
+      "gun": 21,
+      "asama": "govde",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Hafif Gün: 'Çabasızlık ve olduğu gibi kabul'",
+      "neden": "Gövde aşamasını tamamladın. Kontrol çabasını bir günlüğüne tamamen rüzgara bırak.",
+      "adimlar": [
+        "Bugün plan yapma, programı sıkıştırma, günün akışına teslim ol.",
+        "Ne kadar ilerlediğini düşün ve derin bir rahatlama nefesi ver.",
+        "Kendine 'Bugün sadece nefes almam bile yeterli' de."
+      ],
+      "alternatif": "5 dakika boyunca sadece gökyüzünü ya da yeşilliği izle.",
+      "etiketler": ["hafif-gun", "teslimiyet", "huzur"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g22",
+      "alan": "mukemmeliyetcilik",
+      "gun": 22,
+      "asama": "govde",
+      "zorluk": 3,
+      "sure_dk": 12,
+      "baslik": "10 dakikalık 'Kusursuz Olmayan Eylem' seansı",
+      "neden": "Eyleme geçmek mükemmellik arayışını öldürür. Eylem içinde kusur barındırır.",
+      "adimlar": [
+        "Uzun süredir 'tam hazır değilim' diye ertelediğin bir projeyi veya işi önüne al.",
+        "Hiçbir hazırlık yapmadan, en baştan mükemmel olmasını beklemeden hemen 10 dakika boyunca üzerinde çalış.",
+        "Süre bitince dur. Yarım kalmış olsa bile 'harekete geçmenin' yarattığı rahatlamayı hisset."
+      ],
+      "alternatif": "Süreyi 5 dakika tut ve sadece ilk adımı at.",
+      "etiketler": ["eylem", "ertelemeyi-kirma", "cesaret"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g23",
+      "alan": "mukemmeliyetcilik",
+      "gun": 23,
+      "asama": "govde",
+      "zorluk": 2,
+      "sure_dk": 9,
+      "baslik": "Başkalarının onayını aramama detoksu",
+      "neden": "Mükemmeliyetçilik çoğu zaman 'Herkes beni kusursuz görsün' arzusundan beslenir.",
+      "adimlar": [
+        "Bugün yaptığın iyi bir şeyi kimseye anlatma, sosyal medyada paylaşma veya onay bekleme.",
+        "O başarının tadını sadece kendi içinde çıkar.",
+        "Kendi onayının dışarıdan gelecek her türlü alkıştan daha doyurucu olduğunu fark et."
+      ],
+      "alternatif": "Bugün birine 'Nasıl olmuş, beğendin mi?' diye sorma isteğini 1 kez frenle.",
+      "etiketler": ["ic-onay", "oz-saygi", "ozgurluk"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g24",
+      "alan": "mukemmeliyetcilik",
+      "gun": 24,
+      "asama": "yaprak",
+      "zorluk": 3,
+      "sure_dk": 12,
+      "baslik": "Kişisel 'Yeterince İyi' standardını tanımla",
+      "neden": "Mükemmel ulaşılamaz bir seraptır; 'yeterince iyi' ise huzurlu ve sürdürülebilir bir standarttır.",
+      "adimlar": [
+        "Hayatının 3 temel alanını yaz (ör. İş, Ev düzeni, Kişisel ilişkiler).",
+        "Her biri için 'Benim için burada YETERİNCE İYİ olan seviye nedir?' sorusunu yanıtla (ör. Evin derli toplu olması yeterli, cerrahi sterilite gerekmez).",
+        "Bu gerçekçi standartları bir yere not et."
+      ],
+      "alternatif": "Sadece tek bir alan (ör. çalışma masası) için 'yeterince iyi' sınırını belirle.",
+      "etiketler": ["yeterince-iyi", "standartlar", "yaprak"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g25",
+      "alan": "mukemmeliyetcilik",
+      "gun": 25,
+      "asama": "yaprak",
+      "zorluk": 3,
+      "sure_dk": 15,
+      "baslik": "15 dakika kesintisiz ve düzeltmesiz akış",
+      "neden": "Akış hali, iç eleştirmenin susup eylemin kendisiyle birleştiğin andır.",
+      "adimlar": [
+        "Yaratıcı veya zihinsel bir görev seç (yazı yazmak, fikir üretmek, çizim yapmak, kod yazmak).",
+        "Zamanlayıcıyı 15 dakikaya kur. Bu süre boyunca duraksamadan, geriye dönüp düzeltmeden sadece üret.",
+        "Zil çaldığında ortaya çıkan ham ürüne şefkatle bak: Kusurlu ama canlı."
+      ],
+      "alternatif": "Süreyi 7 dakika olarak belirle.",
+      "etiketler": ["akis", "yaraticilik", "ozgurluk"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g26",
+      "alan": "mukemmeliyetcilik",
+      "gun": 26,
+      "asama": "yaprak",
+      "zorluk": 2,
+      "sure_dk": 10,
+      "baslik": "Kusurluluğun güzelliği: 'Kintsugi' bakışı",
+      "neden": "Japon sanatında kırılan seramikler altınla birleştirilir; kusur eserin en değerli parçası olur.",
+      "adimlar": [
+        "Kendi karakterinde, bedeninde veya geçmişinde 'kusur' olarak gördüğün bir yönü düşün.",
+        "Bu özelliğin seni nasıl daha duyarlı, daha insan ve daha dayanıklı kıldığını yaz.",
+        "Kusurlarının seni sıradan bir robottan ayıran altın izler olduğunu kabul et."
+      ],
+      "alternatif": "Aynada kendine bakıp bir kusuruna gülümseyerek 'Seni de kabul ediyorum' de.",
+      "etiketler": ["kintsugi", "oz-kabul", "felsefe"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g27",
+      "alan": "mukemmeliyetcilik",
+      "gun": 27,
+      "asama": "yaprak",
+      "zorluk": 3,
+      "sure_dk": 12,
+      "baslik": "Ertelediğin o işi 'Kusurlu Bitirme' günü",
+      "neden": "Kafanda asılı kalan yarım işler zihinsel enerjiyi sömürür. Onu bugün defterden düş.",
+      "adimlar": [
+        "Haftalardır bitirmediğin yarım kalmış bir işi seç.",
+        "Bugün onu 'mükemmel hale getirmeyi' değil, sadece 'kapatmayı' hedefle.",
+        "Eksiklerine rağmen noktayı koy, 'Bitti' diyerek arşive kaldır."
+      ],
+      "alternatif": "Yarım kalmış işe 5 dakikalık hızlı bir son dokunuş yap ve bırak.",
+      "etiketler": ["bitirme", "ozgurluk", "hafiflik"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g28",
+      "alan": "mukemmeliyetcilik",
+      "gun": 28,
+      "asama": "yaprak",
+      "zorluk": 2,
+      "sure_dk": 10,
+      "baslik": "Mükemmeliyetçilik Karşıtı Özgürlük Manifestosu",
+      "neden": "Yolculuktan öğrendiğin prensipler, gelecekteki tuzaklara karşı kalkanın olur.",
+      "adimlar": [
+        "27 günlük deneyiminden süzülen 3 altın kuralını yaz.",
+        "Örnek: '1. Bitti, mükemmelden daima iyidir. 2. İç eleştirmenime gülümser, kararı ben veririm. 3. Hatalarım öğrenme fırsatımdır.'",
+        "Bu kuralları telefonuna kaydet veya çalışma masana as."
+      ],
+      "alternatif": "Tek bir motto seç: 'Kusurluyum, eyleme geçiyorum ve yeterliyim.'",
+      "etiketler": ["manifesto", "prensipler", "ozgurluk"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g29",
+      "alan": "mukemmeliyetcilik",
+      "gun": 29,
+      "asama": "yaprak",
+      "zorluk": 3,
+      "sure_dk": 11,
+      "baslik": "Haftalık 'Öz-Şefkat ve Esneklik' molasını planla",
+      "neden": "Mükemmeliyetçilik stresli anlarda geri dönmeye çalışır; düzenli mola bu refleksi kırar.",
+      "adimlar": [
+        "Gelecek haftanın takvimine bak ve haftada bir gün için 15 dakikalık 'Boşluk ve Esneklik' zamanı ayır.",
+        "Bu sürede hiçbir iş, hedef veya mükemmelleştirme çabası olmayacak; sadece duracaksın.",
+        "Bu alanı takviminde korumayı taahhüt et."
+      ],
+      "alternatif": "Haftanın bir gününü 'yargısız gün' ilan et.",
+      "etiketler": ["surdurulebilirlik", "oz-sefqat", "plan"]
+    },
+    {
+      "id": "mukemmeliyetcilik-g30",
+      "alan": "mukemmeliyetcilik",
+      "gun": 30,
+      "asama": "yaprak",
+      "zorluk": 2,
+      "sure_dk": 8,
+      "baslik": "Yolculuğun Sonu ve Yeni Başlangıç: Kusurlu, Özgür ve Yeterli",
+      "neden": "30 gün boyunca attığın mikro adımlarla içindeki o amansız eleştirmeni ehlileştirdin. Artık başlamaktan da bitirmekten de korkmuyorsun.",
+      "adimlar": [
+        "1. Günde her şeyi kontrol etmeye çalışan halinle bugünkü esnek ve cesur halini kıyasla.",
+        "'Yeterince iyi' olmanın sana kazandırdığı hafifliği ve zamanı kutla.",
+        "Kendine yürekten teşekkür et: Sen kusurlarınla tam ve çok değerlisin."
+      ],
+      "alternatif": "Bugün aynaya bakıp içtenlikle 'Artık mükemmel olmak zorunda değilim, ben yeterliyim' de.",
+      "etiketler": ["kutlama", "yolculuk-sonu", "ozgurluk"]
+    },
+    {
+      "id": "disiplin-g01",
+      "alan": "disiplin",
+      "gun": 1,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "Ertelediğin tek bir işi kağıda yaz ve rahatla",
+      "neden": "Erteleme çoğu zaman zihindeki belirsizlikten doğar. Kafandaki yükü kağıda dökmek direnci yarıya indirir.",
+      "adimlar": [
+        "Günlerdir veya haftalardır ertelediğin tek bir işi seç (ör. bir fatura, dağınık bir çekmece, yazılacak bir e-posta).",
+        "Bir kağıda sadece o işin adını yaz.",
+        "Hemen altına şunu not düş: 'Şu an bunu yapmak zorunda değilim, sadece görünür kıldım.'"
+      ],
+      "alternatif": "Telefonunun notlar kısmına ertelediğin tek bir kelimelik işi yaz.",
+      "etiketler": ["farkindalik", "gorunurluk", "tohum"]
+    },
+    {
+      "id": "disiplin-g02",
+      "alan": "disiplin",
+      "gun": 2,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "2 Dakika Kuralı: Ertelediğin o işin ilk 2 dakikasını yap",
+      "neden": "En zor kısım başlamaktır; eyleme geçtikten sonra ivme seni taşır. 2 dakika ise beynin paniklemediği bir süredir.",
+      "adimlar": [
+        "Dün yazdığın veya şu an ertelediğin işin başına geç.",
+        "Alarmını tam 2 dakikaya kur ve sadece 2 dakika boyunca işe başla.",
+        "Süre bittiğinde istersen hemen bırak; amacın bitirmek değil, başlama eşiğini aşmaktı."
+      ],
+      "alternatif": "İş için sadece gerekli belgeyi ya da aracı açıp ekran karşısında 1 dakika bekle.",
+      "etiketler": ["2-dakika-kurali", "baslama", "eylem"]
+    },
+    {
+      "id": "disiplin-g03",
+      "alan": "disiplin",
+      "gun": 3,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Başlangıç sürtünmesini azalt: Tek bir engeli kaldır",
+      "neden": "İşe başlamadan önceki her küçük fiziksel engel (şifre aramak, masanın dağınıklığı) ertelemeyi tetikler.",
+      "adimlar": [
+        "Ertelediğin işle arandaki fiziksel ya da dijital tek bir engeli tespit et.",
+        "Örneğin masanın üstündeki boş bardağı kaldır, gerekli dosyanın sekmesini açık bırak veya spor ayakkabını kapının önüne koy.",
+        "Görevi yapma, sadece yarın başlamayı kolaylaştıracak zemini hazırla."
+      ],
+      "alternatif": "Bilgisayarında veya telefonunda yarın yapacağın işin dosyasını masaüstüne taşı.",
+      "etiketler": ["ortam-tasarimi", "surtunme", "hazirlik"]
+    },
+    {
+      "id": "disiplin-g04",
+      "alan": "disiplin",
+      "gun": 4,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "Erteleme tetikleyicisini yakala: Sıkıntı mı, belirsizlik mi, korku mu?",
+      "neden": "Erteleme bir tembellik değil, olumsuz duyguları yönetememe problemidir.",
+      "adimlar": [
+        "Bugün ertelemek istediğin bir işle karşılaştığın an dur.",
+        "Kendine sor: 'Şu an beni bu işten kaçıran duygu ne? Sıkıcı olması mı, nereden başlayacağımı bilmemem mi, yoksa hata yapma korkusu mu?'",
+        "O duyguyu sadece tespit et ve kabul et: 'Şu an bundan sıkılıyorum, bu çok normal.'"
+      ],
+      "alternatif": "Duygunun adını tek bir kelimeyle bir kağıda karala (ör. 'Sıkıcı').",
+      "etiketler": ["tetikleyici", "duygu-yonetimi", "farkindalik"]
+    },
+    {
+      "id": "disiplin-g05",
+      "alan": "disiplin",
+      "gun": 5,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "Kendine gülünç derecede küçük bir söz ver ve tut",
+      "neden": "Disiplin, kendine verdiğin sözlerin tutulmasıyla inşa edilen içsel bir öz-güvendir.",
+      "adimlar": [
+        "Bugün kendine tutması neredeyse imkansız derecede kolay bir söz ver (ör. 'Bu suyu bitireceğim', '1 sayfa kitap okuyacağım', '1 çorabı sepete atacağım').",
+        "Sözü verir vermez hiç beklemeden yerine getir.",
+        "İçinden: 'Kendime bir söz verdim ve tuttum' diyerek öz-saygını pekiştir."
+      ],
+      "alternatif": "Hemen şimdi derin bir nefes alıp 'Bunu kendim için yaptım' de.",
+      "etiketler": ["soz-tutma", "oz-guven", "mikro-aliskanlik"]
+    },
+    {
+      "id": "disiplin-g06",
+      "alan": "disiplin",
+      "gun": 6,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Görevi atomik parçaya böl: Sadece 1. mikro adımı belirle",
+      "neden": "Beyin devasa projeleri tehlike olarak kodlar; tek bir mikro adımı ise kolayca sindirir.",
+      "adimlar": [
+        "Gözünde büyüttüğün bir işi seç (ör. ev temizliği, rapor yazmak, vergi ödemek).",
+        "Bu işin sadece ilk 60 saniyesinde yapılacak en küçük fiziksel adımı yaz (ör. 'Süpürgeyi fişe takmak', 'Boş Word belgesi açmak').",
+        "O mikro adımı yap ve dur. İlerisi için plan yapma."
+      ],
+      "alternatif": "Sadece ilk mikro adımın ne olduğunu sesli olarak söyle.",
+      "etiketler": ["gorev-parcalama", "mikro-adim", "netlik"]
+    },
+    {
+      "id": "disiplin-g07",
+      "alan": "disiplin",
+      "gun": 7,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "Hafif Gün: 'Bugün hiçbir şeyi zorlamama izni'",
+      "neden": "Tohum aşamasının ilk haftasını geride bıraktın. Disiplin, dinlenmeyi bilmekle dengelenir.",
+      "adimlar": [
+        "Bugün ertelediğin işler için kendini suçlamayı tamamen bırak.",
+        "Geçen 6 günde attığın küçük başlangıç adımlarını hatırla.",
+        "Derin bir nefes al ve bugün sadece dinlenmenin tadını çıkar."
+      ],
+      "alternatif": "Gözlerini 1 dakika kapatıp zihnini serbest bırak.",
+      "etiketler": ["hafif-gun", "dinlenme", "nefes"]
+    },
+    {
+      "id": "disiplin-g08",
+      "alan": "disiplin",
+      "gun": 8,
+      "asama": "filiz",
+      "zorluk": 1,
+      "sure_dk": 5,
+      "baslik": "5 Dakikalık Kum Saati: Ertelediğin işte sadece 5 dakika kal",
+      "neden": "5 dakika boyunca bir işte kalınca zihin odaklanma moduna geçer ve direnç buharlaşır.",
+      "adimlar": [
+        "Ertelediğin işin başına geç ve telefonundan 5 dakikalık bir geri sayım başlat.",
+        "Sadece bu 5 dakika boyunca işe odaklan; telefonuna veya başka şeylere bakma.",
+        "Süre bitince istersen devam et, istersen dur; kontrol tamamen sende."
+      ],
+      "alternatif": "Süreyi 3 dakikaya kurarak ilk adımı at.",
+      "etiketler": ["zaman-kutusu", "odak", "filiz"]
+    },
+    {
+      "id": "disiplin-g09",
+      "alan": "disiplin",
+      "gun": 9,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 5,
+      "baslik": "Kaçış alanını zorlaştır: En büyük dikkat dağıtıcıya bariyer koy",
+      "neden": "Erteleme, alternatif eylemler çok kolay ve zahmetsiz olduğunda güçlenir.",
+      "adimlar": [
+        "İşten kaçtığında en çok elinin gittiği şeyi bul (ör. Instagram, oyun, atıştırmalık).",
+        "Ona ulaşmayı 1 tık zorlaştır: Telefonu başka odaya bırak, uygulamayı sil veya oturumu kapat.",
+        "Bu küçük bariyerin erteleme dürtüsünü nasıl yavaşlattığını gözlemle."
+      ],
+      "alternatif": "Telefonunu ters çevirip senden en az 2 metre uzağa koy.",
+      "etiketler": ["ortam-tasarimi", "surtunme", "dijital-detoks"]
+    },
+    {
+      "id": "disiplin-g10",
+      "alan": "disiplin",
+      "gun": 10,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 5,
+      "baslik": "Alışkanlık Bağlama: Ertelediğin işi mevcut ritmine ekle",
+      "neden": "Yeni bir disiplin geliştirmek sıfırdan zordur; var olan sağlam bir alışkanlığın arkasına takmak çok daha kolaydır.",
+      "adimlar": [
+        "Zaten her gün aksatmadan yaptığın bir eylem seç (ör. sabah kahvesi içmek, diş fırçalamak, eve girmek).",
+        "Ertelediğin minik bir adımı bu eyleme bağla: '[Kahvemi yudumlar yudumlamaz], [ertelediğim o e-postayı açacağım].'",
+        "Bugün bu formülü ilk kez uygula."
+      ],
+      "alternatif": "Formülü bir kağıda yazıp kahve makinesinin veya aynanın yanına yapıştır.",
+      "etiketler": ["aliskanlik-baglama", "rutin", "davranis-tasarimi"]
+    },
+    {
+      "id": "disiplin-g11",
+      "alan": "disiplin",
+      "gun": 11,
+      "asama": "filiz",
+      "zorluk": 1,
+      "sure_dk": 6,
+      "baslik": "Mikro Ödül Tasarımı: Görev bittiğinde kendine küçük bir keyif ver",
+      "neden": "Beyin ödüllendirilen davranışları tekrarlar. Ertelemenin panzehiri, eylemin peşine anlık haz bağlamaktır.",
+      "adimlar": [
+        "Ertelediğin işin 5 dakikalık bir bölümünü yap.",
+        "Hemen ardından kendine ertelemesiz bir ödül ver: Sevdiğin bir şarkıyı dinle, balkonda kahve yudumla veya esneme hareketi yap.",
+        "Beynine 'eyleme geçmek güzel bir şeyle sonuçlanır' mesajını ilet."
+      ],
+      "alternatif": "İşi yapmadan önce ödülünü belirle ve masana koy (ör. bir fincan taze çay).",
+      "etiketler": ["odul-sistemi", "motivasyon", "pozitif-pekistirec"]
+    },
+    {
+      "id": "disiplin-g12",
+      "alan": "disiplin",
+      "gun": 12,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 6,
+      "baslik": "Sıralamayı tersine çevir: En kolay ve en çerez parçadan başla",
+      "neden": "Geleneksel 'zor olanla başla' yöntemi bazen direnci tavan yaptırır. En kolay kısımla başlamak motoru ısıtır.",
+      "adimlar": [
+        "Ertelediğin işin parçalarına bak ve içlerindeki en zahmetsiz, en çerez olanı seç.",
+        "Zor ve karmaşık kısımları tamamen görmezden gelerek sadece o kolay adımı tamamla.",
+        "Bir parçanın bitmiş olmasının verdiği hafifliği ve ivmeyi hisset."
+      ],
+      "alternatif": "Bir belgede sadece başlığı ve tarihi yazıp bırak.",
+      "etiketler": ["ivme", "kolay-baslangic", "psikolojik-rahatlama"]
+    },
+    {
+      "id": "disiplin-g13",
+      "alan": "disiplin",
+      "gun": 13,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 6,
+      "baslik": "Güven Bankası: 2 gün üst üste küçük bir söz tut",
+      "neden": "Öz-disiplin, kendine olan inancının bakiyesidir. Her tutulan söz bu hesaba yatırılan paradır.",
+      "adimlar": [
+        "Dün kendine verdiğin sözü hatırla. Bugün de tutabileceğin net ve küçük bir söz belirle.",
+        "Örneğin: 'Öğleden sonra saat 14:00'te ertelediğim aramayı yapacağım' veya 'Masamı 3 dakika toplayacağım'.",
+        "Günü tamamlamadan bu sözü yerine getir ve içsel onayını ver."
+      ],
+      "alternatif": "Sözünü 'Bugün ertelediğim iş için 2 dakika ayıracağım' şeklinde tut.",
+      "etiketler": ["soz-tutma", "guven-bankasi", "sureklilik"]
+    },
+    {
+      "id": "disiplin-g14",
+      "alan": "disiplin",
+      "gun": 14,
+      "asama": "filiz",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Hafif Gün: 'Yavaşlık ve Şefkat Molası'",
+      "neden": "Filiz aşamasını tamamladın. Kendini suçlayıcı disiplin değil, şefkatli disiplin kalıcıdır.",
+      "adimlar": [
+        "Bugün erteleme konusundaki tüm iç hesaplaşmalarını durdur.",
+        "Pencere kenarında 3 dakika boyunca sessizce dur veya sakin bir yürüyüş yap.",
+        "Kendine: 'Değişim aceleye gelmez, doğru yoldayım' de."
+      ],
+      "alternatif": "Sadece 1 fincan ılık içeceği yavaşça yudumla.",
+      "etiketler": ["hafif-gun", "dinlenme", "oz-sefqat"]
+    },
+    {
+      "id": "disiplin-g15",
+      "alan": "disiplin",
+      "gun": 15,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 6,
+      "baslik": "Erteleme günlüğü: Günün en yüksek direnç anını deşifre et",
+      "neden": "Hangi saatlerde ve hangi şartlarda kaçtığını bilmek, gelecekteki ertelemelerin önüne geçer.",
+      "adimlar": [
+        "Bugün bir işten kaçtığın ya da ertelemek istediğin anı yakala.",
+        "Bir kenara not et: Saat kaçtı? Yorgun muydun? Aç mıydın? Ortam dağınık mıydı?",
+        "Desenleri fark et; genellikle yorgunluk ve enerji düşüşü saatlerinde ertelediğini gör."
+      ],
+      "alternatif": "Sadece erteleme hissinin günün hangi vaktinde geldiğini hatırla (sabah/öğle/akşam).",
+      "etiketler": ["farkindalik", "desen-analizi", "oz-gozlem"]
+    },
+    {
+      "id": "disiplin-g16",
+      "alan": "disiplin",
+      "gun": 16,
+      "asama": "govde",
+      "zorluk": 2,
+      "sure_dk": 10,
+      "baslik": "10 Dakikalık 'İlk Blokaj': İşe derinlemesine dal",
+      "neden": "Gövde aşamasına geçtin. Artık 2 dakikalık başlangıçları 10 dakikalık odak bloklarına genişletme zamanı.",
+      "adimlar": [
+        "Ertelediğin gerçek bir işi önüne koy.",
+        "Zamanlayıcıyı 10 dakikaya ayarla ve aralıksız şekilde sadece o işle ilgilen.",
+        "İlk 3 dakikadaki direncin 5. dakikadan sonra nasıl eridiğini bizzat deneyimle."
+      ],
+      "alternatif": "Süreyi 7 dakika olarak belirle.",
+      "etiketler": ["odak-blokaji", "derinlesme", "govde"]
+    },
+    {
+      "id": "disiplin-g17",
+      "alan": "disiplin",
+      "gun": 17,
+      "asama": "govde",
+      "zorluk": 2,
+      "sure_dk": 8,
+      "baslik": "Belirsizliği yok et: İşi 3 somut eyleme parçala",
+      "neden": "Kafanda 'Raporu yaz' gibi muğlak duran işler ertelenir. Somut fiiller içeren adımlar eyleme dönüşür.",
+      "adimlar": [
+        "Ertelediğin karmaşık bir işi ele al.",
+        "Onu net fiillerle biten 3 adıma ayır (Örnek: 1. Taslak dosyayı aç, 2. İstatistikleri tabloya yapıştır, 3. Giriş paragrafını yaz).",
+        "Bu 3 adımdan ilkini hemen şimdi yap."
+      ],
+      "alternatif": "Sadece ilk 2 adımı kağıda yaz ve ilk adımı tamamla.",
+      "etiketler": ["gorev-parcalama", "eylem-plani", "netlik"]
+    },
+    {
+      "id": "disiplin-g18",
+      "alan": "disiplin",
+      "gun": 18,
+      "asama": "govde",
+      "zorluk": 2,
+      "sure_dk": 8,
+      "baslik": "Görsel Tetikleyici Yarat: Göz önünde tutma sanatı",
+      "neden": "Gözden ırak olan gönülden de ırak olur. İşi fiziksel olarak görünür kılmak ertelemeyi zorlaştırır.",
+      "adimlar": [
+        "Ertelediğin iş için gereken malzemeyi (kitap, form, dosya, spor kıyafeti) doğrudan görüş alanına yerleştir.",
+        "Üzerine küçük bir renkli yapışkan kağıt koy: 'Sadece 5 dakika'.",
+        "Günün içinde o nesneyle her karşılaştığında beyninin işe aşina olduğunu hisset."
+      ],
+      "alternatif": "Telefonunun kilit ekranı notuna o görevin tek bir kelimesini yaz.",
+      "etiketler": ["gorsel-ipucu", "ortam-tasarimi", "tetikleyici"]
+    },
+    {
+      "id": "disiplin-g19",
+      "alan": "disiplin",
+      "gun": 19,
+      "asama": "govde",
+      "zorluk": 3,
+      "sure_dk": 8,
+      "baslik": "Dürtü Dalgasını İzle: Erteleme isteği gelince 3 dakika dur",
+      "neden": "Erteleme dürtüsü okyanus dalgası gibidir; yükselir, zirveye ulaşır ve 3 dakika içinde söner (Urge Surfing).",
+      "adimlar": [
+        "Bir işten kaçıp telefona veya başka bir şeye uzanmak istediğin anı yakala.",
+        "Hemen kaçma. Sayacı 3 dakikaya kur ve sadece o kaçma isteğini bedeninde izle.",
+        "Dürtünün zirve yapıp birkaç dakika sonra nasıl sakinleştiğini gör, ardından işine dön."
+      ],
+      "alternatif": "Kaçış dürtüsü gelince 10 derin nefes sayana kadar hiçbir yere tıklama.",
+      "etiketler": ["durtu-surfu", "irade", "farkindalik"]
+    },
+    {
+      "id": "disiplin-g20",
+      "alan": "disiplin",
+      "gun": 20,
+      "asama": "govde",
+      "zorluk": 3,
+      "sure_dk": 12,
+      "baslik": "Ertelediğin o işin gövdesini tamamla (%50 eşiği)",
+      "neden": "Bir işin yarısını geçtiğinde beynin 'Zeigarnik Etkisi' devreye girer ve işi bitirmek için seni iter.",
+      "adimlar": [
+        "Günlerdir taşıdığın ertelediğin işin başına otur.",
+        "Bugün o işi yarı yarıya bitirmeyi hedefle (12 dakikalık odak).",
+        "Geriye kalan kısmın artık gözünde hiç büyümediğini fark et."
+      ],
+      "alternatif": "İşin en az üçte birini tamamlayıp işaretle.",
+      "etiketler": ["zeigarnik-etkisi", "yari-noktasi", "ivme"]
+    },
+    {
+      "id": "disiplin-g21",
+      "alan": "disiplin",
+      "gun": 21,
+      "asama": "govde",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Hafif Gün: 'Zihinsel Detoks ve Çabasızlık'",
+      "neden": "Gövde aşamasını tamamladın. Zihnini dinlendirmek, irade pillerini şarj etmenin tek yoludur.",
+      "adimlar": [
+        "Bugün yapılacaklar listene bakma, hiçbir işi zorlama.",
+        "Kendine 'Ben bir makine değilim, ritmim dinlenmeyi de kapsıyor' de.",
+        "Son haftaya geçmeden önce kendini takdir et."
+      ],
+      "alternatif": "5 dakika boyunca sırt üstü uzanıp hiçbir şey yapma.",
+      "etiketler": ["hafif-gun", "sarj-olma", "dinlenme"]
+    },
+    {
+      "id": "disiplin-g22",
+      "alan": "disiplin",
+      "gun": 22,
+      "asama": "govde",
+      "zorluk": 3,
+      "sure_dk": 10,
+      "baslik": "Sosyal Taahhüt: Küçük bir sözleşme yap",
+      "neden": "Hesap verebilirlik (accountability) erteleme direncini anında kırar.",
+      "adimlar": [
+        "Ertelediğin bir görevi seç.",
+        "Bir arkadaşına ya da aile bireyine mesaj at: 'Saat 17:00'ye kadar bu işin taslağını bitirip sana haber vereceğim.'",
+        "Zaman dolmadan o parçayı bitir ve haber ver."
+      ],
+      "alternatif": "Kendi kendine yazılı bir kağıt imzala: 'Bugün saat 18:00'e kadar bunu yapacağıma söz veriyorum.'",
+      "etiketler": ["hesap-verebilirlik", "sosyal-taahhut", "bitirme"]
+    },
+    {
+      "id": "disiplin-g23",
+      "alan": "disiplin",
+      "gun": 23,
+      "asama": "govde",
+      "zorluk": 2,
+      "sure_dk": 9,
+      "baslik": "Sürtünmeyi Sıfırla: Yarının başlangıcını bu akşamdan hazırla",
+      "neden": "Yarın sabah ne yapacağına sabah karar vermek ertelemeyi davet eder. Kararı akşamdan ver.",
+      "adimlar": [
+        "Yarın yapmayı ertelemekten korktuğun 1 önemli işi belirle.",
+        "Çalışma ortamında o işle ilgili her şeyi hazırla, sekmeyi aç, defteri koy.",
+        "Yarın sabah uyandığında hiçbir karar vermeden doğrudan masaya oturabilmenin rahatlığını hazırla."
+      ],
+      "alternatif": "Yarın sabah ilk 10 dakikada yapacağın tek bir şeyi not kağıdına yazıp bilgisayarın üstüne koy.",
+      "etiketler": ["aksam-hazirligi", "surtunmesiz-baslangic", "strateji"]
+    },
+    {
+      "id": "disiplin-g24",
+      "alan": "disiplin",
+      "gun": 24,
+      "asama": "yaprak",
+      "zorluk": 3,
+      "sure_dk": 15,
+      "baslik": "15 Dakikalık Derin Başlangıç Ritüeli",
+      "neden": "Yaprak aşamasında artık disiplin bir zorlama değil, dingin bir ritüele dönüşür.",
+      "adimlar": [
+        "Sessiz bir ortam yarat, telefonunu sessize alıp uzaklaştır.",
+        "Ertelediğin önemli bir iş için 15 dakikalık derin odak bloğu başlat.",
+        "Süre boyunca bölünmeden işin içinde kalmanın yarattığı ustalığı hisset."
+      ],
+      "alternatif": "Süreyi 10 dakika olarak belirle.",
+      "etiketler": ["derin-odak", "rituel", "yaprak"]
+    },
+    {
+      "id": "disiplin-g25",
+      "alan": "disiplin",
+      "gun": 25,
+      "asama": "yaprak",
+      "zorluk": 2,
+      "sure_dk": 12,
+      "baslik": "Kişisel Direnç Haritası: Erteleme tetikleyicilerine 3 panzehir",
+      "neden": "Erteleme gelecekte de kapını çalacak. Önemli olan panzehirlerinin elinin altında olmasıdır.",
+      "adimlar": [
+        "Bir kağıda şu 3 tetikleyiciyi ve karşısına senin panzehirini yaz:",
+        "'1. Sıkılırsam → 2 dakika kuralını uygulayacağım. 2. Gözüm korkarsa → Görevi mikro adımlara böleceğim. 3. Yorgunsam → 10 dk dinlenip küçük parçayla başlayacağım.'",
+        "Bu haritayı masanda görebileceğin bir yere koy."
+      ],
+      "alternatif": "En sık yaşadığın tek bir erteleme nedeni için tek bir panzehir cümlesi yaz.",
+      "etiketler": ["direnc-haritasi", "panzehir", "surdurulebilirlik"]
+    },
+    {
+      "id": "disiplin-g26",
+      "alan": "disiplin",
+      "gun": 26,
+      "asama": "yaprak",
+      "zorluk": 3,
+      "sure_dk": 15,
+      "baslik": "Ertelediğin o işi nihayet tamamla ve noktayı koy",
+      "neden": "Yolculuğun başından beri sırtında yük olan o işi bitirmek muazzam bir zihinsel özgürlük sağlar.",
+      "adimlar": [
+        "Bu 30 günde üzerinde çalıştığın veya ertelediğin işin son kalan kısmını önüne al.",
+        "Gereksiz mükemmelleştirme yapmadan, 'bitti' diyerek son noktayı koy.",
+        "Listeden o maddenin üstünü kalın bir çizgiyle çiz."
+      ],
+      "alternatif": "İşi tamamen bitiremiyorsan bile bugüne kadarki en büyük ilerlemeyi kaydet.",
+      "etiketler": ["bitirme", "zafer", "ozgurluk"]
+    },
+    {
+      "id": "disiplin-g27",
+      "alan": "disiplin",
+      "gun": 27,
+      "asama": "yaprak",
+      "zorluk": 2,
+      "sure_dk": 10,
+      "baslik": "Sakin Disiplin Sistemi: Günlük tek bir 'Vazgeçilmez Öncelik'",
+      "neden": "10 maddelik listeler ertelemeyi besler; tek bir net öncelik disiplini korur.",
+      "adimlar": [
+        "Günün için sadece 1 adet 'Günün En Önemli İşi' (Most Important Task) belirle.",
+        "Günün diğer işleri aksasa bile sadece o tek işi tamamlamayı taahhüt et.",
+        "O iş bittiğinde günün başarılı geçtiğini kabul et."
+      ],
+      "alternatif": "Yarın için sadece tek bir 'vazgeçilmez mini hedef' seç.",
+      "etiketler": ["tek-oncelik", "sakin-disiplin", "odak"]
+    },
+    {
+      "id": "disiplin-g28",
+      "alan": "disiplin",
+      "gun": 28,
+      "asama": "yaprak",
+      "zorluk": 2,
+      "sure_dk": 10,
+      "baslik": "Öz-Disiplin Manifestosu: 3 Altın İlken",
+      "neden": "Disiplin dışarıdan dayatılan kurallar değil, kendine duyduğun saygının prensipleridir.",
+      "adimlar": [
+        "27 günlük deneyiminden süzülen 3 altın disiplin ilkeni yaz.",
+        "Örnek: '1. Başlamak için ilham beklemem, 2 dakikalık adımı atarım. 2. Kendime verdiğim küçük sözleri tutarım. 3. Dinlenmeyi bir ödül değil, ritmin parçası bilirim.'",
+        "Bu ilkeleri telefonunun notlarına kaydet."
+      ],
+      "alternatif": "Tek bir ilke seç: 'Direnç hissettiğimde sadece 2 dakika başlarım.'",
+      "etiketler": ["manifesto", "prensipler", "oz-saygi"]
+    },
+    {
+      "id": "disiplin-g29",
+      "alan": "disiplin",
+      "gun": 29,
+      "asama": "yaprak",
+      "zorluk": 3,
+      "sure_dk": 12,
+      "baslik": "Haftalık Erteleme Temizliği Zamanını Takvime İşle",
+      "neden": "Düzenli bir bakım rutini, işlerin birikip devasa canavarlara dönüşmesini engeller.",
+      "adimlar": [
+        "Takvimine haftada bir gün (ör. pazar akşamı) için 15 dakikalık 'Erteleme Temizliği' randevusu koy.",
+        "Bu sürede biriken mini işleri (faturalar, mailler, çekmece) hızlıca toparlamayı kural edin.",
+        "Bu randevuyu kendine verdiğin kutsal bir bakım zamanı olarak gör."
+      ],
+      "alternatif": "Ayda iki kez 20 dakikalık bir toparlanma zamanı belirle.",
+      "etiketler": ["haftalik-ritim", "surdurulebilirlik", "sistem"]
+    },
+    {
+      "id": "disiplin-g30",
+      "alan": "disiplin",
+      "gun": 30,
+      "asama": "yaprak",
+      "zorluk": 2,
+      "sure_dk": 8,
+      "baslik": "Yolculuğun Sonu ve Yeni Başlangıç: Eyleme Geçmenin Özgürlüğü",
+      "neden": "30 gün boyunca attığın mikro adımlarla ertelemenin tembellik değil, yönetilebilir bir duygu olduğunu öğrendin. Artık başlamaktan korkmuyorsun.",
+      "adimlar": [
+        "1. Günde ertelemekten kaçtığın halinle bugünkü eyleme geçme cesaretini kıyasla.",
+        "Kendine verdiğin sözleri tutabilmenin yarattığı içsel güveni kutla.",
+        "Kendine teşekkür et: Artık ertelemenin esiri değil, kendi sakin ritminin yöneticisisin."
+      ],
+      "alternatif": "Bugün aynaya bakıp içtenlikle 'Artık ertelemiyorum, küçük adımlarla eyleme geçiyorum' de.",
+      "etiketler": ["kutlama", "yolculuk-sonu", "ozgurluk"]
+    },
+    {
+      "id": "ozguven-g01",
+      "alan": "ozguven",
+      "gun": 1,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "İç eleştirmenin ses tonunu ilk kez fark et",
+      "neden": "Özgüven eksikliği, gün boyu arka planda çalan sert bir iç monologdan beslenir. İlk adım onu yakalamaktır.",
+      "adimlar": [
+        "Bugün aynaya bakarken veya bir iş yaparken aklından geçen ilk eleştirel cümleyi yakala.",
+        "O cümlenin sana ait bir gerçek olmadığını, sadece eski bir alışkanlık olduğunu hatırla.",
+        "İçinden sakince: 'Bu sadece bir düşünce, benim değerimi belirlemez' de."
+      ],
+      "alternatif": "Aklına gelen o eleştirel cümleyi bir kağıda yaz ve yanına bir soru işareti koy.",
+      "etiketler": ["farkindalik", "ic-ses", "tohum"]
+    },
+    {
+      "id": "ozguven-g02",
+      "alan": "ozguven",
+      "gun": 2,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "Tek bir somut güçlü yönünü kanıtıyla yaz",
+      "neden": "Boş övgüler işe yaramaz; gerçek özgüven geçmişteki somut kanıtlarla inşa edilir.",
+      "adimlar": [
+        "Kendinde takdir ettiğin tek bir özelliği düşün (ör. iyi bir dinleyici olmak, kriz anında sakin kalmak, sözünde durmak).",
+        "Bu özelliği sergilediğin geçmişteki tek bir anı hatırla.",
+        "Bir not kağıdına yaz: '[Bu özelliğim var], çünkü [geçmişte şunu yapmıştım].'"
+      ],
+      "alternatif": "Bugün iyi yaptığın en ufak bir davranışı (ör. birine yol vermek, lezzetli bir kahve yapmak) fark et.",
+      "etiketler": ["guclu-yonler", "somut-kanit", "oz-farkindalik"]
+    },
+    {
+      "id": "ozguven-g03",
+      "alan": "ozguven",
+      "gun": 3,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "Bugünün ilk küçük zaferini kayda geçir",
+      "neden": "Beyin olumsuzluklara odaklanmaya meyillidir; küçük başarıları kaydetmek algıyı dengeler.",
+      "adimlar": [
+        "Bugün tamamladığın sıradan ama iyi bir eylemi seç (zamanında uyanmak, bir işi teslim etmek, yürüyüşe çıkmak).",
+        "Bunu 'küçük bir zafer' olarak kabul et.",
+        "Telefonuna ya da not defterine tek cümleyle kaydet."
+      ],
+      "alternatif": "İçinden 'Bugün bunu başardım' diyerek omzuna hafifçe dokun.",
+      "etiketler": ["kucuk-zaferler", "kayit", "pozitif-odak"]
+    },
+    {
+      "id": "ozguven-g04",
+      "alan": "ozguven",
+      "gun": 4,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "İltifatı savuşturmadan kabul etme provası",
+      "neden": "Övgüleri küçümsemek ('Yok canım şans eseri') öz-değeri aşındırır.",
+      "adimlar": [
+        "Geçmişte birinin sana söylediği güzel bir sözü veya iltifatı hatırla.",
+        "O an 'Önemli değil' ya da 'Şans eseriydi' dediysen o cevabı geri al.",
+        "Aynaya veya boşluğa bakarak sadece şunu söyle: 'Teşekkür ederim, bunu duymak güzel.'"
+      ],
+      "alternatif": "Bugün biri sana teşekkür ettiğinde 'Rica ederim' deyip tebessüm et, küçümseme.",
+      "etiketler": ["iltifat-kabulu", "oz-deger", "iletisim"]
+    },
+    {
+      "id": "ozguven-g05",
+      "alan": "ozguven",
+      "gun": 5,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "Beden duruşuyla zihne güven sinyali ver",
+      "neden": "Beden ve zihin iki yönlü iletişim kurar. Omuzları dikleştirmek kortizolü düşürüp güven hissini artırır.",
+      "adimlar": [
+        "Otururken veya ayaktayken omuzlarını hafifçe geriye al, başını dikleştir.",
+        "Göğsünü rahatça açarak derin bir nefes al.",
+        "Bu dik ve rahat duruşta 1 dakika kal; bedeninin kapladığı alana hakkı olduğunu hisset."
+      ],
+      "alternatif": "Aynanın karşısına geçip 30 saniye dik ve sakin bir duruşla kendine bak.",
+      "etiketler": ["beden-dili", "durus", "fiziksel-guven"]
+    },
+    {
+      "id": "ozguven-g06",
+      "alan": "ozguven",
+      "gun": 6,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Kendine bir dost gibi nazik tek bir cümle söyle",
+      "neden": "En zor anlarında en çok ihtiyaç duyduğun şey dışarıdan onay değil, kendi iç desteğindir.",
+      "adimlar": [
+        "Bugün zorlandığın ya da yetersiz hissettiğin bir anı düşün.",
+        "Eğer çok sevdiğin bir arkadaşın aynı şeyi yaşasaydı ona söyleyeceğin sakinleştirici cümleyi hatırla.",
+        "O cümleyi doğrudan kendine fısılda: 'Elimden geleni yapıyorum ve bu yeterli.'"
+      ],
+      "alternatif": "Elini göğsüne koy ve 3 kez yavaşça nefes alarak 'Yolundayım' de.",
+      "etiketler": ["nazik-dil", "oz-sefqat", "ic-destek"]
+    },
+    {
+      "id": "ozguven-g07",
+      "alan": "ozguven",
+      "gun": 7,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "Hafif Gün: 'Bugün hiçbir şeyi kanıtlamama günü'",
+      "neden": "Tohum aşamasının ilk haftasını geride bıraktın. Değerin, sürekli bir şeyler üretmene bağlı değildir.",
+      "adimlar": [
+        "Bugün kendini kimseye kanıtlamaya veya mükemmel görünmeye çalışma.",
+        "Geçen 6 günde attığın küçük adımları hatırla.",
+        "Sadece var olmanın bile başlı başına yeterli olduğunu kabul et ve dinlen."
+      ],
+      "alternatif": "1 dakika boyunca sırtını koltuğa yasla ve gözlerini kapat.",
+      "etiketler": ["hafif-gun", "dinlenme", "oz-kabul"]
+    },
+    {
+      "id": "ozguven-g08",
+      "alan": "ozguven",
+      "gun": 8,
+      "asama": "filiz",
+      "zorluk": 1,
+      "sure_dk": 5,
+      "baslik": "'Küçük Zaferler Defteri' başlat",
+      "neden": "Filiz aşamasına geçtin. Başarılarını somut bir hafızaya kaydetmek, düşük günlerde can simidin olur.",
+      "adimlar": [
+        "Telefonunda veya defterinde 'Küçük Zaferler' adında bir alan aç.",
+        "Bugün tamamladığın 2 küçük eylemi (ör. zor bir telefon görüşmesi yapmak, ertelemeden bulaşıkları yıkamak) yaz.",
+        "Bu listenin her gün büyüyecek bir özgüven sermayesi olduğunu bil."
+      ],
+      "alternatif": "Bugün başardığın tek bir şeyi not et.",
+      "etiketler": ["kucuk-zaferler", "arsiv", "filiz"]
+    },
+    {
+      "id": "ozguven-g09",
+      "alan": "ozguven",
+      "gun": 9,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 6,
+      "baslik": "Geçmişte aştığın büyük bir zorluğu hatırla",
+      "neden": "Bugünkü kaygıların, geçmişte nelerin üstesinden geldiğini sana unutturur.",
+      "adimlar": [
+        "Hayatında bir zamanlar 'Bunun altından kalkamam' dediğin ama atlattığın bir dönemi düşün.",
+        "O süreçte gösterdiğin sabrı, dayanıklılığı veya problem çözme gücünü hatırla.",
+        "İçinden: 'O zorluğu aştıysam, bugünkülerin de üstesinden gelebilirim' de."
+      ],
+      "alternatif": "Geçmişte çözdüğün tek bir problemi hatırlayıp kendine teşekkür et.",
+      "etiketler": ["dayaniklilik", "gecmis-basari", "ic-guc"]
+    },
+    {
+      "id": "ozguven-g10",
+      "alan": "ozguven",
+      "gun": 10,
+      "asama": "filiz",
+      "zorluk": 1,
+      "sure_dk": 5,
+      "baslik": "İç eleştirmene gerçeklik testi uygula",
+      "neden": "İç sesimiz sık sık abartılı genellemeler ('Hiçbir şeyi beceremiyorsun') yapar. Gerçekler bu illüzyonu bozar.",
+      "adimlar": [
+        "Aklına gelen olumsuz bir genellemeyi yakala (ör. 'Her şeyi berbat ettim').",
+        "Ona bir mahkeme hakimi gibi sor: 'Bunun somut kanıtı ne? Gerçekten HER ŞEYİ mi berbat ettim?'",
+        "O genellemeyi daha gerçekçi bir cümleyle düzelt: 'Sadece bu küçük kısmı istediğim gibi olmadı, gerisi yolunda.'"
+      ],
+      "alternatif": "Aklına gelen olumsuz bir düşünceye 'Bu doğru değil, sadece endişeliyim' de.",
+      "etiketler": ["gerceklik-kontrolu", "bilissel-esneklik", "ic-ses"]
+    },
+    {
+      "id": "ozguven-g11",
+      "alan": "ozguven",
+      "gun": 11,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 6,
+      "baslik": "Karşılaştırma tuzağını fark et ve ekranı kapat",
+      "neden": "Başkalarının sahne önüyle kendi kulisini kıyaslamak öz-değerin en büyük hırsızıdır.",
+      "adimlar": [
+        "Sosyal medyada veya çevrende birini görüp 'O benden ne kadar ileride' dediğin anı yakala.",
+        "Herkesin kendi gizli mücadeleleri olduğunu ve kimsenin hayatının kusursuz olmadığını hatırla.",
+        "Ekranı hemen kapat ve kendi hayatında bugün iyi giden tek bir şeye odaklan."
+      ],
+      "alternatif": "Sosyal medyada kıyas hissettiğin anda telefonu 5 dakika elinden bırak.",
+      "etiketler": ["kiyaslamama", "dijital-hijyen", "kendi-yolun"]
+    },
+    {
+      "id": "ozguven-g12",
+      "alan": "ozguven",
+      "gun": 12,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 5,
+      "baslik": "Kendi çabana hakkını teslim et: 'Benim sayemde'",
+      "neden": "Başarıyı sürekli dış etkenlere (şans, tesadüf) bağlamak içsel güveni engeller.",
+      "adimlar": [
+        "Son zamanlarda iyi sonuçlanan bir işi veya durumu hatırla.",
+        "O sonucun gerçekleşmesinde senin hangi emeğinin, sabrının ya da fikrinin rol oynadığını bul.",
+        "'Bu iş iyi oldu, çünkü ben şu çabayı gösterdim' diyerek kendine pay çıkar."
+      ],
+      "alternatif": "İçinden 'Bu benim emeğimdi ve bununla gurur duyuyorum' de.",
+      "etiketler": ["sahiplenme", "oz-takdir", "imposter-panzehiri"]
+    },
+    {
+      "id": "ozguven-g13",
+      "alan": "ozguven",
+      "gun": 13,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 6,
+      "baslik": "Göz temasını 1 saniye daha uzun tut",
+      "neden": "Özgüven, başkalarıyla kurduğun mikro temaslardaki rahatlıkla pekişir.",
+      "adimlar": [
+        "Bugün biriyle (arkadaşın, kahveci, iş arkadaşın) konuşurken göz temasını normalden 1 saniye daha uzun koru.",
+        "Gözlerini kaçırma dürtüsünü fark et ama sakin kal.",
+        "Göz temasının karşılıklı bir eşitlik ve saygı alanı açtığını hisset."
+      ],
+      "alternatif": "Aynada kendi gözlerinin içine 10 saniye boyunca kaçırmadan ve şefkatle bak.",
+      "etiketler": ["goz-temasi", "sosyal-guven", "iletisim"]
+    },
+    {
+      "id": "ozguven-g14",
+      "alan": "ozguven",
+      "gun": 14,
+      "asama": "filiz",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Hafif Gün: 'Kendi tarafında olma molası'",
+      "neden": "Filiz aşamasını tamamladın. Özgüven her zaman güçlü hissetmek değil, düştüğünde kendi elinden tutabilmektir.",
+      "adimlar": [
+        "Bugün kendine yönelik tüm beklentileri ve yargıları askıya al.",
+        "Sıcak bir içecek al ve içinden: 'Ne olursa olsun, ben her zaman kendi tarafımdayım' de.",
+        "Bu sakin desteğin yarattığı içsel güveni hisset."
+      ],
+      "alternatif": "Sadece 1 dakika boyunca kendini yargılamadan sessizce nefes al.",
+      "etiketler": ["hafif-gun", "oz-destek", "huzur"]
+    },
+    {
+      "id": "ozguven-g15",
+      "alan": "ozguven",
+      "gun": 15,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 6,
+      "baslik": "İyi olduğun 3 pratik beceriyi listele",
+      "neden": "Becerilerimizi 'zaten herkes yapabilir' diyerek küçümseriz. Oysa onlar senin özgün alet çantandır.",
+      "adimlar": [
+        "Büyük veya küçük fark etmeksizin iyi olduğun 3 beceriyi yaz (ör. güzel yemek yapmak, iyi özet çıkarmak, insanları dinlemek, rota çizmek).",
+        "Her birinin yanına 'Bu bende olan değerli bir yetenek' notu düş.",
+        "Bu becerileri küçümseme refleksini durdur."
+      ],
+      "alternatif": "Sadece 1 pratik becerini bir kağıda yazıp cüzdanına koy.",
+      "etiketler": ["beceriler", "oz-farkindalik", "deger"]
+    },
+    {
+      "id": "ozguven-g16",
+      "alan": "ozguven",
+      "gun": 16,
+      "asama": "govde",
+      "zorluk": 2,
+      "sure_dk": 8,
+      "baslik": "Konfor Alanı Dışı: Bir çalışana içtenlikle tebessüm ve teşekkür et",
+      "neden": "Gövde aşamasına geçtin. Küçük konfor alanı dışı adımlar, özgüvenin sahaya inmesini sağlar.",
+      "adimlar": [
+        "Bugün alışveriş yaptığın bir kasiyere, kuryeye veya garsona göz teması kur.",
+        "Gülümseyerek net bir ses tonuyla: 'Çok teşekkürler, kolay gelsin' de.",
+        "Bu küçük cesaret adımının sana ve karşındakine verdiği pozitif enerjiyi fark et."
+      ],
+      "alternatif": "Bir komşuna veya tanıdığına başını hafifçe eğip gülümseyerek selam ver.",
+      "etiketler": ["konfor-alani", "sosyal-cesaret", "govde"]
+    },
+    {
+      "id": "ozguven-g17",
+      "alan": "ozguven",
+      "gun": 17,
+      "asama": "govde",
+      "zorluk": 2,
+      "sure_dk": 8,
+      "baslik": "Fikrini saklama: Küçük bir tercihini net ifade et",
+      "neden": "Sürekli 'Fark etmez, bana uyar' demek kendi isteklerini silikleştirir.",
+      "adimlar": [
+        "Bugün biri sana bir tercih sorduğunda (ne yiyelim, nereye gidelim, hangi rengi seçelim) 'Fark etmez' deme.",
+        "Gerçekten canının istediği seçeneği net bir dille söyle: 'Bence bugün şunu deneyelim.'",
+        "Kendi tercihini ifade etmenin gayet doğal ve kabul edilebilir olduğunu gör."
+      ],
+      "alternatif": "Mesajlaşırken bir konuda kendi fikrini içeren tek bir cümle yazıp gönder.",
+      "etiketler": ["netlik", "tercih-ifadesi", "sinirlar"]
+    },
+    {
+      "id": "ozguven-g18",
+      "alan": "ozguven",
+      "gun": 18,
+      "asama": "govde",
+      "zorluk": 3,
+      "sure_dk": 10,
+      "baslik": "Suçluluk duymadan küçük bir 'Hayır' de",
+      "neden": "Öz-değer, başkalarını kırmamak adına kendini kırmaktan vazgeçtiğinde güçlenir.",
+      "adimlar": [
+        "Bugün istemediğin veya sana yük olacak küçük bir ricayı ya da teklifi seç.",
+        "Uzun mazeretler üretmeden nazikçe geri çevir: 'Şu an uygun değilim, yapamayacağım.'",
+        "İçinde yükselebilecek hafif suçluluk hissine izin ver ama kararının arkasında dur."
+      ],
+      "alternatif": "Mesaj yoluyla gelen önemsiz bir davete 'Bu sefer katılamayacağım, teşekkürler' yaz.",
+      "etiketler": ["hayir-diyebilmek", "sinirlar", "oz-saygi"]
+    },
+    {
+      "id": "ozguven-g19",
+      "alan": "ozguven",
+      "gun": 19,
+      "asama": "govde",
+      "zorluk": 2,
+      "sure_dk": 8,
+      "baslik": "Küçük bir yardım iste: Yükü paylaşma cesareti",
+      "neden": "Her şeyi tek başına çözmeye çalışmak özgüven değil, yük olma korkusudur.",
+      "adimlar": [
+        "Bugün birinden çok basit ve zahmetsiz bir ricada bulun (ör. bir eşyayı uzatması, basit bir fikir vermesi).",
+        "Ezilip büzülmeden, sadece rica et.",
+        "İnsanların yardım etmekten genellikle memnuniyet duyduğunu ve bunun seni zayıf kılmadığını gör."
+      ],
+      "alternatif": "Bir arkadaşına 'Şu konuda senin fikrine ihtiyacım var' diyerek danış.",
+      "etiketler": ["yardim-isteme", "sosyal-guven", "esneklik"]
+    },
+    {
+      "id": "ozguven-g20",
+      "alan": "ozguven",
+      "gun": 20,
+      "asama": "govde",
+      "zorluk": 3,
+      "sure_dk": 10,
+      "baslik": "Başarıyı sahiplen: 'Bunu ben yaptım'",
+      "neden": "Kendi emeğini küçümsemeyi bırakıp arkasında durmak olgun bir özgüven gerektirir.",
+      "adimlar": [
+        "Bugün bitirdiğin bir işin, hazırladığın bir yemeğin veya çözdüğün bir konunun ardından dur.",
+        "İçinden şans veya tesadüf kelimelerini çıkar.",
+        "Kendine dürüstçe şunu söyle: 'Bu benim dikkatim, zamanım ve emeğimin eseri. Eline sağlık.'"
+      ],
+      "alternatif": "Günlüğüne 'Bugün şu işi başarıyla tamamladım ve bunda benim payım büyük' yaz.",
+      "etiketler": ["basariyi-sahiplenme", "oz-saygi", "ic-onay"]
+    },
+    {
+      "id": "ozguven-g21",
+      "alan": "ozguven",
+      "gun": 21,
+      "asama": "govde",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Hafif Gün: 'Kendi değerini hiçbir şeye bağlamama günü'",
+      "neden": "Gövde aşamasını tamamladın. Değerin unvanından, başarından veya onaylanmandan bağımsızdır.",
+      "adimlar": [
+        "Bugün hiçbir performans beklentisi içine girme.",
+        "Sırtını yasla, derin nefesler al ve 'Ben sadece var olduğum için değerliyim' gerçeğini hatırla.",
+        "Son haftaya hazırlanırken zihnini hafiflet."
+      ],
+      "alternatif": "Pencereden dışarı bakıp sadece gökyüzünü izle.",
+      "etiketler": ["hafif-gun", "kosulsuz-deger", "dinlenme"]
+    },
+    {
+      "id": "ozguven-g22",
+      "alan": "ozguven",
+      "gun": 22,
+      "asama": "govde",
+      "zorluk": 3,
+      "sure_dk": 9,
+      "baslik": "Konfor Alanı Dışı: 'Bunu bilmiyorum' diyebilme özgürlüğü",
+      "neden": "Her şeyi bilmek zorunda olmadığını kabul etmek, en sağlam özgüven göstergesidir.",
+      "adimlar": [
+        "Bugün tam hakim olmadığın bir konu açıldığında biliyormuş gibi yapma.",
+        "Rahat bir tavırla: 'Bu konuyu tam bilmiyorum, biraz anlatır mısın?' de.",
+        "Bilmediğini kabul etmenin seni küçültmediğini, aksine özgüvenli ve meraklı gösterdiğini gör."
+      ],
+      "alternatif": "Kendi kendine 'Her şeyi bilmek zorunda değilim, öğrenmeye açığım' de.",
+      "etiketler": ["konfor-alani", "dogallik", "oz-guven"]
+    },
+    {
+      "id": "ozguven-g23",
+      "alan": "ozguven",
+      "gun": 23,
+      "asama": "govde",
+      "zorluk": 2,
+      "sure_dk": 8,
+      "baslik": "Karşılaştırma detoksu: 1 hesabı sessize al",
+      "neden": "Seni sürekli eksik ve yetersiz hissettiren kaynaklara maruz kalmak özgüveni zehirler.",
+      "adimlar": [
+        "Sosyal medya akışında gördüğünde içinde yetersizlik hissi uyandıran tek bir hesabı belirle.",
+        "O hesabı takipten çık veya sessize al.",
+        "Kendi zihinsel bahçeni korumanın yarattığı ferahlığı hisset."
+      ],
+      "alternatif": "Bugün sosyal medyada geçirdiğin süreyi bilerek yarıya indir.",
+      "etiketler": ["dijital-sinir", "oz-koruma", "huzur"]
+    },
+    {
+      "id": "ozguven-g24",
+      "alan": "ozguven",
+      "gun": 24,
+      "asama": "yaprak",
+      "zorluk": 3,
+      "sure_dk": 12,
+      "baslik": "Kişisel 'Öz-Değer Pusulanı' tanımla",
+      "neden": "Yaprak aşamasındasın. Artık özgüvenin gelip geçici duygulara değil, temel insani değerlerine dayanır.",
+      "adimlar": [
+        "Sana kimlik kazandıran en önemli 3 değerini seç (ör. dürüstlük, sadakat, merak, yaratıcılık, adalet).",
+        "Her biri için 'Ben bu değere sadık yaşadıkça kendime saygı duyarım' cümlesini kur.",
+        "Bu değer pusulasını notlarına kaydet."
+      ],
+      "alternatif": "Kendine en yakın bulduğun tek bir temel değeri bir kağıda yaz.",
+      "etiketler": ["deger-pusulasi", "oz-saygi", "yaprak"]
+    },
+    {
+      "id": "ozguven-g25",
+      "alan": "ozguven",
+      "gun": 25,
+      "asama": "yaprak",
+      "zorluk": 3,
+      "sure_dk": 14,
+      "baslik": "'Başarılarım ve Aştığım Engeller' Arşivi",
+      "neden": "Gelecekte özgüvenin sarsıldığında açıp bakacağın somut bir zafer dosyası oluştur.",
+      "adimlar": [
+        "Bir sayfayı ikiye böl: Sol tarafa 'Gurur Duyduğum 3 Başarım', sağ tarafa 'Aştığım 3 Zorluk' yaz.",
+        "Hayatından gerçek ve somut olayları altlarına ekle.",
+        "Bu arşive bakarak bugüne kadar gösterdiğin güce hakkını ver."
+      ],
+      "alternatif": "Sadece tek bir büyük engeli nasıl aştığını 3 cümleyle özetle.",
+      "etiketler": ["zafer-arsivi", "somut-kanit", "dayaniklilik"]
+    },
+    {
+      "id": "ozguven-g26",
+      "alan": "ozguven",
+      "gun": 26,
+      "asama": "yaprak",
+      "zorluk": 2,
+      "sure_dk": 10,
+      "baslik": "Zor günler için kendine gerçekçi ve şefkatli bir not yaz",
+      "neden": "Kriz anlarında zihin felaket senaryoları yazar; bu mektup o anlarda sana gerçeği hatırlatacak.",
+      "adimlar": [
+        "Kendine gelecekteki kötü bir gün için kısa bir not yaz.",
+        "Örnek: 'Şu an işler yolunda gitmiyor olabilir ama bu senin değerini eksiltmez. Daha önce de zorlukları aştın, bu da geçecek.'",
+        "Bu notu telefonunda kolay ulaşılabilir bir yere sakla."
+      ],
+      "alternatif": "Cüzdanına tek cümlelik bir hatırlatma kartı koy: 'Ben kendi tarafımdayım.'",
+      "etiketler": ["sefqatli-mektup", "kriz-hazirligi", "oz-destek"]
+    },
+    {
+      "id": "ozguven-g27",
+      "alan": "ozguven",
+      "gun": 27,
+      "asama": "yaprak",
+      "zorluk": 3,
+      "sure_dk": 12,
+      "baslik": "Kendi adına nazikçe ve net bir şekilde alan aç",
+      "neden": "Özgüven, başkalarını ezmeden kendi hakkını ve varlığını sakin bir netlikle savunabilmektir.",
+      "adimlar": [
+        "Bugün bir sohbette sözün kesilirse veya fikrin önemsenmezse sessizce geri çekilme.",
+        "Gülümseyerek ve sakin bir ses tonuyla: 'Cümlemi tamamlayayım, sonra seni dinlemek isterim' de.",
+        "Kendi alanını korumanın saygı uyandırdığını fark et."
+      ],
+      "alternatif": "Bir konuşmada dik duruşunu koruyarak fikrini sonuna kadar sakince ifade et.",
+      "etiketler": ["alan-acma", "netlik", "oz-saygi"]
+    },
+    {
+      "id": "ozguven-g28",
+      "alan": "ozguven",
+      "gun": 28,
+      "asama": "yaprak",
+      "zorluk": 2,
+      "sure_dk": 10,
+      "baslik": "Öz-Değer Manifestosu: 3 Altın Kuralın",
+      "neden": "27 günlük yolculuğunun özü, gelecekteki şüphe anlarında kalkanın olacak.",
+      "adimlar": [
+        "Özgüven yolculuğundan öğrendiğin en değerli 3 ilkeyi yaz.",
+        "Örnek: '1. Değerim başarılarıma veya başkalarının onayına bağlı değildir. 2. Hata yaptığımda kendime bir dost gibi yaklaşırım. 3. Kendi tercihlerimi ifade etmekten çekinmem.'",
+        "Bu manifestoyu çalışma masana veya aynanın yanına koy."
+      ],
+      "alternatif": "Tek bir altın ilke belirle: 'Her durumda kendi tarafımda dururum.'",
+      "etiketler": ["manifesto", "prensipler", "oz-deger"]
+    },
+    {
+      "id": "ozguven-g29",
+      "alan": "ozguven",
+      "gun": 29,
+      "asama": "yaprak",
+      "zorluk": 3,
+      "sure_dk": 11,
+      "baslik": "Haftalık Öz-Takdir Zamanını Takvime İşle",
+      "neden": "Kendi çabalarını düzenli olarak fark etmezsen, dışarıdan sürekli onay bekleme tuzağına düşersin.",
+      "adimlar": [
+        "Takvimine haftada bir gün (ör. cuma akşamı) için 10 dakikalık 'Öz-Takdir Molası' ekle.",
+        "Bu sürede haftanın küçük zaferlerini ve emeğini gözden geçirmeyi adet edin.",
+        "Kendine düzenli teşekkür etmeyi bir yaşam biçimi haline getir."
+      ],
+      "alternatif": "Her pazar akşamı o haftadan gurur duyduğun 1 olayı not etmeyi alışkanlık yap.",
+      "etiketler": ["surdurulebilirlik", "haftalik-ritim", "oz-takdir"]
+    },
+    {
+      "id": "ozguven-g30",
+      "alan": "ozguven",
+      "gun": 30,
+      "asama": "yaprak",
+      "zorluk": 2,
+      "sure_dk": 8,
+      "baslik": "Yolculuğun Sonu ve Yeni Başlangıç: Kendi Tarafında Olmanın Huzuru",
+      "neden": "30 gün boyunca attığın mikro adımlarla içindeki o acımasız yargıcı yatıştırdın. Artık kendini kanıtlamak zorunda değilsin; zaten tam ve değerlisin.",
+      "adimlar": [
+        "1. Günde kendini küçümseyen ya da çekinen halinle bugünkü sakin öz-değerini kıyasla.",
+        "Kendi güçlü yönlerine ve sınırlarına sahip çıkabilme olgunluğunu kutla.",
+        "Kendine yürekten teşekkür et: Sen her koşulda saygı ve sevgiyi hak ediyorsun."
+      ],
+      "alternatif": "Bugün aynaya bakıp içtenlikle 'Artık kendimden kaçmıyorum, kendi tarafımdayım' de.",
+      "etiketler": ["kutlama", "yolculuk-sonu", "oz-deger"]
+    },
+    {
+      "id": "uyku-g01",
+      "alan": "uyku",
+      "gun": 1,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "Yatmadan önceki son ekrana 5 dakika erken veda et",
+      "neden": "Mavi ışık beynine hâlâ gündüz olduğu sinyalini verir. Sadece 5 dakikalık bir erken veda bile geçişi yumuşatır.",
+      "adimlar": [
+        "Uyumayı planladığın vakitten tam 5 dakika önce telefonunu veya tabletini bir kenara bırak.",
+        "Gözlerini kapatıp bedeninin yatağa bıraktığı ağırlığı 1 dakika boyunca hisset.",
+        "Ekrandan ayrılmanın zihninde yarattığı ilk sessizliği fark et."
+      ],
+      "alternatif": "Telefonunu yastığının altından çıkarıp komodinin veya masanın üzerine koy.",
+      "etiketler": ["dijital-detoks", "gece-gecisi", "tohum"]
+    },
+    {
+      "id": "uyku-g02",
+      "alan": "uyku",
+      "gun": 2,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "Uyku ortamı: Yatak odasını 2 dakika havalandır",
+      "neden": "Temiz oksijen ve hafif bir serinlik, vücut ısısının doğal olarak düşmesini ve derin uykuya geçişi kolaylaştırır.",
+      "adimlar": [
+        "Uyumadan kısa bir süre önce odanın penceresini 2 dakika boyunca aç.",
+        "İçeri giren taze ve serin havanın odayı yenilemesini izle.",
+        "Pencereyi kapatıp yatağına geçtiğinde odanın ferahlığını hisset."
+      ],
+      "alternatif": "Yatak odanın kapısını açık bırakarak hava sirkülasyonu sağla.",
+      "etiketler": ["oda-ortami", "havalandirma", "ferahlik"]
+    },
+    {
+      "id": "uyku-g03",
+      "alan": "uyku",
+      "gun": 3,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Sabahın ilk 5 dakikasında ekransız uyanış",
+      "neden": "Uyanır uyanmaz ekrana bakmak, zihni anında başkalarının talepleriyle ve stresle doldurur.",
+      "adimlar": [
+        "Uyandığında telefonu eline alma dürtüsünü ilk 5 dakika boyunca durdur.",
+        "Yatakta kollarını ve bacaklarını hafifçe esnet, derin bir nefes al.",
+        "Günün ilk dakikalarını bildirimlere değil, kendi bedenine hediye et."
+      ],
+      "alternatif": "Alarmı kapattıktan hemen sonra telefonu ters çevirip kalkana kadar dokunma.",
+      "etiketler": ["sabah-ritueli", "ekransiz-sabah", "farkindalik"]
+    },
+    {
+      "id": "uyku-g04",
+      "alan": "uyku",
+      "gun": 4,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "Son kafein saatini kayda geçir",
+      "neden": "Kafeinin vücuttaki yarılanma ömrü 5-7 saattir. Ne zaman içtiğini fark etmek uyku derinliğini korur.",
+      "adimlar": [
+        "Bugün içtiğin son kahve, çay veya enerji içeceğinin saatini bir yere not et.",
+        "Uyumayı planladığın saatle arasındaki farka bak (ideal olarak en az 6 saat).",
+        "Yargılamadan sadece ritmini gözlemle."
+      ],
+      "alternatif": "Günün son kahvesini içerken 'Bu bugünün son kafeini' diyerek bardağı bitir.",
+      "etiketler": ["kafein-farkindaligi", "beslenme-ritmi", "gozlem"]
+    },
+    {
+      "id": "uyku-g05",
+      "alan": "uyku",
+      "gun": 5,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "Yatak sadece uyku içindir: Fazlalıkları temizle",
+      "neden": "Beyin yatak ile çalışma/eğlence arasında bağlantı kurarsa yatakta uyanık kalma refleksi geliştirir.",
+      "adimlar": [
+        "Yatağının üzerinde duran bilgisayar, dosya, kıyafet veya tabak gibi nesneleri kaldır.",
+        "Yastığını ve çarşafını ellerinle düzelt.",
+        "Yatağın sadece dinlenme ve uyku için güvenli bir alan olduğunu hatırla."
+      ],
+      "alternatif": "Yatakta oturup çalışıyorsan, sadece bugünkü çalışma için bir sandalyeye geç.",
+      "etiketler": ["yatak-alani", "kosullanma", "duzen"]
+    },
+    {
+      "id": "uyku-g06",
+      "alan": "uyku",
+      "gun": 6,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Loş ışık geçişi: Uykudan önce tepe lambasını kapat",
+      "neden": "Parlak beyaz ışık melatonin üretimini baskılar; sarı ve loş ışık zihne gün batımı hissi verir.",
+      "adimlar": [
+        "Uyumayı hedeflediğin zamandan 20-30 dakika önce odanın parlak tepe ışığını kapat.",
+        "Varsa küçük bir abajur, sarı gece lambası veya koridordan süzülen hafif ışığı kullan.",
+        "Loşluğun göz kapaklarına getirdiği doğal ağırlığı fark et."
+      ],
+      "alternatif": "Odadaki ışığı kapatıp telefonunun ekran parlaklığını en düşük seviyeye çek.",
+      "etiketler": ["isik-kontrolu", "melatonin", "los-isik"]
+    },
+    {
+      "id": "uyku-g07",
+      "alan": "uyku",
+      "gun": 7,
+      "asama": "tohum",
+      "zorluk": 1,
+      "sure_dk": 2,
+      "baslik": "Hafif Gün: 'Zorlamasız uyku farkındalığı'",
+      "neden": "Tohum aşamasının ilk haftasını geride bıraktın. Uyumaya çalışmak uykuyu kaçırır; uykuya izin vermek gerekir.",
+      "adimlar": [
+        "Bugün uyumak için kendini zorlama veya saati hesaplama.",
+        "Yatağa uzandığında sadece çarşafın serinliğine ve nefesinin sakinliğine odaklan.",
+        "Geçen 6 günde attığın küçük adımların değerini bilerek dinlen."
+      ],
+      "alternatif": "Yatakta 1 dakika boyunca sadece nefes alışverişini say.",
+      "etiketler": ["hafif-gun", "teslimiyet", "dinlenme"]
+    },
+    {
+      "id": "uyku-g08",
+      "alan": "uyku",
+      "gun": 8,
+      "asama": "filiz",
+      "zorluk": 1,
+      "sure_dk": 5,
+      "baslik": "Kafayı Boşaltma: Yarının kaygılarını kağıda dök",
+      "neden": "Filiz aşamasına geçtin. Yatakta dönüp durmanın en büyük sebebi zihnin unutmaktan korktuğu yapılacaklar listesidir.",
+      "adimlar": [
+        "Uyumadan önce bir kağıt ve kalem al.",
+        "Aklında dönüp duran yarının işlerini, endişelerini veya hatırlanacakları maddeler halinde yaz.",
+        "Kağıdı masanın üzerine koyup: 'Bunlar artık kağıtta güvende, bu gece düşünmek zorunda değilim' de."
+      ],
+      "alternatif": "Telefonun not defterine yarın yapılacak en önemli 2 şeyi yaz ve telefonu bırak.",
+      "etiketler": ["zihin-bosaltma", "kaygi-yonetimi", "filiz"]
+    },
+    {
+      "id": "uyku-g09",
+      "alan": "uyku",
+      "gun": 9,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 5,
+      "baslik": "Telefonu yatak mesafesinden en az 2 metre uzağa koy",
+      "neden": "Uzanma mesafesinde duran telefon, her uyanışta veya sıkıntıda otomatik olarak ele alınır.",
+      "adimlar": [
+        "Telefonun şarj yerini bu gece yatağının yanından kaldır.",
+        "Odanın diğer ucundaki bir masaya veya çekmeceye koy.",
+        "Sabah alarm çaldığında yataktan kalkmak zorunda kalmanın uyanışı da kolaylaştıracağını fark et."
+      ],
+      "alternatif": "Telefonu yatağın yanından alıp en azından sırtını dönerek uzanabileceğin bir yere koy.",
+      "etiketler": ["mesafe", "dijital-sinir", "ortam-tasarimi"]
+    },
+    {
+      "id": "uyku-g10",
+      "alan": "uyku",
+      "gun": 10,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 5,
+      "baslik": "Sabah ritüeli: 1 büyük bardak su ve gün ışığı",
+      "neden": "Gece boyunca susuz kalan beden ve gözlere ulaşan doğal ışık, biyolojik saati anında sıfırlar ve zindelik verir.",
+      "adimlar": [
+        "Uyandıktan sonra mutfağa gidip oda sıcaklığında 1 büyük bardak su iç.",
+        "Pencereye yaklaş, perdeyi aç ve en az 1-2 dakika açık havaya ve gökyüzüne bak.",
+        "Günün başladığını bedenindeki her hücreye nazikçe bildir."
+      ],
+      "alternatif": "Yatağının yanına akşamdan koyduğun 1 bardak suyu uyanır uyanmaz iç.",
+      "etiketler": ["sabah-ritueli", "gun-isigi", "hidrasyon"]
+    },
+    {
+      "id": "uyku-g11",
+      "alan": "uyku",
+      "gun": 11,
+      "asama": "filiz",
+      "zorluk": 1,
+      "sure_dk": 6,
+      "baslik": "Kafeinsiz akşam yudumu: Ilık su veya bitki çayı",
+      "neden": "Uykudan önce sıcak bir içeceği yavaşça yudumlamak sinir sistemine gevşeme sinyali gönderir.",
+      "adimlar": [
+        "Uyumadan önceki son saat içinde ılık bir su, papatya veya melisa gibi kafeinsiz bir içecek hazırla.",
+        "Ekrana bakmadan, sadece bardağın sıcaklığını ellerinde hissederek yudumla.",
+        "Bu anı günün koşuşturmasından geceye geçiş köprüsü yap."
+      ],
+      "alternatif": "Sadece 1 bardak ılık suyu yavaşça iç.",
+      "etiketler": ["rahatlama", "aksam-ritueli", "sicak-icecek"]
+    },
+    {
+      "id": "uyku-g12",
+      "alan": "uyku",
+      "gun": 12,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 6,
+      "baslik": "Karanlık kontrolü: Işık sızıntılarını kapat",
+      "neden": "Göz kapakları kapalıyken bile küçük led ışıkları algılanır ve derin uyku evresini bozar.",
+      "adimlar": [
+        "Yatak odandaki küçük ışık kaynaklarını (şarj aleti ışığı, modem, televizyon standby ledi) tespit et.",
+        "Bu ışıkların önüne bir nesne koy veya üzerlerini kapat.",
+        "Perdelerini tam çekerek odanın mümkün olduğunca karanlık olmasını sağla."
+      ],
+      "alternatif": "Yatarken varsa bir uyku bandı ya da göz maskesi takmayı dene.",
+      "etiketler": ["karanlik", "uyku-kalitesi", "oda-duzeni"]
+    },
+    {
+      "id": "uyku-g13",
+      "alan": "uyku",
+      "gun": 13,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 5,
+      "baslik": "Uykudan önce 3 dakikalık omuz ve boyun gevşetmesi",
+      "neden": "Gün boyu taşınan stres en çok omuzlarda ve boyunda kilitlenir; bedeni gevşetmeden zihin gevşeyemez.",
+      "adimlar": [
+        "Yatağın kenarına otur. Omuzlarını yavaşça geriye doğru 5 kez dairesel olarak çevir.",
+        "Başını nazikçe sağa ve sola eğerek boyun kaslarını esnet.",
+        "Derin bir nefes vererek tüm gerilimin yatağa akıp gitmesine izin ver."
+      ],
+      "alternatif": "Yatakta sırt üstü uzanıp omuzlarını kulaklarına doğru çek, 3 saniye tutup tamamen bırak.",
+      "etiketler": ["beden-gevsemesi", "esneme", "fiziksel-rahatlama"]
+    },
+    {
+      "id": "uyku-g14",
+      "alan": "uyku",
+      "gun": 14,
+      "asama": "filiz",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Hafif Gün: 'Şefkatli dinlenme günü'",
+      "neden": "Filiz aşamasını tamamladın. Uyku bir yarış veya katı bir ödev değil; bedeninle barışma alanıdır.",
+      "adimlar": [
+        "Bugün hiçbir kuralı veya saati dert etme.",
+        "Sadece ne zaman uykun gelirse o zaman yatağa geç.",
+        "Kendine şefkatle yaklaş: 'Bedenim ne kadar uykuya ihtiyacı olduğunu bilir.'"
+      ],
+      "alternatif": "Yatmadan önce sadece 1 dakika boyunca günün yorgunluğunu geride bırakma nefesi al.",
+      "etiketler": ["hafif-gun", "oz-sefqat", "dinlenme"]
+    },
+    {
+      "id": "uyku-g15",
+      "alan": "uyku",
+      "gun": 15,
+      "asama": "filiz",
+      "zorluk": 2,
+      "sure_dk": 6,
+      "baslik": "Uyku ve uyanma penceresini belirle (kendi saatlerine göre)",
+      "neden": "Biyolojik ritim belirli bir uyku penceresi olduğunda güçlenir. Vardiyana veya yaşamına göre bunu netleştir.",
+      "adimlar": [
+        "Kendi yaşam temponu düşün (ör. gece vardiyası, sabah erken çalışma vb.).",
+        "Kendin için yaklaşık 7-8 saatlik bir 'Uyku Penceresi' belirle (ör. kendi ritmine göre bir yatış-kalkış aralığı).",
+        "Bu aralığı bir kağıda yazarak kendine taahhüt et."
+      ],
+      "alternatif": "Sadece yaklaşık uyuma ve uyanma saatini zihninde belirle.",
+      "etiketler": ["uyku-penceresi", "ritim", "kisisel-duzen"]
+    },
+    {
+      "id": "uyku-g16",
+      "alan": "uyku",
+      "gun": 16,
+      "asama": "govde",
+      "zorluk": 2,
+      "sure_dk": 8,
+      "baslik": "Uykudan 15 dakika önce 'Tam Ekran Kapanışı'",
+      "neden": "Gövde aşamasına geçtin. Ekranı uykudan 15 dakika önce kapatmak, beynin uyku hormonunu doğal olarak salgılamasını sağlar.",
+      "adimlar": [
+        "Uyumayı planladığın andan 15 dakika önce telefon, tablet ve televizyonu tamamen kapat.",
+        "Bu 15 dakikayı loş ışıkta sessizce oturarak, esneyerek veya yatakta dinlenerek geçir.",
+        "Zihninin ekransız ortamda nasıl sakinleştiğini gözlemle."
+      ],
+      "alternatif": "Süreyi 10 dakika olarak belirle.",
+      "etiketler": ["ekran-kapama", "govde", "derin-dinlenme"]
+    },
+    {
+      "id": "uyku-g17",
+      "alan": "uyku",
+      "gun": 17,
+      "asama": "govde",
+      "zorluk": 2,
+      "sure_dk": 8,
+      "baslik": "Sabah telaşını akşamdan öldür: 1 hazırlık yap",
+      "neden": "Sabah telaşı uyanış kalitesini bozar; akşamdan yapılan küçük bir hazırlık sabahı dinginleştirir.",
+      "adimlar": [
+        "Yarın giyeceğin kıyafetleri akşamdan hazırla veya yarın evden çıkarken alacağın eşyaları kapının yanına koy.",
+        "Sabah kalktığında 'Ne giyeceğim, eşyam nerede' stresini ortadan kaldır.",
+        "Yatağa geçerken sabahın huzurlu başlayacağını bilmenin rahatlığını hisset."
+      ],
+      "alternatif": "Yarın sabah içeceğin kahve veya çay bardağını tezgahın üzerine koy.",
+      "etiketler": ["aksam-hazirligi", "sabah-dinginligi", "stres-onleme"]
+    },
+    {
+      "id": "uyku-g18",
+      "alan": "uyku",
+      "gun": 18,
+      "asama": "govde",
+      "zorluk": 2,
+      "sure_dk": 7,
+      "baslik": "Kafein sınırı: Uykudan 7-8 saat önce son bardağı bitir",
+      "neden": "Kafein uykuyu getiren adenozin reseptörlerini bloke eder. Erken kesmek uyku kalitesini ikiye katlar.",
+      "adimlar": [
+        "Uyumayı planladığın saatten geriye doğru 7-8 saat say.",
+        "O saatten sonra kahve, koyu çay veya enerji içeceği yerine su, süt ya da bitki çayına geç.",
+        "Gece yatağa yattığında zihninin daha az kıpırtılı olduğunu deneyimle."
+      ],
+      "alternatif": "Akşam saatlerinde çay veya kahve yerine sadece ılık bir su iç.",
+      "etiketler": ["kafein-siniri", "biyolojik-ritim", "derin-uyku"]
+    },
+    {
+      "id": "uyku-g19",
+      "alan": "uyku",
+      "gun": 19,
+      "asama": "govde",
+      "zorluk": 3,
+      "sure_dk": 10,
+      "baslik": "20 Dakika Kuralı: Uyuyamadıysan yatakta savaşma",
+      "neden": "Yatakta dönüp durmak, yatağı bir stres ve savaş alanı haline getirir.",
+      "adimlar": [
+        "Yatağa yattıktan sonra yaklaşık 20 dakika geçtiği halde uykuya dalamadıysan yatakta dönüp durma.",
+        "Sakin bir şekilde yataktan kalk, loş bir odaya geç ve rahat bir koltuğa otur.",
+        "Ekrana bakmadan, hafif bir kitap okuyarak veya sakince nefes alarak uykunun gelmesini bekle; uykun gelince yatağa dön."
+      ],
+      "alternatif": "Yataktan kalkmak istemiyorsan yatakta doğrulup sırtını duvara yasla ve 5 dakika bekle.",
+      "etiketler": ["20-dakika-kurali", "yatak-iliskisi", "uyku-davranisi"]
+    },
+    {
+      "id": "uyku-g20",
+      "alan": "uyku",
+      "gun": 20,
+      "asama": "govde",
+      "zorluk": 3,
+      "sure_dk": 12,
+      "baslik": "Ilık duş veya ılık ayak banyosuyla vücut sıcaklığını düşür",
+      "neden": "Ilık bir duş sonrası ciltten buharlaşan ısı, iç vücut sıcaklığını düşürerek beynin uyku düğmesini tetikler.",
+      "adimlar": [
+        "Uyumadan yaklaşık 45-60 dakika önce kısa ve ılık bir duş al (veya ayaklarını 5 dakika ılık suda beklet).",
+        "Kurulandıktan sonra rahat kıyafetler giy.",
+        "Vücudunun serinleyip gevşediğini hissederek yatağa geç."
+      ],
+      "alternatif": "Yüzünü ve ellerini ılık suyla yıkayıp kurula.",
+      "etiketler": ["sicaklik-kontrolu", "gevseme", "biyolojik-tetikleyici"]
+    },
+    {
+      "id": "uyku-g21",
+      "alan": "uyku",
+      "gun": 21,
+      "asama": "govde",
+      "zorluk": 1,
+      "sure_dk": 3,
+      "baslik": "Hafif Gün: 'Plansız ve dingin akşam'",
+      "neden": "Gövde aşamasını tamamladın. Uyku bir performans değildir; mükemmel olmak zorunda değilsin.",
+      "adimlar": [
+        "Bugün hiçbir kuralı kafana takma.",
+        "Akşamı keyif aldığın sakin bir eylemle geçir.",
+        "Sadece bedenini dinle ve ne zaman yorulursa o zaman dinlenmeye çekil."
+      ],
+      "alternatif": "Yatakta 2 dakika boyunca sadece sessizliğin tadını çıkar.",
+      "etiketler": ["hafif-gun", "dinginlik", "dinlenme"]
+    },
+    {
+      "id": "uyku-g22",
+      "alan": "uyku",
+      "gun": 22,
+      "asama": "govde",
+      "zorluk": 2,
+      "sure_dk": 10,
+      "baslik": "Sabah 10 dakikalık 'Uyanış Hareketi'",
+      "neden": "Sabah hafif hareket etmek kan dolaşımını hızlandırır, sersemliği dağıtır ve gece uykusunu da garantiye alır.",
+      "adimlar": [
+        "Uyandıktan ve suyunu içtikten sonra 10 dakika boyunca hafif esneme, yavaş yürüyüş veya basit hareketler yap.",
+        "Zorlayıcı spor yapma; sadece eklemlerini ve omurganı uyandır.",
+        "Güne çok daha berrak bir zihinle başladığını fark et."
+      ],
+      "alternatif": "Yatakta sırt üstü uzanırken kollarını ve bacaklarını 3 dakika boyunca yavaşça esnet.",
+      "etiketler": ["sabah-hareketi", "zindelik", "kan-dolayimi"]
+    },
+    {
+      "id": "uyku-g23",
+      "alan": "uyku",
+      "gun": 23,
+      "asama": "govde",
+      "zorluk": 2,
+      "sure_dk": 8,
+      "baslik": "Oda sıcaklığı ayarı: Serin uyku konforu",
+      "neden": "Aşırı sıcak bir oda gece sık sık uyanmaya yol açar; serin bir oda derin uykuyu uzatır.",
+      "adimlar": [
+        "Yatak odanın sıcaklığını kontrol et (kaloriferi kısmak, camı aralamak veya daha hafif bir örtü seçmek).",
+        "Yatağa girdiğinde odanın hafif serin, yorganının ise sıcak olmasını sağla.",
+        "Bu dengenin yarattığı derin sığınak hissini yaşa."
+      ],
+      "alternatif": "Yorganını veya battaniyeni daha hafif, nefes alan bir örtüyle değiştir.",
+      "etiketler": ["oda-sicakligi", "serinlik", "derin-uyku"]
+    },
+    {
+      "id": "uyku-g24",
+      "alan": "uyku",
+      "gun": 24,
+      "asama": "yaprak",
+      "zorluk": 3,
+      "sure_dk": 12,
+      "baslik": "Kişisel 'Akşam Rutini Protokolü' oluştur",
+      "neden": "Yaprak aşamasındasın. Artık tesadüfi değil, seni her gece sakinleştirecek kişisel bir formülün var.",
+      "adimlar": [
+        "Uyumadan önceki son 30-45 dakika için 3 adımlı bir akış yaz (Örnek: 1. Ekranları kapat ve su iç, 2. Işıkları loşlaştır ve odayı havalandır, 3. 5 dakika hafif esneme).",
+        "Bu formülü kendi yaşam şartlarına göre uyarla.",
+        "Bu akşam bu protokolü ilk kez uygula."
+      ],
+      "alternatif": "Sadece 2 adımlı çok basit bir akşam rutini belirle.",
+      "etiketler": ["aksam-protokolu", "kisisel-rituel", "yaprak"]
+    },
+    {
+      "id": "uyku-g25",
+      "alan": "uyku",
+      "gun": 25,
+      "asama": "yaprak",
+      "zorluk": 3,
+      "sure_dk": 12,
+      "baslik": "Kişisel 'Sabah Rutini Protokolü' oluştur",
+      "neden": "Günün nasıl başlarsa öyle devam eder. Sabah telaşını 3 adımlı sakin bir uyanışla değiştir.",
+      "adimlar": [
+        "Uyandıktan sonraki ilk 20 dakika için 3 adımlı bir akış belirle (Örnek: 1. Ekrana bakmadan su iç, 2. Perdeyi aç ve gün ışığı al, 3. 5 dakika hafif esne).",
+        "Bu adımları bir yere not et.",
+        "Yarın sabah bu sakin uyanışla güne merhaba de."
+      ],
+      "alternatif": "Sabah için sadece 'Ekransız 5 dakika + 1 bardak su' kuralını yaz.",
+      "etiketler": ["sabah-protokolu", "uyanma-ritueli", "enerji"]
+    },
+    {
+      "id": "uyku-g26",
+      "alan": "uyku",
+      "gun": 26,
+      "asama": "yaprak",
+      "zorluk": 3,
+      "sure_dk": 15,
+      "baslik": "30 Dakikalık 'Tam Dijital Kapanış'",
+      "neden": "Uykudan önceki 30 dakikayı sıfır ekranla geçirmek, zihnin mavi ışıktan ve bilgi kirliliğinden tamamen arınmasını sağlar.",
+      "adimlar": [
+        "Uyumayı hedeflediğin andan tam 30 dakika önce tüm ekranları kapat ve telefonu uzakta bırak.",
+        "Bu süreyi bir kitap okuyarak, günlük yazarak veya sakince dinlenerek değerlendir.",
+        "Yatağa girdiğinde zihninin ne kadar dingin olduğunu hisset."
+      ],
+      "alternatif": "Süreyi 20 dakika olarak belirle.",
+      "etiketler": ["dijital-kapanis", "derin-arinsma", "huzur"]
+    },
+    {
+      "id": "uyku-g27",
+      "alan": "uyku",
+      "gun": 27,
+      "asama": "yaprak",
+      "zorluk": 2,
+      "sure_dk": 10,
+      "baslik": "Esneklik Kalkanı: Saatler kaysa bile değişmeyen 3 çıpa",
+      "neden": "Hayat her zaman aynı saatte uyumaya izin vermez; vardiya veya seyahat değişse de ritmini koruyacak çıpaların olsun.",
+      "adimlar": [
+        "Ne zaman uyursan uyu asla vazgeçmeyeceğin 3 küçük alışkanlık belirle.",
+        "Örnek: '1. Nerede olursam olayım ekransız 10 dakika. 2. Odayı havalandırmak. 3. Uyanınca 1 bardak su.'",
+        "Bu 3 çıpayı not et; onlar senin taşınabilir uyku kalitendir."
+      ],
+      "alternatif": "Sadece tek bir değişmez uyku kuralı seç.",
+      "etiketler": ["esneklik", "cipa-aliskanliklar", "surdurulebilirlik"]
+    },
+    {
+      "id": "uyku-g28",
+      "alan": "uyku",
+      "gun": 28,
+      "asama": "yaprak",
+      "zorluk": 2,
+      "sure_dk": 10,
+      "baslik": "Sağlıklı Uyku ve Rutin Manifestosu: 3 Altın İlken",
+      "neden": "27 günlük deneyiminden süzülen prensipler, gelecekte uykun bozulduğunda seni rotana döndürecek.",
+      "adimlar": [
+        "Öğrendiğin en değerli 3 uyku ilkesini yaz.",
+        "Örnek: '1. Yatak sadece dinlenme ve uyku içindir. 2. Zihnim dolunca yatakta dönmem, kağıda yazarım. 3. Sabah ilk işimi kendime ayırırım.'",
+        "Bu manifestoyu telefonunun notlarına kaydet."
+      ],
+      "alternatif": "Tek bir motto seç: 'İyi bir gün, bir önceki gecenin huzurunda başlar.'",
+      "etiketler": ["manifesto", "prensipler", "oz-disiplin"]
+    },
+    {
+      "id": "uyku-g29",
+      "alan": "uyku",
+      "gun": 29,
+      "asama": "yaprak",
+      "zorluk": 3,
+      "sure_dk": 11,
+      "baslik": "Haftalık Uyku ve Yaşam Alanı Bakım Zamanını Belirle",
+      "neden": "Temiz çarşaflar, tozsuz bir oda ve havalandırılmış bir yatak uyku kalitesini doğrudan artırır.",
+      "adimlar": [
+        "Takvimine haftada bir gün için 15 dakikalık 'Uyku Alanı Bakımı' zamanı koy.",
+        "Çarşafları tazelemek, odayı detaylı havalandırmak ve komodini sadeleştirmek için bu zamanı koru.",
+        "Yatak odanı her hafta bir sığınağa dönüştür."
+      ],
+      "alternatif": "Bugün çarşafını veya yastık kılıfını temiz bir tanesiyle değiştir.",
+      "etiketler": ["haftalik-bakim", "hijyen", "uyku-alani"]
+    },
+    {
+      "id": "uyku-g30",
+      "alan": "uyku",
+      "gun": 30,
+      "asama": "yaprak",
+      "zorluk": 2,
+      "sure_dk": 8,
+      "baslik": "Yolculuğun Sonu ve Yeni Başlangıç: Dinlenmiş Zihin, Zinde Beden",
+      "neden": "30 gün boyunca attığın mikro adımlarla uykuyu bir mücadele olmaktan çıkardın. Artık bedeninin ritmine saygı duyan bir yaşamın var.",
+      "adimlar": [
+        "1. Günde ekranla boğuşan ve yorgun uyanan halinle bugünkü sakin ritmini kıyasla.",
+        "Sabahları daha zinde uyanabilmenin ve akşamları huzurla yatabilmenin değerini kutla.",
+        "Kendine yürekten teşekkür et: Bedenine ve zihnine dinlenme hakkını verdin."
+      ],
+      "alternatif": "Bugün aynaya bakıp içtenlikle 'Artık ritmime saygı duyuyorum, dinlenmiş ve zindeyim' de.",
+      "etiketler": ["kutlama", "yolculuk-sonu", "zindelik"]
+    }
+  ]
+}

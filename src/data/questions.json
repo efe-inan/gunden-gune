@@ -1,0 +1,502 @@
+{
+  "alanlar": [
+    {
+      "id": "finans",
+      "baslik": "Para ve Finans Yönetimi",
+      "aciklama": "Bilinçli harcama ve sürdürülebilir bütçe farkındalığı kazan.",
+      "ikon": "wallet",
+      "aktif": true
+    },
+    {
+      "id": "odak",
+      "baslik": "Dikkat ve Odaklanma",
+      "aciklama": "Dağınıklığı azalt, tek bir işe derinleşme kasını güçlendir.",
+      "ikon": "focus",
+      "aktif": true
+    },
+    {
+      "id": "wellness",
+      "baslik": "Meditasyon ve Zihinsel Dinginlik",
+      "aciklama": "Zihnini yavaşlat, nefesini ve bedenini dinlemeyi öğren.",
+      "ikon": "lotus",
+      "aktif": true
+    },
+    {
+      "id": "iliskiler",
+      "baslik": "Daha İyi İlişkiler Kurma",
+      "aciklama": "Derin dinleme, net sınırlar ve samimi iletişim geliştir.",
+      "ikon": "users",
+      "aktif": true
+    },
+    {
+      "id": "mukemmeliyetcilik",
+      "baslik": "Mükemmeliyetçiliği Yenme",
+      "aciklama": "Yeterince iyi olana izin ver, bitirmenin huzurunu tat.",
+      "ikon": "feather",
+      "aktif": true
+    },
+    {
+      "id": "disiplin",
+      "baslik": "Erteleme ve Disiplin",
+      "aciklama": "Küçük başlangıçlarla eyleme geçme direncini kır.",
+      "ikon": "zap",
+      "aktif": true
+    },
+    {
+      "id": "ozguven",
+      "baslik": "Özgüven ve Kendine Değer Verme",
+      "aciklama": "İç eleştiriyi yumuşat, güçlü yönlerini fark et.",
+      "ikon": "shield",
+      "aktif": true
+    },
+    {
+      "id": "uyku",
+      "baslik": "Sağlıklı Uyku ve Günlük Rutin",
+      "aciklama": "Dinlendirici akşam ritüelleri ve dengeli sabahlar kur.",
+      "ikon": "moon",
+      "aktif": true
+    }
+  ],
+  "alanaOzelSorular": {
+    "finans": [
+      {
+        "id": "finans_1",
+        "soru": "Aylık gelir ve giderini şu an ne kadar takip ediyorsun?",
+        "aciklama": "Durumu olduğu gibi görmek, ilk ve en değerli adımdır.",
+        "secenekler": [
+          { "deger": "hic", "metin": "Hiç takip etmiyorum" },
+          { "deger": "ara_sira", "metin": "Aklıma geldikçe / ara sıra" },
+          { "deger": "duzenli", "metin": "Düzenli olarak kaydediyorum" }
+        ]
+      },
+      {
+        "id": "finans_2",
+        "soru": "Ay sonunu getirmekte zorlanıyor musun?",
+        "aciklama": "Burada yargılama yok, tamamen senin konfor alanın için soruyoruz.",
+        "secenekler": [
+          { "deger": "sik", "metin": "Sık sık zorlanıyorum" },
+          { "deger": "bazen", "metin": "Bazen beklenmedik harcamalarda" },
+          { "deger": "nadiren", "metin": "Nadiren veya hiç zorlanmıyorum" }
+        ]
+      },
+      {
+        "id": "finans_3",
+        "soru": "Bir kenara ayırdığın bir birikim tutarı var mı?",
+        "secenekler": [
+          { "deger": "yok", "metin": "Şu an birikimim yok" },
+          { "deger": "kucuk", "metin": "Küçük de olsa bir miktar var" },
+          { "deger": "duzenli", "metin": "Düzenli birikim yapıyorum" }
+        ]
+      },
+      {
+        "id": "finans_4",
+        "soru": "Para konusunda seni en çok ne zorluyor?",
+        "aciklama": "Bu cevaba göre ilk görevlerinin odak noktası şekillenecek.",
+        "secenekler": [
+          { "deger": "plan", "metin": "Nereden başlayacağımı planlamak" },
+          { "deger": "harcama", "metin": "Dürtüsel harcamaları kısmak" },
+          { "deger": "disiplin", "metin": "Süreklilik ve takip disiplini" },
+          { "deger": "bilgi", "metin": "Temel bütçe ve finans bilgisi eksikliği" }
+        ]
+      },
+      {
+        "id": "finans_5",
+        "soru": "Bu 30 günlük yolculukta öncelikli hedefin ne?",
+        "secenekler": [
+          { "deger": "farkindalik", "metin": "Paranın nereye gittiğini tam olarak görmek" },
+          { "deger": "birikim", "metin": "Küçük bir acil durum fonu başlatmak" },
+          { "deger": "harcama_kontrolu", "metin": "Gereksiz harcamaları sakince azaltmak" },
+          { "deger": "huzur", "metin": "Para ile ilgili suçluluk ve kaygıyı hafifletmek" }
+        ]
+      }
+    ],
+    "odak": [
+      {
+        "id": "odak_1",
+        "soru": "Gün içinde dikkatini en çok ne dağıtıyor?",
+        "aciklama": "Bölünme kaynaklarını bilmek, sakin bir ortam kurmanın ilk adımıdır.",
+        "secenekler": [
+          { "deger": "bildirim", "metin": "Telefon bildirimleri ve mesajlar" },
+          { "deger": "coklu_is", "metin": "Sürekli sekme veya uygulama değiştirmek" },
+          { "deger": "ic_ses", "metin": "Aklıma üşüşen dağınık düşünceler" },
+          { "deger": "cevre", "metin": "Fiziksel ortamın gürültüsü ve dağınıklığı" }
+        ]
+      },
+      {
+        "id": "odak_2",
+        "soru": "Tek bir işe kesintisiz ne kadar süre odaklanabiliyorsun?",
+        "aciklama": "Yargılama yok; başlangıç süreni buna göre ayarlayacağız.",
+        "secenekler": [
+          { "deger": "az", "metin": "5 dakikadan az, hemen kopuyorum" },
+          { "deger": "orta", "metin": "10–15 dakika arası idare edebiliyorum" },
+          { "deger": "iyi", "metin": "25 dakika (bir pomodoro) odaklanabiliyorum" },
+          { "deger": "dengesiz", "metin": "Bazen saatlerce dalıyorum ama sonra tükeniyorum" }
+        ]
+      },
+      {
+        "id": "odak_3",
+        "soru": "Telefonundaki bildirimler şu an nasıl ayarlı?",
+        "aciklama": "Bildirimler zihinsel enerjiyi sessizce tüketen en büyük etkendir.",
+        "secenekler": [
+          { "deger": "hepsi_acik", "metin": "Çoğu açık ve sürekli ekrana düşüyor" },
+          { "deger": "sessiz", "metin": "Sessizde ama ekran yandıkça bakıyorum" },
+          { "deger": "kisitli", "metin": "Sadece önemli uygulamaların bildirimi açık" }
+        ]
+      },
+      {
+        "id": "odak_4",
+        "soru": "Çalışma veya odak alanın genellikle nasıl?",
+        "secenekler": [
+          { "deger": "daginik", "metin": "Masa ve ekranım kalabalık ve dağınık" },
+          { "deger": "degisken", "metin": "Bazen topluyorum, kısa sürede dağılıyor" },
+          { "deger": "sade", "metin": "Genellikle sade ve az uyaranlı" }
+        ]
+      },
+      {
+        "id": "odak_5",
+        "soru": "Bu 30 günlük odak yolculuğundaki öncelikli hedefin ne?",
+        "secenekler": [
+          { "deger": "derinlesme", "metin": "Tek bir işe sakince derinleşebilmek" },
+          { "deger": "ekran_azaltma", "metin": "Dürtüsel telefon kontrolünü azaltmak" },
+          { "deger": "huzur", "metin": "Günün sonunda zihinsel yorgunluğu hafifletmek" },
+          { "deger": "bitirme", "metin": "Başladığım işleri bölünmeden bitirebilmek" }
+        ]
+      }
+    ],
+    "wellness": [
+      {
+        "id": "wellness_1",
+        "soru": "Daha önce meditasyon veya nefes çalışması denedin mi?",
+        "aciklama": "Geçmiş deneyimin ne olursa olsun, burada sıfırdan ve yorulmadan başlayacağız.",
+        "secenekler": [
+          { "deger": "hic", "metin": "Hiç denemedim, nereden başlayacağımı bilmiyorum" },
+          { "deger": "ara_sira", "metin": "Birkaç kez denedim ama sürdüremedim" },
+          { "deger": "duzenli", "metin": "Zaman zaman kendime alan açmaya çalışıyorum" }
+        ]
+      },
+      {
+        "id": "wellness_2",
+        "soru": "Gün içinde zihnini genellikle nasıl hissediyorsun?",
+        "aciklama": "Yargılamadan sadece mevcut zihinsel temponu fark et.",
+        "secenekler": [
+          { "deger": "telaşlı", "metin": "Sürekli bir sonraki işi düşünen, telaşlı bir hâl" },
+          { "deger": "dalgalı", "metin": "Bazen sakin bazen birden dolup taşan düşünceler" },
+          { "deger": "yorgun", "metin": "Düşüncelerden yorulmuş ve dinlenmeye ihtiyaç duyan" }
+        ]
+      },
+      {
+        "id": "wellness_3",
+        "soru": "Bedenindeki fiziksel gerginliği (omuzlar, çene, boyun) fark eder misin?",
+        "aciklama": "Stres ilk olarak bedenimizde fiziksel katılık olarak toplanır.",
+        "secenekler": [
+          { "deger": "gec", "metin": "Genelde ancak gün sonunda ağrıyınca fark ederim" },
+          { "deger": "bazen", "metin": "Stresli anlarda fark edip gevşetmeye çalışırım" },
+          { "deger": "duzenli", "metin": "Bedenimin sinyallerini dinlemeye alışkınım" }
+        ]
+      },
+      {
+        "id": "wellness_4",
+        "soru": "Sadece durup hiçbir şey yapmadan nefes almak sana nasıl hissettirir?",
+        "secenekler": [
+          { "deger": "huzursuz", "metin": "Boşa zaman geçiriyormuşum gibi hafif bir suçluluk" },
+          { "deger": "ihtiyac", "metin": "Çok iyi hissettirir ama aklıma getirmekte zorlanırım" },
+          { "deger": "huzurlu", "metin": "Günün içinde sakinleştirici bir nefes alanı" }
+        ]
+      },
+      {
+        "id": "wellness_5",
+        "soru": "Bu 30 günlük dinginlik yolculuğundaki öncelikli hedefin ne?",
+        "secenekler": [
+          { "deger": "yavaslama", "metin": "Gün içindeki aceleciliği ve zihinsel hızı yumuşatmak" },
+          { "deger": "beden", "metin": "Bedenimde biriken gerginliği fark edip serbest bırakmak" },
+          { "deger": "sukran", "metin": "Günün içindeki küçük güzellikleri fark etme refleksi kazanmak" },
+          { "deger": "aliskanlik", "metin": "Günde 3-5 dakika kendimle baş başa kalabilme alışkanlığı kurmak" }
+        ]
+      }
+    ],
+    "iliskiler": [
+      {
+        "id": "iliskiler_1",
+        "soru": "Biri seninle konuşurken zihninde en çok ne olup bitiyor?",
+        "aciklama": "Gerçek iletişim, karşındakinin sözcükleri kadar kendi dinleme tavrını da fark etmektir.",
+        "secenekler": [
+          { "deger": "cevap", "metin": "Hemen vereceğim cevabı ya da çözümü kurgulamakla meşgul olur" },
+          { "deger": "anlama", "metin": "Sözünü kesmeden, sadece ne hissettiğini anlamaya odaklanır" },
+          { "deger": "dalgın", "metin": "Bazen aklım kendi işlerime, kaygılarıma veya ekrana kayar" }
+        ]
+      },
+      {
+        "id": "iliskiler_2",
+        "soru": "Çevrendeki insanlara (arkadaş, aile, iş) 'Hayır' demekte zorlanıyor musun?",
+        "aciklama": "Sınırlar ilişkileri koparmaz; aksine onları netleştirerek korur.",
+        "secenekler": [
+          { "deger": "cok", "metin": "Kırılmasınlar ya da dışlanmayayım diye çoğunlukla 'Evet' derim" },
+          { "deger": "bazen", "metin": "Yakınlarıma zorlanırım ama resmi ortamlarda sınır koyabilirim" },
+          { "deger": "rahat", "metin": "Kendi sınırlarımı sakin ve net bir dille ifade edebilirim" }
+        ]
+      },
+      {
+        "id": "iliskiler_3",
+        "soru": "Birine kırıldığında veya öfkelendiğinde ilk tepkin ne olur?",
+        "aciklama": "Burada yanlış bir cevap yok; sadece içsel iletişim paternini gözlemliyoruz.",
+        "secenekler": [
+          { "deger": "icime_atarim", "metin": "İçime atar, sessizleşir ve mesafelenirim" },
+          { "deger": "hemen_tepki", "metin": "Hemen savunmaya geçer veya sert bir tepki veririm" },
+          { "deger": "durur_konusurum", "metin": "Biraz durup sakinleşir, sonra hissimi konuşurum" }
+        ]
+      },
+      {
+        "id": "iliskiler_4",
+        "soru": "İlişkilerinde takdir ve teşekkürlerini dile getirme sıklığın nedir?",
+        "secenekler": [
+          { "deger": "az", "metin": "İçimden çok takdir ederim ama kelimelere dökmeyi unuturum" },
+          { "deger": "ara_sira", "metin": "Özel günlerde veya büyük jestlerde söylerim" },
+          { "deger": "sik", "metin": "Küçük çabaları ve jestleri sık sık dile getiririm" }
+        ]
+      },
+      {
+        "id": "iliskiler_5",
+        "soru": "Bu 30 günlük ilişkiler yolculuğundaki öncelikli hedefin ne?",
+        "secenekler": [
+          { "deger": "dinleme", "metin": "Yargılamadan ve bölmeden derin dinleme alışkanlığı kazanmak" },
+          { "deger": "sinir", "metin": "Suçluluk hissetmeden sağlıklı sınırlar çizebilmek" },
+          { "deger": "net_iletisim", "metin": "Duygularımı ve kırgınlıklarımı suçlamadan ('ben' diliyle) aktarabilmek" },
+          { "deger": "yakinlik", "metin": "İnsanlarla daha samimi, güvenli ve şeffaf bağlar kurmak" }
+        ]
+      }
+    ],
+    "mukemmeliyetcilik": [
+      {
+        "id": "mukemmeliyetcilik_1",
+        "soru": "Mükemmeliyetçilik seni günlük hayatında en çok nerede kilitliyor?",
+        "secenekler": [
+          { "deger": "erteleme", "metin": "Kusursuz yapamayacağımdan korktuğum için başlamakta zorlanıyorum" },
+          { "deger": "bitirememe", "metin": "Sürekli detayları düzeltmekten bir türlü 'tamam' deyip teslim edemiyorum" },
+          { "deger": "kontrol", "metin": "Başkalarına iş bırakamıyorum, her şeyi kendim denetlemek istiyorum" },
+          { "deger": "huzursuzluk", "metin": "İşler bitse bile içten içe hep yetersiz ve kusurlu hissediyorum" }
+        ]
+      },
+      {
+        "id": "mukemmeliyetcilik_2",
+        "soru": "Bir mesajı veya küçük bir işi göndermeden önce genellikle kaç kez kontrol edersin?",
+        "secenekler": [
+          { "deger": "cok_fazla", "metin": "Defalarca okur, ufak bir hata kalmasın diye dakikalarca bekletirim" },
+          { "deger": "makul", "metin": "1-2 kez hızlıca göz gezdirir, yine de hafif bir tedirginlik duyarım" },
+          { "deger": "son_ana_kadar", "metin": "Hata görme korkusundan son ana kadar göndermekten kaçınırım" }
+        ]
+      },
+      {
+        "id": "mukemmeliyetcilik_3",
+        "soru": "Küçük bir hata yaptığında ya da işler planladığın gibi gitmediğinde iç sesin sana nasıl seslenir?",
+        "secenekler": [
+          { "deger": "sert", "metin": "Çok sert ve suçlayıcı: 'Bunu nasıl beceremedin, yine berbat ettin'" },
+          { "deger": "yetersiz", "metin": "Hüzünlü ve yetersiz: 'Asla tam anlamıyla iyi olamayacağım'" },
+          { "deger": "huzursuz", "metin": "Kendimi teselli etmeye çalışırım ama içimdeki huzursuzluk uzun süre kalır" }
+        ]
+      },
+      {
+        "id": "mukemmeliyetcilik_4",
+        "soru": "'Yeterince iyi' (good enough) kavramı sana şu an ne hissettiriyor?",
+        "secenekler": [
+          { "deger": "vasatlik", "metin": "Sanki tembellik veya vasatlığa razı olmakmış gibi geliyor" },
+          { "deger": "ozlem", "metin": "Mantıken çok doğru buluyorum ama uygulamaya cesaret edemiyorum" },
+          { "deger": "hafiflik", "metin": "Ulaşmak istediğim en büyük özgürlük ve hafiflik kaynağı" }
+        ]
+      },
+      {
+        "id": "mukemmeliyetcilik_5",
+        "soru": "Bu 30 günlük yolculukta kazanmak istediğin en büyük dönüşüm ne?",
+        "secenekler": [
+          { "deger": "bitirme", "metin": "'Bitti, mükemmelden iyidir' diyerek işleri rahatça teslim edebilmek" },
+          { "deger": "oz_sefqat", "metin": "İç eleştirmenin sesini kısıp kendime karşı daha şefkatli olabilmek" },
+          { "deger": "kusur_barisi", "metin": "Küçük kusurlarla barışıp aşırı kontrol takıntısını gevşetmek" },
+          { "deger": "rahat_baslama", "metin": "Kusursuzluk baskısı olmadan işlere rahatça başlayabilmek" }
+        ]
+      }
+    ],
+    "disiplin": [
+      {
+        "id": "disiplin_1",
+        "soru": "Erteleme döngüsüne en çok hangi durumlarda yakalanıyorsun?",
+        "secenekler": [
+          { "deger": "buyuk_isler", "metin": "Çok büyük ve göz korkutucu işlerde nereden başlayacağımı bilemediğimde" },
+          { "deger": "sikici_isler", "metin": "Sıkıcı, rutin veya anlık tatmin sağlamayan görevlerde" },
+          { "deger": "mukemmeliyetcilik", "metin": "İstediğim kadar kusursuz yapamayacağımdan çekindiğimde" },
+          { "deger": "yorgunluk", "metin": "Zihinsel olarak yorgun hissettiğimde ve dikkatim dağıldığında" }
+        ]
+      },
+      {
+        "id": "disiplin_2",
+        "soru": "Bir işi ertelemeye başladığın an kendini genellikle ne yaparken bulursun?",
+        "secenekler": [
+          { "deger": "sosyal_medya", "metin": "Sosyal medyada, videolarda veya haberlerde amaçsızca gezinirken" },
+          { "deger": "sahte_verimlilik", "metin": "O an gereksiz olan başka küçük işlerle (temizlik, masa düzeni) oyalanırken" },
+          { "deger": "kacis", "metin": "'Sonra yaparım' deyip başka sekmelere veya oyunlara geçerken" },
+          { "deger": "dusunme", "metin": "Harekete geçmek yerine sadece düşünüp kaygılanırken" }
+        ]
+      },
+      {
+        "id": "disiplin_3",
+        "soru": "Kendine verdiğin sözleri tutma konusunda şu an ne hissediyorsun?",
+        "secenekler": [
+          { "deger": "sik_kirilma", "metin": "Sık sık kendime söz verir ama günün sonunda hayal kırıklığı yaşarım" },
+          { "deger": "baskasina_evet", "metin": "Başkalarına verdiğim sözleri tutarım ama kendime verdiklerimi ertelerim" },
+          { "deger": "dalgalı", "metin": "Bazen çok iyi başarsam da sürdürülebilir bir ritim tutturmakta zorlanırım" }
+        ]
+      },
+      {
+        "id": "disiplin_4",
+        "soru": "'Disiplin' kelimesi sende ilk olarak nasıl bir duygu uyandırıyor?",
+        "secenekler": [
+          { "deger": "katı", "metin": "Katı, soğuk ve cezalandırıcı bir zorlama hissi" },
+          { "deger": "ozgurluk", "metin": "Hayatımı hafifletecek, iç huzuru ve özgürlük getirecek bir güç" },
+          { "deger": "uzak", "metin": "İhtiyacım olan ama bir türlü yakalayamadığım uzak bir ideal" }
+        ]
+      },
+      {
+        "id": "disiplin_5",
+        "soru": "Bu 30 günlük erteleme ve disiplin yolculuğundaki öncelikli hedefin ne?",
+        "secenekler": [
+          { "deger": "kolay_baslama", "metin": "Ertelediğim işlere direnç duymadan, 2 dakikalık küçük adımlarla başlayabilmek" },
+          { "deger": "parcalama", "metin": "Büyük görevleri korkmadan mikro parçalara bölebilme refleksi kazanmak" },
+          { "deger": "soz_tutma", "metin": "Kendime verdiğim küçük sözleri tutarak içsel güvenimi tazelemek" },
+          { "deger": "sakin_ritim", "metin": "Sürdürülebilir, cezasız ve sakin bir günlük çalışma ritmi oluşturmak" }
+        ]
+      }
+    ],
+    "ozguven": [
+      {
+        "id": "ozguven_1",
+        "soru": "Kendine güvenini ve değerini en çok ne zaman sorgularken bulursun?",
+        "secenekler": [
+          { "deger": "kiyaslama", "metin": "Başkalarıyla kendimi kıyaslayıp geride kaldığımı hissettiğimde" },
+          { "deger": "hata_yapma", "metin": "Küçük bir hata yaptığımda veya beklediğim sonucu alamadığımda" },
+          { "deger": "topluluk_onunde", "metin": "Topluluk içinde fikrimi söylemem gerektiğinde veya eleştirilme korkusunda" },
+          { "deger": "sahtekarlik", "metin": "Başarılarımı 'şans eseri oldu' diyerek küçümsediğimde (Imposter hissi)" }
+        ]
+      },
+      {
+        "id": "ozguven_2",
+        "soru": "Biri sana içtenlikle bir iltifat ettiğinde genellikle ilk tepkin ne olur?",
+        "secenekler": [
+          { "deger": "gecistirme", "metin": "Mahcup olur, 'Yok canım, öyle denk geldi' diyerek geçiştiririm" },
+          { "deger": "zorlanma", "metin": "İçten sevinirim ama doğrudan 'Teşekkür ederim' demekte zorlanırım" },
+          { "deger": "kabul", "metin": "Gülümseyerek teşekkür eder ve o iltifatı içselleştirebilirim" }
+        ]
+      },
+      {
+        "id": "ozguven_3",
+        "soru": "Kendi güçlü yönlerini sayman istense şu an ne kadar rahat sıralayabilirsin?",
+        "secenekler": [
+          { "deger": "cok_zor", "metin": "Çok zorlanırım; eksiklerim hemen aklıma gelir ama iyi taraflarımı bulamam" },
+          { "deger": "cekingen", "metin": "1-2 şey sayabilirim ama daha fazlasını söylemek kibirli hissettirir" },
+          { "deger": "net", "metin": "Birkaç somut güçlü yönümü ve yetkinliğimi rahatlıkla ifade edebilirim" }
+        ]
+      },
+      {
+        "id": "ozguven_4",
+        "soru": "Hata yaptığında veya zorlandığında kendine konuşma dilin nasıldır?",
+        "secenekler": [
+          { "deger": "sert_yargilayici", "metin": "Sert, talepkâr ve sürekli eksik arayan bir ton" },
+          { "deger": "hatirlatici", "metin": "Başarıları çabuk unutan ama hataları günlerce hatırlatan bir ton" },
+          { "deger": "dengeli", "metin": "Genellikle sakin ve şefkatli bir arkadaş gibi yaklaşan bir ton" }
+        ]
+      },
+      {
+        "id": "ozguven_5",
+        "soru": "Bu 30 günlük özgüven ve öz-değer yolculuğundaki öncelikli hedefin ne?",
+        "secenekler": [
+          { "deger": "guclu_yonler", "metin": "Güçlü yönlerimi ve başarılarımı küçümsemeden kayda geçirmek" },
+          { "deger": "nazik_dil", "metin": "İç eleştirmenin sesini yumuşatıp kendime nazik bir dil geliştirmek" },
+          { "deger": "konfor_alani", "metin": "Sosyal ortamlarda ve kararlarımda küçük konfor alanı dışı adımlar atabilmek" },
+          { "deger": "oz_onay", "metin": "Başkalarının onayına bağımlı olmadan kendi değerimi içselleştirmek" }
+        ]
+      }
+    ],
+    "uyku": [
+      {
+        "id": "uyku_1",
+        "soru": "Şu anki uyku ve uyanma ritmini en iyi hangisi tarif eder?",
+        "secenekler": [
+          { "deger": "duzensiz", "metin": "Belirli bir yatış-kalkış saatim yok, her gün çok farklı saatlerde uyuyorum" },
+          { "deger": "ekran_gecikmesi", "metin": "Düzenli sayılır ama yatmadan önce ekran başında çok fazla vakit kaybediyorum" },
+          { "deger": "esnek_vardiya", "metin": "Vardiyalı ya da esnek saatlerde çalışıyorum, sabit bir saat tutturamıyorum" },
+          { "deger": "zihin_dolu", "metin": "Yatağa yattığımda zihnim çok dolu oluyor, gevşeyip uykuya geçişim uzuyor" }
+        ]
+      },
+      {
+        "id": "uyku_2",
+        "soru": "Uyumadan önceki son 1 saatini genellikle nasıl geçirirsin?",
+        "secenekler": [
+          { "deger": "ekran", "metin": "Telefon, tablet veya televizyon ekranına bakarak" },
+          { "deger": "kaygi_plan", "metin": "Günün işlerini veya yarının planlarını düşünüp kaygılanarak" },
+          { "deger": "atistirma", "metin": "Atıştırmalık, çay veya kahve tüketerek" },
+          { "deger": "belirsiz", "metin": "Sakinleşmeye çalışarak ama net bir akşam ritüelim olmadan" }
+        ]
+      },
+      {
+        "id": "uyku_3",
+        "soru": "Uyandıktan sonraki ilk 15 dakikada genellikle yaptığın ilk eylem nedir?",
+        "secenekler": [
+          { "deger": "hemen_telefon", "metin": "Hemen telefonu elime alıp bildirimleri ve mesajları kontrol etmek" },
+          { "deger": "sersem_kosusturma", "metin": "Yataktan zorlukla kalkıp sersemce doğrudan güne koşturmak" },
+          { "deger": "alarm_erteleme", "metin": "Alarmı birkaç kez erteleyip telaşla yataktan fırlamak" },
+          { "deger": "sakin_baslangic", "metin": "Su içmek, esnemek veya sakin birkaç nefes almak" }
+        ]
+      },
+      {
+        "id": "uyku_4",
+        "soru": "Günlük kafein (kahve, çay, enerji içeceği) alışkanlığın ne durumda?",
+        "secenekler": [
+          { "deger": "gec_saat", "metin": "Gün boyu ve uyku saatime çok yakın vakitlere kadar sık sık tüketirim" },
+          { "deger": "dengeli", "metin": "Sadece sabah ve öğlen içerim, uyku saatime yaklaştırmam" },
+          { "deger": "az_veya_yok", "metin": "Çok az tüketirim veya kafeinsiz alternatifleri tercih ederim" }
+        ]
+      },
+      {
+        "id": "uyku_5",
+        "soru": "Bu 30 günlük yolculukta uyku ve rutin konusunda öncelikli hedefin ne?",
+        "secenekler": [
+          { "deger": "aksam_sabah_ritueli", "metin": "Kendi yaşam ritmime uygun, huzurlu bir akşam ve sabah rutini oluşturmak" },
+          { "deger": "dijital_detoks", "metin": "Yatakta telefon kullanımını azaltıp daha derin ve dinlendirici uyumak" },
+          { "deger": "ortam_iyilestirme", "metin": "Uyku ortamımı (ışık, serinlik, sessizlik) daha dingin ve kaliteli hale getirmek" },
+          { "deger": "zinde_enerji", "metin": "Gün içi enerji dalgalanmalarını dengeleyip sabahları daha zinde uyanabilmek" }
+        ]
+      }
+    ]
+  },
+  "genelSorular": [
+    {
+      "id": "gunluk_sure",
+      "soru": "Günde görevlere ne kadar zaman ayırabilirsin?",
+      "aciklama": "Seni asla bu süreyi aşan görevlerle yormayacağız.",
+      "secenekler": [
+        { "deger": 5, "metin": "5 dakika (Mini adımlar)" },
+        { "deger": 10, "metin": "10 dakika (Dengeli başlangıç)" },
+        { "deger": 15, "metin": "15 dakika (Derinleşme)" },
+        { "deger": 20, "metin": "20+ dakika (Geniş alan)" }
+      ]
+    },
+    {
+      "id": "gunun_saati",
+      "soru": "Günün hangi vaktinde görevini görmek istersin?",
+      "aciklama": "Günün ritmine en uygun zaman dilimini seç.",
+      "secenekler": [
+        { "deger": "sabah", "metin": "Sabah (Güne dingin bir adımla başlamak)" },
+        { "deger": "ogle", "metin": "Öğle (Gün ortası nefeslenmesi)" },
+        { "deger": "aksam", "metin": "Akşam (Günü tamamlarken)" },
+        { "deger": "fark_etmez", "metin": "Fark etmez (Günün herhangi bir anı)" }
+      ]
+    },
+    {
+      "id": "hazirlik_puani",
+      "tip": "olcek",
+      "soru": "Bu yolculuğa şu an ne kadar hazırsın?",
+      "aciklama": "Düşük hissetmek çok doğal. Düşük puan seçersen ilk haftayı daha yumuşak başlatırız.",
+      "min": 1,
+      "max": 5,
+      "minEtiket": "Yavaş ve temkinli başlamak istiyorum",
+      "maxEtiket": "Adım atmak için heyecanlıyım"
+    }
+  ]
+}

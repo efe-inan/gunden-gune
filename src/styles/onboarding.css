@@ -1,0 +1,530 @@
+/* ==========================================================================
+   Onboarding (Soru Akışı) Stilleri
+   ========================================================================== */
+
+.onboarding-page {
+  min-height: calc(100vh - 4.5rem - 140px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1.75rem 0 3rem;
+}
+
+/* İlerleme Çubuğu Bölümü */
+.onboarding-progress-wrapper {
+  margin-bottom: 1.25rem;
+}
+
+.onboarding-progress-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.onboarding-progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: var(--bej-300);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.onboarding-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--yesil-400));
+  border-radius: var(--radius-full);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Ana Onboarding Kartı */
+.onboarding-card {
+  position: relative;
+  background-color: var(--bej-200);
+  border: 1.5px solid var(--bej-300);
+  border-radius: var(--radius-xl);
+  padding: clamp(1.5rem, 3.5vw, 2.5rem);
+  box-shadow: var(--shadow-card);
+}
+
+.question-header {
+  margin-bottom: 1.25rem;
+}
+
+.question-tag {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.question-title {
+  font-size: clamp(1.4rem, 3.2vw, 1.95rem);
+  color: var(--yesil-700);
+  margin-bottom: 0.35rem;
+  line-height: 1.28;
+}
+
+.question-desc {
+  font-size: 1.02rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* Form Elemanları (İsim Girişi) */
+.input-group {
+  margin: 1.5rem 0 0.5rem;
+}
+
+.text-input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 1.15rem;
+  color: var(--yesil-900);
+  background-color: var(--bej-100);
+  border: 1.5px solid var(--bej-300);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: all var(--transition-normal);
+}
+
+.text-input:focus {
+  border-color: var(--yesil-500);
+  background-color: var(--bg-input-focus);
+  box-shadow: 0 0 0 4px var(--yesil-100);
+}
+
+.text-input::placeholder {
+  color: var(--text-subtle);
+  opacity: 0.85;
+}
+
+.input-hint {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--text-subtle);
+  margin-top: 0.5rem;
+}
+
+/* 8 Alan Kart Izgarası */
+.domains-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.domain-choice-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.15rem;
+  background-color: var(--bej-100);
+  border: 1.5px solid var(--bej-300);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--transition-normal);
+}
+
+.domain-choice-card:hover {
+  border-color: var(--yesil-400);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-subtle);
+}
+
+.domain-choice-card.is-selected {
+  border-color: var(--accent);
+  background-color: var(--bg-surface-elevated);
+  box-shadow: 0 0 0 2px var(--accent), var(--shadow-subtle);
+}
+
+.domain-choice-card.is-disabled {
+  opacity: 0.72;
+  cursor: pointer;
+}
+
+.domain-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background-color: var(--yesil-100);
+  color: var(--yesil-700);
+  flex-shrink: 0;
+  transition: transform var(--transition-normal);
+}
+
+.domain-choice-card:hover .domain-icon-box {
+  transform: scale(1.05);
+}
+
+/* Alana Özel Dingin Renk Vurguları (Açık Mod) */
+[data-domain-id="finans"] .domain-icon-box {
+  background-color: #EFE4D6;
+  color: #8C6239;
+}
+
+[data-domain-id="odak"] .domain-icon-box {
+  background-color: #DDEEE0;
+  color: #2F633B;
+}
+
+[data-domain-id="meditasyon"] .domain-icon-box {
+  background-color: #E2EAF4;
+  color: #426487;
+}
+
+[data-domain-id="iliskiler"] .domain-icon-box {
+  background-color: #F4E4DF;
+  color: #8B4A3E;
+}
+
+[data-domain-id="mukemmeliyet"] .domain-icon-box {
+  background-color: #E8EEDC;
+  color: #556B2F;
+}
+
+[data-domain-id="erteleme"] .domain-icon-box {
+  background-color: #F5ECCE;
+  color: #846B28;
+}
+
+[data-domain-id="ozguven"] .domain-icon-box {
+  background-color: #EBE5DB;
+  color: #6C5941;
+}
+
+[data-domain-id="uyku"] .domain-icon-box {
+  background-color: #DFE7E5;
+  color: #385E5A;
+}
+
+/* Alana Özel Dingin Renk Vurguları (Koyu Mod) */
+[data-theme="dark"] [data-domain-id="finans"] .domain-icon-box {
+  background-color: #262019;
+  color: #D4A882;
+  border: 1px solid #3E3327;
+}
+
+[data-theme="dark"] [data-domain-id="odak"] .domain-icon-box {
+  background-color: #1A261D;
+  color: #7DB58F;
+  border: 1px solid #293D2E;
+}
+
+[data-theme="dark"] [data-domain-id="meditasyon"] .domain-icon-box {
+  background-color: #19232C;
+  color: #8CB6E0;
+  border: 1px solid #273747;
+}
+
+[data-theme="dark"] [data-domain-id="iliskiler"] .domain-icon-box {
+  background-color: #2B1E1C;
+  color: #E09E94;
+  border: 1px solid #442E29;
+}
+
+[data-theme="dark"] [data-domain-id="mukemmeliyet"] .domain-icon-box {
+  background-color: #22261A;
+  color: #A8BA8C;
+  border: 1px solid #363E28;
+}
+
+[data-theme="dark"] [data-domain-id="erteleme"] .domain-icon-box {
+  background-color: #2A2414;
+  color: #DEC078;
+  border: 1px solid #43391E;
+}
+
+[data-theme="dark"] [data-domain-id="ozguven"] .domain-icon-box {
+  background-color: #23201B;
+  color: #C4B5A3;
+  border: 1px solid #37332B;
+}
+
+[data-theme="dark"] [data-domain-id="uyku"] .domain-icon-box {
+  background-color: #1A2524;
+  color: #84B5B0;
+  border: 1px solid #293C3A;
+}
+
+.domain-check-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  margin-left: auto;
+  background-color: var(--btn-primary-bg);
+  border: 1.5px solid var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.domain-card-body {
+  flex: 1;
+}
+
+.domain-card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.domain-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--yesil-900);
+}
+
+.domain-card-desc {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* Seçenekler Listesi (Dikey Kartlar) */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.option-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.05rem 1.35rem;
+  background-color: var(--bej-100);
+  border: 1.5px solid var(--bej-300);
+  border-radius: var(--radius-md);
+  text-align: left;
+  font-size: 1.02rem;
+  color: var(--yesil-900);
+  transition: all var(--transition-normal);
+}
+
+.option-btn:hover {
+  border-color: var(--yesil-500);
+  background-color: var(--bg-surface-elevated);
+  transform: translateX(4px);
+}
+
+.option-btn.is-selected {
+  border-color: var(--accent);
+  background-color: var(--accent-light);
+  color: var(--yesil-900);
+  font-weight: 500;
+  box-shadow: 0 0 0 1.5px var(--accent);
+}
+
+.option-check-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--bej-300);
+  color: transparent;
+  flex-shrink: 0;
+  transition: all var(--transition-normal);
+}
+
+.option-btn.is-selected .option-check-circle {
+  background-color: var(--btn-primary-bg);
+  border-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+}
+
+/* 1-5 Ölçek Elemanı */
+.scale-wrapper {
+  margin-top: 2rem;
+}
+
+.scale-buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.scale-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  background-color: var(--bej-100);
+  border: 1.5px solid var(--bej-300);
+  border-radius: var(--radius-md);
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--yesil-900);
+  transition: all var(--transition-normal);
+}
+
+.scale-btn:hover {
+  border-color: var(--accent);
+  background-color: var(--accent-light);
+}
+
+.scale-btn.is-selected {
+  background-color: var(--btn-primary-bg);
+  border-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.scale-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  padding: 0 0.25rem;
+}
+
+/* Sakin Bildirim / Uyarı Kutusu */
+.calm-notice {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.2rem;
+  margin-top: 1.25rem;
+  border-radius: var(--radius-md);
+  background-color: var(--toprak-hafif);
+  border: 1px solid var(--toprak-border);
+  color: var(--toprak-text);
+  font-size: var(--text-sm);
+  animation: gentleFadeIn 0.3s ease;
+}
+
+/* Kart Alt Gezinme Butonları */
+.onboarding-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1.5px solid var(--bej-300);
+}
+
+.onboarding-nav .btn {
+  min-width: 130px;
+}
+
+/* Adım 5: Plan Oluşturma & Yükleme Animasyonu */
+.plan-generating-view {
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+
+.plan-loader-brand {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+.plan-logo-loader {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  border-radius: var(--radius-full);
+  background-color: var(--yesil-100);
+  animation: gentlePulse 2.2s ease-in-out infinite;
+}
+
+.plan-loader-img {
+  height: 52px;
+  width: auto;
+}
+
+.loader-brand-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--yesil-700);
+  letter-spacing: -0.01em;
+}
+
+@keyframes gentlePulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(111, 143, 114, 0.2);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 14px rgba(111, 143, 114, 0);
+  }
+}
+
+.plan-ready-card {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.plan-summary-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.1rem;
+  background-color: var(--yesil-100);
+  color: var(--yesil-800);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  margin-bottom: 1.5rem;
+}
+
+.plan-ready-title {
+  font-size: clamp(1.85rem, 4vw, 2.5rem);
+  color: var(--yesil-700);
+  margin-bottom: 1rem;
+}
+
+.plan-ready-text {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  max-width: 540px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 640px) {
+  .onboarding-page {
+    padding: 1.5rem 0 3.5rem;
+  }
+  .onboarding-card {
+    padding: 1.5rem 1.25rem;
+  }
+  .scale-buttons {
+    gap: 0.4rem;
+  }
+  .scale-btn {
+    height: 52px;
+    font-size: 1.15rem;
+  }
+  .onboarding-nav {
+    margin-top: 1.75rem;
+  }
+}

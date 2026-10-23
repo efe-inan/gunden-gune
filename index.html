@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Günden Güne – Küçük adımlar, gerçek değişim</title>
+    <meta
+      name="description"
+      content="Kişiye özel günlük mini görevlerle baskısız, sakin ve sürdürülebilir kişisel gelişim platformu."
+    />
+    <!-- Faviconlar (32x32, 180x180, 512x512) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
+
+    <!-- Google Fonts: Fraunces (Serif) & Inter (Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- FOUT (Tema Yanıp Sönmesi) Önleme Scripti -->
+    <script>
+      (function () {
+        try {
+          var raw = localStorage.getItem('gunden_gune_app_state_v1');
+          var theme = 'system';
+          if (raw) {
+            var parsed = JSON.parse(raw);
+            if (parsed && parsed.settings && parsed.settings.theme) {
+              theme = parsed.settings.theme;
+            }
+          }
+          var resolved = theme;
+          if (theme === 'system' || !theme) {
+            resolved =
+              window.matchMedia &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light';
+          }
+          document.documentElement.setAttribute('data-theme', resolved);
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Ana Stiller -->
+    <link rel="stylesheet" href="/src/styles/main.css" />
+  </head>
+  <body>
+    <!-- Erişilebilirlik: Ana İçeriğe Atla Bağlantısı -->
+    <a href="#main-content" class="skip-link">Ana içeriğe atla</a>
+
+    <div id="app">
+      <!-- Dinamik olarak main.js tarafından render edilecek -->
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
