@@ -37,7 +37,7 @@ test('importDataJSON accepts valid exported backup, clamps strings safely, and r
   assert.equal(storage.getState().journey.completedDays.includes(1), true);
 });
 
-test('resolveRoute guards uninitialized users from #today/#progress and sends returning users on empty hash to #today', async () => {
+test('resolveRoute guards uninitialized users from #today/#progress and always opens #landing on bare root URL', async () => {
   installBrowserMock();
   const { resolveRoute } = await import('../src/main.js');
 
@@ -46,9 +46,12 @@ test('resolveRoute guards uninitialized users from #today/#progress and sends re
   assert.equal(resolveRoute('#progress', freshState), '#onboarding');
   assert.equal(resolveRoute('', freshState), '#landing');
 
+  // Even when localStorage has an active journey, clicking the bare site URL ("" or "#") must open #landing
   const activeState = { profile: { onboardingCompleted: true }, journey: { currentDay: 4, completedDays: [1, 2, 3], todayActionTaken: false } };
-  assert.equal(resolveRoute('', activeState), '#today');
+  assert.equal(resolveRoute('', activeState), '#landing');
+  assert.equal(resolveRoute('#', activeState), '#landing');
   assert.equal(resolveRoute('#landing', activeState), '#landing');
+  assert.equal(resolveRoute('#today', activeState), '#today');
   assert.equal(resolveRoute('#completed', activeState), '#today');
 
   // Day 30 completed today -> #today stays open for final reflection note, #completed is also allowed

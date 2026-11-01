@@ -27,12 +27,11 @@ export function resolveRoute(rawHash, state) {
     isDay30Completed &&
     !state?.journey?.todayActionTaken;
 
-  if (!cleanHash || cleanHash === '#') {
-    if (!isOnboarded) return '#landing';
-    return isGraduatedAfterRollover ? '#completed' : '#today';
+  if (!cleanHash || cleanHash === '#' || cleanHash === '#landing') {
+    return '#landing';
   }
 
-  if (cleanHash === '#nasil-calisir' || cleanHash === '#landing' || cleanHash === '#onboarding' || cleanHash === '#settings') {
+  if (cleanHash === '#nasil-calisir' || cleanHash === '#onboarding' || cleanHash === '#settings') {
     return cleanHash;
   }
 
@@ -52,7 +51,7 @@ export function resolveRoute(rawHash, state) {
     return cleanHash;
   }
 
-  return isOnboarded ? '#today' : '#landing';
+  return '#landing';
 }
 
 export class App {
