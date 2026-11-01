@@ -5,13 +5,13 @@
 
 import questionsData from '../data/questions.json';
 import { storage } from '../utils/storage.js';
-import { LeafIcon, ArrowRightIcon, DomainIcons, SunIcon, MoonIcon, SystemIcon } from './Icons.js';
+import { DomainIcons, SunIcon, MoonIcon, SystemIcon } from './Icons.js';
 
 export class SettingsController {
   constructor(containerEl) {
     this.container = containerEl;
     this.state = storage.getState();
-    this.pendingAreaChange = null; // { newAreaId, areaTitle }
+    this.pendingAreaChange = null;
     this.showDeleteModal = false;
     this.calmNotice = null;
   }
@@ -25,128 +25,121 @@ export class SettingsController {
     this.container.innerHTML = `
       <main class="settings-page fade-in" id="main-content">
         <div class="container-narrow">
-          
-          <!-- Başlık -->
-          <div class="settings-header">
-            <span class="badge" style="margin-bottom: 0.65rem;">Profil & Tercihler</span>
-            <h1 class="settings-title">Ayarlar</h1>
-            <p class="settings-subtitle">
-              Sana sesleniş biçimimizi, günlük süreni ya da gelişim alanını dilediğin an güncelleyebilirsin.
+
+          <div class="page-header">
+            <span class="page-meta-kicker">Tercihler</span>
+            <h1 class="page-title">Ayarlar</h1>
+            <p class="page-subtitle">
+              Hitap biçimini, günlük ayırdığın süreyi ve çalışma alanını dilediğin zaman değiştirebilirsin.
             </p>
           </div>
 
           ${this.calmNotice ? `
-            <div class="calm-notice" style="margin-bottom: 1.5rem;" role="alert">
-              ${LeafIcon({ size: 18 })}
+            <div class="calm-notice" style="margin-top: 0; margin-bottom: 20px;" role="alert">
               <span>${this.calmNotice}</span>
             </div>
           ` : ''}
 
           <div class="settings-sections-list">
-            
-            <!-- 1. Kişisel Tercihler Kartı -->
+
+            <!-- 1. Hitap ve Günlük Süre -->
             <section class="settings-card" aria-labelledby="pref-heading">
               <div class="settings-card-header">
-                ${LeafIcon({ size: 22 })}
-                <h2 id="pref-heading" class="settings-card-title">Kişisel Bilgiler ve Süre</h2>
+                <h2 id="pref-heading" class="settings-card-title">Hitap ve günlük süre</h2>
               </div>
 
-              <!-- İsim -->
               <div class="form-row">
                 <label for="settings-name-input" class="form-label">Sana nasıl hitap edelim?</label>
-                <input 
-                  type="text" 
-                  id="settings-name-input" 
-                  class="text-input" 
-                  value="${this.escapeHtml(profile.name)}" 
-                  placeholder="İsmin ya da hitap şeklin..."
+                <input
+                  type="text"
+                  id="settings-name-input"
+                  class="text-input"
+                  value="${this.escapeHtml(profile.name)}"
+                  placeholder="Adın veya hitap tercihin"
                   maxlength="40"
                 />
-                <span class="form-desc">Başlıklarda ve günlük karşılamalarda kullanılır.</span>
+                <span class="form-desc">Günlük görev ekranının üst bilgisinde yer alır</span>
               </div>
 
-              <!-- Günlük Süre Tercihi -->
               <div class="form-row">
-                <label class="form-label">Günlük Süre Tercihi</label>
+                <label class="form-label">Günlük süre tercihi</label>
                 <div class="time-options-grid" role="group" aria-label="Günlük süre seçimi">
                   ${[5, 10, 15, 20].map(mins => `
-                    <button 
-                      type="button" 
-                      class="time-option-label ${profile.dailyTimePreference === mins ? 'is-selected' : ''}" 
+                    <button
+                      type="button"
+                      class="time-option-label ${profile.dailyTimePreference === mins ? 'is-selected' : ''}"
                       data-mins="${mins}"
                     >
-                      ${mins} dakika
+                      ${mins} dk
                     </button>
                   `).join('')}
                 </div>
-                <span class="form-desc">Bu süreyi aşan görevlerde alternatif hafif versiyonlar öne çıkarılır.</span>
+                <span class="form-desc">Bu süreyi aşan görevlerde daha hafif seçenek öne çıkarılır</span>
               </div>
 
-              <div style="display: flex; justify-content: flex-end; margin-top: 1.5rem;">
+              <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
                 <button type="button" class="btn btn-primary" id="btn-save-profile">
-                  <span>Değişiklikleri Kaydet</span>
+                  <span>Değişiklikleri kaydet</span>
                 </button>
               </div>
             </section>
 
-            <!-- 2. Görünüm ve Tema Kartı -->
+            <!-- 2. Görünüm ve Tema -->
             <section class="settings-card" aria-labelledby="theme-heading">
               <div class="settings-card-header">
-                ${SunIcon({ size: 22 })}
-                <h2 id="theme-heading" class="settings-card-title">Görünüm ve Tema</h2>
+                <h2 id="theme-heading" class="settings-card-title">Görünüm</h2>
               </div>
 
-              <div class="form-row" style="margin-bottom: 0;">
-                <label class="form-label">Tema Tercihi</label>
+              <div class="form-row">
+                <label class="form-label">Tema tercihi</label>
                 <div class="theme-options-grid" role="group" aria-label="Tema seçimi">
-                  <button 
-                    type="button" 
-                    class="theme-option-btn ${currentTheme === 'light' ? 'is-selected' : ''}" 
+                  <button
+                    type="button"
+                    class="theme-option-btn ${currentTheme === 'light' ? 'is-selected' : ''}"
                     data-theme-choice="light"
                   >
-                    ${SunIcon({ size: 18 })}
+                    ${SunIcon({ size: 16 })}
                     <span>Açık</span>
                   </button>
-                  <button 
-                    type="button" 
-                    class="theme-option-btn ${currentTheme === 'dark' ? 'is-selected' : ''}" 
+                  <button
+                    type="button"
+                    class="theme-option-btn ${currentTheme === 'dark' ? 'is-selected' : ''}"
                     data-theme-choice="dark"
                   >
-                    ${MoonIcon({ size: 18 })}
+                    ${MoonIcon({ size: 16 })}
                     <span>Koyu</span>
                   </button>
-                  <button 
-                    type="button" 
-                    class="theme-option-btn ${currentTheme === 'system' ? 'is-selected' : ''}" 
+                  <button
+                    type="button"
+                    class="theme-option-btn ${currentTheme === 'system' ? 'is-selected' : ''}"
                     data-theme-choice="system"
                   >
-                    ${SystemIcon({ size: 18 })}
+                    ${SystemIcon({ size: 16 })}
                     <span>Sistem</span>
                   </button>
                 </div>
-                <span class="form-desc">Sistem seçildiğinde cihazının açık/koyu mod tercihine otomatik uyum sağlar.</span>
+                <span class="form-desc">Sistem seçeneği cihazının açık veya koyu görünüm ayarını izler</span>
               </div>
             </section>
 
-            <!-- 3. Alan Değiştirme Kartı -->
+            <!-- 3. Çalışılan Alan -->
             <section class="settings-card" aria-labelledby="area-heading">
               <div class="settings-card-header">
-                ${LeafIcon({ size: 22 })}
-                <h2 id="area-heading" class="settings-card-title">Gelişim Alanı</h2>
+                <h2 id="area-heading" class="settings-card-title">Çalışılan alan</h2>
               </div>
 
-              <p style="font-size: var(--text-sm); color: var(--text-muted); margin-bottom: 1.25rem;">
-                Şu anki aktif alanın: <strong>${currentArea.baslik}</strong>. Alan değiştirdiğinde mevcut yolculuğunu arşivleyebilir veya sıfırlayabilirsin.
+              <p style="font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: 16px;">
+                Aktif alanın: <strong style="color: var(--text-primary); font-weight: 500;">${currentArea.baslik}</strong>. Alan değiştirdiğinde mevcut yolculuğunu arşivleyebilir veya sıfırlayabilirsin.
               </p>
 
-              <div class="domains-grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));">
+              <div class="domains-grid" style="margin-top: 0;">
                 ${questionsData.alanlar.map(d => {
                   const isCurrent = d.id === profile.selectedAreaId;
                   const isLocked = !d.aktif;
                   const iconFn = DomainIcons[d.ikon] || DomainIcons.wallet;
 
                   return `
-                    <div 
+                    <div
                       class="domain-choice-card ${isCurrent ? 'is-selected' : ''} ${isLocked ? 'is-disabled' : ''}"
                       data-change-domain="${d.id}"
                       data-domain-id="${d.id}"
@@ -156,15 +149,15 @@ export class SettingsController {
                       tabindex="0"
                     >
                       <div class="domain-icon-box" aria-hidden="true">
-                        ${iconFn({ size: 22 })}
+                        ${iconFn({ size: 18 })}
                       </div>
                       <div class="domain-card-body">
                         <div class="domain-card-title-row">
-                          <span class="domain-card-title" style="font-size: 1rem;">${d.baslik}</span>
-                          ${isCurrent ? `<span class="badge" style="font-size: 10px;">Aktif</span>` : ''}
-                          ${isLocked ? `<span class="badge badge-earth" style="font-size: 10px;">Yakında</span>` : ''}
+                          <span class="domain-card-title">${d.baslik}</span>
+                          ${isCurrent ? `<span class="badge badge-accent">Aktif</span>` : ''}
+                          ${isLocked ? `<span class="badge badge-earth">Yakında</span>` : ''}
                         </div>
-                        <p class="domain-card-desc" style="font-size: 0.8rem;">${d.aciklama}</p>
+                        <p class="domain-card-desc">${d.aciklama}</p>
                       </div>
                     </div>
                   `;
@@ -172,30 +165,22 @@ export class SettingsController {
               </div>
             </section>
 
-            <!-- 4. Yakında: Hesap Oluştur Pasif Bilgi Kartı (PROJE.md 4.5) -->
-            <section class="auth-placeholder-card" aria-label="Bulut Hesabı Bilgilendirmesi">
-              <div class="auth-placeholder-icon" aria-hidden="true">
-                ${LeafIcon({ size: 22 })}
-              </div>
-              <div>
-                <strong style="color: var(--yesil-900); font-size: 1.05rem; display: block; margin-bottom: 0.2rem;">
-                  Yakında: Hesap oluştur ve ilerlemeni her cihazda sakla
-                </strong>
-                <p style="font-size: var(--text-xs); line-height: 1.5;">
-                  Şu anda tüm verilerin güvenle tarayıcında saklanmaktadır. İleride hesabını bağlayarak telefon ve bilgisayarın arasında senkronize edebileceksin.
-                </p>
-              </div>
+            <!-- 4. Senkronizasyon Bilgisi -->
+            <section class="auth-placeholder-card" aria-label="Cihazlar arası eşitleme bilgisi">
+              <p class="auth-placeholder-title">Yakında: Cihazlar arası eşitleme</p>
+              <p class="auth-placeholder-desc">
+                Şimdilik tüm kayıtların yalnızca bu tarayıcıda tutulur. Hesap desteği eklendiğinde ilerlemeni farklı cihazlar arasında taşıyabileceksin.
+              </p>
             </section>
 
-            <!-- 5. Veri Yönetimi & Dışa Aktarma -->
+            <!-- 5. Veriler ve Gizlilik -->
             <section class="settings-card" aria-labelledby="data-heading">
               <div class="settings-card-header">
-                ${LeafIcon({ size: 22 })}
-                <h2 id="data-heading" class="settings-card-title">Veri Yönetimi ve Gizlilik</h2>
+                <h2 id="data-heading" class="settings-card-title">Veriler ve gizlilik</h2>
               </div>
 
-              <p style="font-size: var(--text-sm); color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem;">
-                Verilerin tamamen sana aittir. Dilediğin an tüm yolculuk geçmişini ve yansıma notlarını JSON dosyası olarak indirebilir veya silebilirsin.
+              <p style="font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+                Yolculuk geçmişini ve yansıma notlarını dilediğin an JSON dosyası olarak indirebilir veya bu cihazdan tamamen kaldırabilirsin.
               </p>
 
               <div class="danger-actions-row">
@@ -209,26 +194,19 @@ export class SettingsController {
               </div>
             </section>
 
-            <!-- 5. Destek Kaynakları Notu (PROJE.md Bölüm 7) -->
-            <section class="support-note-box" aria-label="Destek Kaynakları Notu">
-              <div class="support-note-title">Destek Kaynakları & Sorumluluk Reddi</div>
+            <!-- 6. Destek Kaynakları Notu -->
+            <section class="support-note-box" aria-label="Destek kaynakları notu">
+              <div class="support-note-title">Destek kaynakları ve sorumluluk notu</div>
               <p>
-                Günden Güne'deki görevler profesyonel psikolojik, tıbbi veya finansal danışmanlık yerine geçmez. 
-                Amacımız sadece günlük hayatında küçük ve sakin farkındalıklar kazanmandır. 
-                Ruhsal, bedensel veya mali olarak derin bir sıkıntı yaşadığında lütfen alanında uzman bir profesyonele veya resmi destek hatlarına başvurmaktan çekinme.
+                Günden Güne'deki günlük adımlar profesyonel psikolojik, tıbbi veya finansal danışmanlık yerine geçmez. Ruhsal, bedensel veya mali açıdan zorlayıcı bir dönemden geçiyorsan alanında uzman bir profesyonele başvurmanı öneririz.
               </p>
             </section>
 
           </div>
-
         </div>
 
-        <!-- Alan Değiştirme Onay Modalı -->
         ${this.pendingAreaChange ? this.renderAreaModal() : ''}
-
-        <!-- Veri Silme Onay Modalı -->
         ${this.showDeleteModal ? this.renderDeleteModal() : ''}
-
       </main>
     `;
 
@@ -239,19 +217,19 @@ export class SettingsController {
     return `
       <div class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-area-title">
         <div class="modal-dialog">
-          <h2 id="modal-area-title" class="modal-title">Gelişim Alanını Değiştir</h2>
+          <h2 id="modal-area-title" class="modal-title">Çalışma alanını değiştir</h2>
           <p class="modal-desc">
-            Yeni alan olarak <strong>${this.pendingAreaChange.areaTitle}</strong> seçildi. Mevcut finans yolculuğundaki ilerlemen ve notların ne olsun?
+            Yeni alan olarak <strong style="color: var(--text-primary); font-weight: 500;">${this.pendingAreaChange.areaTitle}</strong> seçildi. Mevcut yolculuğundaki ilerlemen ve notların ne olsun?
           </p>
           <div class="modal-actions">
-            <button type="button" class="btn btn-primary" id="btn-confirm-archive">
-              <span>İlerlememi Arşivle (Önerilen)</span>
-            </button>
-            <button type="button" class="btn btn-secondary" id="btn-confirm-reset">
-              <span>Tamamen Sıfırla</span>
-            </button>
             <button type="button" class="btn btn-ghost" id="btn-cancel-modal">
               Vazgeç
+            </button>
+            <button type="button" class="btn btn-secondary" id="btn-confirm-reset">
+              <span>Tamamen sıfırla</span>
+            </button>
+            <button type="button" class="btn btn-primary" id="btn-confirm-archive">
+              <span>Arşivle ve geç</span>
             </button>
           </div>
         </div>
@@ -263,16 +241,16 @@ export class SettingsController {
     return `
       <div class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-delete-title">
         <div class="modal-dialog">
-          <h2 id="modal-delete-title" class="modal-title" style="color: var(--uyari-yumusak);">Tüm Verilerini Sil</h2>
+          <h2 id="modal-delete-title" class="modal-title">Tüm verilerini sil</h2>
           <p class="modal-desc">
-            Bu cihazdaki tüm yolculuk geçmişin, yansıma notların ve ayarların silinecektir. Bu işlem geri alınamaz. Devam etmek istiyor musun?
+            Bu tarayıcıdaki yolculuk geçmişin, yansıma notların ve tercihlerin kalıcı olarak silinecek. Devam etmek istiyor musun?
           </p>
           <div class="modal-actions">
-            <button type="button" class="btn btn-primary" id="btn-confirm-delete" style="background-color: var(--uyari-yumusak);">
-              Evet, Tümünü Sil
-            </button>
             <button type="button" class="btn btn-secondary" id="btn-cancel-delete">
               Vazgeç
+            </button>
+            <button type="button" class="btn-danger-soft" id="btn-confirm-delete">
+              Evet, tümünü sil
             </button>
           </div>
         </div>
@@ -281,7 +259,6 @@ export class SettingsController {
   }
 
   attachEvents() {
-    // Süre seçimi butonları
     const timeBtns = this.container.querySelectorAll('.time-option-label');
     let selectedTime = this.state.profile.dailyTimePreference;
 
@@ -293,7 +270,6 @@ export class SettingsController {
       });
     });
 
-    // Tema seçimi butonları (Açık / Koyu / Sistem)
     const themeBtns = this.container.querySelectorAll('[data-theme-choice]');
     themeBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -304,7 +280,6 @@ export class SettingsController {
       });
     });
 
-    // Tema dışarıdan (Header'dan) değiştiğinde buton seçimini senkronize et
     window.addEventListener('themechange', () => {
       const activePref = storage.getThemePreference();
       const currentThemeBtns = this.container.querySelectorAll('[data-theme-choice]');
@@ -317,7 +292,6 @@ export class SettingsController {
       });
     });
 
-    // Profil kaydet butonu
     const saveProfileBtn = this.container.querySelector('#btn-save-profile');
     const nameInput = this.container.querySelector('#settings-name-input');
 
@@ -327,14 +301,13 @@ export class SettingsController {
           name: nameInput.value,
           dailyTimePreference: selectedTime
         });
-        saveProfileBtn.innerHTML = `<span>Kaydedildi ✓</span>`;
+        saveProfileBtn.innerHTML = `<span>Kaydedildi</span>`;
         setTimeout(() => {
-          if (saveProfileBtn) saveProfileBtn.innerHTML = `<span>Değişiklikleri Kaydet</span>`;
+          if (saveProfileBtn) saveProfileBtn.innerHTML = `<span>Değişiklikleri kaydet</span>`;
         }, 1500);
       });
     }
 
-    // Alan seçimi tıklamaları ve klavye gezintisi
     const domainCards = this.container.querySelectorAll('[data-change-domain]');
     domainCards.forEach(card => {
       const selectDomain = () => {
@@ -347,12 +320,11 @@ export class SettingsController {
         }
 
         if (!isActive) {
-          this.calmNotice = "Bu alan sakin adımlarla hazırlanıyor. Şimdilik diğer aktif alanları deneyimleyebilirsin.";
+          this.calmNotice = 'Bu alan henüz hazırlanıyor. Şimdilik diğer aktif alanlardan birini seçebilirsin.';
           this.render();
           return;
         }
 
-        // Alanı değiştirme modalını aç
         this.calmNotice = null;
         this.pendingAreaChange = { newAreaId: domainId, areaTitle: domainTitle };
         this.render();
@@ -367,7 +339,6 @@ export class SettingsController {
       });
     });
 
-    // Modal Escape tuşu desteği
     if (this.pendingAreaChange || this.showDeleteModal) {
       const handleEscape = (e) => {
         if (e.key === 'Escape') {
@@ -384,7 +355,6 @@ export class SettingsController {
       window.addEventListener('keydown', handleEscape);
     }
 
-    // Alan modalı onayları
     const btnArchive = this.container.querySelector('#btn-confirm-archive');
     const btnReset = this.container.querySelector('#btn-confirm-reset');
     const btnCancelModal = this.container.querySelector('#btn-cancel-modal');
@@ -412,7 +382,6 @@ export class SettingsController {
       });
     }
 
-    // JSON Dışa Aktarma
     const exportBtn = this.container.querySelector('#btn-export-json');
     if (exportBtn) {
       exportBtn.addEventListener('click', () => {
@@ -420,7 +389,6 @@ export class SettingsController {
       });
     }
 
-    // Silme modalı açma
     const openDeleteBtn = this.container.querySelector('#btn-open-delete-modal');
     if (openDeleteBtn) {
       openDeleteBtn.addEventListener('click', () => {
@@ -429,7 +397,6 @@ export class SettingsController {
       });
     }
 
-    // Silme onayları
     const confirmDeleteBtn = this.container.querySelector('#btn-confirm-delete');
     const cancelDeleteBtn = this.container.querySelector('#btn-cancel-delete');
 

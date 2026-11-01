@@ -142,7 +142,7 @@ class App {
       const isDark = e.detail.resolved === 'dark';
       const btn = document.getElementById('btn-theme-toggle');
       if (btn) {
-        btn.innerHTML = isDark ? SunIcon({ size: 19 }) : MoonIcon({ size: 19 });
+        btn.innerHTML = isDark ? SunIcon({ size: 16 }) : MoonIcon({ size: 16 });
         btn.setAttribute('aria-label', isDark ? 'Açık temaya geç' : 'Koyu temaya geç');
         btn.setAttribute('title', isDark ? 'Açık temaya geç' : 'Koyu temaya geç');
       }

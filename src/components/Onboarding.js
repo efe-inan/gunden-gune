@@ -5,14 +5,13 @@
 
 import questionsData from '../data/questions.json';
 import { storage } from '../utils/storage.js';
-import { LeafIcon, ArrowRightIcon, ArrowLeftIcon, CheckIcon, DomainIcons } from './Icons.js';
+import { BrandMark, StageIcons, ArrowRightIcon, ArrowLeftIcon, CheckIcon, DomainIcons } from './Icons.js';
 
 export class OnboardingController {
   constructor(containerEl, onComplete) {
     this.container = containerEl;
     this.onComplete = onComplete;
-    
-    // Geçici akış durumu
+
     const saved = storage.getState();
     this.formData = {
       name: saved.profile.name || '',
@@ -23,7 +22,6 @@ export class OnboardingController {
       readiness: saved.profile.readinessScore || 3,
     };
 
-    // Ekran basamakları tanımları
     this.stepIndex = 0;
     this.steps = this.buildSteps();
     this.isGeneratingPlan = false;
@@ -34,10 +32,9 @@ export class OnboardingController {
   buildSteps() {
     const steps = [
       { id: 'name', type: 'name', title: 'Sana nasıl hitap edelim?' },
-      { id: 'domain', type: 'domain', title: 'Hangi alanda kendini geliştirmek istiyorsun?' },
+      { id: 'domain', type: 'domain', title: 'Hangi alanda ilerlemek istiyorsun?' },
     ];
 
-    // Finans soruları (veya seçilen alan soruları)
     const areaQuestions = questionsData.alanaOzelSorular[this.formData.selectedAreaId] || [];
     areaQuestions.forEach((q, idx) => {
       steps.push({
@@ -49,7 +46,6 @@ export class OnboardingController {
       });
     });
 
-    // Genel sorular
     questionsData.genelSorular.forEach((gq) => {
       steps.push({
         id: gq.id,
@@ -75,6 +71,7 @@ export class OnboardingController {
     const currentStep = this.steps[this.stepIndex];
     const totalSteps = this.steps.length;
     const progressPercent = Math.round(((this.stepIndex + 1) / totalSteps) * 100);
+    const progressScale = (this.stepIndex + 1) / totalSteps;
 
     let stepBodyHtml = '';
 
@@ -93,26 +90,22 @@ export class OnboardingController {
         break;
     }
 
-    // Check if onboarding container shell is already mounted
     const existingShell = this.container.querySelector('#onboarding-main');
 
     if (!existingShell) {
       this.container.innerHTML = `
         <main class="onboarding-page fade-in" id="onboarding-main">
           <div class="container-narrow">
-            
-            <!-- Üst İlerleme Çubuğu -->
-            <div class="onboarding-progress-wrapper" aria-label="İlerleme Durumu">
+            <div class="onboarding-progress-wrapper" aria-label="İlerleme durumu">
               <div class="onboarding-progress-meta">
                 <span id="onboarding-step-counter">Adım ${this.stepIndex + 1} / ${totalSteps}</span>
                 <span id="onboarding-step-percent">%${progressPercent}</span>
               </div>
               <div class="onboarding-progress-bar" role="progressbar" aria-valuenow="${progressPercent}" aria-valuemin="0" aria-valuemax="100">
-                <div class="onboarding-progress-fill" id="onboarding-progress-fill" style="width: ${progressPercent}%;"></div>
+                <div class="onboarding-progress-fill" id="onboarding-progress-fill" style="transform: scaleX(${progressScale});"></div>
               </div>
             </div>
 
-            <!-- Ortadaki Büyük Kart -->
             <div class="onboarding-card">
               <div id="onboarding-step-body" class="onboarding-step-body">
                 ${stepBodyHtml}
@@ -122,25 +115,22 @@ export class OnboardingController {
                 ${this.calmNoticeMessage ? this.renderNoticeHtml(this.calmNoticeMessage) : ''}
               </div>
 
-              <!-- Alt Gezinme Butonları -->
               <div class="onboarding-nav">
                 <button type="button" class="btn btn-secondary" id="btn-onboarding-prev">
-                  ${ArrowLeftIcon()}
-                  <span id="btn-onboarding-prev-text">${this.stepIndex === 0 ? 'Ana Sayfa' : 'Geri'}</span>
+                  ${ArrowLeftIcon({ size: 16 })}
+                  <span id="btn-onboarding-prev-text">${this.stepIndex === 0 ? 'Ana sayfa' : 'Geri'}</span>
                 </button>
 
                 <button type="button" class="btn btn-primary" id="btn-onboarding-next">
-                  <span id="btn-onboarding-next-text">${this.stepIndex === totalSteps - 1 ? 'Planımı Oluştur' : 'Devam'}</span>
-                  ${ArrowRightIcon()}
+                  <span id="btn-onboarding-next-text">${this.stepIndex === totalSteps - 1 ? 'Planımı oluştur' : 'Devam'}</span>
+                  ${ArrowRightIcon({ size: 16 })}
                 </button>
               </div>
             </div>
-
           </div>
         </main>
       `;
 
-      // Kalıcı gezinti butonları dinleyicileri
       const prevBtn = this.container.querySelector('#btn-onboarding-prev');
       if (prevBtn) {
         prevBtn.addEventListener('click', () => this.handlePrev());
@@ -150,7 +140,6 @@ export class OnboardingController {
         nextBtn.addEventListener('click', () => this.handleNext());
       }
     } else {
-      // Kabuk zaten mevcut: DOM'u yok etmeden yerinde güncelle (titreme veya kaybolma olmaz)
       const counterEl = existingShell.querySelector('#onboarding-step-counter');
       const percentEl = existingShell.querySelector('#onboarding-step-percent');
       const fillEl = existingShell.querySelector('#onboarding-progress-fill');
@@ -162,14 +151,14 @@ export class OnboardingController {
 
       if (counterEl) counterEl.textContent = `Adım ${this.stepIndex + 1} / ${totalSteps}`;
       if (percentEl) percentEl.textContent = `%${progressPercent}`;
-      if (fillEl) fillEl.style.width = `${progressPercent}%`;
+      if (fillEl) fillEl.style.transform = `scaleX(${progressScale})`;
       if (progressBar) progressBar.setAttribute('aria-valuenow', progressPercent);
       if (stepBodyEl) stepBodyEl.innerHTML = stepBodyHtml;
       if (noticeWrapper) {
         noticeWrapper.innerHTML = this.calmNoticeMessage ? this.renderNoticeHtml(this.calmNoticeMessage) : '';
       }
-      if (prevText) prevText.textContent = this.stepIndex === 0 ? 'Ana Sayfa' : 'Geri';
-      if (nextText) nextText.textContent = this.stepIndex === totalSteps - 1 ? 'Planımı Oluştur' : 'Devam';
+      if (prevText) prevText.textContent = this.stepIndex === 0 ? 'Ana sayfa' : 'Geri';
+      if (nextText) nextText.textContent = this.stepIndex === totalSteps - 1 ? 'Planımı oluştur' : 'Devam';
     }
 
     this.attachStepEvents();
@@ -194,7 +183,6 @@ export class OnboardingController {
   renderNoticeHtml(msg) {
     return `
       <div class="calm-notice" role="alert">
-        ${LeafIcon({ size: 18 })}
         <span>${this.escapeHtml(msg)}</span>
       </div>
     `;
@@ -205,25 +193,25 @@ export class OnboardingController {
   renderNameStep() {
     return `
       <div class="question-header">
-        <span class="badge question-tag">Başlangıç</span>
+        <span class="question-kicker">Başlangıç</span>
         <h1 class="question-title">Sana nasıl hitap edelim?</h1>
         <p class="question-desc">
-          Bize sadece sana seslenmemizi istediğin ismi söyleyebilirsin. Dilersen boş da bırakabilirsin.
+          Günlük karşılamada kullanacağımız ismi yazabilir veya boş bırakabilirsin.
         </p>
       </div>
 
       <div class="input-group">
         <label for="user-name-input" class="sr-only">İsminiz</label>
-        <input 
-          type="text" 
-          id="user-name-input" 
-          class="text-input" 
-          placeholder="İsmin ya da tercih ettiğin bir hitap..." 
+        <input
+          type="text"
+          id="user-name-input"
+          class="text-input"
+          placeholder="Adın veya hitap tercihin"
           value="${this.escapeHtml(this.formData.name)}"
           maxlength="40"
           autocomplete="given-name"
         />
-        <span class="input-hint">İsteğe bağlıdır. İstediğin zaman değiştirebilirsin.</span>
+        <span class="input-hint">İsteğe bağlıdır, daha sonra ayarlardan değiştirilebilir</span>
       </div>
     `;
   }
@@ -237,8 +225,8 @@ export class OnboardingController {
       const iconFn = DomainIcons[d.ikon] || DomainIcons.wallet;
 
       return `
-        <div 
-          class="domain-choice-card ${isSelected ? 'is-selected' : ''} ${isLocked ? 'is-disabled' : ''}" 
+        <div
+          class="domain-choice-card ${isSelected ? 'is-selected' : ''} ${isLocked ? 'is-disabled' : ''}"
           data-domain-id="${d.id}"
           data-is-active="${d.aktif}"
           role="button"
@@ -246,7 +234,7 @@ export class OnboardingController {
           aria-pressed="${isSelected}"
         >
           <div class="domain-icon-box" aria-hidden="true">
-            ${iconFn({ size: 24 })}
+            ${iconFn({ size: 18 })}
           </div>
           <div class="domain-card-body">
             <div class="domain-card-title-row">
@@ -257,7 +245,7 @@ export class OnboardingController {
           </div>
           ${isSelected ? `
             <div class="domain-check-circle" aria-hidden="true">
-              ${CheckIcon({ size: 14 })}
+              ${CheckIcon({ size: 12 })}
             </div>
           ` : ''}
         </div>
@@ -266,14 +254,14 @@ export class OnboardingController {
 
     return `
       <div class="question-header">
-        <span class="badge question-tag">Gelişim Alanı</span>
+        <span class="question-kicker">Çalışma alanı</span>
         <h2 class="question-title">Hangi alanda kendini geliştirmek istiyorsun?</h2>
         <p class="question-desc">
-          Önümüzdeki 30 gün boyunca tek bir alanda, sindirerek ve yorulmadan küçük adımlar atacağız.
+          Önümüzdeki 30 gün boyunca tek bir alanda, dağılmadan küçük adımlar atacağız.
         </p>
       </div>
 
-      <div class="domains-grid" role="group" aria-label="Gelişim Alanları">
+      <div class="domains-grid" role="group" aria-label="Gelişim alanları">
         ${cardsHtml}
       </div>
     `;
@@ -285,26 +273,26 @@ export class OnboardingController {
     const optionsHtml = q.secenekler.map(opt => {
       const isSelected = selectedVal === opt.deger;
       return `
-        <button 
-          type="button" 
-          class="option-btn ${isSelected ? 'is-selected' : ''}" 
+        <button
+          type="button"
+          class="option-btn ${isSelected ? 'is-selected' : ''}"
           data-option-value="${opt.deger}"
           aria-pressed="${isSelected}"
         >
           <span>${opt.metin}</span>
           <span class="option-check-circle" aria-hidden="true">
-            ${CheckIcon({ size: 14 })}
+            ${CheckIcon({ size: 12 })}
           </span>
         </button>
       `;
     }).join('');
 
     const areaObj = questionsData.alanlar.find(a => a.id === this.formData.selectedAreaId);
-    const areaTitle = areaObj ? areaObj.baslik : 'Gelişim Alanı';
+    const areaTitle = areaObj ? areaObj.baslik : 'Gelişim alanı';
 
     return `
       <div class="question-header">
-        <span class="badge question-tag">${areaTitle} • Soru ${currentNum} / ${totalNum}</span>
+        <span class="question-kicker">${areaTitle} · Soru ${currentNum} / ${totalNum}</span>
         <h2 class="question-title">${q.soru}</h2>
         ${q.aciklama ? `<p class="question-desc">${q.aciklama}</p>` : ''}
       </div>
@@ -321,9 +309,9 @@ export class OnboardingController {
       const buttonsHtml = [1, 2, 3, 4, 5].map(val => {
         const isSelected = currentScore === val;
         return `
-          <button 
-            type="button" 
-            class="scale-btn ${isSelected ? 'is-selected' : ''}" 
+          <button
+            type="button"
+            class="scale-btn ${isSelected ? 'is-selected' : ''}"
             data-scale-value="${val}"
             aria-pressed="${isSelected}"
           >
@@ -334,7 +322,7 @@ export class OnboardingController {
 
       return `
         <div class="question-header">
-          <span class="badge question-tag">Genel Hazırlık</span>
+          <span class="question-kicker">Hazır olma düzeyi</span>
           <h2 class="question-title">${gq.soru}</h2>
           <p class="question-desc">${gq.aciklama}</p>
         </div>
@@ -351,21 +339,20 @@ export class OnboardingController {
       `;
     }
 
-    // Seçenekli genel soru (günlük süre / saat tercihi)
-    let selectedVal = gq.id === 'gunluk_sure' ? this.formData.dailyTime : this.formData.timeOfDay;
+    const selectedVal = gq.id === 'gunluk_sure' ? this.formData.dailyTime : this.formData.timeOfDay;
 
     const optionsHtml = gq.secenekler.map(opt => {
       const isSelected = selectedVal === opt.deger;
       return `
-        <button 
-          type="button" 
-          class="option-btn ${isSelected ? 'is-selected' : ''}" 
+        <button
+          type="button"
+          class="option-btn ${isSelected ? 'is-selected' : ''}"
           data-option-value="${opt.deger}"
           aria-pressed="${isSelected}"
         >
           <span>${opt.metin}</span>
           <span class="option-check-circle" aria-hidden="true">
-            ${CheckIcon({ size: 14 })}
+            ${CheckIcon({ size: 12 })}
           </span>
         </button>
       `;
@@ -373,7 +360,7 @@ export class OnboardingController {
 
     return `
       <div class="question-header">
-        <span class="badge question-tag">Günlük Ritim</span>
+        <span class="question-kicker">Günlük ritim</span>
         <h2 class="question-title">${gq.soru}</h2>
         ${gq.aciklama ? `<p class="question-desc">${gq.aciklama}</p>` : ''}
       </div>
@@ -390,20 +377,19 @@ export class OnboardingController {
     this.container.innerHTML = `
       <main class="onboarding-page fade-in" id="main-content">
         <div class="container-narrow">
-          <div class="onboarding-card plan-generating-view">
-            <div class="plan-loader-brand" aria-label="Günden Güne">
-              <div class="plan-logo-loader">
-                <img src="/assets/logo-light.png" class="app-logo app-logo-light plan-loader-img" alt="Günden Güne logosu" />
-                <img src="/assets/logo-dark.png" class="app-logo app-logo-dark plan-loader-img" alt="Günden Güne logosu" />
+          <div class="onboarding-card">
+            <div class="plan-generating-view">
+              <div class="plan-loader-row">
+                ${BrandMark({ size: 22 })}
+                <span style="font-size: var(--text-sm); font-weight: 500;">Planın hazırlanıyor</span>
               </div>
-              <span class="loader-brand-title">Günden Güne</span>
+              <h2 class="question-title">
+                Cevaplarına göre 30 günlük akışın oluşturuluyor
+              </h2>
+              <p class="question-desc">
+                Seçtiğin süreye ve başlangıç tempona uygun ilk adımlar sıralanıyor.
+              </p>
             </div>
-            <h2 class="question-title" style="margin-bottom: 0.75rem;">
-              Cevaplarına göre sana özel bir yol hazırlıyoruz…
-            </h2>
-            <p class="question-desc" style="max-width: 460px; margin: 0 auto;">
-              Günün ritmine ve hazır olma durumuna en uygun başlangıç tohumlarını ekiyoruz.
-            </p>
           </div>
         </div>
       </main>
@@ -411,32 +397,33 @@ export class OnboardingController {
   }
 
   renderPlanReadyView() {
-    const namePart = this.formData.name.trim() ? `, ${this.formData.name.trim()}` : '';
+    const namePart = this.formData.name.trim() ? `, ${this.escapeHtml(this.formData.name.trim())}` : '';
+    const areaObj = questionsData.alanlar.find(a => a.id === this.formData.selectedAreaId);
+    const areaTitle = areaObj ? areaObj.baslik : 'Kişisel gelişim';
 
     this.container.innerHTML = `
       <main class="onboarding-page fade-in" id="main-content">
         <div class="container-narrow">
-          <div class="onboarding-card plan-ready-card">
-            
-            <span class="plan-summary-badge">
-              ${LeafIcon({ size: 18 })}
-              <span>30 Günlük Kişisel Yolculuk • Tohum Aşaması</span>
-            </span>
+          <div class="onboarding-card">
+            <div class="plan-ready-card">
+              <span class="plan-ready-kicker">
+                ${StageIcons.tohum({ size: 16 })}
+                <span>${areaTitle} · Tohum aşaması</span>
+              </span>
 
-            <h1 class="plan-ready-title">
-              Planın hazır${namePart}.<br />Küçük başlıyoruz.
-            </h1>
+              <h1 class="plan-ready-title">
+                Planın hazır${namePart}, küçük bir adımla başlıyoruz
+              </h1>
 
-            <p class="plan-ready-text">
-              Günde yaklaşık ${this.formData.dailyTime} dakika ayırarak, hiçbir zorlama ve suçluluk olmadan 
-              kendine kalıcı bir farkındalık kazandıracaksın.
-            </p>
+              <p class="plan-ready-text">
+                Günde yaklaşık ${this.formData.dailyTime} dakika ayırarak, seri kırma baskısı olmadan her gün tek bir somut adımla ilerleyeceksin.
+              </p>
 
-            <a href="#today" class="btn btn-primary hero-start-btn" id="btn-go-to-first-task">
-              <span>İlk görevime git</span>
-              ${ArrowRightIcon()}
-            </a>
-
+              <a href="#today" class="btn btn-primary btn-lg" id="btn-go-to-first-task">
+                <span>İlk görevime git</span>
+                ${ArrowRightIcon({ size: 16 })}
+              </a>
+            </div>
           </div>
         </div>
       </main>
@@ -448,7 +435,6 @@ export class OnboardingController {
   attachStepEvents() {
     const currentStep = this.steps[this.stepIndex];
 
-    // 1. İsim adımı
     if (currentStep.type === 'name') {
       const nameInput = this.container.querySelector('#user-name-input');
       if (nameInput) {
@@ -459,7 +445,6 @@ export class OnboardingController {
       return;
     }
 
-    // 2. Alan seçimi adımı
     if (currentStep.type === 'domain') {
       const domainCards = this.container.querySelectorAll('.domain-choice-card');
       domainCards.forEach(card => {
@@ -468,7 +453,7 @@ export class OnboardingController {
           const isActive = card.getAttribute('data-is-active') === 'true';
 
           if (!isActive) {
-            this.showNotice("Bu alan sakin adımlarla hazırlanıyor. Şimdilik diğer aktif alanları deneyimleyebilirsin.");
+            this.showNotice('Bu alan henüz hazırlanıyor. Şimdilik diğer aktif alanlardan birini seçebilirsin.');
             return;
           }
 
@@ -476,11 +461,10 @@ export class OnboardingController {
           this.formData.selectedAreaId = domainId;
           this.steps = this.buildSteps();
 
-          // Kart seçim durumunu yerinde güncelle
           domainCards.forEach(c => {
             c.classList.remove('is-selected');
             c.setAttribute('aria-pressed', 'false');
-            const check = c.querySelector('.domain-check-circle') || c.querySelector('.option-check-circle');
+            const check = c.querySelector('.domain-check-circle');
             if (check) check.remove();
           });
 
@@ -490,7 +474,7 @@ export class OnboardingController {
             const checkEl = document.createElement('div');
             checkEl.className = 'domain-check-circle';
             checkEl.setAttribute('aria-hidden', 'true');
-            checkEl.innerHTML = CheckIcon({ size: 14 });
+            checkEl.innerHTML = CheckIcon({ size: 12 });
             card.appendChild(checkEl);
           }
         };
@@ -506,7 +490,6 @@ export class OnboardingController {
       return;
     }
 
-    // 3. Soru seçenekleri (Alana özel soru ve çoktan seçmeli genel sorular)
     const optionBtns = this.container.querySelectorAll('.option-btn');
     if (optionBtns.length > 0) {
       optionBtns.forEach(btn => {
@@ -522,7 +505,6 @@ export class OnboardingController {
             }
           }
 
-          // Seçim durumunu DOM'da anında ve yerinde güncelle (sayfa/soru titremeden, kaybolup gelmeden)
           optionBtns.forEach(b => {
             b.classList.remove('is-selected');
             b.setAttribute('aria-pressed', 'false');
@@ -535,7 +517,6 @@ export class OnboardingController {
       });
     }
 
-    // 4. Ölçek butonları (1-5 puan)
     const scaleBtns = this.container.querySelectorAll('.scale-btn');
     if (scaleBtns.length > 0) {
       scaleBtns.forEach(btn => {
@@ -560,14 +541,12 @@ export class OnboardingController {
     const card = this.container.querySelector('.onboarding-card');
     if (!card) return;
     const rect = card.getBoundingClientRect();
-    const headerSafeZone = 80; // yapışkan başlığın altı için güvenli alan
+    const headerSafeZone = 80;
 
-    // Sayfa yukarı zıplamaz: Sadece kartın üstü başlığın arkasında kalmışsa veya çok aşağı kaymışsa nazikçe hizala
     if (rect.top < headerSafeZone || rect.top > 180) {
       const targetY = window.pageYOffset + rect.top - headerSafeZone;
       window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
     }
-    // Kart zaten rahatça okunabilir durumdaysa sayfayı hiç kaydırma
   }
 
   handlePrev() {
@@ -585,16 +564,15 @@ export class OnboardingController {
     this.clearNotice();
     const currentStep = this.steps[this.stepIndex];
 
-    // Doğrulama kontrolleri
     if (currentStep.type === 'domain' && !this.formData.selectedAreaId) {
-      this.showNotice("Lütfen devam etmek için bir gelişim alanı seç.");
+      this.showNotice('Devam etmek için bir çalışma alanı seç.');
       return;
     }
 
     if (currentStep.type === 'area_question') {
       const answered = this.formData.areaAnswers[currentStep.questionData.id];
       if (!answered) {
-        this.showNotice("Devam etmek için seçeneklerden birini işaretleyebilirsin.");
+        this.showNotice('Devam etmek için seçeneklerden birini işaretle.');
         return;
       }
     }
@@ -604,13 +582,11 @@ export class OnboardingController {
       this.render();
       this.keepCardInComfortableView();
     } else {
-      // Son adım tamamlandı: Planı kaydet ve 2 saniyelik yükleme animasyonunu başlat
       this.completeAndSavePlan();
     }
   }
 
   completeAndSavePlan() {
-    // storage.js üzerinden kalıcı kaydetme
     storage.updateState(currentState => ({
       ...currentState,
       profile: {
@@ -632,7 +608,6 @@ export class OnboardingController {
       }
     }));
 
-    // 2 saniyelik sakin yükleme animasyonu (PROJE.md Adım 5)
     this.isGeneratingPlan = true;
     this.render();
 
@@ -641,7 +616,7 @@ export class OnboardingController {
       this.isPlanReady = true;
       this.render();
       if (this.onComplete) this.onComplete();
-    }, 2000);
+    }, 1400);
   }
 
   escapeHtml(str) {
@@ -654,4 +629,3 @@ export class OnboardingController {
       .replace(/'/g, '&#039;');
   }
 }
-

@@ -115,15 +115,16 @@ class StorageService {
    */
   getGreeting() {
     const state = this.getState();
-    const name = state.profile.name ? ` ${state.profile.name}` : '';
+    const trimmed = state.profile.name ? state.profile.name.trim() : '';
+    const suffix = trimmed ? `, ${trimmed}` : '';
     const hour = new Date().getHours();
 
     if (hour >= 5 && hour < 12) {
-      return `Günaydın,${name}`;
+      return `Günaydın${suffix}`;
     } else if (hour >= 12 && hour < 18) {
-      return `İyi günler,${name}`;
+      return `İyi günler${suffix}`;
     } else {
-      return `İyi akşamlar,${name}`;
+      return `İyi akşamlar${suffix}`;
     }
   }
 
@@ -373,43 +374,43 @@ class StorageService {
     const badges = [
       {
         id: 'ilk_adim',
-        title: 'İlk Adım',
-        desc: 'Yolculuğa başladın ve ilk görevini tamamladın.',
+        title: 'İlk adım',
+        desc: 'Yolculuğa başladın ve ilk görevini tamamladın',
         isUnlocked: totalCompleted >= 1,
         icon: 'sprout'
       },
       {
         id: '3_gun',
-        title: '3 Gün',
-        desc: '3 gün boyunca kendine vakit ayırdın.',
+        title: '3 gün',
+        desc: '3 gün boyunca kendine vakit ayırdın',
         isUnlocked: totalCompleted >= 3,
         icon: 'flame'
       },
       {
         id: 'ilk_hafta',
-        title: 'İlk Hafta',
-        desc: 'Tohum aşamasının ilk 7 gününü geride bıraktın.',
+        title: 'İlk hafta',
+        desc: 'Tohum aşamasının ilk 7 gününü geride bıraktın',
         isUnlocked: totalCompleted >= 7,
         icon: 'calendar'
       },
       {
         id: 'zor_gune_ragmen',
-        title: 'Zor Güne Rağmen',
-        desc: 'Zorlandığın ya da ertelediğin bir günün ardından yeniden adım attın.',
+        title: 'Zor güne rağmen',
+        desc: 'Zorlandığın ya da ertelediğin bir günün ardından yeniden adım attın',
         isUnlocked: hasZorlandimOrPostponedSuccess || totalCompleted >= 5,
         icon: 'shield'
       },
       {
         id: '15_gun',
-        title: '15. Gün',
-        desc: 'Yolculuğun yarısını huzurla tamamladın.',
+        title: '15. gün',
+        desc: 'Yolculuğun yarısını kendi hızında tamamladın',
         isUnlocked: totalCompleted >= 15,
         icon: 'mountain'
       },
       {
         id: 'yolculugun_sonu',
-        title: 'Yolculuğun Sonu',
-        desc: '30 günlük tohumdan yaprağa dönüşümü başardın.',
+        title: 'Yolculuğun sonu',
+        desc: '30 günlük tohumdan yaprağa dönüşümü tamamladın',
         isUnlocked: totalCompleted >= 30,
         icon: 'award'
       }

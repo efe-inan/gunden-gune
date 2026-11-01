@@ -1,192 +1,138 @@
 /* ==========================================================================
    Günden Güne - Tasarım Sistemi Değişkenleri
-   Tema: Doğal, minimal, huzurlu (Yeşil + Bej)
-   Açık ve Koyu Mod Paletleri (PROJE.md Bölüm 3)
+   Yön: Dingin, özenli, insani — Sıcak kağıt nötrleri ve derin yaprak yeşili
    ========================================================================== */
 
 :root {
-  /* Renk Paleti (PROJE.md Bölüm 3 - Açık Mod: Sıcak Bej & Dingin Yeşil) */
-  --bej-100: #F1EADA;       /* Ana arka plan (sıcak keten/kum beji, asla çiğ beyaz değil) */
-  --bej-200: #E5DBC7;       /* Kartlar, ikincil yüzey */
-  --bej-300: #D6C8AF;       /* Çizgiler, kenarlıklar */
-  --bej-400: #C4B498;       /* Aktif sınır / hafif derinlik */
+  /* Sıcak Kağıt Nötr Rampası (Açık Mod) */
+  --bg-deep: #EFE9DF;
+  --bg-page: #F7F4EE;
+  --bg-card: #FDFBF7;
+  --bg-subtle: #EFE9DF;
+  --bg-hover: #E6DFD3;
+  --bg-input: #FDFBF7;
 
-  --yesil-900: #1A2A20;     /* Ana metin (derin orman yeşili) */
-  --yesil-800: #243C2E;     /* Koyu vurgu */
-  --yesil-700: #2F4D39;     /* Başlıklar, ana buton */
-  --yesil-600: #3E634A;     /* Buton hover / aktif */
-  --yesil-500: #547E61;     /* Vurgu, ikonlar */
-  --yesil-400: #749D80;     /* İkincil yeşil */
-  --yesil-300: #98BBA3;     /* İlerleme çubuğu dolgusu, hover */
-  --yesil-200: #BDD7C6;     /* Yumuşak yeşil kart vurgusu */
-  --yesil-100: #D5E7DC;     /* Hafif vurgu zemin */
-  --yesil-50:  #E7F2EB;     /* Çok hafif yeşil zemin */
+  --header-bg: rgba(247, 244, 238, 0.92);
+  --backdrop-bg: rgba(31, 27, 22, 0.42);
 
-  --toprak: #A97E59;        /* Nadir ikincil vurgu, rozetler */
-  --toprak-hafif: #ECE2D7;  /* Toprak zemin tonu */
-  --toprak-border: #DECFC0; /* Toprak kenarlık */
-  --toprak-text: #704F2E;   /* Toprak metin */
+  /* İnce Çizgi Kenarlıklar (Ana metin renginin %9 ve %16 opaklığı) */
+  --border-hairline: rgba(31, 27, 22, 0.09);
+  --border-strong: rgba(31, 27, 22, 0.16);
 
-  --uyari-yumusak: #C97B63; /* Hata / uyarı (asla kırmızı bağırma yok) */
-  --uyari-zemin: #F7E5E1;
-  --uyari-border: #E2C5BD;
-  --uyari-text: #9F4D37;
+  /* Üç Metin Rolü */
+  --text-primary: #1F1B16;
+  --text-secondary: #5E554A;
+  --text-muted: #7B7266;
 
-  /* Semantik Arayüz Değişkenleri */
-  --bg-primary: var(--bej-100);
-  --bg-surface: var(--bej-200);
-  --bg-surface-elevated: #EAE1CF;
-  --bg-input: #F7F2E6;
-  --bg-input-focus: #FAF7EF;
-  --header-bg: rgba(241, 234, 218, 0.94);
-  --backdrop-bg: rgba(26, 42, 32, 0.5);
+  /* Tek Vurgu Rengi (Kurutulmuş Adaçayı / Orman Yaprağı) */
+  --accent: #2C4C3B;
+  --accent-hover: #223C2E;
+  --accent-fg: #FAF8F4;
+  --accent-tint: rgba(44, 76, 59, 0.08);
+  --accent-border: rgba(44, 76, 59, 0.28);
 
-  --border-subtle: var(--bej-300);
-  --border-strong: var(--bej-400);
+  /* Buton Rolleri */
+  --btn-primary-bg: #2C4C3B;
+  --btn-primary-fg: #FAF8F4;
+  --btn-primary-hover: #223C2E;
 
-  --text-primary: var(--yesil-900);
-  --text-headings: var(--yesil-700);
-  --text-muted: #4B5E50;
-  --text-subtle: #6D8072;
+  --btn-secondary-bg: #EFE9DF;
+  --btn-secondary-fg: #1F1B16;
+  --btn-secondary-hover: #E6DFD3;
 
-  --btn-primary-bg: var(--yesil-700);
-  --btn-primary-text: #FAF7F0;
-  --btn-primary-hover: var(--yesil-600);
+  /* Semantik Tonlar (Ertelenen gün / bilgi için sıcak kum, silme için sakin kırmızı) */
+  --sand-tint: #EFE6D5;
+  --sand-border: rgba(107, 83, 53, 0.22);
+  --sand-ink: #6B5335;
 
-  --btn-secondary-bg: var(--bej-200);
-  --btn-secondary-text: var(--yesil-900);
-  --btn-secondary-border: var(--bej-300);
-  --btn-secondary-hover: #DDD1BC;
+  --danger: #B44337;
+  --danger-tint: rgba(180, 67, 55, 0.08);
+  --danger-border: rgba(180, 67, 55, 0.24);
 
-  --accent: var(--yesil-500);
-  --accent-light: var(--yesil-100);
-  --accent-subtle: var(--yesil-200);
-
-  --progress-fill: var(--yesil-500);
-
-  /* Kaçırılan / Atlanan Gün (Bej tonları, PROJE.md) */
-  --missed-day-bg: #E7DBBE;
-  --missed-day-border: #CFBE9A;
-  --missed-day-text: #6E5C38;
-
-  /* Kart / blok vurgu tonları */
-  --card-highlight-bg: #ECE3D1;
-  --card-highlight-border: #D1C2A5;
-
-  /* Tipografi */
-  --font-serif: 'Fraunces', 'Lora', Georgia, serif;
+  /* Tipografi Aileleri */
+  --font-serif: 'Fraunces', Georgia, serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  --text-xs: 0.8125rem;     /* 13px */
-  --text-sm: 0.9375rem;     /* 15px */
-  --text-base: 1.0625rem;   /* 17px (PROJE.md: 17-18px) */
-  --text-lg: 1.25rem;       /* 20px */
+  /* Tipografi Ölçeği */
+  --text-xs: 0.75rem;       /* 12px */
+  --text-sm: 0.875rem;      /* 14px */
+  --text-base: 1rem;        /* 16px */
+  --text-lg: 1.125rem;      /* 18px */
   --text-xl: 1.5rem;        /* 24px */
   --text-2xl: 2rem;         /* 32px */
-  --text-3xl: 2.5rem;       /* 40px */
-  --text-4xl: 3.125rem;     /* 50px */
+  --text-hero: clamp(2.25rem, 4.4vw, 3.5rem); /* 36px -> 56px */
 
-  --line-height-body: 1.65;
-  --line-height-heading: 1.28;
-
-  /* Yuvarlak Köşeler & Boşluklar */
+  /* İç İçe Köşe Yarıçapları (inner = outer - padding) */
+  --radius-xs: 6px;
   --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 18px;        /* 16-24px standardı */
-  --radius-xl: 24px;
-  --radius-full: 9999px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
 
-  /* Gölgeler (Çok hafif, doğal) */
-  --shadow-subtle: 0 2px 8px rgba(36, 52, 43, 0.04);
-  --shadow-card: 0 4px 16px rgba(36, 52, 43, 0.06);
-  --shadow-elevated: 0 8px 24px rgba(36, 52, 43, 0.08);
+  /* Derinlik (Açık modda yalnızca nötr, küçük gölge) */
+  --shadow-sm: 0 1px 2px rgba(31, 27, 22, 0.05);
+  --shadow-float: 0 8px 24px rgba(31, 27, 22, 0.06);
+  --btn-top-highlight: none;
 
-  /* Geçişler */
-  --transition-fast: 150ms ease;
-  --transition-normal: 200ms ease;
-  --transition-smooth: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  /* Hareket (Tek eğri, yalnızca izinli özellikler) */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-enter: 360ms;
 
-  /* Sayfa Genişlikleri */
-  --max-w-content: 720px;
-  --max-w-wide: 1040px;
+  /* Kapsayıcı Genişlikleri (4px ızgarası) */
+  --max-w-content: 680px;
+  --max-w-wide: 1120px;
 }
 
 /* ==========================================================================
-   Koyu Mod Paleti (Zarif Kömür/Obsidyen Slate & Ilık Krem & Adaçayı)
+   Koyu Mod Paleti (Sıcak Obsidyen / Mürekkep Nötrleri & Adaçayı Vurgusu)
    ========================================================================== */
 [data-theme="dark"] {
-  /* Renk Paleti (Yeşil bataklık hissi yok; derin kömür zemin ve net yüzey kontrastı) */
-  --bej-100: #121413;       /* Ana arka plan (derin, dingin kömür/obsidyen) */
-  --bej-200: #1B1E1C;       /* Kart / ikincil yüzey (net ayrışan mat grafit) */
-  --bej-300: #2C332F;       /* Çizgi / kenarlık */
-  --bej-400: #3E4741;       /* Aktif kenarlık / derinlik */
+  --bg-deep: #12110F;
+  --bg-page: #161513;
+  --bg-card: #1C1A18;
+  --bg-subtle: #262421;
+  --bg-hover: #2F2C28;
+  --bg-input: #161513;
 
-  --yesil-900: #ECE8DE;     /* Ana metin (ılık doğal keten beyazı, asla göz yormaz) */
-  --yesil-800: #DFDAD0;     /* Koyu metin / ikincil metin */
-  --yesil-700: #F5F2EA;     /* Başlıklar (net, zarif fildişi) */
-  --yesil-600: #A8B5AB;     /* İkincil başlık / vurgu */
-  --yesil-500: #5C946E;     /* Vurgu / ikon (dengeli adaçayı yeşili) */
-  --yesil-400: #74A684;
-  --yesil-300: #8FB99D;     /* İlerleme çubuğu dolgusu */
-  --yesil-200: #232D26;     /* Yumuşak yeşil kart vurgusu */
-  --yesil-100: #19221C;     /* Hafif vurgu zemin */
+  --header-bg: rgba(22, 21, 19, 0.92);
+  --backdrop-bg: rgba(0, 0, 0, 0.68);
 
-  --toprak: #D1A580;        /* Toprak vurgu (rozetler) */
-  --toprak-hafif: #26201A;  /* Toprak zemin tonu */
-  --toprak-border: #3E332A; /* Toprak kenarlık */
-  --toprak-text: #E8C9AE;   /* Toprak metin */
+  --border-hairline: rgba(239, 233, 222, 0.08);
+  --border-strong: rgba(239, 233, 222, 0.16);
 
-  --uyari-yumusak: #D9917B; /* Yumuşak uyarı */
-  --uyari-zemin: #281D1B;   /* Uyarı zemin */
-  --uyari-border: #422C27;  /* Uyarı kenarlık */
-  --uyari-text: #EFA491;    /* Uyarı metin */
+  --text-primary: #EFE9DE;
+  --text-secondary: #AAA398;
+  --text-muted: #8A847A;
 
-  /* Semantik Arayüz Değişkenleri */
-  --bg-primary: #121413;
-  --bg-surface: #1B1E1C;
-  --bg-surface-elevated: #232825;
-  --bg-input: #151816;
-  --bg-input-focus: #1B201D;
-  --header-bg: rgba(18, 20, 19, 0.92);
-  --backdrop-bg: rgba(0, 0, 0, 0.75);
+  --accent: #6CA07E;
+  --accent-hover: #7EB08F;
+  --accent-fg: #121714;
+  --accent-tint: rgba(108, 160, 126, 0.12);
+  --accent-border: rgba(108, 160, 126, 0.36);
 
-  --border-subtle: #2C332F;
-  --border-strong: #3E4741;
+  /* Koyu modda birincil eylem: rampadan kırık beyaz zemin + koyu metin */
+  --btn-primary-bg: #EFE9DE;
+  --btn-primary-fg: #161513;
+  --btn-primary-hover: #E2DBD0;
 
-  --text-primary: #ECE8DE;
-  --text-headings: #F5F2EA;
-  --text-muted: #9BA49D;
-  --text-subtle: #6D7770;
+  --btn-secondary-bg: #262421;
+  --btn-secondary-fg: #EFE9DE;
+  --btn-secondary-hover: #2F2C28;
 
-  /* Ana buton: Dengeli orman adaçayı */
-  --btn-primary-bg: #345E44;
-  --btn-primary-text: #FAF8F5;
-  --btn-primary-hover: #417354;
+  --sand-tint: #252019;
+  --sand-border: rgba(212, 190, 152, 0.2);
+  --sand-ink: #D4BE98;
 
-  --btn-secondary-bg: #232825;
-  --btn-secondary-text: #ECE8DE;
-  --btn-secondary-border: #2C332F;
-  --btn-secondary-hover: #2C322E;
+  --danger: #E06C65;
+  --danger-tint: rgba(224, 108, 101, 0.12);
+  --danger-border: rgba(224, 108, 101, 0.28);
 
-  --accent: #5C946E;
-  --accent-light: #19221C;
-  --accent-subtle: #232D26;
-
-  --progress-fill: #5C946E;
-
-  /* Kaçırılan / Atlanan Gün (Bej tonları) */
-  --missed-day-bg: #24221D;
-  --missed-day-border: #38342C;
-  --missed-day-text: #D5C8A6;
-
-  /* Kart / blok vurgu tonları */
-  --card-highlight-bg: #1F2521;
-  --card-highlight-border: #323E36;
-
-  /* Gölgeler (Koyu modda derinleştirilmiş) */
-  --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.35);
-  --shadow-card: 0 4px 18px rgba(0, 0, 0, 0.55);
-  --shadow-elevated: 0 8px 28px rgba(0, 0, 0, 0.7);
+  /* Koyu modda derinlik gölgeden değil yüzey adımlarından gelir */
+  --shadow-sm: none;
+  --shadow-float: 0 12px 32px rgba(0, 0, 0, 0.45);
+  --btn-top-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 /* ==========================================================================
@@ -196,7 +142,12 @@ html.theme-transition,
 html.theme-transition *,
 html.theme-transition *::before,
 html.theme-transition *::after {
-  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, box-shadow 200ms ease, fill 200ms ease, stroke 200ms ease !important;
+  transition:
+    background-color 200ms var(--ease-out),
+    color 200ms var(--ease-out),
+    border-color 200ms var(--ease-out),
+    fill 200ms var(--ease-out),
+    stroke 200ms var(--ease-out) !important;
   transition-delay: 0s !important;
 }
 

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Temel Sıfırlama ve Gövde Stilleri
+   Temel Sıfırlama, Tipografi Kuralları ve Izgara Kapsayıcıları
    ========================================================================== */
 
 *, *::before, *::after {
@@ -18,108 +18,103 @@ html {
 body {
   font-family: var(--font-sans);
   font-size: var(--text-base);
-  line-height: var(--line-height-body);
-  color: var(--yesil-900);
-  background-color: var(--bej-100);
-  background-image: 
-    radial-gradient(circle at 10% 5%, rgba(84, 126, 97, 0.07) 0%, transparent 40%),
-    radial-gradient(circle at 90% 45%, rgba(169, 126, 89, 0.06) 0%, transparent 45%),
-    radial-gradient(circle at 50% 95%, rgba(84, 126, 97, 0.05) 0%, transparent 40%);
-  background-attachment: fixed;
+  line-height: 1.625; /* 26px */
+  color: var(--text-primary);
+  background-color: var(--bg-page);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
 }
 
-[data-theme="dark"] body {
-  background-color: var(--bej-100);
-  background-image: 
-    radial-gradient(circle at 10% 5%, rgba(255, 255, 255, 0.025) 0%, transparent 40%),
-    radial-gradient(circle at 90% 45%, rgba(209, 165, 128, 0.02) 0%, transparent 45%),
-    radial-gradient(circle at 50% 95%, rgba(92, 148, 110, 0.02) 0%, transparent 40%);
-}
-
 ::selection {
-  background-color: var(--yesil-200);
-  color: var(--yesil-900);
+  background-color: var(--accent-tint);
+  color: var(--text-primary);
 }
 
-/* Başlıklar */
+/* Başlıklar: Ağırlık yerine boyut ve renkle hiyerarşi (400-500) */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif);
-  color: var(--yesil-700);
-  line-height: var(--line-height-heading);
+  color: var(--text-primary);
   font-weight: 500;
-  letter-spacing: -0.015em;
 }
 
 h1 {
-  font-size: clamp(2.1rem, 5vw, 3.2rem);
-  font-weight: 600;
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 400;
 }
 
 h2 {
-  font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  font-weight: 400;
 }
 
 h3 {
-  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.4;
+  letter-spacing: 0;
+  font-weight: 500;
 }
 
 p {
-  color: var(--yesil-900);
+  color: var(--text-secondary);
 }
 
 a {
-  color: var(--yesil-700);
+  color: var(--text-primary);
   text-decoration: none;
-  transition: color var(--transition-normal);
-}
-
-a:hover {
-  color: var(--yesil-500);
+  transition: color var(--duration-fast) var(--ease-out);
 }
 
 button {
   font-family: var(--font-sans);
+  font-size: inherit;
   border: none;
   background: none;
   cursor: pointer;
-  outline: none;
+  color: inherit;
 }
 
+/* Klavye odak halkası */
 button:focus-visible,
 a:focus-visible,
 [tabindex="0"]:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 2px solid var(--yesil-700);
-  outline-offset: 3px;
-  border-radius: var(--radius-sm);
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
-/* Erişilebilirlik: Atla Bağlantısı */
+/* Tablosal Rakam Yardımcıları */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Erişilebilirlik: Ana İçeriğe Atla Bağlantısı */
 .skip-link {
   position: absolute;
-  top: -100px;
-  left: 1rem;
+  top: -96px;
+  left: 16px;
   background-color: var(--btn-primary-bg);
-  color: var(--btn-primary-text);
-  padding: 0.6rem 1.25rem;
+  color: var(--btn-primary-fg);
+  padding: 8px 16px;
   border-radius: var(--radius-sm);
   font-weight: 500;
   font-size: var(--text-sm);
   z-index: 9999;
-  text-decoration: none;
-  box-shadow: var(--shadow-elevated);
-  transition: top 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform var(--duration-normal) var(--ease-out);
 }
 
 .skip-link:focus {
-  top: 1rem;
-  color: var(--btn-primary-text);
+  top: 12px;
+  color: var(--btn-primary-fg);
 }
 
 ul, ol {
@@ -131,14 +126,14 @@ img, svg {
   max-width: 100%;
 }
 
-/* Kapsayıcılar */
+/* Kapsayıcılar (4px katları: 24px masaüstü, 16px mobil) */
 .container {
   width: 100%;
   max-width: var(--max-w-wide);
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .container-narrow {
@@ -146,19 +141,19 @@ img, svg {
   max-width: var(--max-w-content);
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 @media (max-width: 480px) {
   .container,
   .container-narrow {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 
-/* Erişilebilirlik: Ekran okuyucu yardımcısı */
+/* Ekran okuyucu yardımcısı */
 .sr-only {
   position: absolute;
   width: 1px;

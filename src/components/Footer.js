@@ -3,24 +3,25 @@
  * Sayfa altlığı
  */
 
+import { BrandMark } from './Icons.js';
+
 export function renderFooter() {
   return `
     <footer class="site-footer" role="contentinfo">
       <div class="container">
         <div class="footer-inner">
-          <div class="footer-brand">
-            <img src="/assets/logo-light.png" class="app-logo app-logo-light footer-logo-img" alt="Günden Güne logosu" />
-            <img src="/assets/logo-dark.png" class="app-logo app-logo-dark footer-logo-img" alt="Günden Güne logosu" />
-            <span>Günden Güne</span>
+          <div class="footer-left">
+            <div class="footer-brand">
+              ${BrandMark({ size: 18 })}
+              <span>Günden Güne</span>
+            </div>
+            <p class="footer-disclaimer">
+              Bu uygulama profesyonel psikolojik, tıbbi veya finansal danışmanlık yerine geçmez. Amacımız kendi hızında küçük farkındalık adımları atmana eşlik etmektir.
+            </p>
           </div>
 
-          <p class="footer-disclaimer">
-            Bu site profesyonel psikolojik, tıbbi veya finansal danışmanlık yerine geçmez. 
-            Amacımız, kendi hızında ve baskısız bir şekilde küçük farkındalık adımları atmana eşlik etmektir.
-          </p>
-
           <p class="footer-copy">
-            Günden Güne &copy; 2026. Tüm hakları saklıdır.
+            Günden Güne © 2026
           </p>
         </div>
       </div>
