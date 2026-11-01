@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+  <style>
+    .leaf-fill { fill: #2C4C3B; fill-opacity: 0.14; stroke: none; }
+    .leaf-stroke { stroke: #2C4C3B; fill: none; }
+    @media (prefers-color-scheme: dark) {
+      .leaf-fill { fill: #6CA07E; fill-opacity: 0.18; }
+      .leaf-stroke { stroke: #6CA07E; }
+    }
+  </style>
+  <path class="leaf-fill" d="M6 19C6 12 10.5 5.5 19.5 4.5C19.5 13.5 14 19 6 19Z" />
+  <path class="leaf-stroke" d="M6 19C6 12 10.5 5.5 19.5 4.5C19.5 13.5 14 19 6 19Z" />
+  <path class="leaf-stroke" d="M4.5 20.5C8.5 16.5 12.5 12.5 15.5 9" />
+</svg>

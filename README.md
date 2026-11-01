@@ -1,182 +1,176 @@
-# Günden Güne 🌱
+# Günden Güne
 
-> **Baskısız, sürdürülebilir ve mikro adımlarla kişisel gelişim.**  
-> Yapay motivasyon sloganları ve ceza odaklı seri sistemleri yerine; her gün 2 ila 15 dakikalık odaklı adımlarla kalıcı alışkanlıklar inşa eden modern web uygulaması.
-
-[![Vite](https://img.shields.io/badge/Build-Vite-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
-[![JavaScript](https://img.shields.io/badge/ES6%2B-Vanilla%20JS-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![CSS3](https://img.shields.io/badge/CSS3-Custom%20Tokens-1572B6?logo=css3&logoColor=white)](https://www.w3.org/Style/CSS/)
-[![Privacy](https://img.shields.io/badge/Data-Local--First-24342B)](#-veri-mimarisi-ve-gizlilik)
-[![Accessibility](https://img.shields.io/badge/a11y-Klavye%20%26%20Ekran%20Okuyucu-success)](#-erişilebilirlik-ve-tasarım-dili)
+> **Küçük adımlar, gerçek değişim.**  
+> Yapay motivasyon sloganları ve ceza odaklı seri (streak) mekanikleri yerine; her gün 2 ila 15 dakikalık odaklı mikro eylemlerle kalıcı alışkanlıklar inşa eden yerel öncelikli (local-first) web uygulaması.
 
 ---
 
-## 🎯 Projenin Felsefesi
+## Projenin Felsefesi
 
-Klasik alışkanlık takip ve kişisel gelişim uygulamalarının büyük çoğunluğu agresif bildirimler, katı zincir kırma (streak) kuralları ve gerçekçi olmayan hedefler üzerine kuruludur. Bir gün kaçırıldığında kullanıcı suçluluk hisseder ve genellikle uygulamayı tamamen terk eder.
+Klasik alışkanlık takip uygulamalarının büyük çoğunluğu agresif bildirimler, zincir kırma korkusu ve gerçekçi olmayan hedefler üzerine kuruludur. Bir gün kaçırıldığında kullanıcı suçluluk hisseder ve süreci tamamen bırakır.
 
 **Günden Güne** bu döngüyü kırmak için tasarlandı:
 
-- **Cezasız Ritim:** Kaçırılan günler kırmızıyla cezalandırılmaz; kullanıcı *"Sorun değil, kaldığın yerden devam ediyoruz"* anlayışıyla karşılanır.
-- **Mikro Eylemler:** Görevler ilk günlerde 1–3 dakikalık mini farkındalıklarla başlar; kullanıcıyı yormadan direnç eşiğini düşürür.
-- **Kişiselleştirilmiş Yol:** Kullanıcı 8 temel gelişim alanından birini seçer, hedeflerine ve mevcut durumuna göre özel olarak hazırlanan 30 günlük akışa dahil olur.
-- **Hafif Günler & Alternatifler:** Her 7 günde bir dinlenme/yansıma günü bulunur; ayrıca enerjinin düşük olduğu günler için her görevin hafif bir alternatifi sunulur.
+- **Cezasız ritim:** Kaçırılan günler kırmızıyla işaretlenmez; ara verildiğinde *"Sorun değil, kaldığın yerden devam ediyoruz"* yaklaşımıyla karşılanır.
+- **Mikro eylemler:** Görevler ilk günlerde 1–3 dakikalık gözlem ve farkındalık adımlarıyla başlar; direnç eşiğini düşük tutar.
+- **Kişiselleştirilmiş 30 günlük akış:** Seçilen gelişim alanına, hazırbulunuşluk düzeyine, günlük süre tercihine ve alan sorularına verilen yanıtlara göre 30 günlük görev sırası ve aşama eşikleri dinamik oluşturulur.
+- **Hafif günler ve enerji dostu alternatifler:** Her haftanın sonunda (`7`, `14` ve `21`. günler) dinlenme/yansıma günü yer alır; ayrıca enerjinin veya vaktin kısıtlı olduğu günler için her görevin kısa bir alternatifi bulunur.
 
 ---
 
-## 🧭 Temel Özellikler
+## Temel Özellikler
 
-### 1. 8 Odak Alanı & 240 Özgün Görev
+### 1. Sekiz Gelişim Alanı ve 240 Özgün Görev
 
-Uygulama, alanında uzman yaklaşımlarla hazırlanmış 8 farklı kategori ve her kategori için 30 günlük aşamalı görev kataloğu içerir:
+Her biri 30 günlük aşamalı görev kataloğuna sahip sekiz odak alanı bulunur:
 
-- 💰 **Para ve Finans Yönetimi:** Bütçe farkındalığı, harcama tetikleyicileri ve birikim alışkanlıkları.
-- 🎯 **Dikkat ve Odaklanma:** Dijital detoks, tek işe odaklanma (monotasking) ve derin çalışma rutinleri.
-- 🧘 **Zihinsel Dinginlik & Wellness:** Beden taraması, nefes egzersizleri ve stresle başa çıkma.
-- 🤝 **Daha İyi İlişkiler Kurma:** Aktif dinleme, sınır çekme ve empati pratikleri.
-- 💎 **Mükemmeliyetçiliği Yenme:** "Yeterince iyi" kavramı, hata toleransı ve kontrolü bırakma.
-- ⏳ **Erteleme ve Disiplin:** 2 dakika kuralı, direnç analizi ve momentum yaratma.
-- 🌿 **Özgüven ve Kendine Değer:** İç sesi terbiye etme, başarı günlüğü ve kendini sabote etmeyi durdurma.
-- 🌙 **Sağlıklı Uyku ve Günlük Rutin:** Akşam rüzgârı (wind-down), ekran mesafesi ve sirkadiyen ritim.
+- **Para ve Finans Yönetimi (`finans`):** Bütçe farkındalığı, harcama tetikleyicileri ve birikim alışkanlıkları.
+- **Dikkat ve Odaklanma (`odak`):** Dijital sınırlar, tek işe odaklanma ve derin çalışma pratikleri.
+- **Zihinsel Dinginlik ve Wellness (`wellness`):** Beden taraması, nefes düzenleme ve stresle başa çıkma.
+- **Daha İyi İlişkiler Kurma (`iliskiler`):** Aktif dinleme, sağlıklı sınır koyma ve açık iletişim.
+- **Mükemmeliyetçiliği Yenme (`mukemmeliyetcilik`):** "Yeterince iyi" standardı, hata toleransı ve tamamlama kası.
+- **Erteleme ve Disiplin (`disiplin`):** İki dakika kuralı, sürtünme azaltma ve başlama eşiği.
+- **Özgüven ve Kendine Değer (`ozguven`):** İç eleştirmeni fark etme, kanıt toplama ve öz şefkat.
+- **Sağlıklı Uyku ve Günlük Rutin (`uyku`):** Akşam yavaşlama ritüeli, ekran mesafesi ve uyku hijyeni.
 
 ### 2. Aşamalı İlerleme Metodolojisi (Tohumdan Yaprağa)
 
-- **Tohum (1–7. Günler):** 1–3 dakika. Gözlem ve dirençsiz ilk adımlar.
-- **Filiz (8–15. Günler):** 5–7 dakika. Tekrarlayan davranışlar ve çevre düzeni.
-- **Gövde (16–23. Günler):** 7–12 dakika. Gerçek hayatta pratik ve direnç aşma.
-- **Yaprak (24–30. Günler):** 8–15 dakika. Kalıcı entegrasyon, kişisel manifesto ve mezuniyet.
+Hazırbulunuşluk puanına (`readinessScore`) göre aşama sınırları otomatik uyarlanır (varsayılan sınırlar):
 
-### 3. Akıllı ve Uyarlanabilir Mekanikler
+- **Tohum (1–7. günler):** 1–3 dakika. Gözlem ve dirençsiz ilk adımlar.
+- **Filiz (8–15. günler):** 5–7 dakika. Küçük tekrarlar ve çevre düzenlemesi.
+- **Gövde (16–23. günler):** 7–12 dakika. Gerçek hayatta pratik ve direnç aşma.
+- **Yaprak (24–30. günler):** 8–15 dakika. Kalıcı entegrasyon, kişisel manifesto ve mezuniyet.
 
-- **Dinamik Zorluk Dengeleme:** Kullanıcı üst üste *"Çok kolay"* veya *"Zorlandım"* dediğinde sonraki adımların seviyesi algoritma tarafından otomatik olarak dengelenir.
-- **Geri Dönüş Şefkati:** 3 günden uzun süre uygulamaya girilmediğinde suçlayıcı değil, güven veren sıcak bir karşılama ekranı açılır.
-- **Rozetler ve Yol Haritası:** Kullanıcının geçmişini, tamamladığı görevleri ve yazdığı yansıma notlarını kronolojik olarak izleyebileceği interaktif ilerleme sayfası.
-- **Koyu Mod & Sistem Entegrasyonu:** `#1A211C` derin orman tonlarında tasarlanmış, açılışta yanıp sönme (FOUT) yapmayan akıcı karanlık tema.
+### 3. Uyarlanabilir Mekanikler
 
----
-
-## 🏗️ Mimari ve Teknoloji Yığını
-
-Proje; harici kütüphane şişkinliği (dependency bloat) içermeyen, tarayıcı API'larını maksimum verimle kullanan **hafif ve modüler bir mimariyle** inşa edilmiştir:
-
-- **Çalışma Zamanı & Derleyici:** [Vite](https://vitejs.dev/) (sıfır yapılandırmalı hızlı HMR ve optimize edilmiş üretim derlemesi).
-- **Mantık Katmanı:** Modern Vanilla ES6+ modülleri (Bileşen tabanlı UI ayrımı).
-- **Yönlendirme (Routing):** Hash-based router (`#landing`, `#onboarding`, `#today`, `#progress`, `#settings`, `#completed`).
-- **Tasarım Sistemi:** Harici CSS framework'ü kullanılmadan, tamamen projeye özel CSS Değişkenleri (Design Tokens) ile örülmüş modüler CSS yapısı.
-- **Durum & Depolama Yönetimi:** Tek bir servis katmanı üzerinden (`storage.js`) yönetilen reaktif yerel veri modeli.
+- **Kişiselleştirilmiş görev ve süre uyumu (`planEngine.js`):** Günlük süre tercihi (`5`, `10`, `15`, `20` dk) veya adaptif zorluk düşüşü görev süresinin altındaysa daha hafif alternatif otomatik öne çıkarılır; tam adımlar tek tıkla açılabilir.
+- **Dinamik zorluk dengeleme:** Üst üste 2 kez *"Çok kolay"* veya *"Zorlandım"* geri bildirimi verildiğinde zorluk çarpanı (`-1`, `0`, `+1`) otomatik dengelenir.
+- **Şefkatli geri dönüş kurtarma:** 3+ gün ara verildiğinde önceki günü tekrarlama veya plan temposunu yumuşatma seçenekleri sunulur.
+- **Yerel gece yarısı senkronizasyonu:** UTC kaymasından etkilenmeyen yerel `YYYY-MM-DD` tarih anahtarıyla yeni güne geçiş otomatik algılanır.
 
 ---
 
-## 📂 Dizin Yapısı
+## Mimari ve Dizin Yapısı
+
+Harici çalışma zamanı veya test kütüphanesi bağımlılığı olmadan; Vite, Vanilla ES2025 modülleri, özel CSS tasarım değişkenleri ve Node.js yerleşik test koşucusu (`node --test`) ile geliştirilmiştir.
 
 ```text
 gunden-gune/
-├── public/                      # Statik varlıklar, marka görselleri ve faviconlar
-│   ├── favicon-32.png
+├── public/
+│   ├── favicon.svg              # Tema duyarlı (light/dark) saf SVG yaprak ikonu
+│   ├── favicon-32.png           # PNG favicon yedekleri
 │   ├── favicon-180.png
-│   ├── favicon-512.png
-│   └── assets/                  # Tema uyumlu logo dosyaları (light / dark)
+│   └── favicon-512.png
 ├── src/
-│   ├── components/              # Sayfa ve arayüz bileşenleri
-│   │   ├── Header.js            # Üst navigasyon, tema geçişi ve logo
-│   │   ├── Footer.js            # Alt bilgi ve marka alanı
-│   │   ├── Icons.js             # Saf SVG ikon kütüphanesi
+│   ├── components/
+│   │   ├── Header.js            # Üst gezinme çubuğu, tema geçişi ve odak göstergesi
+│   │   ├── Footer.js            # Alt bilgi alanı
+│   │   ├── Icons.js             # 1.5px çizgi kalınlığında saf SVG ikon seti
 │   │   ├── Landing.js           # Karşılama ve ürün tanıtım görünümü
-│   │   ├── Onboarding.js        # Kişiselleştirme ve anket akışı
-│   │   ├── Today.js             # Günün görevi ve geri bildirim etkileşimi
-│   │   ├── Progress.js          # 30 günlük ilerleme haritası, rozetler ve notlar
-│   │   ├── Settings.js          # Tercihler, tema ayarı ve veri yönetimi
-│   │   └── Completion.js        # 30. gün mezuniyet ve başarı ekranı
+│   │   ├── Onboarding.js        # Kişiselleştirme akışı ve 30 günlük plan üretimi
+│   │   ├── Today.js             # Günün görevi, alternatif görünüm ve geri bildirim akışı
+│   │   ├── Progress.js          # Aşama haritası, rozetler, yansıma notları ve arşiv
+│   │   ├── Settings.js          # Tercihler, alan değişimi ve JSON içe/dışa aktarım
+│   │   └── Completion.js        # 30. gün mezuniyet özeti ve yeni yolculuk başlatma
 │   ├── data/
-│   │   ├── questions.json       # Onboarding soruları ve değerlendirme ölçekleri
-│   │   └── tasks.json           # 8 alan × 30 gün = 240 adet mikro görev veri seti
-│   ├── styles/                  # CSS Design System modülleri
-│   │   ├── variables.css        # Renk paleti, tipografi ölçekleri ve aralıklar
-│   │   ├── base.css             # Tipografi, sıfırlama ve responsive kapsayıcılar
-│   │   ├── components.css       # Butonlar, kartlar, modal ve rozet stilleri
-│   │   ├── landing.css          # Tanıtım sayfası grid ve animasyonları
-│   │   ├── onboarding.css       # Soru kartları ve ölçek butonları
-│   │   ├── today.css            # Günlük kart ve geri bildirim alanı
-│   │   ├── progress.css         # Yol haritası ve rozet ızgarası
-│   │   ├── settings.css         # Form elemanları ve dışa aktarma modalları
-│   │   └── main.css             # Tüm stil modüllerini toplayan orkestrasyon dosyası
+│   │   ├── questions.json       # Genel ve alana özel tanışma soruları
+│   │   └── tasks.json           # 8 alan × 30 gün = 240 mikro görev veri seti
+│   ├── styles/
+│   │   ├── variables.css        # Renk paleti (#F7F4EE / #161513), 4px grid ve tipografi
+│   │   ├── base.css             # Sıfırlama, tipografi ve duyarlı kapsayıcılar
+│   │   ├── components.css       # Butonlar, kartlar, etiketler ve erişilebilirlik odakları
+│   │   ├── landing.css          # Tanıtım sayfası yerleşimi
+│   │   ├── onboarding.css       # Tanışma adımları ve seçim kartları
+│   │   ├── today.css            # Günlük görev kartı, geri dönüş kutusu ve aksiyonlar
+│   │   ├── progress.css         # İlerleme özeti, rozetler ve arşivlenmiş yolculuklar
+│   │   ├── settings.css         # Ayar satırları ve onay pencereleri
+│   │   └── main.css             # Stil modüllerini birleştiren giriş dosyası
 │   ├── utils/
-│   │   └── storage.js           # Veri modeli, hesaplamalar ve LocalStorage servisi
-│   └── main.js                  # Uygulama başlangıcı ve Router yönetimi
-├── index.html                   # HTML5 giriş şablonu ve font bağlantıları
-├── package.json                 # Bağımlılıklar ve derleme betikleri
-└── README.md                    # Proje dokümantasyonu
+│   │   ├── planEngine.js        # Aşama sınırları, etiket eşleştirme ve görev çözümleyici
+│   │   └── storage.js           # Tekil veri katmanı, rozet/istatistik ve LocalStorage yönetimi
+│   └── main.js                  # Uygulama kabuğu, rota koruyucuları (resolveRoute) ve yaşam döngüsü
+├── tests/                       # Node.js yerleşik test paketi (node:test + browserMock)
+│   ├── helpers/browserMock.js
+│   ├── data-integrity.test.js
+│   ├── plan-engine.test.js
+│   ├── progress-stats.test.js
+│   ├── settings-and-routing.test.js
+│   ├── storage-rollover.test.js
+│   └── today-flow.test.js
+├── index.html                   # HTML5 giriş şablonu ve FOUT önleyici tema betiği
+├── package.json                 # Geliştirme, test ve üretim betikleri
+└── PROJE.md                     # Ürün ve tasarım spesifikasyonu
 ```
 
 ---
 
-## 🔒 Veri Mimarisi ve Gizlilik
+## Tasarım Sistemi ve Erişilebilirlik
 
-- **Tamamen İstemci Taraflı (Local-First):** Kullanıcının yanıtları, hedefleri ve yansıma notları yalnızca kendi cihazında (`localStorage`) saklanır. Uygulama herhangi bir sunucuya veri göndermez; analitik veya izleme kodu içermez.
-- **Harici Kaynaklar:** Tek harici bağımlılık, yazı tiplerinin (Fraunces, Inter) Google Fonts üzerinden yüklenmesidir. Bu istek sırasında ziyaretçinin IP adresi Google'a iletilir; tam izolasyon gerekiyorsa fontlar `public/` altına alınarak yerelden sunulabilir.
-- **Veri Sahipliği:** Ayarlar sayfasından tüm kullanıcı geçmişi tek tıklamayla okunabilir `JSON` formatında dışa aktarılabilir (`Backup/Export`) veya kalıcı olarak silinebilir.
-- **Backend'e Hazır Soyutlama:** Veri erişimi doğrudan `localStorage` çağrıları yapmak yerine [`src/utils/storage.js`](src/utils/storage.js) servis katmanı üzerinden yürütülür. İleride PostgreSQL / Supabase veya Firebase entegrasyonu eklenmek istendiğinde yalnızca bu katmanın `async API` çağrılarına dönüştürülmesi yeterlidir.
-
----
-
-## ♿ Erişilebilirlik ve Tasarım Dili
-
-- **Sakin Renk Paleti:** Doğal adaçayı yeşili, taş beji ve sıcak toprak tonlarıyla oluşturulan arayüz, yüksek okunabilirlik hedeflenerek tasarlanmıştır (hedef: WCAG 2.1 AA kontrast oranları).
-- **Erişilebilir Navigasyon:** Tüm buton ve interaktif kartlar tam klavye erişimine (`Tab`, `Enter`, `Space`) sahiptir; modallar `Escape` ile kapatılabilir. Sayfa başında ekran okuyucular için atlama bağlantısı (`skip-link`) yer alır.
-- **Duyarlı (Responsive) Düzen:** 360px mobil ekranlardan 1440px+ geniş masaüstü monitörlere kadar kusursuz yerleşim ve akıcı tipografi (`clamp`).
-- **Düşük Hareket Desteği:** `prefers-reduced-motion` kuralı uygulanarak hareket hassasiyeti olan kullanıcılar için geçişler otomatik olarak sadeleştirilir.
+- **Sıcak kağıt ve doğal mürekkep paleti:** Açık temada sıcak ham kağıt (`#F7F4EE` zemin, `#FDFBF7` kart yüzeyi, `#2C4C3B` botanik vurgu), koyu temada sıcak obsidyen (`#161513` zemin, `#1C1A18` yüzey, `#6CA07E` adaçayı vurgu) kullanılır.
+- **Tipografi ve ritim:** Başlıklarda `Fraunces`, arayüz ve gövde metinlerinde `Inter` kullanılır; sayaç ve istatistiklerde `tabular-nums`, tüm boşluklarda `4px` tabanlı ölçek ve tek bir yumuşatma eğrisi (`--ease-out`) uygulanır.
+- **Klavye ve ekran okuyucu uyumu:** `skip-link`, görünür `:focus-visible` halkaları, `aria-live` durum bildirimleri, `Escape` ile kapanan onay kutuları ve `prefers-reduced-motion` desteği yerleşiktir.
 
 ---
 
-## 🚀 Hızlı Başlangıç
+## Hızlı Başlangıç
 
 ### Gereksinimler
 
-- Node.js (v18.0 veya üzeri)
-- npm (v9.0 veya üzeri)
+- Node.js `v22+` (`with { type: 'json' }` ES modül içe aktarımları ve yerleşik `node --test` için; `v24` önerilir)
+- npm `v10+`
 
-### Kurulum
+### Kurulum ve Çalıştırma
 
 ```bash
-# 1. Depoyu klonlayın
-git clone https://github.com/efe-inan/gunden-gune.git
-
-# 2. Proje dizinine girin
-cd gunden-gune
-
-# 3. Bağımlılıkları yükleyin
+# Bağımlılıkları yükle
 npm install
 
-# 4. Geliştirme sunucusunu başlatın
+# Geliştirme sunucusunu başlat (http://localhost:5173)
 npm run dev
-```
 
-Tarayıcınızda `http://localhost:5173` adresine giderek uygulamayı inceleyebilirsiniz.
+# Birim ve entegrasyon testlerini çalıştır
+npm test
 
-### Üretim Derlemesi
-
-```bash
-# Optimize edilmiş üretim dosyalarını oluşturur (dist/ klasörü altına)
+# Üretim derlemesini oluştur (dist/)
 npm run build
 
-# Üretim derlemesini yerel olarak test eder
+# Üretim derlemesini yerel olarak önizle
 npm run preview
 ```
 
----
-
-## 🗺️ Yol Haritası (Roadmap)
-
-- [x] 8 gelişim alanı ve 240 günlük mikro görev veri seti
-- [x] Adaptif zorluk ve cezasız ara verme mekanikleri
-- [x] Koyu / Açık tema ve sistem tercihi algılama
-- [x] Yerel veri yedekleme ve içe/dışa aktarım arayüzü
-- [ ] PWA (Progressive Web App) ve çevrimdışı çalışma desteği (Service Worker)
-- [ ] İsteğe bağlı bulut senkronizasyonu ve kullanıcı hesabı katmanı (Supabase / Auth)
-- [ ] Günlük hatırlatıcılar için Web Push bildirimleri
+> **Geliştirici İpucu:** Günlük görev ekranında ertesi güne geçiş simülasyon butonunu görmek için tarayıcıda `http://localhost:5173/?sim=1#today` adresini açabilirsin.
 
 ---
 
-## 📄 Lisans
+## İleride Kayıt ve Veritabanı (Auth / Backend) Eklemek
+
+Uygulamada hiçbir bileşen `localStorage` API'sine doğrudan erişmez (`index.html` içindeki ilk boyama FOUT tema betiği hariç). Kullanıcı hesabı (Supabase Auth, Firebase Auth veya özel JWT) ve bulut veritabanı ekleneceği zaman bileşen kodları korunur; yalnızca aşağıdaki noktalar güncellenir:
+
+| Dosya | Değişecek Metod / Bölüm | Dönüşüm Özeti |
+| :--- | :--- | :--- |
+| `src/utils/storage.js` | `DEFAULT_STATE.auth`, `getState()`, `saveState()`, `updateState()` | Yerel önbellek (`localStorage`) + uzak veritabanı (`users`, `journeys`, `day_logs`) okuma/yazma senkronizasyonu eklenir; oturum bilgisi `state.auth` altında tutulur. |
+| `src/utils/storage.js` | `completeTask()`, `postponeTask()`, `changeArea()`, `restartJourney()` | İşlem sonunda iyimser güncelleme (optimistic UI) korunarak arka planda ilgili API uç noktasına (`POST /api/journey/action` vb.) kayıt gönderilir. |
+| `src/utils/storage.js` | `exportDataJSON()`, `importDataJSON()`, `clearAllData()` | Yedek içe aktarma ve hesap/veri sıfırlama işlemleri uzak tablodaki kullanıcı kayıtlarını da kapsayacak şekilde genişletilir. |
+| `src/main.js` | `resolveRoute()` ve `init()` | İlk açılışta aktif oturum kontrolü (`await authService.restoreSession()`) yapılır; isteğe bağlı `#login` / `#register` rotaları eklenir. |
+| `src/components/Settings.js` | Hesap bölümü | Mevcut veri yönetimi kartının üstüne giriş yapma, çıkış yapma ve cihazlar arası senkronizasyon durumu satırı eklenir. |
+
+---
+
+## Doğrulama ve Test Senaryoları
+
+Yeni bir sürüm çıkmadan önce hem otomatik test paketiyle (`npm test`) hem de tarayıcıda aşağıdaki temel senaryolar doğrulanmalıdır:
+
+1. **Yeni kullanıcı akışı:** İlk açılışta `#landing` görünür; *"Başla"* ile 4 adımlı `#onboarding` tamamlandığında yanıtlarla uyumlu 30 günlük görev sırası (`taskOrder`) oluşur ve `#today` ekranına yönlendirilir.
+2. **Görevi tamamlama ve mezuniyet:** Görev tamamlandığında tek soruluk geri bildirim (*"Çok kolay / Tam kıvamında / Zorlandım"*) ve isteğe bağlı yansıma notu kaydedilir; aynı gün ikinci görev açılmaz. 30. gün tamamlandığında not yazma alanı açık kalır ve `#completed` mezuniyet ekranına geçiş butonu sunulur.
+3. **"Bugün olmadı" (erteleme) akışı:** Erteleme seçildiğinde suçlayıcı mesaj gösterilmez, gün durumu `postponed` olarak işlenir ve ilerleme sıfırlanmaz.
+4. **3+ gün ara verme ve geri dönüş:** Son işlemden 3 veya daha fazla gün geçtiğinde `#today` ekranında şefkatli karşılama kartı açılır; kullanıcı mevcut günden devam edebilir, önceki günü tekrarlayabilir veya plan zorluğunu yumuşatabilir.
+5. **Alan değiştirme:** `#settings` üzerinden gelişim alanı değiştirildiğinde mevcut yolculuk `archivedJourneys` listesine arşivlenir ve yeni alan için 1. günden temiz bir 30 günlük plan başlatılır.
+6. **Veri dışa/içe aktarma ve silme:** `#settings` ekranından tüm veriler `.json` olarak indirilebilir, şema doğrulamasından geçerek geri yüklenebilir (`importDataJSON`) veya çift aşamalı onayla tamamen sıfırlanabilir.
+7. **Mobil ve klavye görünümü:** `360px` mobil genişlikten masaüstüne kadar taşma olmadan çalışır; tüm etkileşimli öğeler `Tab`, `Enter`, `Space` ve `Escape` ile yönetilebilir.
+
+---
+
+## Lisans
 
 Bu proje özel olarak geliştirilmektedir. Tüm hakları saklıdır.
