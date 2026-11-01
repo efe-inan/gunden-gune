@@ -433,9 +433,33 @@
   color: var(--text-secondary);
 }
 
+/* Geçmiş / Arşivlenen Yolculuklar */
+.archived-journeys-section {
+  margin-top: 32px;
+}
+
+.archived-journeys-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.archived-journey-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
 @media (max-width: 960px) {
   .progress-main-split,
-  .progress-bottom-split {
+  .progress-bottom-split,
+  .archived-journeys-list {
     grid-template-columns: 1fr;
   }
 }

@@ -376,6 +376,7 @@ class StorageService {
         [currentDay]: {
           status: 'completed',
           completedAt: prevStatus.completedAt || nowIso,
+          wasPostponed: Boolean(prevStatus.postponedAt || prevStatus.wasPostponed),
           feedback: feedback !== null ? feedback : (prevStatus.feedback || null),
           note: reflectionNote ? reflectionNote.trim() : (prevStatus.note || null)
         }
@@ -485,11 +486,24 @@ class StorageService {
     }
 
     // Rozet değerlendirmesi (PROJE.md 4.4: İlk Adım, 3 Gün, İlk Hafta, Zor Güne Rağmen, 15. Gün, Yolculuğun Sonu)
-    const hasZorlandimOrPostponedSuccess = Object.values(dayStatusMap).some(d => d.feedback === 'zorlandim') ||
-      Object.keys(dayStatusMap).some(dayStr => {
-        const d = parseInt(dayStr, 10);
-        return dayStatusMap[d]?.status === 'completed' && dayStatusMap[d - 1]?.status === 'postponed';
-      });
+    const statusDays = Object.keys(dayStatusMap)
+      .map(d => parseInt(d, 10))
+      .filter(d => !Number.isNaN(d))
+      .sort((a, b) => a - b);
+
+    const recoveredSamePostponedDay = statusDays.some(
+      d => dayStatusMap[d]?.status === 'completed' && dayStatusMap[d]?.wasPostponed
+    );
+
+    const recoveredOnLaterDay = statusDays.some(d => {
+      const entry = dayStatusMap[d];
+      const wasHardOrPostponed = entry?.feedback === 'zorlandim' || entry?.status === 'postponed' || entry?.wasPostponed;
+      if (!wasHardOrPostponed) return false;
+      return completedDays.some(laterDay => laterDay > d);
+    });
+
+    const hasZorlandimOrPostponedSuccess = recoveredSamePostponedDay || recoveredOnLaterDay;
+    const stageBounds = computeStageBounds(state.profile, state.journey);
 
     const badges = [
       {
@@ -517,7 +531,7 @@ class StorageService {
         id: 'zor_gune_ragmen',
         title: 'Zor güne rağmen',
         desc: 'Zorlandığın ya da ertelediğin bir günün ardından yeniden adım attın',
-        isUnlocked: hasZorlandimOrPostponedSuccess || totalCompleted >= 5,
+        isUnlocked: hasZorlandimOrPostponedSuccess,
         icon: 'shield'
       },
       {
@@ -540,10 +554,31 @@ class StorageService {
     const currentWeekNum = Math.ceil(state.journey.currentDay / 7);
     const weekStartDay = (currentWeekNum - 1) * 7 + 1;
     const weekEndDay = Math.min(currentWeekNum * 7, 30);
-    
+
     let weekCompletedCount = 0;
+    let weekStruggledCount = 0;
+    let weekPostponedCount = 0;
+    let weekEasyCount = 0;
+
     for (let d = weekStartDay; d <= weekEndDay; d++) {
       if (completedDays.includes(d)) weekCompletedCount++;
+      const st = dayStatusMap[d];
+      if (st?.feedback === 'zorlandim') weekStruggledCount++;
+      if (st?.feedback === 'cok_kolay') weekEasyCount++;
+      if (st?.status === 'postponed' || st?.wasPostponed) weekPostponedCount++;
+    }
+
+    let weeklyMessage = 'Bu hafta henüz yeni başlıyor. Küçük bir adımla başlamak her zaman yeterli.';
+    if (weekCompletedCount > 0 && weekStruggledCount > 0) {
+      weeklyMessage = `Bu hafta ${weekCompletedCount} görevi tamamladın. Zorlandığın ${weekStruggledCount} adıma rağmen vazgeçmeyip ritmini korudun.`;
+    } else if (weekCompletedCount > 0 && weekPostponedCount > 0) {
+      weeklyMessage = `Bu hafta ${weekCompletedCount} görevi tamamladın. Ara verdiğin günün ardından sakin bir şekilde akışa döndün.`;
+    } else if (weekCompletedCount > 0 && weekEasyCount >= 2) {
+      weeklyMessage = `Bu hafta ${weekCompletedCount} görevi rahatlıkla tamamladın. Adımlar artık doğal ritminin bir parçası oluyor.`;
+    } else if (weekCompletedCount > 0) {
+      weeklyMessage = `Bu hafta ${weekCompletedCount} görevi tamamladın. Kendini zorlamadan attığın her adım zihninde yeni bir yer açıyor.`;
+    } else if (weekPostponedCount > 0) {
+      weeklyMessage = 'Bu hafta kendine nefes alanı bıraktın. Hazır olduğunda kaldığın yerden tek bir küçük adımla devam edebilirsin.';
     }
 
     return {
@@ -551,13 +586,13 @@ class StorageService {
       currentStreak,
       maxStreak,
       badges,
+      stageBounds,
+      archivedJourneys: state.archivedJourneys || [],
       weeklySummary: {
         weekNum: currentWeekNum,
         weekCompletedCount,
         weekTotalDays: weekEndDay - weekStartDay + 1,
-        message: weekCompletedCount > 0 
-          ? `Bu hafta ${weekCompletedCount} görevi tamamladın. Kendini zorlamadan attığın her adım zihninde yeni bir yer açıyor.` 
-          : `Bu hafta henüz yeni başlıyor. Küçük bir adımla başlamak her zaman yeterli.`
+        message: weeklyMessage
       },
       reflectionNotes: state.journey.reflectionNotes || []
     };

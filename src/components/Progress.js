@@ -14,11 +14,12 @@ export class ProgressController {
   }
 
   render() {
-    this.state = storage.getState();
+    this.state = storage.syncDailyRollover();
     const stats = storage.getProgressStats();
     const currentDay = this.state.journey.currentDay;
     const completedDays = this.state.journey.completedDays || [];
     const dayStatusMap = this.state.journey.dayStatusMap || {};
+    const bounds = stats.stageBounds || { tohumEnd: 7, filizEnd: 15, govdeEnd: 23 };
     const areaObj = questionsData.alanlar.find(a => a.id === this.state.profile.selectedAreaId);
     const areaTitle = areaObj ? areaObj.baslik : 'Gelişim yolculuğu';
     const remainingDays = Math.max(0, 30 - stats.totalCompleted);
@@ -89,7 +90,7 @@ export class ProgressController {
               </div>
 
               <div class="journey-grid" role="list" aria-label="30 günlük yolculuk adımları">
-                ${this.renderJourneyNodes(currentDay, completedDays, dayStatusMap)}
+                ${this.renderJourneyNodes(currentDay, completedDays, dayStatusMap, bounds)}
               </div>
             </section>
 
@@ -100,45 +101,45 @@ export class ProgressController {
               </section>
 
               <section class="stages-overview-card" aria-label="Gelişim aşamaları">
-                <div class="stage-row-item ${currentDay <= 7 ? 'is-active-stage' : ''}">
+                <div class="stage-row-item ${currentDay <= bounds.tohumEnd ? 'is-active-stage' : ''}">
                   <span class="stage-row-icon">${StageIcons.tohum({ size: 16 })}</span>
                   <div class="stage-row-content">
                     <div class="stage-row-top">
                       <span class="stage-row-title">Tohum</span>
-                      <span class="stage-row-days">Gün 1–7</span>
+                      <span class="stage-row-days">Gün 1–${bounds.tohumEnd}</span>
                     </div>
                     <p class="stage-row-desc">1–3 dk · Farkındalık ve ilk adım</p>
                   </div>
                 </div>
 
-                <div class="stage-row-item ${currentDay > 7 && currentDay <= 15 ? 'is-active-stage' : ''}">
+                <div class="stage-row-item ${currentDay > bounds.tohumEnd && currentDay <= bounds.filizEnd ? 'is-active-stage' : ''}">
                   <span class="stage-row-icon">${StageIcons.filiz({ size: 16 })}</span>
                   <div class="stage-row-content">
                     <div class="stage-row-top">
                       <span class="stage-row-title">Filiz</span>
-                      <span class="stage-row-days">Gün 8–15</span>
+                      <span class="stage-row-days">Gün ${bounds.tohumEnd + 1}–${bounds.filizEnd}</span>
                     </div>
                     <p class="stage-row-desc">5–7 dk · Günlük küçük tekrarlar</p>
                   </div>
                 </div>
 
-                <div class="stage-row-item ${currentDay > 15 && currentDay <= 23 ? 'is-active-stage' : ''}">
+                <div class="stage-row-item ${currentDay > bounds.filizEnd && currentDay <= bounds.govdeEnd ? 'is-active-stage' : ''}">
                   <span class="stage-row-icon">${StageIcons.govde({ size: 16 })}</span>
                   <div class="stage-row-content">
                     <div class="stage-row-top">
                       <span class="stage-row-title">Gövde</span>
-                      <span class="stage-row-days">Gün 16–23</span>
+                      <span class="stage-row-days">Gün ${bounds.filizEnd + 1}–${bounds.govdeEnd}</span>
                     </div>
                     <p class="stage-row-desc">7–12 dk · Gerçek hayatta uygulama</p>
                   </div>
                 </div>
 
-                <div class="stage-row-item ${currentDay > 23 ? 'is-active-stage' : ''}">
+                <div class="stage-row-item ${currentDay > bounds.govdeEnd ? 'is-active-stage' : ''}">
                   <span class="stage-row-icon">${StageIcons.yaprak({ size: 16 })}</span>
                   <div class="stage-row-content">
                     <div class="stage-row-top">
                       <span class="stage-row-title">Yaprak</span>
-                      <span class="stage-row-days">Gün 24–30</span>
+                      <span class="stage-row-days">Gün ${bounds.govdeEnd + 1}–30</span>
                     </div>
                     <p class="stage-row-desc">10–15 dk · Kalıcı alışkanlık</p>
                   </div>
@@ -168,12 +169,23 @@ export class ProgressController {
             </section>
           </div>
 
+          ${stats.archivedJourneys && stats.archivedJourneys.length > 0 ? `
+            <section class="archived-journeys-section" aria-labelledby="archived-heading">
+              <div class="section-title-row">
+                <h2 id="archived-heading" class="section-block-title">Geçmiş yolculuklar</h2>
+              </div>
+              <div class="archived-journeys-list">
+                ${this.renderArchivedJourneys(stats.archivedJourneys)}
+              </div>
+            </section>
+          ` : ''}
+
         </div>
       </main>
     `;
   }
 
-  renderJourneyNodes(currentDay, completedDays, dayStatusMap) {
+  renderJourneyNodes(currentDay, completedDays, dayStatusMap, bounds) {
     let nodesHtml = '';
 
     for (let day = 1; day <= 30; day++) {
@@ -196,9 +208,9 @@ export class ProgressController {
       }
 
       let stageChar = 'T';
-      if (day > 7 && day <= 15) stageChar = 'F';
-      else if (day > 15 && day <= 23) stageChar = 'G';
-      else if (day > 23) stageChar = 'Y';
+      if (day > bounds.tohumEnd && day <= bounds.filizEnd) stageChar = 'F';
+      else if (day > bounds.filizEnd && day <= bounds.govdeEnd) stageChar = 'G';
+      else if (day > bounds.govdeEnd) stageChar = 'Y';
 
       nodesHtml += `
         <div
@@ -257,6 +269,28 @@ export class ProgressController {
             <span>${dateStr}</span>
           </div>
           <p class="note-card-text">${this.escapeHtml(n.text)}</p>
+        </article>
+      `;
+    }).join('');
+  }
+
+  renderArchivedJourneys(archived) {
+    return [...archived].reverse().map(item => {
+      const areaObj = questionsData.alanlar.find(a => a.id === item.areaId);
+      const areaTitle = areaObj ? areaObj.baslik : item.areaId;
+      const rawDate = item.completedAt || item.archivedAt;
+      const dateStr = rawDate
+        ? new Date(rawDate).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' })
+        : '';
+      const count = Number(item.completedDaysCount || 0);
+
+      return `
+        <article class="archived-journey-card">
+          <div>
+            <h3 class="badge-card-title">${this.escapeHtml(areaTitle)}</h3>
+            <p class="badge-card-desc">${count} / 30 gün tamamlandı${item.isCompleted30 ? ' · Mezuniyet' : ''}</p>
+          </div>
+          <span class="badge-status-meta">${dateStr}</span>
         </article>
       `;
     }).join('');
