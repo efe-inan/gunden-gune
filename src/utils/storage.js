@@ -3,6 +3,9 @@
  * "Günden Güne" Veri & Depolama Servis Katmanı
  */
 
+import tasksData from '../data/tasks.json' with { type: 'json' };
+import { computeStageBounds, buildTaskSequence } from './planEngine.js';
+
 const STORAGE_KEY = 'gunden_gune_app_state_v1';
 
 /**
@@ -46,6 +49,8 @@ const DEFAULT_STATE = {
     lastActionDate: null, // ISO string
     todayActionTaken: false, // O gün işlem yapıldı mı (aynı gün 2. görev engeli)
     todayActionDate: null, // YYYY-MM-DD
+    taskOrder: null, // Kişiselleştirilmiş 30 günlük görev ID dizisi
+    inactivityDismissedDate: null, // 3+ gün ara karşılama kutusunun o gün için kapatıldığı tarih
   },
   archivedJourneys: [], // Geçmiş tamamlanan veya arşivlenen yolculuklar
   settings: {
@@ -140,36 +145,44 @@ class StorageService {
   }
 
   /**
-   * Günün aşamasını hesaplar
+   * Günün aşamasını hesaplar (hazırlık ve zorluk durumuna duyarlı sınırlar ile)
    */
-  getStageInfo(day) {
-    if (day <= 7) {
+  getStageInfo(day, stateOverride = null) {
+    const activeState = stateOverride || this.getState();
+    const bounds = computeStageBounds(activeState?.profile, activeState?.journey);
+    const isLightDay = day === 7 || day === 14 || day === 21;
+
+    if (day <= bounds.tohumEnd) {
       return {
         key: 'tohum',
         title: 'Tohum',
         desc: 'Farkındalık ve çok küçük başlangıç adımları (1–3 dk)',
-        isLightDay: day === 7
+        isLightDay,
+        bounds
       };
-    } else if (day <= 15) {
+    } else if (day <= bounds.filizEnd) {
       return {
         key: 'filiz',
         title: 'Filiz',
         desc: 'Küçük tekrarlayan davranışlar ve alan düzeni (5–7 dk)',
-        isLightDay: day === 14
+        isLightDay,
+        bounds
       };
-    } else if (day <= 23) {
+    } else if (day <= bounds.govdeEnd) {
       return {
         key: 'govde',
         title: 'Gövde',
         desc: 'Gerçek hayatta uygulama ve hafif direnç eşiği (7–12 dk)',
-        isLightDay: day === 21
+        isLightDay,
+        bounds
       };
     } else {
       return {
         key: 'yaprak',
         title: 'Yaprak',
         desc: 'Kalıcı entegrasyon ve bağımsız uygulama (10–15 dk)',
-        isLightDay: false
+        isLightDay,
+        bounds
       };
     }
   }
@@ -181,9 +194,13 @@ class StorageService {
     const state = this.getState();
     if (!state.journey.lastActionDate) return { hasInactivity: false, daysInactive: 0 };
 
-    const last = new Date(state.journey.lastActionDate);
     const refNow = now instanceof Date ? now : new Date(now);
+    const last = new Date(state.journey.lastActionDate);
     if (Number.isNaN(last.getTime()) || Number.isNaN(refNow.getTime())) {
+      return { hasInactivity: false, daysInactive: 0 };
+    }
+
+    if (state.journey.inactivityDismissedDate === getLocalDateKey(refNow)) {
       return { hasInactivity: false, daysInactive: 0 };
     }
 
@@ -194,6 +211,53 @@ class StorageService {
       hasInactivity: diffDays >= 3,
       daysInactive: diffDays
     };
+  }
+
+  /**
+   * 3+ gün ara sonrası bir önceki görevi tekrar etmek için sayacı bir adım geri çeker (PROJE.md Bölüm 6)
+   */
+  repeatPreviousDay(now = new Date()) {
+    const todayStr = getLocalDateKey(now);
+    return this.updateState(state => {
+      const prevDay = Math.max(1, (state.journey.currentDay || 1) - 1);
+      const stageInfo = this.getStageInfo(prevDay, state);
+      return {
+        ...state,
+        journey: {
+          ...state.journey,
+          currentDay: prevDay,
+          stage: stageInfo.key,
+          todayActionTaken: false,
+          todayActionDate: null,
+          inactivityDismissedDate: todayStr
+        }
+      };
+    });
+  }
+
+  /**
+   * 3+ gün ara sonrası zorluk eşiğini bir kademe yumuşatır (PROJE.md Bölüm 6)
+   */
+  easeDifficulty(now = new Date()) {
+    const todayStr = getLocalDateKey(now);
+    return this.updateState(state => {
+      const nextJourney = {
+        ...state.journey,
+        adaptiveDifficultyModifier: -1,
+        inactivityDismissedDate: todayStr
+      };
+      const stageInfo = this.getStageInfo(state.journey.currentDay || 1, {
+        ...state,
+        journey: nextJourney
+      });
+      return {
+        ...state,
+        journey: {
+          ...nextJourney,
+          stage: stageInfo.key
+        }
+      };
+    });
   }
 
   /**
@@ -530,6 +594,12 @@ class StorageService {
         });
       }
 
+      const nextTaskOrder = buildTaskSequence(tasksData.gorevler, {
+        areaId: newAreaId,
+        answers: state.profile.answers || {},
+        readinessScore: state.profile.readinessScore || 3
+      });
+
       return {
         ...state,
         profile: {
@@ -548,7 +618,9 @@ class StorageService {
           badges: ['ilk_adim'],
           lastActionDate: null,
           todayActionTaken: false,
-          todayActionDate: null
+          todayActionDate: null,
+          taskOrder: nextTaskOrder,
+          inactivityDismissedDate: null
         }
       };
     });
@@ -567,11 +639,18 @@ class StorageService {
         isCompleted30: true
       });
 
+      const targetAreaId = newAreaId || state.profile.selectedAreaId;
+      const nextTaskOrder = buildTaskSequence(tasksData.gorevler, {
+        areaId: targetAreaId,
+        answers: state.profile.answers || {},
+        readinessScore: isAdvanced ? 5 : (state.profile.readinessScore || 3)
+      });
+
       return {
         ...state,
         profile: {
           ...state.profile,
-          selectedAreaId: newAreaId || state.profile.selectedAreaId
+          selectedAreaId: targetAreaId
         },
         archivedJourneys: archived,
         journey: {
@@ -585,7 +664,9 @@ class StorageService {
           badges: ['ilk_adim'],
           lastActionDate: null,
           todayActionTaken: false,
-          todayActionDate: null
+          todayActionDate: null,
+          taskOrder: nextTaskOrder,
+          inactivityDismissedDate: null
         }
       };
     });
