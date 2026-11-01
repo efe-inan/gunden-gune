@@ -1,9 +1,8 @@
 /**
  * main.js
- * "Günden Güne" Uygulama Giriş Noktası
+ * "Günden Güne" Uygulama Giriş Noktası ve Yönlendirme Korumaları
  */
 
-import './styles/main.css';
 import { storage } from './utils/storage.js';
 import { renderHeader } from './components/Header.js';
 import { renderFooter } from './components/Footer.js';
@@ -15,11 +14,54 @@ import { SettingsController } from './components/Settings.js';
 import { CompletionController } from './components/Completion.js';
 import { SunIcon, MoonIcon } from './components/Icons.js';
 
-class App {
+/**
+ * Ham URL hash değerini ve kullanıcı durumunu değerlendirerek güvenli hedef rotayı çözer.
+ */
+export function resolveRoute(rawHash, state) {
+  const cleanHash = (rawHash || '').split('?')[0];
+  const isOnboarded = Boolean(state?.profile?.onboardingCompleted);
+  const completedDays = state?.journey?.completedDays || [];
+  const isDay30Completed = completedDays.includes(30);
+  const isGraduatedAfterRollover =
+    (state?.journey?.currentDay || 1) >= 30 &&
+    isDay30Completed &&
+    !state?.journey?.todayActionTaken;
+
+  if (!cleanHash || cleanHash === '#') {
+    if (!isOnboarded) return '#landing';
+    return isGraduatedAfterRollover ? '#completed' : '#today';
+  }
+
+  if (cleanHash === '#nasil-calisir' || cleanHash === '#landing' || cleanHash === '#onboarding' || cleanHash === '#settings') {
+    return cleanHash;
+  }
+
+  if (cleanHash === '#today' || cleanHash === '#progress' || cleanHash === '#completed') {
+    if (!isOnboarded) return '#onboarding';
+  }
+
+  if (cleanHash === '#today' && isGraduatedAfterRollover) {
+    return '#completed';
+  }
+
+  if (cleanHash === '#completed' && !isDay30Completed) {
+    return '#today';
+  }
+
+  if (['#today', '#progress', '#completed'].includes(cleanHash)) {
+    return cleanHash;
+  }
+
+  return isOnboarded ? '#today' : '#landing';
+}
+
+export class App {
   constructor() {
     this.appEl = document.getElementById('app');
     this.currentController = null;
-    this.init();
+    if (this.appEl) {
+      this.init();
+    }
   }
 
   init() {
@@ -29,12 +71,23 @@ class App {
   }
 
   handleRouting() {
-    const rawHash = window.location.hash || '#landing';
-    const cleanHash = rawHash.split('?')[0];
-
+    if (this.currentController && typeof this.currentController.destroy === 'function') {
+      this.currentController.destroy();
+    }
     this.currentController = null;
 
-    if (cleanHash === '#onboarding') {
+    const state = storage.syncDailyRollover();
+    const rawHash = window.location.hash || '';
+    const cleanRaw = rawHash.split('?')[0];
+    const querySuffix = rawHash.includes('?') ? `?${rawHash.split('?')[1]}` : '';
+    const targetRoute = resolveRoute(rawHash, state);
+
+    if (cleanRaw && targetRoute !== cleanRaw) {
+      window.location.hash = `${targetRoute}${querySuffix}`;
+      return;
+    }
+
+    if (targetRoute === '#onboarding') {
       this.appEl.innerHTML = `
         ${renderHeader()}
         <div id="router-view-container"></div>
@@ -45,14 +98,7 @@ class App {
       this.currentController.render();
       window.scrollTo(0, 0);
 
-    } else if (cleanHash === '#today') {
-      // 30 gün tamamlanmış mı kontrolü (PROJE.md 4.6)
-      const state = storage.getState();
-      if (state.journey.currentDay >= 30 && state.journey.completedDays.includes(30)) {
-        window.location.hash = '#completed';
-        return;
-      }
-
+    } else if (targetRoute === '#today') {
       this.appEl.innerHTML = `
         ${renderHeader()}
         <div id="router-view-container"></div>
@@ -63,7 +109,7 @@ class App {
       this.currentController.render();
       window.scrollTo(0, 0);
 
-    } else if (cleanHash === '#progress') {
+    } else if (targetRoute === '#progress') {
       this.appEl.innerHTML = `
         ${renderHeader()}
         <div id="router-view-container"></div>
@@ -74,7 +120,7 @@ class App {
       this.currentController.render();
       window.scrollTo(0, 0);
 
-    } else if (cleanHash === '#settings') {
+    } else if (targetRoute === '#settings') {
       this.appEl.innerHTML = `
         ${renderHeader()}
         <div id="router-view-container"></div>
@@ -85,7 +131,7 @@ class App {
       this.currentController.render();
       window.scrollTo(0, 0);
 
-    } else if (cleanHash === '#completed') {
+    } else if (targetRoute === '#completed') {
       this.appEl.innerHTML = `
         ${renderHeader()}
         <div id="router-view-container"></div>
@@ -97,14 +143,14 @@ class App {
       window.scrollTo(0, 0);
 
     } else {
-      // Varsayılan: Landing
+      // Varsayılan: Landing (#landing veya #nasil-calisir)
       this.appEl.innerHTML = `
         ${renderHeader()}
         ${renderLanding()}
         ${renderFooter()}
       `;
 
-      if (rawHash === '#nasil-calisir') {
+      if (targetRoute === '#nasil-calisir') {
         setTimeout(() => {
           const el = document.getElementById('nasil-calisir');
           if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -114,7 +160,6 @@ class App {
   }
 
   bindEvents() {
-    // Tema geçiş butonu (Header)
     document.addEventListener('click', (e) => {
       const themeToggle = e.target.closest('#btn-theme-toggle');
       if (themeToggle) {
@@ -137,7 +182,6 @@ class App {
       }
     });
 
-    // Tema değiştiğinde header ikonunu ve aria-label'ı güncelle
     window.addEventListener('themechange', (e) => {
       const isDark = e.detail.resolved === 'dark';
       const btn = document.getElementById('btn-theme-toggle');
@@ -150,4 +194,6 @@ class App {
   }
 }
 
-new App();
+if (typeof document !== 'undefined' && document.getElementById('app')) {
+  new App();
+}

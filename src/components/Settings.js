@@ -4,8 +4,15 @@
  */
 
 import questionsData from '../data/questions.json' with { type: 'json' };
-import { storage } from '../utils/storage.js';
+import { storage, getLocalDateKey } from '../utils/storage.js';
 import { DomainIcons, SunIcon, MoonIcon, SystemIcon } from './Icons.js';
+
+const TIME_OF_DAY_OPTIONS = [
+  { id: 'sabah', label: 'Sabah' },
+  { id: 'ogle', label: 'Öğle' },
+  { id: 'aksam', label: 'Akşam' },
+  { id: 'fark_etmez', label: 'Fark etmez' },
+];
 
 export class SettingsController {
   constructor(containerEl) {
@@ -14,13 +21,28 @@ export class SettingsController {
     this.pendingAreaChange = null;
     this.showDeleteModal = false;
     this.calmNotice = null;
+    this.boundThemeChange = null;
+    this.boundEscape = null;
+  }
+
+  destroy() {
+    if (this.boundThemeChange && typeof window !== 'undefined') {
+      window.removeEventListener('themechange', this.boundThemeChange);
+      this.boundThemeChange = null;
+    }
+    if (this.boundEscape && typeof window !== 'undefined') {
+      window.removeEventListener('keydown', this.boundEscape);
+      this.boundEscape = null;
+    }
   }
 
   render() {
+    this.destroy();
     this.state = storage.getState();
     const profile = this.state.profile;
     const currentArea = questionsData.alanlar.find(a => a.id === profile.selectedAreaId) || questionsData.alanlar[0];
     const currentTheme = storage.getThemePreference();
+    const currentTimeOfDay = profile.timeOfDayPreference || 'sabah';
 
     this.container.innerHTML = `
       <main class="settings-page fade-in" id="main-content">
@@ -36,16 +58,16 @@ export class SettingsController {
 
           ${this.calmNotice ? `
             <div class="calm-notice" style="margin-top: 0; margin-bottom: 20px;" role="alert">
-              <span>${this.calmNotice}</span>
+              <span>${this.escapeHtml(this.calmNotice)}</span>
             </div>
           ` : ''}
 
           <div class="settings-sections-list">
 
-            <!-- 1. Hitap ve Günlük Süre -->
+            <!-- 1. Hitap ve Günlük Ritim -->
             <section class="settings-card" aria-labelledby="pref-heading">
               <div class="settings-card-header">
-                <h2 id="pref-heading" class="settings-card-title">Hitap ve günlük süre</h2>
+                <h2 id="pref-heading" class="settings-card-title">Hitap ve günlük ritim</h2>
               </div>
 
               <div class="form-row">
@@ -74,7 +96,22 @@ export class SettingsController {
                     </button>
                   `).join('')}
                 </div>
-                <span class="form-desc">Bu süreyi aşan görevlerde daha hafif seçenek öne çıkarılır</span>
+                <span class="form-desc">Bu süreyi aşan görevlerde daha hafif seçenek birincil olarak gösterilir</span>
+              </div>
+
+              <div class="form-row">
+                <label class="form-label">Tercih ettiğin zaman dilimi</label>
+                <div class="time-options-grid" role="group" aria-label="Günün zaman dilimi seçimi">
+                  ${TIME_OF_DAY_OPTIONS.map(opt => `
+                    <button
+                      type="button"
+                      class="daytime-option-btn ${currentTimeOfDay === opt.id ? 'is-selected' : ''}"
+                      data-daytime="${opt.id}"
+                    >
+                      ${opt.label}
+                    </button>
+                  `).join('')}
+                </div>
               </div>
 
               <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
@@ -180,12 +217,18 @@ export class SettingsController {
               </div>
 
               <p style="font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
-                Yolculuk geçmişini ve yansıma notlarını dilediğin an JSON dosyası olarak indirebilir veya bu cihazdan tamamen kaldırabilirsin.
+                Yolculuk geçmişini ve yansıma notlarını dilediğin an JSON dosyası olarak indirebilir, daha önce aldığın bir yedeği geri yükleyebilir veya bu cihazdan tamamen kaldırabilirsin.
               </p>
+
+              <input type="file" id="input-import-json" accept=".json,application/json" hidden />
 
               <div class="danger-actions-row">
                 <button type="button" class="btn btn-secondary" id="btn-export-json">
                   <span>Verilerimi dışa aktar (JSON)</span>
+                </button>
+
+                <button type="button" class="btn btn-secondary" id="btn-import-json">
+                  <span>Yedekten geri yükle (JSON)</span>
                 </button>
 
                 <button type="button" class="btn-danger-soft" id="btn-open-delete-modal">
@@ -270,6 +313,17 @@ export class SettingsController {
       });
     });
 
+    const daytimeBtns = this.container.querySelectorAll('.daytime-option-btn');
+    let selectedDaytime = this.state.profile.timeOfDayPreference || 'sabah';
+
+    daytimeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        daytimeBtns.forEach(b => b.classList.remove('is-selected'));
+        btn.classList.add('is-selected');
+        selectedDaytime = btn.getAttribute('data-daytime');
+      });
+    });
+
     const themeBtns = this.container.querySelectorAll('[data-theme-choice]');
     themeBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -280,7 +334,7 @@ export class SettingsController {
       });
     });
 
-    window.addEventListener('themechange', () => {
+    this.boundThemeChange = () => {
       const activePref = storage.getThemePreference();
       const currentThemeBtns = this.container.querySelectorAll('[data-theme-choice]');
       currentThemeBtns.forEach(b => {
@@ -290,7 +344,8 @@ export class SettingsController {
           b.classList.remove('is-selected');
         }
       });
-    });
+    };
+    window.addEventListener('themechange', this.boundThemeChange);
 
     const saveProfileBtn = this.container.querySelector('#btn-save-profile');
     const nameInput = this.container.querySelector('#settings-name-input');
@@ -299,12 +354,14 @@ export class SettingsController {
       saveProfileBtn.addEventListener('click', () => {
         storage.updateProfileSettings({
           name: nameInput.value,
-          dailyTimePreference: selectedTime
+          dailyTimePreference: selectedTime,
+          timeOfDayPreference: selectedDaytime,
         });
         saveProfileBtn.innerHTML = `<span>Kaydedildi</span>`;
-        setTimeout(() => {
+        const timer = setTimeout(() => {
           if (saveProfileBtn) saveProfileBtn.innerHTML = `<span>Değişiklikleri kaydet</span>`;
         }, 1500);
+        timer.unref?.();
       });
     }
 
@@ -340,7 +397,7 @@ export class SettingsController {
     });
 
     if (this.pendingAreaChange || this.showDeleteModal) {
-      const handleEscape = (e) => {
+      this.boundEscape = (e) => {
         if (e.key === 'Escape') {
           if (this.pendingAreaChange) {
             this.pendingAreaChange = null;
@@ -349,10 +406,9 @@ export class SettingsController {
             this.showDeleteModal = false;
             this.render();
           }
-          window.removeEventListener('keydown', handleEscape);
         }
       };
-      window.addEventListener('keydown', handleEscape);
+      window.addEventListener('keydown', this.boundEscape);
     }
 
     const btnArchive = this.container.querySelector('#btn-confirm-archive');
@@ -389,6 +445,32 @@ export class SettingsController {
       });
     }
 
+    const importBtn = this.container.querySelector('#btn-import-json');
+    const importInput = this.container.querySelector('#input-import-json');
+
+    if (importBtn && importInput) {
+      importBtn.addEventListener('click', () => {
+        importInput.click();
+      });
+
+      importInput.addEventListener('change', async (e) => {
+        const file = e.target?.files?.[0];
+        if (!file) return;
+        try {
+          const rawText = await file.text();
+          const result = storage.importDataJSON(rawText);
+          this.calmNotice = result.ok
+            ? 'Yedek dosyan başarıyla geri yüklendi.'
+            : (result.error || 'Yedek dosyası yüklenemedi.');
+          importInput.value = '';
+          this.render();
+        } catch {
+          this.calmNotice = 'Dosya okunurken bir sorun oluştu.';
+          this.render();
+        }
+      });
+    }
+
     const openDeleteBtn = this.container.querySelector('#btn-open-delete-modal');
     if (openDeleteBtn) {
       openDeleteBtn.addEventListener('click', () => {
@@ -422,7 +504,7 @@ export class SettingsController {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `gunden-gune-verilerim-${new Date().toISOString().split('T')[0]}.json`;
+    link.download = `gunden-gune-verilerim-${getLocalDateKey()}.json`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

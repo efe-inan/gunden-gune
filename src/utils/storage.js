@@ -6,6 +6,19 @@
 import tasksData from '../data/tasks.json' with { type: 'json' };
 import { computeStageBounds, buildTaskSequence } from './planEngine.js';
 
+const VALID_AREA_IDS = [
+  'finans',
+  'odak',
+  'wellness',
+  'iliskiler',
+  'mukemmeliyetcilik',
+  'disiplin',
+  'ozguven',
+  'uyku',
+];
+const VALID_DAILY_TIMES = [5, 10, 15, 20];
+const VALID_TIME_OF_DAY = ['sabah', 'ogle', 'aksam', 'fark_etmez'];
+const VALID_THEMES = ['system', 'light', 'dark'];
 const STORAGE_KEY = 'gunden_gune_app_state_v1';
 
 /**
@@ -122,6 +135,124 @@ class StorageService {
 
   exportDataJSON() {
     return JSON.stringify(this.getState(), null, 2);
+  }
+
+  /**
+   * Dışa aktarılmış JSON yedeğini doğrular, güvenli sınırlar içinde birleştirir ve geri yükler (PROJE.md 4.5)
+   */
+  importDataJSON(rawJson) {
+    if (typeof rawJson !== 'string' || !rawJson.trim()) {
+      return { ok: false, error: 'Geçerli bir JSON yedek dosyası seçilmedi.' };
+    }
+
+    let parsed;
+    try {
+      parsed = JSON.parse(rawJson);
+    } catch {
+      return { ok: false, error: 'Dosya okunamadı. Lütfen geçerli bir Günden Güne JSON yedeği seç.' };
+    }
+
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+      return { ok: false, error: 'Yedek dosyasının veri yapısı tanınmadı.' };
+    }
+
+    if (!parsed.profile || typeof parsed.profile !== 'object' || !parsed.journey || typeof parsed.journey !== 'object') {
+      return { ok: false, error: 'Yedek dosyasında profil veya yolculuk bilgileri eksik.' };
+    }
+
+    const areaId = parsed.profile.selectedAreaId;
+    if (!VALID_AREA_IDS.includes(areaId)) {
+      return { ok: false, error: 'Yedek dosyasındaki gelişim alanı geçersiz.' };
+    }
+
+    const currentDay = Number(parsed.journey.currentDay);
+    if (!Number.isInteger(currentDay) || currentDay < 1 || currentDay > 30) {
+      return { ok: false, error: 'Yedek dosyasındaki gün bilgisi (1–30) geçersiz.' };
+    }
+
+    const rawCompleted = parsed.journey.completedDays ?? [];
+    if (!Array.isArray(rawCompleted) || !rawCompleted.every(d => Number.isInteger(d) && d >= 1 && d <= 30)) {
+      return { ok: false, error: 'Tamamlanan günler listesi bozuk görünüyor.' };
+    }
+
+    const safeName = typeof parsed.profile.name === 'string' ? parsed.profile.name.trim().slice(0, 40) : '';
+    const dailyTime = VALID_DAILY_TIMES.includes(Number(parsed.profile.dailyTimePreference))
+      ? Number(parsed.profile.dailyTimePreference)
+      : 10;
+    const timeOfDay = VALID_TIME_OF_DAY.includes(parsed.profile.timeOfDayPreference)
+      ? parsed.profile.timeOfDayPreference
+      : 'sabah';
+    const readiness = Math.max(1, Math.min(5, Number(parsed.profile.readinessScore || 3)));
+    const theme = VALID_THEMES.includes(parsed.settings?.theme) ? parsed.settings.theme : 'system';
+
+    const rawNotes = Array.isArray(parsed.journey.reflectionNotes) ? parsed.journey.reflectionNotes : [];
+    const safeNotes = rawNotes
+      .filter(n => n && Number.isInteger(n.day) && n.day >= 1 && n.day <= 30 && typeof n.text === 'string')
+      .map(n => ({
+        day: n.day,
+        text: n.text.trim().slice(0, 280),
+        date: typeof n.date === 'string' ? n.date : new Date().toISOString(),
+      }));
+
+    const safeAnswers =
+      parsed.profile.answers && typeof parsed.profile.answers === 'object' && !Array.isArray(parsed.profile.answers)
+        ? parsed.profile.answers
+        : {};
+
+    const taskOrder =
+      Array.isArray(parsed.journey.taskOrder) &&
+      parsed.journey.taskOrder.length === 30 &&
+      parsed.journey.taskOrder.every(id => typeof id === 'string' && id.startsWith(`${areaId}-`))
+        ? parsed.journey.taskOrder
+        : buildTaskSequence(tasksData.gorevler, { areaId, answers: safeAnswers, readinessScore: readiness });
+
+    const nextState = {
+      auth: { ...DEFAULT_STATE.auth },
+      profile: {
+        ...DEFAULT_STATE.profile,
+        name: safeName,
+        selectedAreaId: areaId,
+        dailyTimePreference: dailyTime,
+        timeOfDayPreference: timeOfDay,
+        readinessScore: readiness,
+        answers: safeAnswers,
+        onboardingCompleted: Boolean(parsed.profile.onboardingCompleted),
+        startedAt: typeof parsed.profile.startedAt === 'string' ? parsed.profile.startedAt : null,
+      },
+      journey: {
+        ...DEFAULT_STATE.journey,
+        currentDay,
+        adaptiveDifficultyModifier: Math.max(-1, Math.min(1, Number(parsed.journey.adaptiveDifficultyModifier || 0))),
+        completedDays: [...new Set(rawCompleted)].sort((a, b) => a - b),
+        dayStatusMap:
+          parsed.journey.dayStatusMap && typeof parsed.journey.dayStatusMap === 'object' && !Array.isArray(parsed.journey.dayStatusMap)
+            ? parsed.journey.dayStatusMap
+            : {},
+        consecutiveFeedback:
+          parsed.journey.consecutiveFeedback && typeof parsed.journey.consecutiveFeedback === 'object'
+            ? parsed.journey.consecutiveFeedback
+            : { type: null, count: 0 },
+        reflectionNotes: safeNotes,
+        lastActionDate: typeof parsed.journey.lastActionDate === 'string' ? parsed.journey.lastActionDate : null,
+        todayActionTaken: Boolean(parsed.journey.todayActionTaken),
+        todayActionDate: typeof parsed.journey.todayActionDate === 'string' ? parsed.journey.todayActionDate : null,
+        taskOrder,
+        inactivityDismissedDate:
+          typeof parsed.journey.inactivityDismissedDate === 'string' ? parsed.journey.inactivityDismissedDate : null,
+      },
+      archivedJourneys: Array.isArray(parsed.archivedJourneys) ? parsed.archivedJourneys : [],
+      settings: {
+        ...DEFAULT_STATE.settings,
+        reducedMotion: Boolean(parsed.settings?.reducedMotion),
+        theme,
+      },
+    };
+
+    nextState.journey.stage = this.getStageInfo(currentDay, nextState).key;
+    this.saveState(nextState);
+    this.applyTheme(theme, false);
+
+    return { ok: true, state: nextState };
   }
 
   // --- Yardımcı Mantık Fonksiyonları (PROJE.md 4.3 & 5-6) ---
@@ -601,13 +732,18 @@ class StorageService {
   /**
    * Profil ayarlarını günceller (PROJE.md 4.5)
    */
-  updateProfileSettings({ name, dailyTimePreference }) {
+  updateProfileSettings({ name, dailyTimePreference, timeOfDayPreference }) {
     return this.updateState(state => ({
       ...state,
       profile: {
         ...state.profile,
-        name: typeof name === 'string' ? name.trim() : state.profile.name,
-        dailyTimePreference: dailyTimePreference ? parseInt(dailyTimePreference, 10) : state.profile.dailyTimePreference
+        name: typeof name === 'string' ? name.trim().slice(0, 40) : state.profile.name,
+        dailyTimePreference: VALID_DAILY_TIMES.includes(Number(dailyTimePreference))
+          ? Number(dailyTimePreference)
+          : state.profile.dailyTimePreference,
+        timeOfDayPreference: VALID_TIME_OF_DAY.includes(timeOfDayPreference)
+          ? timeOfDayPreference
+          : state.profile.timeOfDayPreference
       }
     }));
   }

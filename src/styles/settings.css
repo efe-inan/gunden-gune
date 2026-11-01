@@ -70,6 +70,7 @@
 }
 
 .time-option-label,
+.daytime-option-btn,
 .theme-option-btn {
   display: inline-flex;
   align-items: center;
@@ -92,6 +93,7 @@
 }
 
 .time-option-label:hover,
+.daytime-option-btn:hover,
 .theme-option-btn:hover {
   background-color: var(--bg-subtle);
   border-color: var(--border-strong);
@@ -99,6 +101,7 @@
 }
 
 .time-option-label.is-selected,
+.daytime-option-btn.is-selected,
 .theme-option-btn.is-selected {
   background-color: var(--accent-tint);
   border-color: var(--accent-border);
