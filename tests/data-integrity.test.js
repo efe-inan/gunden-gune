@@ -45,3 +45,4 @@ test('public/favicon.svg exists, index.html links it, and unused stock assets ar
   assert.equal(fs.existsSync(path.join(rootDir, 'public', 'logo-dark.png')), false, 'Expected unused public/logo-dark.png to be removed');
   assert.equal(fs.existsSync(path.join(rootDir, 'public', 'logo-light.png')), false, 'Expected unused public/logo-light.png to be removed');
 });
+

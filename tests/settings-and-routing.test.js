@@ -77,3 +77,65 @@ test('SettingsController renders #btn-import-json and destroy() cleans up window
   ctrl.destroy();
   assert.equal(win.__listenerCount('themechange'), baselineCount);
 });
+
+test('importDataJSON sanitizes malformed archivedJourneys and dayStatusMap entries without crashing views', async () => {
+  installBrowserMock();
+  storage.resetAll();
+  const { ProgressController } = await import('../src/components/Progress.js');
+  const { TodayController } = await import('../src/components/Today.js');
+
+  const dirtyBackup = JSON.stringify({
+    profile: { name: 'Aylin', selectedAreaId: 'finans', onboardingCompleted: true },
+    journey: {
+      currentDay: 2,
+      completedDays: [1],
+      dayStatusMap: {
+        '1': null,
+        '2': { status: 'completed', note: 12345, feedback: 'gecersiz_deger' },
+        '999': { status: 'completed' },
+      },
+    },
+    archivedJourneys: [null, 123, { areaId: 'bilinmeyen' }, { areaId: 'uyku', completedDaysCount: 12, isCompleted30: false }],
+  });
+
+  const res = storage.importDataJSON(dirtyBackup);
+  assert.equal(res.ok, true);
+  assert.equal(res.state.archivedJourneys.length, 1);
+  assert.equal(res.state.archivedJourneys[0].areaId, 'uyku');
+  assert.equal(res.state.journey.dayStatusMap['1'], undefined);
+  assert.equal(res.state.journey.dayStatusMap['999'], undefined);
+  assert.equal(res.state.journey.dayStatusMap['2'].note, null);
+  assert.equal(res.state.journey.dayStatusMap['2'].feedback, null);
+
+  const progContainer = createContainer();
+  assert.doesNotThrow(() => new ProgressController(progContainer).render());
+  assert.match(progContainer.innerHTML, /Sağlıklı Uyku/);
+
+  const todayContainer = createContainer();
+  assert.doesNotThrow(() => new TodayController(todayContainer).render());
+});
+
+test('escapeHtml across all controllers safely handles non-string values without throwing', async () => {
+  installBrowserMock();
+  const { TodayController } = await import('../src/components/Today.js');
+  const { ProgressController } = await import('../src/components/Progress.js');
+  const { OnboardingController } = await import('../src/components/Onboarding.js');
+  const { CompletionController } = await import('../src/components/Completion.js');
+
+  const controllers = [
+    new TodayController(createContainer()),
+    new ProgressController(createContainer()),
+    new SettingsController(createContainer()),
+    new OnboardingController(createContainer()),
+    new CompletionController(createContainer()),
+  ];
+
+  for (const ctrl of controllers) {
+    assert.equal(ctrl.escapeHtml(null), '');
+    assert.equal(ctrl.escapeHtml(undefined), '');
+    assert.equal(ctrl.escapeHtml(12345), '');
+    assert.equal(ctrl.escapeHtml({ bad: true }), '');
+    assert.equal(ctrl.escapeHtml('<b>ok</b>'), '&lt;b&gt;ok&lt;/b&gt;');
+  }
+});
+

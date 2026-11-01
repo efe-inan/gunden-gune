@@ -57,7 +57,7 @@ export class TodayController {
 
           <!-- Üst Bağlam Başlığı (Selamlama sakin meta satırında, bağlam başlıkta) -->
           <div class="today-header-block">
-            <span class="today-greeting-meta">${greeting} · ${areaTitle}</span>
+            <span class="today-greeting-meta">${this.escapeHtml(greeting)} · ${this.escapeHtml(areaTitle)}</span>
             <div class="today-title-row">
               <h1 class="today-context-title">
                 Gün ${this.currentDay} <span class="today-day-fraction">/ 30</span>
@@ -388,7 +388,7 @@ export class TodayController {
   }
 
   escapeHtml(str) {
-    if (!str) return '';
+    if (typeof str !== 'string' || !str) return '';
     return str
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')

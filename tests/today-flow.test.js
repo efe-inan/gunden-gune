@@ -108,3 +108,36 @@ test('TodayController shows supportive copy on zorlandim feedback, hides sim but
   new TodayController(simContainer).render();
   assert.ok(simContainer.querySelector('#btn-advance-day'), 'Expected #btn-advance-day when ?sim=1');
 });
+
+test('TodayController escapes HTML in profile.name greeting (prevents Stored XSS)', () => {
+  installBrowserMock();
+  storage.resetAll();
+  storage.updateProfileSettings({ name: '<img src=x onerror=alert(1)>' });
+
+  const container = createContainer();
+  new TodayController(container).render();
+
+  assert.equal(container.innerHTML.includes('<img src=x'), false, 'Raw <img> tag must not be injected');
+  assert.match(container.innerHTML, /&lt;img src=x onerror=alert\(1\)&gt;/);
+});
+
+test('completeTask is idempotent on same-day repeated feedback clicks and reversible on same-day switch', () => {
+  installBrowserMock();
+  storage.resetAll();
+  const day1 = new Date(2026, 10, 2, 10, 0, 0);
+
+  storage.completeTask({}, day1);
+  storage.completeTask({ feedback: 'zorlandim' }, day1);
+  storage.completeTask({ feedback: 'zorlandim' }, day1); // 2nd click on same day
+
+  const afterDoubleClick = storage.getState().journey;
+  assert.equal(afterDoubleClick.adaptiveDifficultyModifier, 0, 'Same-day double click must not drop modifier');
+  assert.equal(afterDoubleClick.consecutiveFeedback.count, 1);
+
+  // Switching mind on the same day
+  storage.completeTask({ feedback: 'tam_kivaminda' }, day1);
+  const afterSwitch = storage.getState().journey;
+  assert.equal(afterSwitch.consecutiveFeedback.type, 'tam_kivaminda');
+  assert.equal(afterSwitch.consecutiveFeedback.count, 0);
+});
+

@@ -99,3 +99,4 @@ test('repeatPreviousDay and easeDifficulty recover from 3+ day inactivity and di
   storage.easeDifficulty(d6);
   assert.equal(storage.getState().journey.adaptiveDifficultyModifier, -1);
 });
+

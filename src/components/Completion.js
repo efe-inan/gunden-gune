@@ -156,7 +156,7 @@ export class CompletionController {
   }
 
   escapeHtml(str) {
-    if (!str) return '';
+    if (typeof str !== 'string' || !str) return '';
     return str
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')

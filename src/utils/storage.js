@@ -19,6 +19,8 @@ const VALID_AREA_IDS = [
 const VALID_DAILY_TIMES = [5, 10, 15, 20];
 const VALID_TIME_OF_DAY = ['sabah', 'ogle', 'aksam', 'fark_etmez'];
 const VALID_THEMES = ['system', 'light', 'dark'];
+const VALID_FEEDBACK = ['cok_kolay', 'tam_kivaminda', 'zorlandim'];
+const VALID_DAY_STATUS = ['completed', 'postponed'];
 const STORAGE_KEY = 'gunden_gune_app_state_v1';
 
 /**
@@ -206,6 +208,55 @@ class StorageService {
         ? parsed.journey.taskOrder
         : buildTaskSequence(tasksData.gorevler, { areaId, answers: safeAnswers, readinessScore: readiness });
 
+    const safeDayStatusMap = {};
+    const rawStatusMap =
+      parsed.journey.dayStatusMap && typeof parsed.journey.dayStatusMap === 'object' && !Array.isArray(parsed.journey.dayStatusMap)
+        ? parsed.journey.dayStatusMap
+        : {};
+    for (const [k, entry] of Object.entries(rawStatusMap)) {
+      const dayNum = Number(k);
+      if (!Number.isInteger(dayNum) || dayNum < 1 || dayNum > 30 || !entry || typeof entry !== 'object' || Array.isArray(entry)) {
+        continue;
+      }
+      safeDayStatusMap[String(dayNum)] = {
+        status: VALID_DAY_STATUS.includes(entry.status) ? entry.status : 'completed',
+        completedAt: typeof entry.completedAt === 'string' ? entry.completedAt : null,
+        postponedAt: typeof entry.postponedAt === 'string' ? entry.postponedAt : null,
+        wasPostponed: Boolean(entry.wasPostponed || entry.postponedAt),
+        feedback: VALID_FEEDBACK.includes(entry.feedback) ? entry.feedback : null,
+        note: typeof entry.note === 'string' && entry.note.trim() ? entry.note.trim().slice(0, 280) : null,
+      };
+    }
+
+    const rawConsecutive = parsed.journey.consecutiveFeedback;
+    const safeConsecutive =
+      rawConsecutive && typeof rawConsecutive === 'object' && !Array.isArray(rawConsecutive)
+        ? {
+            type: VALID_FEEDBACK.includes(rawConsecutive.type) ? rawConsecutive.type : null,
+            count: Math.max(0, Math.min(2, Number(rawConsecutive.count) || 0)),
+          }
+        : { type: null, count: 0 };
+
+    const safeArchived = (Array.isArray(parsed.archivedJourneys) ? parsed.archivedJourneys : [])
+      .filter(item => item && typeof item === 'object' && !Array.isArray(item) && VALID_AREA_IDS.includes(item.areaId))
+      .map(item => ({
+        areaId: item.areaId,
+        completedDaysCount: Math.max(0, Math.min(30, Number(item.completedDaysCount) || 0)),
+        completedDays: Array.isArray(item.completedDays)
+          ? [...new Set(item.completedDays.filter(d => Number.isInteger(d) && d >= 1 && d <= 30))].sort((a, b) => a - b)
+          : [],
+        reflectionNotes: (Array.isArray(item.reflectionNotes) ? item.reflectionNotes : [])
+          .filter(n => n && Number.isInteger(n.day) && n.day >= 1 && n.day <= 30 && typeof n.text === 'string')
+          .map(n => ({
+            day: n.day,
+            text: n.text.trim().slice(0, 280),
+            date: typeof n.date === 'string' ? n.date : new Date().toISOString(),
+          })),
+        archivedAt: typeof item.archivedAt === 'string' ? item.archivedAt : null,
+        completedAt: typeof item.completedAt === 'string' ? item.completedAt : null,
+        isCompleted30: Boolean(item.isCompleted30),
+      }));
+
     const nextState = {
       auth: { ...DEFAULT_STATE.auth },
       profile: {
@@ -224,14 +275,8 @@ class StorageService {
         currentDay,
         adaptiveDifficultyModifier: Math.max(-1, Math.min(1, Number(parsed.journey.adaptiveDifficultyModifier || 0))),
         completedDays: [...new Set(rawCompleted)].sort((a, b) => a - b),
-        dayStatusMap:
-          parsed.journey.dayStatusMap && typeof parsed.journey.dayStatusMap === 'object' && !Array.isArray(parsed.journey.dayStatusMap)
-            ? parsed.journey.dayStatusMap
-            : {},
-        consecutiveFeedback:
-          parsed.journey.consecutiveFeedback && typeof parsed.journey.consecutiveFeedback === 'object'
-            ? parsed.journey.consecutiveFeedback
-            : { type: null, count: 0 },
+        dayStatusMap: safeDayStatusMap,
+        consecutiveFeedback: safeConsecutive,
         reflectionNotes: safeNotes,
         lastActionDate: typeof parsed.journey.lastActionDate === 'string' ? parsed.journey.lastActionDate : null,
         todayActionTaken: Boolean(parsed.journey.todayActionTaken),
@@ -240,7 +285,7 @@ class StorageService {
         inactivityDismissedDate:
           typeof parsed.journey.inactivityDismissedDate === 'string' ? parsed.journey.inactivityDismissedDate : null,
       },
-      archivedJourneys: Array.isArray(parsed.archivedJourneys) ? parsed.archivedJourneys : [],
+      archivedJourneys: safeArchived,
       settings: {
         ...DEFAULT_STATE.settings,
         reducedMotion: Boolean(parsed.settings?.reducedMotion),
@@ -410,9 +455,11 @@ class StorageService {
     return this.updateState(current => {
       const currentDay = current.journey.currentDay || 1;
       const statusEntry = current.journey.dayStatusMap?.[currentDay];
+      const wasPostponed = statusEntry?.status === 'postponed';
       const wasCompleted =
-        statusEntry?.status === 'completed' ||
-        (current.journey.completedDays || []).includes(currentDay);
+        !wasPostponed &&
+        (statusEntry?.status === 'completed' ||
+          (current.journey.completedDays || []).includes(currentDay));
 
       const nextDay = wasCompleted && currentDay < 30 ? currentDay + 1 : currentDay;
       const stageInfo = this.getStageInfo(nextDay, current);
@@ -454,32 +501,45 @@ class StorageService {
         completedDays.push(currentDay);
       }
 
-      // Uyarlanabilir zorluk hesabı (PROJE.md Bölüm 6)
-      let modifier = state.journey.adaptiveDifficultyModifier || 0;
-      let consecutive = { ...(state.journey.consecutiveFeedback || { type: null, count: 0 }) };
+      // Uyarlanabilir zorluk hesabı (PROJE.md Bölüm 6 — aynı gün mükerrer tıklamalarda idempotent)
+      const prevStatus = state.journey.dayStatusMap[currentDay] || {};
+      const currentModifier = state.journey.adaptiveDifficultyModifier || 0;
+      const currentConsecutive = { ...(state.journey.consecutiveFeedback || { type: null, count: 0 }) };
+      const preFeedbackBase =
+        prevStatus.feedbackDate === todayStr && prevStatus.preFeedbackBase
+          ? prevStatus.preFeedbackBase
+          : { modifier: currentModifier, consecutive: currentConsecutive };
 
-      if (feedback === 'cok_kolay') {
-        if (consecutive.type === 'cok_kolay') {
-          consecutive.count += 1;
-          if (consecutive.count >= 2) {
-            modifier = Math.min(modifier + 1, 1);
-            consecutive = { type: null, count: 0 };
+      let modifier = currentModifier;
+      let consecutive = currentConsecutive;
+
+      if (feedback !== null) {
+        modifier = preFeedbackBase.modifier;
+        consecutive = { ...preFeedbackBase.consecutive };
+
+        if (feedback === 'cok_kolay') {
+          if (consecutive.type === 'cok_kolay') {
+            consecutive.count += 1;
+            if (consecutive.count >= 2) {
+              modifier = Math.min(modifier + 1, 1);
+              consecutive = { type: null, count: 0 };
+            }
+          } else {
+            consecutive = { type: 'cok_kolay', count: 1 };
           }
-        } else {
-          consecutive = { type: 'cok_kolay', count: 1 };
-        }
-      } else if (feedback === 'zorlandim') {
-        if (consecutive.type === 'zorlandim') {
-          consecutive.count += 1;
-          if (consecutive.count >= 2) {
-            modifier = Math.max(modifier - 1, -1);
-            consecutive = { type: null, count: 0 };
+        } else if (feedback === 'zorlandim') {
+          if (consecutive.type === 'zorlandim') {
+            consecutive.count += 1;
+            if (consecutive.count >= 2) {
+              modifier = Math.max(modifier - 1, -1);
+              consecutive = { type: null, count: 0 };
+            }
+          } else {
+            consecutive = { type: 'zorlandim', count: 1 };
           }
-        } else {
-          consecutive = { type: 'zorlandim', count: 1 };
+        } else if (feedback === 'tam_kivaminda') {
+          consecutive = { type: 'tam_kivaminda', count: 0 };
         }
-      } else if (feedback === 'tam_kivaminda') {
-        consecutive = { type: 'tam_kivaminda', count: 0 };
       }
 
       // Yansıma notu (aynı gün için güncelle veya yeni ekle)
@@ -501,7 +561,6 @@ class StorageService {
         }
       }
 
-      const prevStatus = state.journey.dayStatusMap[currentDay] || {};
       const dayStatusMap = {
         ...state.journey.dayStatusMap,
         [currentDay]: {
@@ -509,6 +568,8 @@ class StorageService {
           completedAt: prevStatus.completedAt || nowIso,
           wasPostponed: Boolean(prevStatus.postponedAt || prevStatus.wasPostponed),
           feedback: feedback !== null ? feedback : (prevStatus.feedback || null),
+          feedbackDate: feedback !== null ? todayStr : (prevStatus.feedbackDate || null),
+          preFeedbackBase: feedback !== null ? preFeedbackBase : (prevStatus.preFeedbackBase || null),
           note: reflectionNote ? reflectionNote.trim() : (prevStatus.note || null)
         }
       };
@@ -606,10 +667,13 @@ class StorageService {
 
     // Mevcut aktif seri
     for (let day = state.journey.currentDay; day >= 1; day--) {
-      if (completedDays.includes(day)) {
+      if (completedDays.includes(day) && dayStatusMap[day]?.status !== 'postponed') {
         currentStreak++;
-      } else if (day === state.journey.currentDay && !state.journey.todayActionTaken) {
-        // Bugün henüz yapılmadıysa dünden saymaya devam et
+      } else if (
+        day === state.journey.currentDay &&
+        (!state.journey.todayActionTaken || dayStatusMap[day]?.status === 'postponed')
+      ) {
+        // Bugün henüz yapılmadıysa veya ceza olmadan ertelendiyse dünden saymaya devam et
         continue;
       } else {
         break;

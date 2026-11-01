@@ -70,3 +70,23 @@ test('ProgressController renders extended stage bounds (Gün 1–10) and archive
   assert.match(container.innerHTML, /Geçmiş yolculuklar/);
   assert.match(container.innerHTML, /Para ve Finans Yönetimi/);
 });
+
+test('getProgressStats preserves active currentStreak on the day a task is postponed', () => {
+  installBrowserMock();
+  storage.resetAll();
+
+  const d1 = new Date(2026, 10, 1, 10, 0, 0);
+  storage.completeTask({ feedback: 'tam_kivaminda' }, d1);
+
+  const d2 = new Date(2026, 10, 2, 10, 0, 0);
+  storage.syncDailyRollover(d2);
+  storage.completeTask({ feedback: 'tam_kivaminda' }, d2);
+  assert.equal(storage.getProgressStats().currentStreak, 2);
+
+  const d3 = new Date(2026, 10, 3, 20, 0, 0);
+  storage.syncDailyRollover(d3);
+  storage.postponeTask(d3);
+
+  assert.equal(storage.getProgressStats().currentStreak, 2, 'Postponing today must not punish active streak to 0');
+});
+
