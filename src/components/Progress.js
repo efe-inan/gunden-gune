@@ -3,7 +3,7 @@
  * 4.4 İlerleme Sayfası Bileşeni
  */
 
-import questionsData from '../data/questions.json';
+import questionsData from '../data/questions.json' with { type: 'json' };
 import { storage } from '../utils/storage.js';
 import { StageIcons, CheckIcon, BadgeIcons } from './Icons.js';
 

@@ -3,7 +3,7 @@
  * 4.2 Onboarding (Soru Akışı) Bileşeni
  */
 
-import questionsData from '../data/questions.json';
+import questionsData from '../data/questions.json' with { type: 'json' };
 import { storage } from '../utils/storage.js';
 import { BrandMark, StageIcons, ArrowRightIcon, ArrowLeftIcon, CheckIcon, DomainIcons } from './Icons.js';
 

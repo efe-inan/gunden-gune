@@ -3,7 +3,7 @@
  * 4.5 Ayarlar / Profil Sayfası Bileşeni
  */
 
-import questionsData from '../data/questions.json';
+import questionsData from '../data/questions.json' with { type: 'json' };
 import { storage } from '../utils/storage.js';
 import { DomainIcons, SunIcon, MoonIcon, SystemIcon } from './Icons.js';
 

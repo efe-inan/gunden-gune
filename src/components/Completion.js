@@ -3,7 +3,7 @@
  * 4.6 Yolculuk Bitişi (30. Gün Sonrası) Ekranı
  */
 
-import questionsData from '../data/questions.json';
+import questionsData from '../data/questions.json' with { type: 'json' };
 import { storage } from '../utils/storage.js';
 import { StageIcons, ArrowRightIcon } from './Icons.js';
 

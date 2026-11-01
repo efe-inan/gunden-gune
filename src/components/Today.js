@@ -3,8 +3,8 @@
  * 4.3 Ana Ekran (Bugünün Görevi) Bileşeni
  */
 
-import tasksData from '../data/tasks.json';
-import questionsData from '../data/questions.json';
+import tasksData from '../data/tasks.json' with { type: 'json' };
+import questionsData from '../data/questions.json' with { type: 'json' };
 import { storage } from '../utils/storage.js';
 import { StageIcons, CheckIcon, ClockIcon, DifficultyLeaves, ArrowRightIcon } from './Icons.js';
 

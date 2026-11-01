@@ -5,6 +5,17 @@
 
 const STORAGE_KEY = 'gunden_gune_app_state_v1';
 
+/**
+ * Yerel saat dilimine göre YYYY-MM-DD takvim anahtarı üretir (gece yarısı UTC kaymasını önler).
+ */
+export function getLocalDateKey(date = new Date()) {
+  const d = date instanceof Date ? date : new Date(date);
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
 const DEFAULT_STATE = {
   auth: {
     isAuthenticated: false,
@@ -166,13 +177,17 @@ class StorageService {
   /**
    * 3 veya daha fazla gün ara verilip verilmediğini kontrol eder
    */
-  checkInactivity() {
+  checkInactivity(now = new Date()) {
     const state = this.getState();
     if (!state.journey.lastActionDate) return { hasInactivity: false, daysInactive: 0 };
 
     const last = new Date(state.journey.lastActionDate);
-    const now = new Date();
-    const diffMs = now - last;
+    const refNow = now instanceof Date ? now : new Date(now);
+    if (Number.isNaN(last.getTime()) || Number.isNaN(refNow.getTime())) {
+      return { hasInactivity: false, daysInactive: 0 };
+    }
+
+    const diffMs = Math.max(0, refNow - last);
     const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
 
     return {
@@ -182,20 +197,60 @@ class StorageService {
   }
 
   /**
+   * Yeni bir yerel takvim gününe girildiğinde günlük görev sayacını senkronize eder.
+   * Tamamlanan günlerde bir sonraki güne geçer; ertelenen günlerde aynı günde kalır.
+   */
+  syncDailyRollover(now = new Date()) {
+    const todayStr = getLocalDateKey(now);
+    const state = this.getState();
+
+    if (!state.journey.todayActionTaken || !state.journey.todayActionDate) {
+      return state;
+    }
+
+    if (state.journey.todayActionDate === todayStr) {
+      return state;
+    }
+
+    return this.updateState(current => {
+      const currentDay = current.journey.currentDay || 1;
+      const statusEntry = current.journey.dayStatusMap?.[currentDay];
+      const wasCompleted =
+        statusEntry?.status === 'completed' ||
+        (current.journey.completedDays || []).includes(currentDay);
+
+      const nextDay = wasCompleted && currentDay < 30 ? currentDay + 1 : currentDay;
+      const stageInfo = this.getStageInfo(nextDay, current);
+
+      return {
+        ...current,
+        journey: {
+          ...current.journey,
+          currentDay: nextDay,
+          stage: stageInfo.key,
+          todayActionTaken: false,
+          todayActionDate: null
+        }
+      };
+    });
+  }
+
+  /**
    * Bugün bir işlem yapılıp yapılmadığını kontrol eder
    */
-  isTodayActionCompleted() {
+  isTodayActionCompleted(now = new Date()) {
     const state = this.getState();
-    const todayStr = new Date().toISOString().split('T')[0];
-    return state.journey.todayActionDate === todayStr && state.journey.todayActionTaken;
+    const todayStr = getLocalDateKey(now);
+    return state.journey.todayActionDate === todayStr && Boolean(state.journey.todayActionTaken);
   }
 
   /**
    * Görevi tamamla
    */
-  completeTask({ feedback = null, reflectionNote = '' } = {}) {
-    const todayStr = new Date().toISOString().split('T')[0];
-    const nowIso = new Date().toISOString();
+  completeTask({ feedback = null, reflectionNote = '' } = {}, now = new Date()) {
+    const refNow = now instanceof Date ? now : new Date(now);
+    const todayStr = getLocalDateKey(refNow);
+    const nowIso = refNow.toISOString();
 
     return this.updateState(state => {
       const currentDay = state.journey.currentDay;
@@ -282,9 +337,10 @@ class StorageService {
   /**
    * "Bugün olmadı" butonu: erteleme (suçluluksuz)
    */
-  postponeTask() {
-    const todayStr = new Date().toISOString().split('T')[0];
-    const nowIso = new Date().toISOString();
+  postponeTask(now = new Date()) {
+    const refNow = now instanceof Date ? now : new Date(now);
+    const todayStr = getLocalDateKey(refNow);
+    const nowIso = refNow.toISOString();
 
     return this.updateState(state => {
       const currentDay = state.journey.currentDay;
