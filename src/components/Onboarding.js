@@ -4,7 +4,9 @@
  */
 
 import questionsData from '../data/questions.json' with { type: 'json' };
+import tasksData from '../data/tasks.json' with { type: 'json' };
 import { storage } from '../utils/storage.js';
+import { buildTaskSequence } from '../utils/planEngine.js';
 import { BrandMark, StageIcons, ArrowRightIcon, ArrowLeftIcon, CheckIcon, DomainIcons } from './Icons.js';
 
 export class OnboardingController {
@@ -587,9 +589,14 @@ export class OnboardingController {
   }
 
   completeAndSavePlan() {
-    storage.updateState(currentState => ({
-      ...currentState,
-      profile: {
+    const taskOrder = buildTaskSequence(tasksData.gorevler, {
+      areaId: this.formData.selectedAreaId,
+      answers: this.formData.areaAnswers,
+      readinessScore: this.formData.readiness,
+    });
+
+    storage.updateState(currentState => {
+      const nextProfile = {
         ...currentState.profile,
         name: this.formData.name.trim(),
         selectedAreaId: this.formData.selectedAreaId,
@@ -599,24 +606,36 @@ export class OnboardingController {
         answers: this.formData.areaAnswers,
         onboardingCompleted: true,
         startedAt: new Date().toISOString(),
-      },
-      journey: {
+      };
+      const nextJourney = {
         ...currentState.journey,
         currentDay: 1,
-        stage: 'tohum',
-        adaptiveDifficultyModifier: this.formData.readiness <= 2 ? -1 : 0
-      }
-    }));
+        adaptiveDifficultyModifier: this.formData.readiness <= 2 ? -1 : 0,
+        taskOrder,
+        inactivityDismissedDate: null,
+      };
+      const stageInfo = storage.getStageInfo(1, { ...currentState, profile: nextProfile, journey: nextJourney });
+
+      return {
+        ...currentState,
+        profile: nextProfile,
+        journey: {
+          ...nextJourney,
+          stage: stageInfo.key,
+        },
+      };
+    });
 
     this.isGeneratingPlan = true;
     this.render();
 
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       this.isGeneratingPlan = false;
       this.isPlanReady = true;
       this.render();
       if (this.onComplete) this.onComplete();
     }, 1400);
+    timer.unref?.();
   }
 
   escapeHtml(str) {

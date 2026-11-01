@@ -6,6 +6,7 @@
 import tasksData from '../data/tasks.json' with { type: 'json' };
 import questionsData from '../data/questions.json' with { type: 'json' };
 import { storage } from '../utils/storage.js';
+import { resolveTodayTask } from '../utils/planEngine.js';
 import { StageIcons, CheckIcon, ClockIcon, DifficultyLeaves, ArrowRightIcon } from './Icons.js';
 
 export class TodayController {
@@ -13,16 +14,33 @@ export class TodayController {
     this.container = containerEl;
     this.state = storage.getState();
     this.currentDay = this.state.journey.currentDay || 1;
-    this.showAlternative = false;
+    this.forceFullSteps = false;
     this.reflectionText = '';
   }
 
+  isSimulationEnabled() {
+    const href = typeof window !== 'undefined' && window.location ? window.location.href : '';
+    const devFlag =
+      typeof localStorage !== 'undefined' ? localStorage.getItem('gunden_gune_dev_sim') : null;
+    return href.includes('sim=1') || devFlag === '1';
+  }
+
+  getFeedbackCopy(feedback) {
+    if (feedback === 'zorlandim') {
+      return 'Zor olması normal. Bir adım geri gidip sonraki günleri senin için daha hafif tutacağız.';
+    }
+    if (feedback === 'cok_kolay') {
+      return 'Geri bildirimin kaydedildi. Süre sınırını aşmadan adımları dengeli biçimde ilerleteceğiz.';
+    }
+    return 'Geri bildirimin kaydedildi, sonraki günlerin temposuna yansıtılacak.';
+  }
+
   render() {
-    this.state = storage.getState();
+    this.state = storage.syncDailyRollover();
     this.currentDay = this.state.journey.currentDay || 1;
 
-    const task = this.getTodayTask();
-    const stageInfo = storage.getStageInfo(this.currentDay);
+    const resolved = resolveTodayTask(tasksData.gorevler, this.state);
+    const stageInfo = storage.getStageInfo(this.currentDay, this.state);
     const greeting = storage.getGreeting();
     const areaObj = questionsData.alanlar.find(a => a.id === this.state.profile.selectedAreaId);
     const areaTitle = areaObj ? areaObj.baslik : 'Gelişim yolculuğu';
@@ -31,6 +49,7 @@ export class TodayController {
     const inactivity = storage.checkInactivity();
     const isActionTakenToday = storage.isTodayActionCompleted();
     const todayStatus = this.state.journey.dayStatusMap[this.currentDay];
+    const showSimBar = this.isSimulationEnabled();
 
     this.container.innerHTML = `
       <main class="today-page fade-in" id="main-content">
@@ -51,14 +70,24 @@ export class TodayController {
             </div>
           </div>
 
-          <!-- 3+ Gün Ara Karşılama Mesajı -->
+          <!-- 3+ Gün Ara Karşılama Mesajı ve Kolaylaştırma Seçenekleri (PROJE.md Bölüm 6) -->
           ${inactivity.hasInactivity && !isActionTakenToday ? `
             <div class="inactivity-welcome-box" role="status">
-              <div>
-                <strong>Kaldığın yerden devam edebilirsin</strong>
+              <div class="inactivity-body">
+                <strong>Hoş geldin, kaldığın yerden devam edelim</strong>
                 <p>
-                  Araya birkaç gün girmiş olması planı bozmaz. Adımlar takvime değil senin ritmine göre ilerliyor.
+                  Araya birkaç gün girmiş olması planı bozmaz. İstersen bir önceki görevi tekrar edebilir veya tempoyu biraz hafifletebilirsin.
                 </p>
+                <div class="inactivity-actions">
+                  ${this.currentDay > 1 ? `
+                    <button type="button" class="btn btn-secondary btn-sm" id="btn-repeat-prev-day">
+                      <span>Bir önceki görevi tekrar et</span>
+                    </button>
+                  ` : ''}
+                  <button type="button" class="btn btn-ghost btn-sm" id="btn-ease-plan">
+                    <span>Daha hafif devam et</span>
+                  </button>
+                </div>
               </div>
             </div>
           ` : ''}
@@ -66,24 +95,27 @@ export class TodayController {
           <!-- Ana İçerik: Görev Kartı veya Tamamlandı/Erteleme Görünümü -->
           ${isActionTakenToday
             ? this.renderActionTakenView(todayStatus, stageInfo)
-            : this.renderTaskCardView(task, stageInfo)}
+            : this.renderTaskCardView(resolved, stageInfo)}
 
-          <!-- Geliştirici & Test İçin Ertesi Güne Geçiş Simülasyonu -->
-          <div class="sim-controls-bar">
-            <button type="button" class="btn btn-ghost" id="btn-advance-day">
-              <span>Ertesi güne geç (simülasyon)</span>
-              ${ArrowRightIcon({ size: 14 })}
-            </button>
-          </div>
+          ${showSimBar ? `
+            <div class="sim-controls-bar">
+              <button type="button" class="btn btn-ghost" id="btn-advance-day">
+                <span>Ertesi güne geç (simülasyon)</span>
+                ${ArrowRightIcon({ size: 14 })}
+              </button>
+            </div>
+          ` : ''}
 
         </div>
       </main>
     `;
 
-    this.attachEvents(task);
+    this.attachEvents();
   }
 
-  renderTaskCardView(task, stageInfo) {
+  renderTaskCardView(resolved, stageInfo) {
+    const { task, isAlternativePrimary, effectiveMinutes, effectiveDifficulty } = resolved;
+
     if (!task) {
       const area = questionsData.alanlar.find(a => a.id === this.state.profile.selectedAreaId);
       const areaTitle = area ? area.baslik : 'gelişim';
@@ -96,10 +128,9 @@ export class TodayController {
     }
 
     const modifier = this.state.journey.adaptiveDifficultyModifier || 0;
-    const effectiveDifficulty = Math.max(1, Math.min(5, task.zorluk + modifier));
-    const userMaxMinutes = this.state.profile.dailyTimePreference || 10;
-    const isExceedingTime = task.sure_dk > userMaxMinutes;
     const stageIconFn = StageIcons[stageInfo.key] || StageIcons.tohum;
+    const showAlternativeAsMain = isAlternativePrimary && !this.forceFullSteps;
+    const displayedMinutes = showAlternativeAsMain ? effectiveMinutes : task.sure_dk;
 
     return `
       <article class="task-card">
@@ -117,7 +148,7 @@ export class TodayController {
           <div class="task-meta-right">
             <span class="task-time-meta" title="Tahmini süre">
               ${ClockIcon({ size: 14 })}
-              <span>~${task.sure_dk} dk</span>
+              <span>~${displayedMinutes} dk</span>
             </span>
             ${DifficultyLeaves({ level: effectiveDifficulty })}
           </div>
@@ -126,30 +157,43 @@ export class TodayController {
         <h2 class="task-title">${task.baslik}</h2>
         <p class="task-why-text">${task.neden}</p>
 
-        ${isExceedingTime ? `
-          <div class="calm-notice" style="margin-top: 0; margin-bottom: 24px;">
-            <span>Bu görev günlük süre tercihini (~${userMaxMinutes} dk) aşabilir. Dilersen alttaki daha hafif seçeneği uygulayabilirsin.</span>
+        ${showAlternativeAsMain ? `
+          <div class="task-primary-alternative">
+            <div class="task-alternative-header">
+              <span class="task-alternative-title">Bugünkü sürene uyarlanmış adım</span>
+              <button type="button" class="btn btn-ghost btn-sm" id="btn-toggle-full-steps">
+                <span>Tam adımları göster</span>
+              </button>
+            </div>
+            <p class="task-primary-alternative-text">${task.alternatif}</p>
           </div>
-        ` : ''}
-
-        <div class="task-steps-section">
-          <h3 class="task-steps-heading">Adımlar</h3>
-          <ol class="task-steps-list">
-            ${task.adimlar.map((adim, i) => `
-              <li class="task-step-item">
-                <span class="task-step-num" aria-hidden="true">${i + 1}</span>
-                <span>${adim}</span>
-              </li>
-            `).join('')}
-          </ol>
-        </div>
-
-        ${task.alternatif ? `
-          <div class="task-alternative-box">
-            <div class="task-alternative-title">Daha hafif seçenek</div>
-            <p>${task.alternatif}</p>
+        ` : `
+          <div class="task-steps-section">
+            <div class="task-steps-header-row">
+              <h3 class="task-steps-heading">Adımlar</h3>
+              ${isAlternativePrimary ? `
+                <button type="button" class="btn btn-ghost btn-sm" id="btn-toggle-full-steps">
+                  <span>Hafif seçeneğe dön</span>
+                </button>
+              ` : ''}
+            </div>
+            <ol class="task-steps-list">
+              ${task.adimlar.map((adim, i) => `
+                <li class="task-step-item">
+                  <span class="task-step-num" aria-hidden="true">${i + 1}</span>
+                  <span>${adim}</span>
+                </li>
+              `).join('')}
+            </ol>
           </div>
-        ` : ''}
+
+          ${task.alternatif && !isAlternativePrimary ? `
+            <div class="task-alternative-box">
+              <div class="task-alternative-title">Daha hafif seçenek</div>
+              <p>${task.alternatif}</p>
+            </div>
+          ` : ''}
+        `}
 
         <div class="task-actions">
           <button type="button" class="btn btn-secondary" id="btn-postpone-task">
@@ -170,6 +214,7 @@ export class TodayController {
     const currentFeedback = todayStatus?.feedback;
     const existingNote = todayStatus?.note || '';
     const stageIconFn = StageIcons[stageInfo.key] || StageIcons.tohum;
+    const isGraduationDay = isCompleted && this.currentDay >= 30;
 
     return `
       <article class="task-card completed-state-card fade-in">
@@ -179,7 +224,9 @@ export class TodayController {
           </div>
 
           <h2 class="completed-title">
-            ${isCompleted ? 'Bugünlük bu kadar' : 'Yarın kaldığın yerden devam edersin'}
+            ${isGraduationDay
+              ? '30. günü tamamladın'
+              : (isCompleted ? 'Bugünlük bu kadar' : 'Yarın kaldığın yerden devam edersin')}
           </h2>
 
           <p class="completed-subtitle">
@@ -187,6 +234,15 @@ export class TodayController {
               ? 'Küçük ama gerçek bir adım attın. Bugün başka bir görev açılmayacak, zihnini dinlendirebilirsin.'
               : 'Planın bozulmadı ve seri cezası yok. Yarın aynı adımla sakin bir şekilde devam edebilirsin.'}
           </p>
+
+          ${isGraduationDay ? `
+            <div style="margin-top: 16px;">
+              <a href="#completed" class="btn btn-primary" id="btn-go-graduation">
+                <span>30. gün özetine geç</span>
+                ${ArrowRightIcon({ size: 16 })}
+              </a>
+            </div>
+          ` : ''}
         </div>
 
         ${isCompleted ? `
@@ -217,7 +273,7 @@ export class TodayController {
             </div>
             ${currentFeedback ? `
               <p class="feedback-saved-msg">
-                Geri bildirimin kaydedildi, sonraki günlerin temposuna yansıtılacak.
+                ${this.getFeedbackCopy(currentFeedback)}
               </p>
             ` : ''}
           </div>
@@ -246,12 +302,6 @@ export class TodayController {
     `;
   }
 
-  getTodayTask() {
-    const list = tasksData.gorevler || [];
-    const area = this.state.profile.selectedAreaId || 'finans';
-    return list.find(g => g.alan === area && g.gun === this.currentDay) || list.find(g => g.alan === 'finans' && g.gun === this.currentDay) || list[0];
-  }
-
   attachEvents() {
     const completeBtn = this.container.querySelector('#btn-complete-task');
     if (completeBtn) {
@@ -269,24 +319,38 @@ export class TodayController {
       });
     }
 
+    const toggleStepsBtn = this.container.querySelector('#btn-toggle-full-steps');
+    if (toggleStepsBtn) {
+      toggleStepsBtn.addEventListener('click', () => {
+        this.forceFullSteps = !this.forceFullSteps;
+        this.render();
+      });
+    }
+
+    const repeatPrevBtn = this.container.querySelector('#btn-repeat-prev-day');
+    if (repeatPrevBtn) {
+      repeatPrevBtn.addEventListener('click', () => {
+        this.forceFullSteps = false;
+        storage.repeatPreviousDay();
+        this.render();
+      });
+    }
+
+    const easePlanBtn = this.container.querySelector('#btn-ease-plan');
+    if (easePlanBtn) {
+      easePlanBtn.addEventListener('click', () => {
+        this.forceFullSteps = false;
+        storage.easeDifficulty();
+        this.render();
+      });
+    }
+
     const feedbackBtns = this.container.querySelectorAll('.feedback-pill-btn');
     feedbackBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const fb = btn.getAttribute('data-feedback');
         storage.completeTask({ feedback: fb });
-        feedbackBtns.forEach(b => b.classList.remove('is-selected'));
-        btn.classList.add('is-selected');
-
-        const feedbackBox = btn.closest('.feedback-box');
-        if (feedbackBox) {
-          let savedMsg = feedbackBox.querySelector('.feedback-saved-msg');
-          if (!savedMsg) {
-            savedMsg = document.createElement('p');
-            savedMsg.className = 'feedback-saved-msg';
-            feedbackBox.appendChild(savedMsg);
-          }
-          savedMsg.textContent = 'Geri bildirimin kaydedildi, sonraki günlerin temposuna yansıtılacak.';
-        }
+        this.render();
       });
     });
 
@@ -306,15 +370,17 @@ export class TodayController {
         const text = reflectionInput.value.trim();
         storage.completeTask({ reflectionNote: text });
         saveNoteBtn.textContent = 'Kaydedildi';
-        setTimeout(() => {
+        const timer = setTimeout(() => {
           if (saveNoteBtn) saveNoteBtn.textContent = 'Kaydet';
         }, 1500);
+        timer.unref?.();
       });
     }
 
     const advanceBtn = this.container.querySelector('#btn-advance-day');
     if (advanceBtn) {
       advanceBtn.addEventListener('click', () => {
+        this.forceFullSteps = false;
         storage.advanceToNextDay();
         this.render();
       });

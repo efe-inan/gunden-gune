@@ -117,3 +117,100 @@ export function installBrowserMock({ url = 'http://localhost:5173/#landing', pre
 
   return { localStorage: localStorageMock, window: windowMock, document: documentMock };
 }
+
+/**
+ * Lightweight interactive container for controller render + event tests without external DOM libs.
+ */
+export function createContainer() {
+  let html = '';
+  let elements = [];
+
+  function parseElements(markup) {
+    const parsed = [];
+    const tagRe = /<(button|textarea|input|a)\b([^>]*)>([\s\S]*?)<\/\1>|<(input)\b([^>]*?)\s*\/?>/gi;
+    let m;
+    while ((m = tagRe.exec(markup)) !== null) {
+      const tagName = (m[1] || m[4]).toUpperCase();
+      const attrStr = m[2] ?? m[5] ?? '';
+      const inner = m[3] ?? '';
+      const attrs = new Map();
+      const attrRe = /([a-zA-Z0-9_-]+)(?:="([^"]*)")?/g;
+      let am;
+      while ((am = attrRe.exec(attrStr)) !== null) {
+        attrs.set(am[1], am[2] ?? '');
+      }
+      const handlers = new Map();
+      const classSet = new Set((attrs.get('class') || '').split(/\s+/).filter(Boolean));
+      const el = {
+        tagName,
+        id: attrs.get('id') || '',
+        value: tagName === 'TEXTAREA' ? inner : (attrs.get('value') || ''),
+        textContent: inner.replace(/<[^>]+>/g, '').trim(),
+        innerHTML: inner,
+        dataset: {},
+        classList: {
+          add(c) { classSet.add(c); },
+          remove(c) { classSet.delete(c); },
+          contains(c) { return classSet.has(c); },
+        },
+        getAttribute(name) {
+          return attrs.has(name) ? attrs.get(name) : null;
+        },
+        setAttribute(name, val) {
+          attrs.set(name, String(val));
+        },
+        addEventListener(type, fn) {
+          if (!handlers.has(type)) handlers.set(type, []);
+          handlers.get(type).push(fn);
+        },
+        click() {
+          for (const fn of handlers.get('click') || []) {
+            fn({ target: el, preventDefault() {} });
+          }
+        },
+        closest() {
+          return null;
+        },
+      };
+      for (const [k, v] of attrs.entries()) {
+        if (k.startsWith('data-')) {
+          const camel = k.slice(5).replace(/-([a-z])/g, (_, ch) => ch.toUpperCase());
+          el.dataset[camel] = v;
+        }
+      }
+      parsed.push(el);
+    }
+    return parsed;
+  }
+
+  function matches(el, selector) {
+    if (selector.startsWith('#')) {
+      return el.id === selector.slice(1);
+    }
+    if (selector.startsWith('.')) {
+      return el.classList.contains(selector.slice(1));
+    }
+    const attrMatch = selector.match(/^\[([a-zA-Z0-9_-]+)(?:="([^"]*)")?\]$/);
+    if (attrMatch) {
+      const val = el.getAttribute(attrMatch[1]);
+      return attrMatch[2] !== undefined ? val === attrMatch[2] : val !== null;
+    }
+    return el.tagName.toLowerCase() === selector.toLowerCase();
+  }
+
+  return {
+    get innerHTML() {
+      return html;
+    },
+    set innerHTML(val) {
+      html = String(val);
+      elements = parseElements(html);
+    },
+    querySelector(selector) {
+      return elements.find(el => matches(el, selector)) || null;
+    },
+    querySelectorAll(selector) {
+      return elements.filter(el => matches(el, selector));
+    },
+  };
+}
