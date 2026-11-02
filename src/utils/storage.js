@@ -34,6 +34,20 @@ export function getLocalDateKey(date = new Date()) {
   return `${year}-${month}-${day}`;
 }
 
+/**
+ * İki tarih arasındaki yerel takvim günü farkını (yaz/kış saati geçişlerinden bağımsız) hesaplar.
+ */
+export function getCalendarDayDiff(fromDate, toDate) {
+  const from = fromDate instanceof Date ? fromDate : new Date(fromDate);
+  const to = toDate instanceof Date ? toDate : new Date(toDate);
+  if (Number.isNaN(from.getTime()) || Number.isNaN(to.getTime())) {
+    return 0;
+  }
+  const fromUtcMidnight = Date.UTC(from.getFullYear(), from.getMonth(), from.getDate());
+  const toUtcMidnight = Date.UTC(to.getFullYear(), to.getMonth(), to.getDate());
+  return Math.max(0, Math.round((toUtcMidnight - fromUtcMidnight) / 86400000));
+}
+
 const DEFAULT_STATE = {
   auth: {
     isAuthenticated: false,
@@ -380,8 +394,7 @@ class StorageService {
       return { hasInactivity: false, daysInactive: 0 };
     }
 
-    const diffMs = Math.max(0, refNow - last);
-    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    const diffDays = getCalendarDayDiff(last, refNow);
 
     return {
       hasInactivity: diffDays >= 3,

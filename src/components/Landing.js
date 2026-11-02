@@ -4,8 +4,47 @@
  */
 
 import { ArrowRightIcon, CheckIcon, ClockIcon, DifficultyLeaves, StageIcons } from './Icons.js';
+import { storage } from '../utils/storage.js';
 
-export function renderLanding() {
+export function renderLanding(stateOverride = null) {
+  const state = stateOverride || storage.getState();
+  const isOnboarded = Boolean(state?.profile?.onboardingCompleted);
+  const currentDay = Math.max(1, Math.min(30, Number(state?.journey?.currentDay) || 1));
+  const completedDays = Array.isArray(state?.journey?.completedDays) ? state.journey.completedDays : [];
+  const isGraduated = isOnboarded && currentDay >= 30 && completedDays.includes(30);
+
+  let heroActionsHtml = `
+    <a href="#onboarding" class="btn btn-primary btn-lg" id="btn-start-onboarding">
+      <span>Yolculuğa başla</span>
+      ${ArrowRightIcon({ size: 16 })}
+    </a>
+    <a href="#nasil-calisir" class="hero-secondary-link">
+      Nasıl çalışır?
+    </a>
+  `;
+
+  if (isGraduated) {
+    heroActionsHtml = `
+      <a href="#completed" class="btn btn-primary btn-lg" id="btn-continue-journey">
+        <span>Mezuniyet özetini gör</span>
+        ${ArrowRightIcon({ size: 16 })}
+      </a>
+      <a href="#onboarding" class="hero-secondary-link" id="link-restart-onboarding">
+        Yeni yolculuk başlat
+      </a>
+    `;
+  } else if (isOnboarded) {
+    heroActionsHtml = `
+      <a href="#today" class="btn btn-primary btn-lg" id="btn-continue-journey">
+        <span>Kaldığın yerden devam et · Gün ${currentDay} / 30</span>
+        ${ArrowRightIcon({ size: 16 })}
+      </a>
+      <a href="#onboarding" class="hero-secondary-link" id="link-restart-onboarding">
+        Yeni yolculuk başlat
+      </a>
+    `;
+  }
+
   return `
     <main class="landing-page fade-in" id="main-content">
       <!-- Hero Bölümü: Sol metin + Sağ gerçek ürün önizlemesi -->
@@ -22,13 +61,7 @@ export function renderLanding() {
               </p>
 
               <div class="hero-actions">
-                <a href="#onboarding" class="btn btn-primary btn-lg" id="btn-start-onboarding">
-                  <span>Yolculuğa başla</span>
-                  ${ArrowRightIcon({ size: 16 })}
-                </a>
-                <a href="#nasil-calisir" class="hero-secondary-link">
-                  Nasıl çalışır?
-                </a>
+                ${heroActionsHtml}
               </div>
 
               <div class="hero-meta-bar" aria-label="Temel yaklaşımımız">
