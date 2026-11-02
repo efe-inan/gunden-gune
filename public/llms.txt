@@ -25,3 +25,4 @@ Kullanıcılar üye olmadan tek bir odak alanı seçer, 9 kısa başlangıç sor
 ## Optional
 
 - [Kaynak Kod Deposu](https://github.com/efe-inan/gunden-gune): Açık mimari, içerik yapısı ve teknik dokümantasyon.
+

@@ -136,6 +136,9 @@ class StorageService {
     const currentState = this.getState();
     const updated = typeof updater === 'function' ? updater(currentState) : { ...currentState, ...updater };
     this.saveState(updated);
+    if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
+      window.dispatchEvent(new CustomEvent('appstateupdated', { detail: { state: updated } }));
+    }
     return updated;
   }
 
