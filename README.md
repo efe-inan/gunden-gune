@@ -6,7 +6,8 @@
 [![Vite](https://img.shields.io/badge/Build-Vite%208-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![JavaScript](https://img.shields.io/badge/ES2025-Vanilla%20JS-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![CSS3](https://img.shields.io/badge/CSS3-Design%20Tokens-2C4C3B?logo=css3&logoColor=white)](#tasarım-sistemi-ve-erişilebilirlik)
-[![Tests](https://img.shields.io/badge/Tests-30%20Passing%20(node%3Atest)-2C4C3B)](#doğrulama-ve-test-senaryoları)
+[![Tests](https://img.shields.io/badge/Tests-39%20Passing%20(node%3Atest)-2C4C3B)](#doğrulama-ve-test-senaryoları)
+[![PWA](https://img.shields.io/badge/PWA-Offline%20Ready-2C4C3B)](#mimari-ve-teknoloji-yığını)
 [![Privacy](https://img.shields.io/badge/Data-Local--First-1C1A18)](#veri-mimarisi-güvenlik-ve-gizlilik)
 
 ---
@@ -72,22 +73,27 @@ Harici çalışma zamanı veya test kütüphanesi şişkinliği olmadan; tarayı
 
 ```text
 gunden-gune/
+├── .github/workflows/ci.yml     # Node 24 otomatik test ve derleme hattı
 ├── docs/                        # Uygulama ve geliştirme planları
 ├── public/
 │   ├── favicon.svg              # Tema duyarlı (light/dark) saf SVG yaprak ikonu
 │   ├── favicon-32.png           # PNG favicon yedekleri
 │   ├── favicon-180.png
-│   └── favicon-512.png
+│   ├── favicon-512.png
+│   ├── manifest.webmanifest     # Kurulabilir PWA uygulama bildirimi
+│   ├── robots.txt               # Arama motoru yönergeleri
+│   ├── sitemap.xml              # XML site haritası
+│   └── sw.js                    # Ağ öncelikli / çevrimdışı kabuk Service Worker
 ├── src/
 │   ├── components/
 │   │   ├── Header.js            # Üst gezinme çubuğu, tema geçişi ve odak göstergesi
 │   │   ├── Footer.js            # Alt bilgi alanı
 │   │   ├── Icons.js             # 1.5px çizgi kalınlığında saf SVG ikon seti
-│   │   ├── Landing.js           # Karşılama ve ürün tanıtım görünümü
+│   │   ├── Landing.js           # Karşılama ve aktif kullanıcı devam görünümü
 │   │   ├── Onboarding.js        # Kişiselleştirme akışı ve 30 günlük plan üretimi
 │   │   ├── Today.js             # Günün görevi, alternatif görünüm ve geri bildirim akışı
 │   │   ├── Progress.js          # Aşama haritası, rozetler, yansıma notları ve arşiv
-│   │   ├── Settings.js          # Tercihler, alan değişimi ve JSON içe/dışa aktarım
+│   │   ├── Settings.js          # Tercihler, PWA kurulumu, .ics hatırlatıcı ve JSON yedekleme
 │   │   └── Completion.js        # 30. gün mezuniyet özeti ve yeni yolculuk başlatma
 │   ├── data/
 │   │   ├── questions.json       # Genel ve alana özel tanışma soruları
@@ -104,18 +110,25 @@ gunden-gune/
 │   │   └── main.css             # Stil modüllerini birleştiren giriş dosyası
 │   ├── utils/
 │   │   ├── planEngine.js        # Aşama sınırları, etiket eşleştirme ve görev çözümleyici
+│   │   ├── pwa.js               # Service Worker kaydı ve ana ekrana ekleme istemi
+│   │   ├── reminder.js          # RFC 5545 (.ics) takvim hatırlatıcısı üreticisi
 │   │   └── storage.js           # Tekil veri katmanı, rozet/istatistik ve LocalStorage yönetimi
 │   └── main.js                  # Uygulama kabuğu, rota koruyucuları (resolveRoute) ve yaşam döngüsü
-├── tests/                       # 30 birim ve entegrasyon testi (node:test)
+├── tests/                       # 10 test dosyasında 39 birim ve entegrasyon testi (node:test)
 │   ├── helpers/browserMock.js
 │   ├── data-integrity.test.js
+│   ├── landing-and-inactivity.test.js
 │   ├── plan-engine.test.js
+│   ├── production-meta.test.js
 │   ├── progress-stats.test.js
+│   ├── pwa.test.js
+│   ├── reminder-ics.test.js
 │   ├── settings-and-routing.test.js
 │   ├── storage-rollover.test.js
 │   └── today-flow.test.js
-├── index.html                   # HTML5 giriş şablonu ve FOUT önleyici tema betiği
+├── index.html                   # HTML5 giriş şablonu, Open Graph ve FOUT önleyici tema betiği
 ├── package.json                 # Geliştirme, test ve üretim betikleri
+├── vercel.json                  # Güvenlik ve Service Worker önbellek başlıkları
 └── PROJE.md                     # Ürün ve tasarım spesifikasyonu
 ```
 
@@ -205,11 +218,11 @@ Yeni bir sürüm çıkmadan önce hem otomatik test paketiyle (`npm test`) hem d
 - [x] 8 gelişim alanı ve 240 günlük mikro görev veri seti
 - [x] Editoryal sıcak kağıt / obsidyen tasarım sistemi ve saf SVG ikon/favicon altyapısı
 - [x] Yanıt, hazırbulunuşluk ve günlük süre tercihine duyarlı kişiselleştirme motoru (`planEngine.js`)
-- [x] Yerel gece yarısı gün devri, cezasız erteleme ve 3+ gün ara kurtarma mekanikleri
-- [x] Şema doğrulamalı JSON yedek içe/dışa aktarım ve 30 otomatik birim/entegrasyon testi
-- [ ] PWA (Progressive Web App) ve Service Worker ile tam çevrimdışı çalışma desteği
+- [x] Yerel gece yarısı gün devri, cezasız erteleme ve takvim günü bazlı 3+ gün ara kurtarma mekanikleri
+- [x] Şema doğrulamalı JSON yedek içe/dışa aktarım ve 39 otomatik birim/entegrasyon testi + GitHub Actions CI
+- [x] PWA (Progressive Web App) ve Service Worker ile çevrimdışı kabuk desteği
+- [x] Seçilen saat dilimine (`timeOfDayPreference`) bağlı sunucusuz `.ics` takvim hatırlatıcısı
 - [ ] İsteğe bağlı bulut senkronizasyonu ve kullanıcı hesabı katmanı (Supabase / Auth)
-- [ ] Seçilen saat dilimine (`timeOfDayPreference`) bağlı isteğe bağlı hatırlatıcı bildirimler
 
 ---
 
