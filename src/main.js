@@ -4,6 +4,7 @@
  */
 
 import { storage } from './utils/storage.js';
+import { initPwaInstallListener, registerServiceWorker } from './utils/pwa.js';
 import { renderHeader } from './components/Header.js';
 import { renderFooter } from './components/Footer.js';
 import { renderLanding } from './components/Landing.js';
@@ -64,6 +65,10 @@ export class App {
   }
 
   init() {
+    initPwaInstallListener(window);
+    if (Boolean(import.meta.env?.PROD) && typeof navigator !== 'undefined') {
+      registerServiceWorker(navigator, '/sw.js');
+    }
     window.addEventListener('hashchange', () => this.handleRouting());
     this.handleRouting();
     this.bindEvents();

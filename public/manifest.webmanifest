@@ -1,0 +1,31 @@
+{
+  "name": "Günden Güne",
+  "short_name": "Günden Güne",
+  "description": "Kişiye özel günlük mini görevlerle baskısız, sakin ve sürdürülebilir kişisel gelişim platformu.",
+  "lang": "tr",
+  "start_url": "/#today",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F7F4EE",
+  "theme_color": "#2C4C3B",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

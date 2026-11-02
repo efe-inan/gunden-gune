@@ -5,6 +5,7 @@
 
 import questionsData from '../data/questions.json' with { type: 'json' };
 import { storage, getLocalDateKey } from '../utils/storage.js';
+import { canInstallPwa, promptPwaInstall } from '../utils/pwa.js';
 import { DomainIcons, SunIcon, MoonIcon, SystemIcon } from './Icons.js';
 
 const TIME_OF_DAY_OPTIONS = [
@@ -22,6 +23,7 @@ export class SettingsController {
     this.showDeleteModal = false;
     this.calmNotice = null;
     this.boundThemeChange = null;
+    this.boundPwaInstallable = null;
     this.boundEscape = null;
   }
 
@@ -29,6 +31,10 @@ export class SettingsController {
     if (this.boundThemeChange && typeof window !== 'undefined') {
       window.removeEventListener('themechange', this.boundThemeChange);
       this.boundThemeChange = null;
+    }
+    if (this.boundPwaInstallable && typeof window !== 'undefined') {
+      window.removeEventListener('pwainstallable', this.boundPwaInstallable);
+      this.boundPwaInstallable = null;
     }
     if (this.boundEscape && typeof window !== 'undefined') {
       window.removeEventListener('keydown', this.boundEscape);
@@ -157,6 +163,18 @@ export class SettingsController {
                 </div>
                 <span class="form-desc">Sistem seçeneği cihazının açık veya koyu görünüm ayarını izler</span>
               </div>
+
+              ${canInstallPwa() ? `
+                <div class="form-row" style="margin-top: 16px;">
+                  <label class="form-label">Uygulama kısayolu</label>
+                  <div>
+                    <button type="button" class="btn btn-secondary btn-sm" id="btn-install-pwa">
+                      <span>Uygulamayı ana ekrana ekle</span>
+                    </button>
+                  </div>
+                  <span class="form-desc">Tam ekran ve çevrimdışı erişim için cihazına kısayol olarak kurabilirsin</span>
+                </div>
+              ` : ''}
             </section>
 
             <!-- 3. Çalışılan Alan -->
@@ -346,6 +364,22 @@ export class SettingsController {
       });
     };
     window.addEventListener('themechange', this.boundThemeChange);
+
+    this.boundPwaInstallable = () => {
+      this.render();
+    };
+    window.addEventListener('pwainstallable', this.boundPwaInstallable);
+
+    const installPwaBtn = this.container.querySelector('#btn-install-pwa');
+    if (installPwaBtn) {
+      installPwaBtn.addEventListener('click', async () => {
+        const res = await promptPwaInstall();
+        if (res.outcome === 'accepted') {
+          this.calmNotice = 'Uygulama ana ekranına eklendi.';
+        }
+        this.render();
+      });
+    }
 
     const saveProfileBtn = this.container.querySelector('#btn-save-profile');
     const nameInput = this.container.querySelector('#settings-name-input');
