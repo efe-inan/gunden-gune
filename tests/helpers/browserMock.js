@@ -153,11 +153,17 @@ export function createContainer() {
           remove(c) { classSet.delete(c); },
           contains(c) { return classSet.has(c); },
         },
+        hasAttribute(name) {
+          return attrs.has(name);
+        },
         getAttribute(name) {
           return attrs.has(name) ? attrs.get(name) : null;
         },
         setAttribute(name, val) {
           attrs.set(name, String(val));
+        },
+        removeAttribute(name) {
+          attrs.delete(name);
         },
         addEventListener(type, fn) {
           if (!handlers.has(type)) handlers.set(type, []);

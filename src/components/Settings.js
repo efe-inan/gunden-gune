@@ -6,6 +6,7 @@
 import questionsData from '../data/questions.json' with { type: 'json' };
 import { storage, getLocalDateKey } from '../utils/storage.js';
 import { canInstallPwa, promptPwaInstall } from '../utils/pwa.js';
+import { buildReminderICS, TIME_SLOTS } from '../utils/reminder.js';
 import { DomainIcons, SunIcon, MoonIcon, SystemIcon } from './Icons.js';
 
 const TIME_OF_DAY_OPTIONS = [
@@ -117,6 +118,21 @@ export class SettingsController {
                       ${opt.label}
                     </button>
                   `).join('')}
+                </div>
+                <div style="margin-top: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px;">
+                  <button
+                    type="button"
+                    class="btn btn-secondary btn-sm"
+                    id="btn-download-ics"
+                    ${currentTimeOfDay === 'fark_etmez' ? 'disabled' : ''}
+                  >
+                    <span>Takvimime hatırlatıcı ekle (.ics)</span>
+                  </button>
+                  <span class="form-desc" id="ics-helper-desc" style="margin-top: 0;">
+                    ${currentTimeOfDay === 'fark_etmez'
+                      ? 'Hatırlatıcı indirmek için sabah, öğle veya akşam seçebilirsin'
+                      : `Seçili saat (${TIME_SLOTS[currentTimeOfDay]?.label || '09:00'}) için telefon veya bilgisayar takvimine eklenir`}
+                  </span>
                 </div>
               </div>
 
@@ -332,6 +348,8 @@ export class SettingsController {
     });
 
     const daytimeBtns = this.container.querySelectorAll('.daytime-option-btn');
+    const downloadIcsBtn = this.container.querySelector('#btn-download-ics');
+    const icsHelperEl = this.container.querySelector('#ics-helper-desc');
     let selectedDaytime = this.state.profile.timeOfDayPreference || 'sabah';
 
     daytimeBtns.forEach(btn => {
@@ -339,8 +357,32 @@ export class SettingsController {
         daytimeBtns.forEach(b => b.classList.remove('is-selected'));
         btn.classList.add('is-selected');
         selectedDaytime = btn.getAttribute('data-daytime');
+
+        if (downloadIcsBtn) {
+          if (selectedDaytime === 'fark_etmez') {
+            downloadIcsBtn.setAttribute('disabled', '');
+          } else {
+            downloadIcsBtn.removeAttribute('disabled');
+          }
+        }
+        if (icsHelperEl) {
+          icsHelperEl.textContent =
+            selectedDaytime === 'fark_etmez'
+              ? 'Hatırlatıcı indirmek için sabah, öğle veya akşam seçebilirsin'
+              : `Seçili saat (${TIME_SLOTS[selectedDaytime]?.label || '09:00'}) için telefon veya bilgisayar takvimine eklenir`;
+        }
       });
     });
+
+    if (downloadIcsBtn) {
+      downloadIcsBtn.addEventListener('click', () => {
+        if (selectedDaytime === 'fark_etmez') {
+          return;
+        }
+        storage.updateProfileSettings({ timeOfDayPreference: selectedDaytime });
+        this.downloadReminderICS(selectedDaytime, currentArea.baslik);
+      });
+    }
 
     const themeBtns = this.container.querySelectorAll('[data-theme-choice]');
     themeBtns.forEach(btn => {
@@ -530,6 +572,31 @@ export class SettingsController {
         this.render();
       });
     }
+  }
+
+  downloadReminderICS(daytime, areaTitle) {
+    const remainingDays = Math.max(1, 31 - (this.state.journey.currentDay || 1));
+    const icsContent = buildReminderICS({
+      areaTitle,
+      timeOfDayPreference: daytime,
+      remainingDays,
+    });
+    if (!icsContent) {
+      return;
+    }
+
+    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'gunden-gune-hatirlatici.ics';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    this.calmNotice = 'Takvim hatırlatıcısı indirildi. Dosyayı açarak takvimine ekleyebilirsin.';
+    this.render();
   }
 
   downloadExportJSON() {
