@@ -5,6 +5,7 @@
 
 import { storage } from './utils/storage.js';
 import { initPwaInstallListener, registerServiceWorker } from './utils/pwa.js';
+import { initCloudSync } from './utils/supabase.js';
 import { renderHeader } from './components/Header.js';
 import { renderFooter } from './components/Footer.js';
 import { renderLanding } from './components/Landing.js';
@@ -69,6 +70,13 @@ export class App {
     if (Boolean(import.meta.env?.PROD) && typeof navigator !== 'undefined') {
       registerServiceWorker(navigator, '/sw.js');
     }
+    initCloudSync({
+      storage,
+      onAuthChange: (user) => {
+        window.dispatchEvent(new CustomEvent('authchange', { detail: { user } }));
+      },
+      onCloudApplied: () => this.handleRouting(),
+    });
     window.addEventListener('hashchange', () => this.handleRouting());
     this.handleRouting();
     this.bindEvents();

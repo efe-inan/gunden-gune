@@ -12,7 +12,6 @@ import {
   signInWithEmail,
   signOut,
   getCurrentUser,
-  fetchCloudState,
   syncLocalStateToCloud,
 } from '../utils/supabase.js';
 import { DomainIcons, SunIcon, MoonIcon, SystemIcon } from './Icons.js';
@@ -41,8 +40,7 @@ export class SettingsController {
   async initCurrentUser() {
     try {
       this.currentUser = await getCurrentUser();
-      const accountBox = this.container.querySelector('#sync-heading');
-      if (accountBox && this.currentUser) {
+      if (this.currentUser && this.container.querySelector('#sync-email-input')) {
         this.render();
       }
     } catch {
@@ -62,6 +60,10 @@ export class SettingsController {
     if (this.boundEscape && typeof window !== 'undefined') {
       window.removeEventListener('keydown', this.boundEscape);
       this.boundEscape = null;
+    }
+    if (this.boundAuthChange && typeof window !== 'undefined') {
+      window.removeEventListener('authchange', this.boundAuthChange);
+      this.boundAuthChange = null;
     }
   }
 
@@ -476,6 +478,15 @@ export class SettingsController {
       this.render();
     };
     window.addEventListener('pwainstallable', this.boundPwaInstallable);
+
+    this.boundAuthChange = (event) => {
+      const user = event?.detail?.user || null;
+      if ((user?.id || null) !== (this.currentUser?.id || null)) {
+        this.currentUser = user;
+        this.render();
+      }
+    };
+    window.addEventListener('authchange', this.boundAuthChange);
 
     const installPwaBtn = this.container.querySelector('#btn-install-pwa');
     if (installPwaBtn) {
