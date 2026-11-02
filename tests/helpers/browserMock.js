@@ -127,7 +127,7 @@ export function createContainer() {
 
   function parseElements(markup) {
     const parsed = [];
-    const tagRe = /<(button|textarea|input|a)\b([^>]*)>([\s\S]*?)<\/\1>|<(input)\b([^>]*?)\s*\/?>/gi;
+    const tagRe = /<(button|textarea|input|a|output)\b([^>]*)>([\s\S]*?)<\/\1>|<(input)\b([^>]*?)\s*\/?>/gi;
     let m;
     while ((m = tagRe.exec(markup)) !== null) {
       const tagName = (m[1] || m[4]).toUpperCase();
@@ -147,6 +147,7 @@ export function createContainer() {
         value: tagName === 'TEXTAREA' ? inner : (attrs.get('value') || ''),
         textContent: inner.replace(/<[^>]+>/g, '').trim(),
         innerHTML: inner,
+        style: {},
         dataset: {},
         classList: {
           add(c) { classSet.add(c); },

@@ -73,9 +73,67 @@ export async function promptPwaInstall() {
   }
 }
 
+export const SHELL_CACHE_NAME = 'gunden-gune-shell-v1';
+
+async function warmShellCache(env) {
+  const cachesApi = env?.caches;
+  const loc = env?.location;
+  const doc = env?.document;
+
+  if (
+    !cachesApi ||
+    typeof cachesApi.open !== 'function' ||
+    !loc?.origin ||
+    !doc ||
+    typeof doc.querySelectorAll !== 'function'
+  ) {
+    return;
+  }
+
+  try {
+    const baseHref = loc.href || loc.origin;
+    const nodes = Array.from(doc.querySelectorAll('script[src], link[rel="stylesheet"][href]'));
+    const urls = new Set();
+
+    for (const node of nodes) {
+      const raw = node.getAttribute?.('src') || node.getAttribute?.('href');
+      if (!raw) continue;
+      try {
+        const parsed = new URL(raw, baseHref);
+        if (parsed.origin === loc.origin) {
+          urls.add(parsed.href);
+        }
+      } catch {
+        // Ignore malformed asset URLs
+      }
+    }
+
+    if (urls.size === 0) return;
+
+    const cache = await cachesApi.open(SHELL_CACHE_NAME);
+    for (const assetUrl of urls) {
+      try {
+        const existing = await cache.match(assetUrl);
+        if (!existing) {
+          await cache.add(assetUrl);
+        }
+      } catch {
+        // Ignore individual asset cache failure
+      }
+    }
+  } catch {
+    // Ignore CacheStorage errors (e.g. private browsing restrictions)
+  }
+}
+
 export async function registerServiceWorker(
   nav = typeof navigator !== 'undefined' ? navigator : null,
-  swUrl = '/sw.js'
+  swUrl = '/sw.js',
+  env = {
+    caches: typeof caches !== 'undefined' ? caches : null,
+    location: typeof window !== 'undefined' ? window.location : null,
+    document: typeof document !== 'undefined' ? document : null,
+  }
 ) {
   if (!nav || !nav.serviceWorker || typeof nav.serviceWorker.register !== 'function') {
     return { registered: false };
@@ -83,8 +141,10 @@ export async function registerServiceWorker(
 
   try {
     await nav.serviceWorker.register(swUrl);
+    await warmShellCache(env);
     return { registered: true };
   } catch {
     return { registered: false };
   }
 }
+

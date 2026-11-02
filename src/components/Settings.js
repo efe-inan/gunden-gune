@@ -63,11 +63,13 @@ export class SettingsController {
             </p>
           </div>
 
-          ${this.calmNotice ? `
-            <div class="calm-notice" style="margin-top: 0; margin-bottom: 20px;" role="alert">
-              <span>${this.escapeHtml(this.calmNotice)}</span>
-            </div>
-          ` : ''}
+          <output
+            id="settings-calm-notice"
+            class="calm-notice"
+            style="margin-top: 0; margin-bottom: 20px; ${this.calmNotice ? '' : 'display: none;'}"
+            role="status"
+            aria-live="polite"
+          ><span>${this.escapeHtml(this.calmNotice || '')}</span></output>
 
           <div class="settings-sections-list">
 
@@ -380,7 +382,10 @@ export class SettingsController {
           return;
         }
         storage.updateProfileSettings({ timeOfDayPreference: selectedDaytime });
-        this.downloadReminderICS(selectedDaytime, currentArea.baslik);
+        this.state = storage.getState();
+        const activeArea =
+          questionsData.alanlar.find(a => a.id === this.state.profile.selectedAreaId) || questionsData.alanlar[0];
+        this.downloadReminderICS(selectedDaytime, activeArea.baslik);
       });
     }
 
@@ -595,8 +600,17 @@ export class SettingsController {
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
 
-    this.calmNotice = 'Takvim hatırlatıcısı indirildi. Dosyayı açarak takvimine ekleyebilirsin.';
-    this.render();
+    this.showCalmNotice('Takvim hatırlatıcısı indirildi. Dosyayı açarak takvimine ekleyebilirsin.');
+  }
+
+  showCalmNotice(message) {
+    this.calmNotice = message;
+    const noticeEl = this.container.querySelector('#settings-calm-notice');
+    if (noticeEl) {
+      noticeEl.style.display = message ? '' : 'none';
+      noticeEl.textContent = message || '';
+      noticeEl.innerHTML = `<span>${this.escapeHtml(message || '')}</span>`;
+    }
   }
 
   downloadExportJSON() {

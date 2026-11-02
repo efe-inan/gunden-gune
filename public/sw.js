@@ -43,33 +43,50 @@ self.addEventListener('fetch', (event) => {
   }
 
   if (request.mode === 'navigate') {
+    let navCacheWrite = Promise.resolve();
+    const navFetch = fetch(request).then((response) => {
+      if (response && response.ok) {
+        const copy = response.clone();
+        navCacheWrite = caches
+          .open(CACHE_NAME)
+          .then((cache) => cache.put('/index.html', copy))
+          .catch(() => {});
+      }
+      return response;
+    });
+
+    event.waitUntil(navFetch.then(() => navCacheWrite).catch(() => {}));
+
     event.respondWith(
-      fetch(request)
-        .then((response) => {
-          if (response && response.ok) {
-            const copy = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put('/index.html', copy)).catch(() => {});
-          }
-          return response;
-        })
-        .catch(() => caches.match('/index.html'))
+      navFetch.catch(() => caches.match('/index.html').then((cached) => cached || Response.error()))
     );
     return;
   }
 
+  let cacheWritePromise = Promise.resolve();
+  const networkFetch = fetch(request).then((response) => {
+    if (response && response.ok && response.type === 'basic') {
+      const copy = response.clone();
+      cacheWritePromise = caches
+        .open(CACHE_NAME)
+        .then((cache) => cache.put(request, copy))
+        .catch(() => {});
+    }
+    return response;
+  });
+
+  event.waitUntil(
+    networkFetch
+      .then(() => cacheWritePromise)
+      .catch(() => {})
+  );
+
   event.respondWith(
     caches.match(request).then((cached) => {
-      const networkFetch = fetch(request)
-        .then((response) => {
-          if (response && response.ok && response.type === 'basic') {
-            const copy = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(request, copy)).catch(() => {});
-          }
-          return response;
-        })
-        .catch(() => cached);
-
-      return cached || networkFetch;
+      if (cached) {
+        return cached;
+      }
+      return networkFetch.catch(() => Response.error());
     })
   );
 });

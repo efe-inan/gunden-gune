@@ -42,3 +42,45 @@ test('SettingsController disables #btn-download-ics when fark_etmez is selected 
   assert.equal(btnEnabled.hasAttribute('disabled'), false);
   ctrl.destroy();
 });
+
+test('SettingsController preserves unsaved name and daily time edits when downloading .ics reminder', () => {
+  installBrowserMock();
+  storage.resetAll();
+  storage.updateProfileSettings({
+    name: 'Eski İsim',
+    dailyTimePreference: 10,
+    timeOfDayPreference: 'sabah',
+  });
+
+  const container = createContainer();
+  const ctrl = new SettingsController(container);
+  ctrl.render();
+
+  const nameInput = container.querySelector('#settings-name-input');
+  nameInput.value = 'Efe Yeni';
+
+  const mins15Btn = container.querySelector('[data-mins="15"]');
+  mins15Btn.click();
+  assert.equal(mins15Btn.classList.contains('is-selected'), true);
+
+  const downloadBtn = container.querySelector('#btn-download-ics');
+  downloadBtn.click();
+
+  const nameInputAfter = container.querySelector('#settings-name-input');
+  const mins15After = container.querySelector('[data-mins="15"]');
+  const noticeEl = container.querySelector('#settings-calm-notice');
+
+  assert.equal(nameInputAfter.value, 'Efe Yeni', 'Unsaved name edit must not be wiped by .ics download');
+  assert.equal(mins15After.classList.contains('is-selected'), true, 'Unsaved daily time edit must remain selected');
+  assert.ok(noticeEl && noticeEl.textContent.includes('Takvim hatırlatıcısı indirildi'));
+
+  const saveBtn = container.querySelector('#btn-save-profile');
+  saveBtn.click();
+
+  const updated = storage.getState().profile;
+  assert.equal(updated.name, 'Efe Yeni');
+  assert.equal(updated.dailyTimePreference, 15);
+  ctrl.destroy();
+});
+
+
