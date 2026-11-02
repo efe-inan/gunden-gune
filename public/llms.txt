@@ -1,0 +1,27 @@
+# Günden Güne
+
+> Günden Güne, 8 kişisel gelişim alanında günde 2–10 dakikalık uyarlanabilir mikro görevlerle baskısız, zincir kırma cezası olmayan 30 günlük alışkanlık ve gelişim deneyimi sunan ücretsiz, yerel-öncelikli Türkçe web uygulamasıdır (PWA).
+
+Kullanıcılar üye olmadan tek bir odak alanı seçer, 9 kısa başlangıç sorusunu yanıtlar ve kendi günlük zaman tercihine göre kişiselleştirilmiş 30 günlük (Tohum, Filiz, Köklenme ve Meyve aşamalarından oluşan) bir plan alır. Tüm veriler tarayıcıda yerel olarak saklanır; JSON yedekleme/geri yükleme ve RFC 5545 uyumlu `.ics` takvim hatırlatıcısı desteklenir.
+
+## Temel Bağlantılar
+
+- [Ana Sayfa ve Karşılama](https://gunden-gune.vercel.app/): Ürünün işleyişi, örnek görev önizlemesi ve 30 günlük yolculuk başlangıcı.
+- [Kişiselleştirme Akışı](https://gunden-gune.vercel.app/#onboarding): Alan seçimi ve 9 soruluk başlangıç değerlendirmesi.
+- [Web App Manifest](https://gunden-gune.vercel.app/manifest.webmanifest): Kurulabilir çevrimdışı PWA tanımı.
+- [Site Haritası](https://gunden-gune.vercel.app/sitemap.xml): Arama motorları için kanonik dizin haritası.
+
+## Kapsanan 8 Odak Alanı
+
+- Para ve finans: Harcama farkındalığı, küçük birikim alışkanlığı ve mali netlik.
+- Erteleme ve odaklanma: Başlama sürtünmesini azaltma ve tek işe derinleşme.
+- Uyku ve sabah düzeni: Akşam yavaşlama ritüeli ve dinlenmiş uyanış.
+- İletişim ve ilişkiler: Aktif dinleme, sağlıklı sınır koyma ve açık ifade.
+- Fiziksel sağlık ve hareket: Gün içi sürdürülebilir hareket, su ve beden farkındalığı.
+- Zihinsel denge ve stres yönetimi: Nefes molaları, düşünce yükünü boşaltma ve sakinleşme.
+- Özgüven ve kendine değer verme: İç eleştirmeni yumuşatma ve küçük kazanımları görme.
+- Dijital denge ve ekran süresi: Bildirim sadeleştirme ve bilinçli teknoloji kullanımı.
+
+## Optional
+
+- [Kaynak Kod Deposu](https://github.com/efe-inan/gunden-gune): Açık mimari, içerik yapısı ve teknik dokümantasyon.

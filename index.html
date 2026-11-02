@@ -24,6 +24,10 @@
     />
     <meta property="og:url" content="https://gunden-gune.vercel.app/" />
     <meta property="og:image" content="https://gunden-gune.vercel.app/favicon-512.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:alt" content="Günden Güne uygulama simgesi" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Günden Güne – Küçük adımlar, gerçek değişim" />
     <meta
@@ -31,6 +35,49 @@
       content="Kişiye özel günlük mini görevlerle baskısız, sakin ve sürdürülebilir kişisel gelişim platformu."
     />
     <meta name="twitter:image" content="https://gunden-gune.vercel.app/favicon-512.png" />
+    <meta name="twitter:image:alt" content="Günden Güne uygulama simgesi" />
+
+    <!-- Schema.org JSON-LD Yapılandırılmış Veri (WebApplication & WebSite) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://gunden-gune.vercel.app/#website",
+            "name": "Günden Güne",
+            "url": "https://gunden-gune.vercel.app/",
+            "inLanguage": "tr-TR",
+            "description": "Kişiye özel günlük mini görevlerle baskısız, sakin ve sürdürülebilir kişisel gelişim platformu."
+          },
+          {
+            "@type": "WebApplication",
+            "@id": "https://gunden-gune.vercel.app/#webapp",
+            "name": "Günden Güne",
+            "url": "https://gunden-gune.vercel.app/",
+            "inLanguage": "tr-TR",
+            "applicationCategory": "LifestyleApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "JavaScript ve HTML5 localStorage destekli güncel web tarayıcısı",
+            "isAccessibleForFree": true,
+            "image": "https://gunden-gune.vercel.app/favicon-512.png",
+            "description": "Finans, odaklanma, uyku, ilişkiler, fiziksel sağlık, zihinsel denge, özgüven ve dijital denge alanlarında günde 2–10 dakikalık uyarlanabilir görevler sunan 30 günlük kişisel gelişim uygulaması.",
+            "featureList": [
+              "8 kişisel gelişim alanında 240 uyarlanabilir günlük mikro görev",
+              "Zincir kırma cezası olmayan 30 günlük 4 aşamalı ilerleme sistemi",
+              "Çevrimdışı çalışabilen kurulabilir PWA mimarisi",
+              "RFC 5545 uyumlu .ics takvim hatırlatıcısı dışa aktarma",
+              "Üyeliksiz yerel veri saklama ve JSON yedekleme/geri yükleme"
+            ],
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "TRY"
+            }
+          }
+        ]
+      }
+    </script>
 
     <!-- Faviconlar (SVG + 32x32, 180x180, 512x512 yedekler) -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -79,7 +126,27 @@
     <a href="#main-content" class="skip-link">Ana içeriğe atla</a>
 
     <div id="app">
-      <!-- Dinamik olarak main.js tarafından render edilecek -->
+      <main class="landing-page" id="main-content">
+        <section class="hero-section" aria-labelledby="hero-heading">
+          <h1 id="hero-heading" class="hero-title">
+            Her gün tek bir küçük adım, baskısız ve kalıcı değişim
+          </h1>
+          <p class="hero-subtitle">
+            Günden Güne; para ve finans, erteleme ve odaklanma, uyku düzeni, ilişkiler, fiziksel sağlık, zihinsel denge, özgüven ve dijital denge olmak üzere 8 alanda günde 2–10 dakikalık kişisel mikro görevler sunan ücretsiz, üyeliksiz ve çevrimdışı çalışabilen 30 günlük gelişim platformudur.
+          </p>
+          <p>
+            <a href="#onboarding" class="btn btn-primary btn-lg">Yolculuğa başla</a>
+          </p>
+        </section>
+        <section aria-labelledby="static-how-heading" class="container">
+          <h2 id="static-how-heading">Nasıl çalışır?</h2>
+          <ol>
+            <li>Çalışmak istediğin tek bir odak alanını ve günlük ayırabileceğin süreyi seçersin.</li>
+            <li>Yanıtlarına göre uyarlanan 30 günlük Tohum, Filiz, Köklenme ve Meyve aşamalarında her gün tek bir küçük adımı tamamlarsın.</li>
+            <li>Ara verdiğinde seri kırma cezası görmez, kaldığın yerden sakin bir ritimle devam edersin.</li>
+          </ol>
+        </section>
+      </main>
     </div>
 
     <script type="module" src="/src/main.js"></script>
