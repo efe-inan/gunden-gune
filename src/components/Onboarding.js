@@ -8,6 +8,7 @@ import tasksData from '../data/tasks.json' with { type: 'json' };
 import { storage } from '../utils/storage.js';
 import { buildTaskSequence } from '../utils/planEngine.js';
 import { BrandMark, StageIcons, ArrowRightIcon, ArrowLeftIcon, CheckIcon, DomainIcons } from './Icons.js';
+import { signInWithEmail } from '../utils/supabase.js';
 
 export class OnboardingController {
   constructor(containerEl, onComplete) {
@@ -29,6 +30,8 @@ export class OnboardingController {
     this.isGeneratingPlan = false;
     this.isPlanReady = false;
     this.calmNoticeMessage = null;
+    this.authNoticeMessage = null;
+    this.authLinkSent = false;
   }
 
   buildSteps() {
@@ -402,6 +405,8 @@ export class OnboardingController {
     const namePart = this.formData.name.trim() ? `, ${this.escapeHtml(this.formData.name.trim())}` : '';
     const areaObj = questionsData.alanlar.find(a => a.id === this.formData.selectedAreaId);
     const areaTitle = areaObj ? areaObj.baslik : 'Kişisel gelişim';
+    const currentState = storage.getState();
+    const isAuthenticated = Boolean(currentState?.auth?.isAuthenticated);
 
     this.container.innerHTML = `
       <main class="onboarding-page fade-in" id="main-content">
@@ -421,15 +426,91 @@ export class OnboardingController {
                 Günde yaklaşık ${this.formData.dailyTime} dakika ayırarak, seri kırma baskısı olmadan her gün tek bir somut adımla ilerleyeceksin.
               </p>
 
-              <a href="#today" class="btn btn-primary btn-lg" id="btn-go-to-first-task">
-                <span>İlk görevime git</span>
-                ${ArrowRightIcon({ size: 16 })}
-              </a>
+              ${isAuthenticated ? `
+                <div style="margin-top: 24px;">
+                  <a href="#today" class="btn btn-primary btn-lg" id="btn-go-to-first-task">
+                    <span>İlk görevime git</span>
+                    ${ArrowRightIcon({ size: 16 })}
+                  </a>
+                </div>
+              ` : `
+                <div class="onboarding-auth-card" style="margin-top: 28px; text-align: left; background: var(--bg-subtle); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-hairline);">
+                  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                    <span style="font-size: var(--text-sm); font-weight: 600; color: var(--text-primary);">
+                      İlerlemeni kaydetmek için hesabını oluştur
+                    </span>
+                  </div>
+                  <p style="font-size: var(--text-xs); color: var(--text-secondary); line-height: 1.55; margin-bottom: 16px;">
+                    Yolculuğunun kaybolmaması ve her gün kaldığın yerden devam edebilmen için hesabını bağlaman gerekir. Şifre gerekmez; e-postana tek kullanımlık güvenli bir giriş bağlantısı gönderilir.
+                  </p>
+
+                  ${this.authNoticeMessage ? `
+                    <div class="calm-notice" style="margin-top: 0; margin-bottom: 16px;" role="status">
+                      <span>${this.escapeHtml(this.authNoticeMessage)}</span>
+                    </div>
+                  ` : ''}
+
+                  ${this.authLinkSent ? `
+                    <div style="padding: 12px 16px; background: var(--bg-base); border-radius: var(--radius-sm); border: 1px solid var(--border-hairline);">
+                      <p style="font-size: var(--text-sm); color: var(--accent); font-weight: 500; margin-bottom: 4px;">
+                        ✓ Bağlantı gönderildi
+                      </p>
+                      <p style="font-size: var(--text-xs); color: var(--text-secondary); line-height: 1.5;">
+                        Lütfen gelen kutundaki bağlantıya tıkla. Giriş yaptığında ilk gün görevine otomatik olarak yönlendirileceksin.
+                      </p>
+                    </div>
+                  ` : `
+                    <div class="onboarding-auth-form" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                      <input
+                        type="email"
+                        id="onboarding-email-input"
+                        class="text-input"
+                        placeholder="ornek@eposta.com"
+                        style="flex: 1; min-width: 200px;"
+                      />
+                      <button type="button" class="btn btn-primary" id="btn-onboarding-send-magic">
+                        <span>Giriş bağlantısı gönder</span>
+                      </button>
+                    </div>
+                  `}
+                </div>
+              `}
             </div>
           </div>
         </div>
       </main>
     `;
+
+    this.attachPlanReadyEvents();
+  }
+
+  attachPlanReadyEvents() {
+    const sendBtn = this.container.querySelector('#btn-onboarding-send-magic');
+    const emailInput = this.container.querySelector('#onboarding-email-input');
+
+    if (sendBtn && emailInput) {
+      sendBtn.addEventListener('click', async () => {
+        const email = emailInput.value?.trim();
+        if (!email || !email.includes('@')) {
+          this.authNoticeMessage = 'Lütfen geçerli bir e-posta adresi gir.';
+          this.renderPlanReadyView();
+          return;
+        }
+
+        sendBtn.setAttribute('disabled', '');
+        sendBtn.innerHTML = '<span>Gönderiliyor...</span>';
+
+        const { error } = await signInWithEmail(email, '#today');
+        if (error) {
+          this.authNoticeMessage = error.message || 'Giriş bağlantısı gönderilemedi.';
+          this.authLinkSent = false;
+        } else {
+          this.authNoticeMessage = null;
+          this.authLinkSent = true;
+        }
+        this.renderPlanReadyView();
+      });
+    }
   }
 
   /* ---------------- Olay Yönetimi ---------------- */

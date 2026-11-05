@@ -39,11 +39,12 @@ export const supabase = isSupabaseConfigured
 /**
  * E-posta ile şifresiz Magic Link gönderir
  */
-export async function signInWithEmail(email) {
+export async function signInWithEmail(email, redirectHash = '#today') {
   if (!supabase) {
     return { error: new Error('Bulut servisi henüz yapılandırılmamış.') };
   }
-  const redirectTo = typeof window !== 'undefined' ? `${window.location.origin}/#settings` : undefined;
+  const cleanHash = redirectHash.startsWith('#') ? redirectHash : `#${redirectHash}`;
+  const redirectTo = typeof window !== 'undefined' ? `${window.location.origin}/${cleanHash}` : undefined;
   return await supabase.auth.signInWithOtp({
     email,
     options: {
@@ -169,6 +170,24 @@ export function initCloudSync({ storage, onAuthChange, onCloudApplied } = {}) {
 
     if (typeof onAuthChange === 'function') {
       onAuthChange(user);
+    }
+
+    if (user) {
+      storage.updateState(currentState => ({
+        ...currentState,
+        auth: {
+          isAuthenticated: true,
+          user: { id: user.id, email: user.email },
+        },
+      }));
+    } else {
+      storage.updateState(currentState => ({
+        ...currentState,
+        auth: {
+          isAuthenticated: false,
+          user: null,
+        },
+      }));
     }
 
     // Supabase, callback içinde başka auth çağrısı yapılmasını önermediği için işi bir sonraki tura bırakıyoruz.
