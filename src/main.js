@@ -22,6 +22,7 @@ import { SunIcon, MoonIcon } from './components/Icons.js';
 export function resolveRoute(rawHash, state) {
   const cleanHash = (rawHash || '').split('?')[0];
   const isOnboarded = Boolean(state?.profile?.onboardingCompleted);
+  const isAuthenticated = Boolean(state?.auth?.isAuthenticated);
   const completedDays = state?.journey?.completedDays || [];
   const isDay30Completed = completedDays.includes(30);
   const isGraduatedAfterRollover =
@@ -37,8 +38,10 @@ export function resolveRoute(rawHash, state) {
     return cleanHash;
   }
 
+  // İlerlemenin kaydedilmesi için hesap açma zorunludur: Onboarding tamamlanmamışsa
+  // veya oturum açılmamışsa #today, #progress ve #completed sayfalarına izin verilmez.
   if (cleanHash === '#today' || cleanHash === '#progress' || cleanHash === '#completed') {
-    if (!isOnboarded) return '#onboarding';
+    if (!isOnboarded || !isAuthenticated) return '#onboarding';
   }
 
   if (cleanHash === '#today' && isGraduatedAfterRollover) {

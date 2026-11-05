@@ -47,20 +47,30 @@ test('resolveRoute guards uninitialized users from #today/#progress and always o
   assert.equal(resolveRoute('', freshState), '#landing');
 
   // Even when localStorage has an active journey, clicking the bare site URL ("" or "#") must open #landing
-  const activeState = { profile: { onboardingCompleted: true }, journey: { currentDay: 4, completedDays: [1, 2, 3], todayActionTaken: false } };
+  const activeState = { auth: { isAuthenticated: true }, profile: { onboardingCompleted: true }, journey: { currentDay: 4, completedDays: [1, 2, 3], todayActionTaken: false } };
   assert.equal(resolveRoute('', activeState), '#landing');
   assert.equal(resolveRoute('#', activeState), '#landing');
   assert.equal(resolveRoute('#landing', activeState), '#landing');
   assert.equal(resolveRoute('#today', activeState), '#today');
   assert.equal(resolveRoute('#completed', activeState), '#today');
 
+  // Zorunlu hesap kontrolü: Onboarding bitmiş olsa bile kullanıcı oturum açmamışsa (auth.isAuthenticated = false)
+  // #today veya #progress rotaları korumalıdır ve #onboarding rotasına yönlendirir
+  const unauthenticatedActive = {
+    auth: { isAuthenticated: false },
+    profile: { onboardingCompleted: true },
+    journey: { currentDay: 4, completedDays: [1, 2, 3], todayActionTaken: false }
+  };
+  assert.equal(resolveRoute('#today', unauthenticatedActive), '#onboarding');
+  assert.equal(resolveRoute('#progress', unauthenticatedActive), '#onboarding');
+
   // Day 30 completed today -> #today stays open for final reflection note, #completed is also allowed
-  const day30TodayState = { profile: { onboardingCompleted: true }, journey: { currentDay: 30, completedDays: [30], todayActionTaken: true } };
+  const day30TodayState = { auth: { isAuthenticated: true }, profile: { onboardingCompleted: true }, journey: { currentDay: 30, completedDays: [30], todayActionTaken: true } };
   assert.equal(resolveRoute('#today', day30TodayState), '#today');
   assert.equal(resolveRoute('#completed', day30TodayState), '#completed');
 
   // Day 30 completed on an earlier day (rolled over) -> #today redirects to #completed
-  const day30GraduatedState = { profile: { onboardingCompleted: true }, journey: { currentDay: 30, completedDays: [30], todayActionTaken: false } };
+  const day30GraduatedState = { auth: { isAuthenticated: true }, profile: { onboardingCompleted: true }, journey: { currentDay: 30, completedDays: [30], todayActionTaken: false } };
   assert.equal(resolveRoute('#today', day30GraduatedState), '#completed');
 });
 
