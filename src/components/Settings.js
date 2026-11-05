@@ -262,24 +262,21 @@ export class SettingsController {
               </div>
             </section>
 
-            <!-- 4. Senkronizasyon ve Bulut Yedekleme -->
-            <section class="settings-card" aria-labelledby="sync-heading">
+            <!-- 4. Hesap ve Senkronizasyon -->
+            <section class="settings-card" aria-labelledby="account-heading">
               <div class="settings-card-header">
-                <h2 id="sync-heading" class="settings-card-title">Cihazlar arası eşitleme</h2>
+                <h2 id="account-heading" class="settings-card-title">Hesap</h2>
               </div>
 
               ${this.currentUser ? `
                 <div class="sync-account-box">
                   <p class="sync-status-active">
-                    <strong>✓ Bulut eşitleme aktif:</strong> ${this.escapeHtml(this.currentUser.email || '')}
+                    <strong>✓ Aktif hesap:</strong> ${this.escapeHtml(this.currentUser.email || '')}
                   </p>
                   <p class="form-desc" style="margin-top: 6px;">
-                    Yolculuk ilerlemen ve yansıma notların bu cihaza ve bulut hesabına eş zamanlı kaydedilir.
+                    Yolculuk ilerlemen, tamamlanan günlerin ve yansıma notların hesabına her gün otomatik olarak yedeklenir.
                   </p>
-                  <div style="margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap;">
-                    <button type="button" class="btn btn-secondary btn-sm" id="btn-manual-sync">
-                      <span>Şimdi senkronize et</span>
-                    </button>
+                  <div style="margin-top: 14px;">
                     <button type="button" class="btn btn-ghost btn-sm" id="btn-sign-out">
                       <span>Oturumu kapat</span>
                     </button>
@@ -287,7 +284,7 @@ export class SettingsController {
                 </div>
               ` : `
                 <p style="font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
-                  Günden Güne üyelik olmadan tamamen yerel çalışır. Dilersen e-postanla tek tıkla şifresiz giriş yapıp ilerlemeni telefon ve bilgisayarın arasında taşıyabilirsin.
+                  İlerlemenin kaydedilmesi ve farklı cihazlarından erişebilmen için hesabına giriş yapabilirsin.
                 </p>
 
                 <div class="sync-login-row" style="display: flex; gap: 8px; flex-wrap: wrap; max-width: 480px;">
@@ -587,19 +584,6 @@ export class SettingsController {
           this.showCalmNotice('Giriş bağlantısı e-postana gönderildi! Gelen kutundaki bağlantıya tıklayarak oturum açabilirsin.');
           syncEmailInput.value = '';
         }
-      });
-    }
-
-    const manualSyncBtn = this.container.querySelector('#btn-manual-sync');
-    if (manualSyncBtn) {
-      manualSyncBtn.addEventListener('click', async () => {
-        manualSyncBtn.innerHTML = '<span>Eşitleniyor...</span>';
-        const ok = await syncLocalStateToCloud(storage.getState());
-        manualSyncBtn.innerHTML = ok ? '<span>✓ Eşitlendi</span>' : '<span>Eşitleme başarısız</span>';
-        const timer = setTimeout(() => {
-          if (manualSyncBtn) manualSyncBtn.innerHTML = '<span>Şimdi senkronize et</span>';
-        }, 2000);
-        timer.unref?.();
       });
     }
 
