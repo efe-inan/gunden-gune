@@ -1,17 +1,27 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { isSupabaseConfigured, signInWithEmail, signOut, decideSyncDirection } from '../src/utils/supabase.js';
+import { isSupabaseConfigured, signInWithEmail, signOut, decideSyncDirection, handleInitialAuth } from '../src/utils/supabase.js';
 
 test('isSupabaseConfigured evaluates boolean flag safely', () => {
   assert.equal(typeof isSupabaseConfigured, 'boolean');
 });
 
 test('signInWithEmail and signOut safely handle unconfigured or client calls without throwing', async () => {
-  const signResult = await signInWithEmail('test@example.com');
+  const signResult = await signInWithEmail('test@example.com', '#today', { pending_state: { dummy: true } });
   assert.ok(signResult, 'Expected result object');
 
   const outResult = await signOut();
   assert.ok(outResult, 'Expected signOut result object');
+});
+
+test('handleInitialAuth handles unconfigured or empty storage safely without throwing', async () => {
+  const mockStorage = {
+    getState: () => ({ auth: { isAuthenticated: false } }),
+    updateState: () => {},
+    importDataJSON: () => ({ ok: true }),
+  };
+  const result = await handleInitialAuth(mockStorage);
+  assert.equal(result, null);
 });
 
 function makeState({ onboarded = true, completed = [], lastActionDate = null } = {}) {

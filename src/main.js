@@ -5,7 +5,7 @@
 
 import { storage } from './utils/storage.js';
 import { initPwaInstallListener, registerServiceWorker } from './utils/pwa.js';
-import { initCloudSync } from './utils/supabase.js';
+import { initCloudSync, handleInitialAuth } from './utils/supabase.js';
 import { renderHeader } from './components/Header.js';
 import { renderFooter } from './components/Footer.js';
 import { renderLanding } from './components/Landing.js';
@@ -14,7 +14,7 @@ import { TodayController } from './components/Today.js';
 import { ProgressController } from './components/Progress.js';
 import { SettingsController } from './components/Settings.js';
 import { CompletionController } from './components/Completion.js';
-import { SunIcon, MoonIcon } from './components/Icons.js';
+import { SunIcon, MoonIcon, BrandMark } from './components/Icons.js';
 
 /**
  * Ham URL hash değerini ve kullanıcı durumunu değerlendirerek güvenli hedef rotayı çözer.
@@ -68,21 +68,68 @@ export class App {
     }
   }
 
-  init() {
+  async init() {
     initPwaInstallListener(window);
     if (Boolean(import.meta.env?.PROD) && typeof navigator !== 'undefined') {
       registerServiceWorker(navigator, '/sw.js');
     }
+
+    const hasAuthCallback = typeof window !== 'undefined' && (
+      window.location.search.includes('code=') ||
+      window.location.hash.includes('access_token=') ||
+      window.location.search.includes('token_hash=')
+    );
+
+    if (hasAuthCallback) {
+      this.renderAuthPendingView();
+    }
+
     initCloudSync({
       storage,
       onAuthChange: (user) => {
         window.dispatchEvent(new CustomEvent('authchange', { detail: { user } }));
+        const s = storage.getState();
+        if (user && s?.profile?.onboardingCompleted && window.location.hash === '#onboarding') {
+          window.location.hash = '#today';
+        }
       },
       onCloudApplied: () => this.handleRouting(),
     });
+
     window.addEventListener('hashchange', () => this.handleRouting());
+
+    if (hasAuthCallback) {
+      await handleInitialAuth(storage);
+      if (typeof window !== 'undefined' && window.history?.replaceState) {
+        const cleanHash = window.location.hash || '#today';
+        const cleanUrl = `${window.location.pathname}${cleanHash}`;
+        window.history.replaceState(null, '', cleanUrl);
+      }
+    }
+
     this.handleRouting();
     this.bindEvents();
+  }
+
+  renderAuthPendingView() {
+    if (!this.appEl) return;
+    this.appEl.innerHTML = `
+      ${renderHeader()}
+      <main class="page-shell fade-in" style="min-height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 48px 16px;">
+        <div style="max-width: 400px;">
+          <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+            ${BrandMark({ size: 32 })}
+          </div>
+          <h1 style="font-family: var(--font-serif); font-size: var(--text-xl); margin-bottom: 12px; color: var(--text-primary); font-weight: 500;">
+            Girişin doğrulanıyor
+          </h1>
+          <p style="font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.6;">
+            Hesabın bağlanıyor ve sana özel hazırlanan 30 günlük planın yükleniyor...
+          </p>
+        </div>
+      </main>
+      ${renderFooter()}
+    `;
   }
 
   handleRouting() {

@@ -31,3 +31,4 @@ test('Onboarding plan-ready view requires authentication before showing #today n
   const goToTaskAfter = container.querySelector('#btn-go-to-first-task');
   assert.ok(goToTaskAfter, 'Authenticated user must see direct #today navigation button');
 });
+

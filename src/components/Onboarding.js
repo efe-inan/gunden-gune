@@ -500,7 +500,10 @@ export class OnboardingController {
         sendBtn.setAttribute('disabled', '');
         sendBtn.innerHTML = '<span>Gönderiliyor...</span>';
 
-        const { error } = await signInWithEmail(email, '#today');
+        const currentState = storage.getState();
+        const { error } = await signInWithEmail(email, '#today', {
+          pending_state: currentState,
+        });
         if (error) {
           this.authNoticeMessage = error.message || 'Giriş bağlantısı gönderilemedi.';
           this.authLinkSent = false;
