@@ -32,3 +32,58 @@ test('Onboarding plan-ready view requires authentication before showing #today n
   assert.ok(goToTaskAfter, 'Authenticated user must see direct #today navigation button');
 });
 
+test('importDataJSON preserves authenticated session state so cloud pull does not log user out', () => {
+  installBrowserMock();
+  storage.resetAll();
+
+  storage.updateState({
+    auth: { isAuthenticated: true, user: { id: 'u1', email: 'efe@example.com' } },
+  });
+
+  const cloudBackup = JSON.stringify({
+    auth: { isAuthenticated: false, user: null },
+    profile: {
+      name: 'Efe',
+      selectedAreaId: 'finans',
+      dailyTimePreference: 15,
+      timeOfDayPreference: 'sabah',
+      readinessScore: 4,
+      answers: { finans_4: 'harcama' },
+      onboardingCompleted: true,
+    },
+    journey: {
+      currentDay: 1,
+      completedDays: [],
+    },
+  });
+
+  const result = storage.importDataJSON(cloudBackup);
+  assert.equal(result.ok, true);
+  assert.equal(storage.getState().auth.isAuthenticated, true);
+  assert.equal(storage.getState().auth.user?.email, 'efe@example.com');
+  assert.equal(storage.getState().profile.onboardingCompleted, true);
+});
+
+test('OnboardingController opens directly on plan-ready view when onboardingCompleted is true', () => {
+  installBrowserMock();
+  storage.resetAll();
+
+  storage.updateState({
+    auth: { isAuthenticated: false, user: null },
+    profile: {
+      ...storage.getState().profile,
+      name: 'Efe',
+      selectedAreaId: 'finans',
+      onboardingCompleted: true,
+    },
+  });
+
+  const container = createContainer();
+  const ctrl = new OnboardingController(container);
+  ctrl.render();
+
+  assert.equal(ctrl.isPlanReady, true);
+  assert.ok(container.querySelector('#onboarding-email-input'), 'Should show email input, not question 1');
+});
+
+

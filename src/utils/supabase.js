@@ -28,7 +28,7 @@ export const isSupabaseConfigured = Boolean(
 export const supabase = isSupabaseConfigured
   ? createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
       auth: {
-        flowType: 'pkce',
+        flowType: 'implicit',
         persistSession: true,
         autoRefreshToken: true,
         detectSessionInUrl: true,
@@ -45,6 +45,16 @@ export const supabase = isSupabaseConfigured
 export async function signInWithEmail(email, redirectHash = '#today', metadata = {}) {
   if (!supabase) {
     return { error: new Error('Bulut servisi henüz yapılandırılmamış.') };
+  }
+  if (metadata?.pending_state?.profile?.onboardingCompleted && typeof supabase.rpc === 'function') {
+    try {
+      await supabase.rpc('stash_pending_onboarding', {
+        p_email: email,
+        p_state: metadata.pending_state,
+      });
+    } catch {
+      // RPC mevcut değilse veya ağ hatası olursa oturum açma akışını kesme
+    }
   }
   const cleanHash = redirectHash.startsWith('#') ? redirectHash : `#${redirectHash}`;
   const redirectTo = typeof window !== 'undefined' ? `${window.location.origin}/${cleanHash}` : undefined;
@@ -66,45 +76,121 @@ export async function signOut() {
 }
 
 /**
+ * URL içinde bulunan #access_token, ?token_hash veya ?code parametrelerini çözerek oturumu kurar.
+ */
+async function resolveSessionFromUrl() {
+  if (!supabase || typeof window === 'undefined') return null;
+
+  try {
+    const rawHash = window.location.hash || '';
+    if (rawHash.includes('access_token=')) {
+      const tokenPart = rawHash.slice(rawHash.indexOf('access_token='));
+      const hashParams = new URLSearchParams(tokenPart);
+      const access_token = hashParams.get('access_token');
+      const refresh_token = hashParams.get('refresh_token');
+      if (access_token && refresh_token) {
+        const { data } = await supabase.auth.setSession({ access_token, refresh_token });
+        if (data?.session) return data.session;
+      }
+    }
+
+    const searchParams = new URLSearchParams(window.location.search || '');
+    const token_hash = searchParams.get('token_hash');
+    const type = searchParams.get('type');
+    if (token_hash && type && typeof supabase.auth.verifyOtp === 'function') {
+      const { data } = await supabase.auth.verifyOtp({ token_hash, type });
+      if (data?.session) return data.session;
+    }
+
+    const code = searchParams.get('code');
+    if (code && typeof supabase.auth.exchangeCodeForSession === 'function') {
+      const { data } = await supabase.auth.exchangeCodeForSession(code);
+      if (data?.session) return data.session;
+    }
+  } catch {
+    // detectSessionInUrl zaten işlemiş olabilir; getSession() ile devam et
+  }
+
+  const sessionPromise = supabase.auth.getSession();
+  const timeoutPromise = new Promise(resolve => setTimeout(() => resolve({ data: { session: null } }), 4500));
+  const { data } = await Promise.race([sessionPromise, timeoutPromise]);
+  return data?.session || null;
+}
+
+/**
+ * Doğrulanmış kullanıcı için yerel durum ile bulut tablosunu (veya bekleyen onboarding kaydını) uzlaştırır.
+ */
+async function reconcileUserState(user, storage, onCloudApplied) {
+  if (!user || !storage) return;
+
+  const setAuthenticatedFlag = () => {
+    storage.updateState(currentState => ({
+      ...currentState,
+      auth: {
+        isAuthenticated: true,
+        user: { id: user.id, email: user.email },
+      },
+    }));
+  };
+
+  setAuthenticatedFlag();
+
+  let cloudRow = await fetchCloudState(user);
+
+  if (!cloudRow?.state?.profile?.onboardingCompleted && typeof supabase?.rpc === 'function') {
+    try {
+      const { data: claimedState } = await supabase.rpc('claim_pending_onboarding');
+      if (claimedState?.profile?.onboardingCompleted) {
+        cloudRow = { state: claimedState, updated_at: new Date().toISOString() };
+      }
+    } catch {
+      // RPC hatası olursa normal akışla devam et
+    }
+  }
+
+  const currentState = storage.getState();
+  const direction = decideSyncDirection(currentState, cloudRow);
+
+  if (direction === 'pull') {
+    const result = storage.importDataJSON(JSON.stringify(cloudRow.state));
+    setAuthenticatedFlag();
+    if (result?.ok && typeof onCloudApplied === 'function') {
+      onCloudApplied();
+    }
+  } else if (direction === 'push') {
+    setAuthenticatedFlag();
+    await syncLocalStateToCloud(storage.getState(), user);
+    if (typeof onCloudApplied === 'function') {
+      onCloudApplied();
+    }
+  } else if (direction === 'none') {
+    const pending = user?.user_metadata?.pending_state;
+    if (pending?.profile?.onboardingCompleted) {
+      const result = storage.importDataJSON(JSON.stringify(pending));
+      setAuthenticatedFlag();
+      if (result?.ok) {
+        await syncLocalStateToCloud(storage.getState(), user);
+        if (typeof onCloudApplied === 'function') {
+          onCloudApplied();
+        }
+      }
+    }
+  }
+}
+
+/**
  * İlk sayfa yüklemesinde auth oturumunu doğrular ve gerekirse bulut eşitlemesini tamamlar.
- * Magic link veya PKCE dönüşü (?code=...) olduğunda yönlendirme korumaları çalışmadan
- * önce çağrılarak oturumun ve yolculuk verisinin hazır olmasını garanti eder.
+ * Magic link veya PKCE dönüşü (?code=... / #access_token=...) olduğunda yönlendirme korumaları
+ * çalışmadan önce çağrılarak oturumun ve yolculuk verisinin hazır olmasını garanti eder.
  */
 export async function handleInitialAuth(storage) {
   if (!supabase || !storage || typeof window === 'undefined') return null;
 
   try {
-    const sessionPromise = supabase.auth.getSession();
-    const timeoutPromise = new Promise(resolve => setTimeout(() => resolve({ data: { session: null } }), 4500));
-    const { data: { session } } = await Promise.race([sessionPromise, timeoutPromise]);
-
+    const session = await resolveSessionFromUrl();
     if (session?.user) {
-      const user = session.user;
-      storage.updateState(currentState => ({
-        ...currentState,
-        auth: {
-          isAuthenticated: true,
-          user: { id: user.id, email: user.email },
-        },
-      }));
-
-      // Yolculuk verisini buluttan / metadatadan uzlaştır
-      const cloudRow = await fetchCloudState();
-      const currentState = storage.getState();
-      const direction = decideSyncDirection(currentState, cloudRow);
-
-      if (direction === 'pull') {
-        storage.importDataJSON(JSON.stringify(cloudRow.state));
-      } else if (direction === 'push') {
-        await syncLocalStateToCloud(currentState);
-      } else if (direction === 'none') {
-        const pending = user?.user_metadata?.pending_state;
-        if (pending?.profile?.onboardingCompleted) {
-          storage.importDataJSON(JSON.stringify(pending));
-          await syncLocalStateToCloud(storage.getState());
-        }
-      }
-      return user;
+      await reconcileUserState(session.user, storage);
+      return session.user;
     }
   } catch (err) {
     console.warn('handleInitialAuth sırasında beklenmeyen hata:', err);
@@ -124,9 +210,9 @@ export async function getCurrentUser() {
 /**
  * Buluttaki yolculuk durumunu çeker
  */
-export async function fetchCloudState() {
+export async function fetchCloudState(knownUser = null) {
   if (!supabase) return null;
-  const user = await getCurrentUser();
+  const user = knownUser || (await getCurrentUser());
   if (!user) return null;
 
   const { data, error } = await supabase
@@ -144,9 +230,9 @@ export async function fetchCloudState() {
 /**
  * Yerel durumu buluta kaydeder (Upsert)
  */
-export async function syncLocalStateToCloud(localState) {
+export async function syncLocalStateToCloud(localState, knownUser = null) {
   if (!supabase || !localState) return false;
-  const user = await getCurrentUser();
+  const user = knownUser || (await getCurrentUser());
   if (!user) return false;
 
   const { error } = await supabase
@@ -203,34 +289,8 @@ export function initCloudSync({ storage, onAuthChange, onCloudApplied } = {}) {
 
   const reconcile = async () => {
     const user = await getCurrentUser();
-    const cloudRow = await fetchCloudState();
-    const currentState = storage.getState();
-    const direction = decideSyncDirection(currentState, cloudRow);
-
-    if (direction === 'pull') {
-      const result = storage.importDataJSON(JSON.stringify(cloudRow.state));
-      if (result?.ok && typeof onCloudApplied === 'function') {
-        onCloudApplied();
-      }
-    } else if (direction === 'push') {
-      await syncLocalStateToCloud(storage.getState());
-      if (typeof onCloudApplied === 'function') {
-        onCloudApplied();
-      }
-    } else if (direction === 'none') {
-      // Çapraz cihaz durumu: Masaüstünde onboarding tamamlanıp telefonda bağlantıya tıklandıysa
-      // metadata içindeki pending_state yerele alınır ve bulut tablosuna yazılır.
-      const pending = user?.user_metadata?.pending_state;
-      if (pending?.profile?.onboardingCompleted) {
-        const result = storage.importDataJSON(JSON.stringify(pending));
-        if (result?.ok) {
-          await syncLocalStateToCloud(storage.getState());
-          if (typeof onCloudApplied === 'function') {
-            onCloudApplied();
-          }
-        }
-      }
-    }
+    if (!user) return;
+    await reconcileUserState(user, storage, onCloudApplied);
   };
 
   const { data } = supabase.auth.onAuthStateChange((event, session) => {

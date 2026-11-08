@@ -28,7 +28,7 @@ export class OnboardingController {
     this.stepIndex = 0;
     this.steps = this.buildSteps();
     this.isGeneratingPlan = false;
-    this.isPlanReady = false;
+    this.isPlanReady = Boolean(saved.profile.onboardingCompleted && !saved.auth?.isAuthenticated);
     this.calmNoticeMessage = null;
     this.authNoticeMessage = null;
     this.authLinkSent = false;
@@ -474,6 +474,11 @@ export class OnboardingController {
                     </div>
                   `}
                 </div>
+                <div style="margin-top: 16px; text-align: center;">
+                  <button type="button" class="btn btn-ghost btn-sm" id="btn-onboarding-restart-questions" style="font-size: var(--text-xs); color: var(--text-tertiary);">
+                    <span>Cevaplarımı baştan düzenle</span>
+                  </button>
+                </div>
               `}
             </div>
           </div>
@@ -487,6 +492,15 @@ export class OnboardingController {
   attachPlanReadyEvents() {
     const sendBtn = this.container.querySelector('#btn-onboarding-send-magic');
     const emailInput = this.container.querySelector('#onboarding-email-input');
+    const restartBtn = this.container.querySelector('#btn-onboarding-restart-questions');
+
+    if (restartBtn) {
+      restartBtn.addEventListener('click', () => {
+        this.isPlanReady = false;
+        this.stepIndex = 0;
+        this.render();
+      });
+    }
 
     if (sendBtn && emailInput) {
       sendBtn.addEventListener('click', async () => {

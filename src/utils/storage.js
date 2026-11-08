@@ -274,8 +274,9 @@ class StorageService {
         isCompleted30: Boolean(item.isCompleted30),
       }));
 
+    const currentAuth = this.getState()?.auth || DEFAULT_STATE.auth;
     const nextState = {
-      auth: { ...DEFAULT_STATE.auth },
+      auth: { ...currentAuth },
       profile: {
         ...DEFAULT_STATE.profile,
         name: safeName,

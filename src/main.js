@@ -93,17 +93,28 @@ export class App {
           window.location.hash = '#today';
         }
       },
-      onCloudApplied: () => this.handleRouting(),
+      onCloudApplied: () => {
+        const s = storage.getState();
+        if (s?.auth?.isAuthenticated && s?.profile?.onboardingCompleted && window.location.hash === '#onboarding') {
+          window.location.hash = '#today';
+          return;
+        }
+        this.handleRouting();
+      },
     });
 
     window.addEventListener('hashchange', () => this.handleRouting());
 
     if (hasAuthCallback) {
       await handleInitialAuth(storage);
-      if (typeof window !== 'undefined' && window.history?.replaceState) {
-        const cleanHash = window.location.hash || '#today';
-        const cleanUrl = `${window.location.pathname}${cleanHash}`;
-        window.history.replaceState(null, '', cleanUrl);
+      if (typeof window !== 'undefined') {
+        const rawHash = window.location.hash || '';
+        const isTokenHash = rawHash.includes('access_token=') || rawHash.includes('error=');
+        const cleanHash = !rawHash || isTokenHash || rawHash === '#onboarding' ? '#today' : rawHash.split('#')[1] ? `#${rawHash.split('#')[1]}` : '#today';
+        if (window.history?.replaceState) {
+          window.history.replaceState(null, '', `${window.location.pathname}${cleanHash}`);
+        }
+        window.location.hash = cleanHash;
       }
     }
 
