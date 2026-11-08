@@ -31,7 +31,7 @@ export const supabase = isSupabaseConfigured
         flowType: 'implicit',
         persistSession: true,
         autoRefreshToken: true,
-        detectSessionInUrl: true,
+        detectSessionInUrl: false,
       },
     })
   : null;
@@ -56,8 +56,7 @@ export async function signInWithEmail(email, redirectHash = '#today', metadata =
       // RPC mevcut değilse veya ağ hatası olursa oturum açma akışını kesme
     }
   }
-  const cleanHash = redirectHash.startsWith('#') ? redirectHash : `#${redirectHash}`;
-  const redirectTo = typeof window !== 'undefined' ? `${window.location.origin}/${cleanHash}` : undefined;
+  const redirectTo = typeof window !== 'undefined' ? `${window.location.origin}/` : undefined;
   return await supabase.auth.signInWithOtp({
     email,
     options: {

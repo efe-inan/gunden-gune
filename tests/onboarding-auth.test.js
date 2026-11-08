@@ -64,7 +64,7 @@ test('importDataJSON preserves authenticated session state so cloud pull does no
   assert.equal(storage.getState().profile.onboardingCompleted, true);
 });
 
-test('OnboardingController opens directly on plan-ready view when onboardingCompleted is true', () => {
+test('OnboardingController opens directly on plan-ready view when onboardingCompleted is true (both unauthenticated and authenticated)', () => {
   installBrowserMock();
   storage.resetAll();
 
@@ -84,6 +84,17 @@ test('OnboardingController opens directly on plan-ready view when onboardingComp
 
   assert.equal(ctrl.isPlanReady, true);
   assert.ok(container.querySelector('#onboarding-email-input'), 'Should show email input, not question 1');
+
+  // Even when authenticated, opening OnboardingController should show plan-ready with #btn-go-to-first-task, not question 1
+  storage.updateState({
+    auth: { isAuthenticated: true, user: { id: 'u1', email: 'efe@example.com' } },
+  });
+  const containerAuthed = createContainer();
+  const ctrlAuthed = new OnboardingController(containerAuthed);
+  ctrlAuthed.render();
+
+  assert.equal(ctrlAuthed.isPlanReady, true);
+  assert.ok(containerAuthed.querySelector('#btn-go-to-first-task'), 'Authenticated onboarded user must see #btn-go-to-first-task, not question 1');
 });
 
 

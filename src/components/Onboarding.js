@@ -28,7 +28,7 @@ export class OnboardingController {
     this.stepIndex = 0;
     this.steps = this.buildSteps();
     this.isGeneratingPlan = false;
-    this.isPlanReady = Boolean(saved.profile.onboardingCompleted && !saved.auth?.isAuthenticated);
+    this.isPlanReady = Boolean(saved.profile.onboardingCompleted);
     this.calmNoticeMessage = null;
     this.authNoticeMessage = null;
     this.authLinkSent = false;
@@ -474,12 +474,12 @@ export class OnboardingController {
                     </div>
                   `}
                 </div>
-                <div style="margin-top: 16px; text-align: center;">
-                  <button type="button" class="btn btn-ghost btn-sm" id="btn-onboarding-restart-questions" style="font-size: var(--text-xs); color: var(--text-tertiary);">
-                    <span>Cevaplarımı baştan düzenle</span>
-                  </button>
-                </div>
               `}
+              <div style="margin-top: 16px; text-align: center;">
+                <button type="button" class="btn btn-ghost btn-sm" id="btn-onboarding-restart-questions" style="font-size: var(--text-xs); color: var(--text-tertiary);">
+                  <span>Cevaplarımı baştan düzenle</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -708,6 +708,12 @@ export class OnboardingController {
       const nextJourney = {
         ...currentState.journey,
         currentDay: 1,
+        completedDays: [],
+        postponedDays: [],
+        dayStatusMap: {},
+        todayActionTaken: false,
+        todayActionDate: null,
+        lastActionDate: null,
         adaptiveDifficultyModifier: this.formData.readiness <= 2 ? -1 : 0,
         taskOrder,
         inactivityDismissedDate: null,

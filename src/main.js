@@ -84,16 +84,20 @@ export class App {
       this.renderAuthPendingView();
     }
 
+    let isInitializingAuth = hasAuthCallback;
+
     initCloudSync({
       storage,
       onAuthChange: (user) => {
         window.dispatchEvent(new CustomEvent('authchange', { detail: { user } }));
+        if (isInitializingAuth) return;
         const s = storage.getState();
         if (user && s?.profile?.onboardingCompleted && window.location.hash === '#onboarding') {
           window.location.hash = '#today';
         }
       },
       onCloudApplied: () => {
+        if (isInitializingAuth) return;
         const s = storage.getState();
         if (s?.auth?.isAuthenticated && s?.profile?.onboardingCompleted && window.location.hash === '#onboarding') {
           window.location.hash = '#today';
@@ -103,20 +107,19 @@ export class App {
       },
     });
 
-    window.addEventListener('hashchange', () => this.handleRouting());
-
-    if (hasAuthCallback) {
-      await handleInitialAuth(storage);
-      if (typeof window !== 'undefined') {
-        const rawHash = window.location.hash || '';
-        const isTokenHash = rawHash.includes('access_token=') || rawHash.includes('error=');
-        const cleanHash = !rawHash || isTokenHash || rawHash === '#onboarding' ? '#today' : rawHash.split('#')[1] ? `#${rawHash.split('#')[1]}` : '#today';
+    if (hasAuthCallback || !storage.getState()?.auth?.isAuthenticated) {
+      const authedUser = await handleInitialAuth(storage);
+      isInitializingAuth = false;
+      if (typeof window !== 'undefined' && (hasAuthCallback || (authedUser && window.location.hash === '#onboarding'))) {
+        const cleanHash = '#today';
         if (window.history?.replaceState) {
           window.history.replaceState(null, '', `${window.location.pathname}${cleanHash}`);
         }
         window.location.hash = cleanHash;
       }
     }
+
+    window.addEventListener('hashchange', () => this.handleRouting());
 
     this.handleRouting();
     this.bindEvents();
