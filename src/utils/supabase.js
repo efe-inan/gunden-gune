@@ -75,6 +75,20 @@ export async function signOut() {
 }
 
 /**
+ * Oturum açmış kullanıcının buluttaki yolculuk verisini siler
+ */
+export async function deleteCloudState(knownUser = null) {
+  if (!supabase) return false;
+  const user = knownUser || (await getCurrentUser());
+  if (!user) return false;
+  const { error } = await supabase
+    .from('user_journeys')
+    .delete()
+    .eq('user_id', user.id);
+  return !error;
+}
+
+/**
  * URL içinde bulunan #access_token, ?token_hash veya ?code parametrelerini çözerek oturumu kurar.
  */
 async function resolveSessionFromUrl() {

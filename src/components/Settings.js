@@ -13,6 +13,7 @@ import {
   signOut,
   getCurrentUser,
   syncLocalStateToCloud,
+  deleteCloudState,
 } from '../utils/supabase.js';
 import { DomainIcons, SunIcon, MoonIcon, SystemIcon } from './Icons.js';
 
@@ -669,7 +670,14 @@ export class SettingsController {
     const cancelDeleteBtn = this.container.querySelector('#btn-cancel-delete');
 
     if (confirmDeleteBtn) {
-      confirmDeleteBtn.addEventListener('click', () => {
+      confirmDeleteBtn.addEventListener('click', async () => {
+        confirmDeleteBtn.setAttribute('disabled', '');
+        try {
+          await deleteCloudState(this.currentUser);
+          await signOut();
+        } catch {
+          // Ağ hatası olsa bile yerel veriyi temizle
+        }
         storage.resetAll();
         window.location.hash = '#landing';
         window.location.reload();

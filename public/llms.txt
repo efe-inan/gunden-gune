@@ -2,7 +2,7 @@
 
 > Günden Güne, 8 kişisel gelişim alanında günde 2–10 dakikalık uyarlanabilir mikro görevlerle baskısız, zincir kırma cezası olmayan 30 günlük alışkanlık ve gelişim deneyimi sunan ücretsiz, yerel-öncelikli Türkçe web uygulamasıdır (PWA).
 
-Kullanıcılar üye olmadan tek bir odak alanı seçer, 9 kısa başlangıç sorusunu yanıtlar ve kendi günlük zaman tercihine göre kişiselleştirilmiş 30 günlük (Tohum, Filiz, Köklenme ve Meyve aşamalarından oluşan) bir plan alır. Tüm veriler tarayıcıda yerel olarak saklanır; JSON yedekleme/geri yükleme ve RFC 5545 uyumlu `.ics` takvim hatırlatıcısı desteklenir.
+Kullanıcılar tek bir odak alanı seçer, 9 kısa başlangıç sorusunu yanıtlar ve kendi günlük zaman tercihine göre kişiselleştirilmiş 30 günlük (Tohum, Filiz, Köklenme ve Meyve aşamalarından oluşan) bir plan alır. Ardından şifresiz e-posta bağlantısı (Magic Link) ile hesabını bağlayarak ilerlemesini tüm cihazlarında bulut senkronizasyonuyla güvenle saklar; JSON yedekleme/geri yükleme ve RFC 5545 uyumlu `.ics` takvim hatırlatıcısı da desteklenir.
 
 ## Temel Bağlantılar
 
